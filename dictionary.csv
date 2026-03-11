@@ -1,0 +1,297 @@
+source_term,target_term,notes
+API,API,そのまま使用
+machine learning,機械学習,
+deep learning,深層学習,
+neural network,ニューラルネットワーク,
+transformer,トランスフォーマー,モデルアーキテクチャ
+fine-tuning,ファインチューニング,
+inference,推論,
+latency,レイテンシー,遅延
+throughput,スループット,
+real-time,リアルタイム,
+transcription,文字起こし,
+# --- ASR / 音声認識 ---
+ASR,ASR,Automatic Speech Recognition
+speech recognition,音声認識,
+interim result,暫定結果,
+is_final,is_final,Deepgramのフラグ
+endpointing,エンドポイント検出,発話終了検知
+utterance,発話,
+diarization,話者分離,
+speaker,話者,
+word error rate,単語誤り率,
+WER,WER,Word Error Rate
+VAD,VAD,Voice Activity Detection
+noise cancellation,ノイズキャンセリング,
+# --- 翻訳 / MT ---
+simultaneous interpretation,同時通訳,
+simultaneous translation,同時翻訳,
+machine translation,機械翻訳,
+MT,MT,Machine Translation
+NMT,NMT,Neural Machine Translation
+post-editing,ポストエディット,翻訳後校正
+glossary,用語集,
+terminology,用語,
+# --- LLM / AI モデル ---
+LLM,LLM,Large Language Model
+large language model,大規模言語モデル,
+GPT,GPT,そのまま使用
+ChatGPT,ChatGPT,製品名
+Gemini,Gemini,Googleのモデル名
+Claude,Claude,Anthropicのモデル名
+prompt,プロンプト,
+context window,コンテキストウィンドウ,
+token,トークン,
+hallucination,ハルシネーション,幻覚・誤生成
+structured output,構造化出力,
+temperature,温度パラメータ,LLMのサンプリングパラメータ
+embeddings,埋め込み,
+RAG,RAG,Retrieval-Augmented Generation
+vector search,ベクター検索,
+# --- クラウド / インフラ ---
+WebSocket,WebSocket,
+REST,REST,
+HTTP,HTTP,
+SDK,SDK,Software Development Kit
+Docker,Docker,
+container,コンテナ,
+pipeline,パイプライン,
+queue,キュー,
+async,非同期,
+stream,ストリーム,
+streaming,ストリーミング,
+cache,キャッシュ,
+context caching,コンテキストキャッシング,Geminiのキャッシュ機能
+# --- Zoom / 会議 ---
+Zoom,Zoom,製品名
+RTMS,RTMS,Real-Time Media Streams
+webinar,ウェビナー,
+meeting,ミーティング,
+host,ホスト,
+attendee,参加者,
+caption,字幕,
+subtitle,字幕,
+breakout room,ブレイクアウトルーム,
+# --- ソフトウェア開発 ---
+repository,リポジトリ,
+pull request,プルリクエスト,
+PR,PR,Pull Request
+commit,コミット,
+branch,ブランチ,
+merge,マージ,
+deployment,デプロイメント,
+CI/CD,CI/CD,
+unit test,ユニットテスト,
+integration test,統合テスト,
+refactoring,リファクタリング,
+debugging,デバッグ,
+bug,バグ,
+feature,フィーチャー,機能
+release,リリース,
+# --- ビジネス / 会議全般 ---
+agenda,アジェンダ,議題
+action item,アクションアイテム,
+deadline,デッドライン,締め切り
+stakeholder,ステークホルダー,
+ROI,ROI,Return on Investment
+KPI,KPI,Key Performance Indicator
+OKR,OKR,Objectives and Key Results
+roadmap,ロードマップ,
+milestone,マイルストーン,
+demo,デモ,
+prototype,プロトタイプ,
+use case,ユースケース,
+feedback,フィードバック,
+# --- AI / 生成AI ---
+generative AI,生成AI,
+foundation model,基盤モデル,
+pre-training,事前学習,
+instruction tuning,インストラクションチューニング,
+RLHF,RLHF,Reinforcement Learning from Human Feedback
+alignment,アライメント,AIの価値整合
+agent,エージェント,
+agentic,エージェンティック,
+multi-agent,マルチエージェント,
+tool use,ツール使用,LLMがツールを呼び出す機能
+function calling,ファンクションコーリング,
+system prompt,システムプロンプト,
+few-shot,フューショット,
+zero-shot,ゼロショット,
+chain-of-thought,思考の連鎖,
+CoT,CoT,Chain-of-Thought
+multimodal,マルチモーダル,
+vision,ビジョン,画像認識能力
+text-to-image,テキストから画像生成,
+image generation,画像生成,
+diffusion model,拡散モデル,
+GAN,GAN,Generative Adversarial Network
+attention mechanism,アテンション機構,
+self-attention,自己注意機構,
+positional encoding,位置エンコーディング,
+softmax,ソフトマックス,
+loss function,損失関数,
+gradient descent,勾配降下法,
+backpropagation,誤差逆伝播,
+overfitting,過学習,
+underfitting,未学習,
+regularization,正則化,
+dropout,ドロップアウト,
+batch normalization,バッチ正規化,
+epoch,エポック,
+batch size,バッチサイズ,
+learning rate,学習率,
+optimizer,オプティマイザ,
+Adam,Adam,最適化アルゴリズム
+benchmark,ベンチマーク,
+evaluation,評価,
+accuracy,精度,
+precision,適合率,
+recall,再現率,
+F1 score,F1スコア,
+BLEU,BLEU,翻訳評価指標
+perplexity,パープレキシティ,
+# --- AI インフラ / MLOps ---
+MLOps,MLOps,Machine Learning Operations
+model serving,モデルサービング,
+model registry,モデルレジストリ,
+feature store,特徴量ストア,
+data pipeline,データパイプライン,
+data preprocessing,データ前処理,
+dataset,データセット,
+annotation,アノテーション,
+labeling,ラベリング,
+GPU,GPU,Graphics Processing Unit
+TPU,TPU,Tensor Processing Unit
+VRAM,VRAM,ビデオメモリ
+quantization,量子化,モデル軽量化
+pruning,プルーニング,モデル枝刈り
+distillation,蒸留,知識蒸留
+ONNX,ONNX,Open Neural Network Exchange
+TensorFlow,TensorFlow,Googleのフレームワーク
+PyTorch,PyTorch,Metaのフレームワーク
+Hugging Face,Hugging Face,AIモデルプラットフォーム
+LangChain,LangChain,LLMフレームワーク
+vector database,ベクターデータベース,
+Pinecone,Pinecone,ベクターDB製品名
+Weaviate,Weaviate,ベクターDB製品名
+# --- クラウド / プラットフォーム ---
+AWS,AWS,Amazon Web Services
+GCP,GCP,Google Cloud Platform
+Azure,Azure,Microsoft Azure
+Kubernetes,Kubernetes,
+k8s,k8s,Kubernetesの略称
+serverless,サーバーレス,
+microservices,マイクロサービス,
+load balancer,ロードバランサー,
+auto scaling,オートスケーリング,
+CDN,CDN,Content Delivery Network
+VPC,VPC,Virtual Private Cloud
+IAM,IAM,Identity and Access Management
+S3,S3,Amazon S3ストレージ
+Cloud Storage,Cloud Storage,GCSストレージ
+Pub/Sub,Pub/Sub,メッセージングサービス
+Kafka,Kafka,分散メッセージキュー
+Redis,Redis,インメモリDB
+PostgreSQL,PostgreSQL,
+MongoDB,MongoDB,
+# --- ネットワーク / セキュリティ ---
+TLS,TLS,Transport Layer Security
+SSL,SSL,Secure Sockets Layer
+OAuth,OAuth,認証プロトコル
+JWT,JWT,JSON Web Token
+firewall,ファイアウォール,
+VPN,VPN,Virtual Private Network
+endpoint,エンドポイント,
+webhook,ウェブフック,
+# --- ソフトウェア開発（追加） ---
+open source,オープンソース,
+version control,バージョン管理,
+Git,Git,バージョン管理ツール
+GitHub,GitHub,コードホスティング
+monorepo,モノレポ,
+microservice,マイクロサービス,
+middleware,ミドルウェア,
+ORM,ORM,Object-Relational Mapping
+GraphQL,GraphQL,クエリ言語
+gRPC,gRPC,RPCフレームワーク
+observability,オブザーバビリティ,
+logging,ロギング,
+monitoring,モニタリング,
+alerting,アラーティング,
+SLA,SLA,Service Level Agreement
+SLO,SLO,Service Level Objective
+# --- データ分析 ---
+data analysis,データ分析,
+data science,データサイエンス,
+data engineer,データエンジニア,
+data analyst,データアナリスト,
+exploratory data analysis,探索的データ分析,
+EDA,EDA,Exploratory Data Analysis
+data cleaning,データクレンジング,
+data wrangling,データラングリング,
+data transformation,データ変換,
+missing value,欠損値,
+outlier,外れ値,
+normalization,正規化,
+standardization,標準化,
+feature engineering,特徴量エンジニアリング,
+feature selection,特徴量選択,
+dimensionality reduction,次元削減,
+PCA,PCA,主成分分析
+clustering,クラスタリング,
+classification,分類,
+regression,回帰,
+time series,時系列,
+forecasting,予測,
+anomaly detection,異常検知,
+correlation,相関,
+causality,因果関係,
+statistical significance,統計的有意性,
+p-value,p値,
+hypothesis testing,仮説検定,
+confidence interval,信頼区間,
+A/B test,A/Bテスト,
+cohort analysis,コホート分析,
+funnel analysis,ファネル分析,
+retention,リテンション,継続率
+churn,チャーン,解約率
+conversion rate,コンバージョン率,
+# --- データ基盤 ---
+data warehouse,データウェアハウス,
+data lake,データレイク,
+data lakehouse,データレイクハウス,
+data mart,データマート,
+ETL,ETL,Extract Transform Load
+ELT,ELT,Extract Load Transform
+batch processing,バッチ処理,
+stream processing,ストリーム処理,
+real-time analytics,リアルタイム分析,
+schema,スキーマ,
+partition,パーティション,
+index,インデックス,
+query,クエリ,
+SQL,SQL,
+BigQuery,BigQuery,Google BigQuery
+Snowflake,Snowflake,データウェアハウス製品名
+Redshift,Redshift,Amazon Redshift
+dbt,dbt,データ変換ツール
+Airflow,Airflow,ワークフロー管理ツール
+Spark,Spark,Apache Spark
+Pandas,Pandas,Pythonデータ分析ライブラリ
+NumPy,NumPy,Python数値計算ライブラリ
+Matplotlib,Matplotlib,Python可視化ライブラリ
+Jupyter,Jupyter,対話型開発環境
+notebook,ノートブック,Jupyter Notebook
+# --- 可視化 / BI ---
+dashboard,ダッシュボード,
+visualization,可視化,
+BI,BI,Business Intelligence
+Tableau,Tableau,BIツール製品名
+Looker,Looker,BIツール製品名
+Power BI,Power BI,Microsoft BIツール
+chart,チャート,
+graph,グラフ,
+heatmap,ヒートマップ,
+scatter plot,散布図,
+histogram,ヒストグラム,
+KPI dashboard,KPIダッシュボード,
