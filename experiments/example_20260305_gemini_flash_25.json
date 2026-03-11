@@ -1,0 +1,8 @@
+{
+  "date": "2026-03-05",
+  "model": "gemini-flash-2.5",
+  "domain": "particle_physics",
+  "xcomet_score": null,
+  "chrf_score": null,
+  "notes": "記入例：CKM matrixの訳が不安定。旧モデルのほうが安定していた。"
+}
