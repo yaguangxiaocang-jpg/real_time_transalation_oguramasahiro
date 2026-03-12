@@ -1,0 +1,8 @@
+{
+  "date": "2026-03-12",
+  "model": "gemini-2.5-flash",
+  "domain": "economics",
+  "xcomet_score": null,
+  "chrf_score": null,
+  "notes": "index.mp4（federal funds rate解説動画）で実行。165セグメントを処理。「federal funds rate → フェデラルファンド金利」など金融用語は適切に翻訳された。字幕表示用に簡潔な文体も概ね保たれている。自動評価スコアは未測定。"
+}
