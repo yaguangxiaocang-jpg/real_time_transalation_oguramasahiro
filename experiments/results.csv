@@ -1,2 +1,4 @@
-date,model,domain,xcomet_score,chrf_score,notes
+﻿date,model,domain,xcomet_score,chrf_score,notes
 2026-03-12,gemini-2.5-flash,economics,,,index.mp4（federal funds rate解説動画）165セグメント処理。金融用語は適切に翻訳。自動評価スコア未測定。
+2026-03-12,gemini-2.5-flash,general,,,index.mp4 を処理。165 セグメント翻訳。
+2026-03-12,gemini-2.5-flash,general,0.9975,0.421,index.mp4 を処理。165 セグメント翻訳。

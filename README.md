@@ -1,8 +1,74 @@
 # Real-time Translation
 
-Zoomミーティングの音声をリアルタイムに文字起こし・翻訳するシステム
+Zoomミーティングの音声をリアルタイムに文字起こし・翻訳するシステム。
+動画ファイルへの日本語字幕追加スクリプト (`add_subtitles.py`) も含む。
 
-## システム構成
+## 機能一覧
+
+| 機能 | スクリプト/コマンド | 説明 |
+|---|---|---|
+| リアルタイム翻訳 (Zoom RTMS) | `uv run real-time-translation` | Zoom音声をリアルタイムで翻訳 |
+| リアルタイム翻訳 (Webデモ) | `uv run real-time-translation-demo` | ブラウザマイク入力で翻訳 |
+| 動画字幕追加 | `python add_subtitles.py <動画>` | MP4に日本語字幕を焼き込む |
+
+---
+
+## 動画字幕追加スクリプト (`add_subtitles.py`)
+
+動画ファイルから音声を抽出し、Deepgramで文字起こし、Geminiで日本語翻訳して字幕を焼き込みます。
+
+### 処理フロー
+
+```
+動画ファイル → ffmpeg（音声抽出）→ Deepgram（文字起こし）→ Gemini（日本語翻訳）→ SRT生成 → ffmpeg（字幕焼き込み）→ 字幕付き動画
+```
+
+### 必要な環境変数
+
+`.env` ファイルに以下を設定してください：
+
+```env
+DEEPGRAM_API_KEY=your_deepgram_api_key
+GOOGLE_API_KEY=your_google_api_key
+SOURCE_LANGUAGE=en          # 元言語（省略時: en）
+TRANSLATION_DOMAIN=general  # 翻訳ドメイン（実験記録用、省略時: general）
+```
+
+### 使い方
+
+```bash
+# 動画ファイルを指定して実行
+python add_subtitles.py "C:\path\to\video.mp4"
+
+# 引数なしで実行（デフォルトパスを使用）
+python add_subtitles.py
+```
+
+### 出力ファイル
+
+| ファイル | 説明 |
+|---|---|
+| `<元ファイル名>_subtitled.mp4` | 字幕焼き込み済み動画 |
+| `<元ファイル名>_ja.srt` | SRT字幕ファイル（単体利用可） |
+
+### 自動評価・実験記録
+
+実行後、翻訳品質の自動評価を行い `experiments/` フォルダに記録します：
+
+- **xcomet_score**: Gemini LLM-as-judge による品質スコア（0〜1）
+- **chrf_score**: 逆翻訳 + chrF によるスコア（0〜1）
+
+### 依存パッケージ
+
+```bash
+pip install python-dotenv deepgram-sdk google-genai sacrebleu
+```
+
+ffmpeg が PATH に通っている必要があります。
+
+---
+
+## リアルタイム翻訳システム構成
 
 ```
 Zoom RTMS → AudioCapture → Deepgram WebSocket → LLM (Gemini/OpenAI) → 翻訳出力
