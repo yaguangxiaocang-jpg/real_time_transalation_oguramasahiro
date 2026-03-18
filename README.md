@@ -1,3 +1,14 @@
+---
+title: Real-time Translation
+emoji: 🎙️
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: 5.0.0
+app_file: app.py
+pinned: false
+---
+
 # Real-time Translation
 
 Zoomミーティングの音声をリアルタイムに文字起こし・翻訳するシステム。

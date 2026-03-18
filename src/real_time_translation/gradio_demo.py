@@ -4,7 +4,10 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import os
+import re
 import subprocess
+import tempfile
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any
@@ -110,6 +113,8 @@ def _normalize_audio_chunk(chunk: Any) -> bytes | None:
 
 async def start_session(
     state: DemoSession | None,
+    deepgram_key: str = "",
+    google_key: str = "",
 ) -> tuple[DemoSession | None, str, str, str]:
     if state is not None:
         transcript = "\n".join(state.transcript_lines)
@@ -117,7 +122,16 @@ async def start_session(
         return state, _status("running"), transcript, translation
 
     try:
-        config = Config.from_env(require_zoom=False)
+        if deepgram_key.strip() and google_key.strip():
+            config = Config(
+                deepgram_api_key=deepgram_key.strip(),
+                llm_provider="gemini",
+                zoom_client_id="",
+                zoom_client_secret="",
+                google_api_key=google_key.strip(),
+            )
+        else:
+            config = Config.from_env(require_zoom=False)
     except Exception as exc:
         return None, _status(f"error: {exc}"), "", ""
 
@@ -186,7 +200,10 @@ def cancel_processing(state: DemoSession | None) -> tuple[DemoSession | None, st
 
 
 async def process_audio_file(
-    file_path: str | None, state: DemoSession | None
+    file_path: str | None,
+    state: DemoSession | None,
+    deepgram_key: str = "",
+    google_key: str = "",
 ) -> tuple[DemoSession | None, str, str, str]:
     """Process an uploaded audio file through the pipeline."""
     if file_path is None:
@@ -194,7 +211,7 @@ async def process_audio_file(
 
     # Start session if not already running
     if state is None:
-        state, status, _, _ = await start_session(None)
+        state, status, _, _ = await start_session(None, deepgram_key, google_key)
         if state is None:
             return None, status, "", ""
 
@@ -334,12 +351,214 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
     return transcript, translation, _status("running")
 
 
+# ---------------------------------------------------------------------------
+# Video subtitle helpers (adapted from add_subtitles.py)
+# ---------------------------------------------------------------------------
+
+def _video_extract_audio(video_path: str, audio_path: str) -> None:
+    result = subprocess.run(
+        ["ffmpeg", "-y", "-i", video_path, "-vn", "-ar", "16000", "-ac", "1", "-f", "wav", audio_path],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"ffmpeg音声抽出エラー:\n{result.stderr[-500:]}")
+
+
+def _video_transcribe(audio_path: str, api_key: str) -> list[dict]:
+    from deepgram import DeepgramClient
+
+    client = DeepgramClient(api_key=api_key)
+    with open(audio_path, "rb") as f:
+        audio_data = f.read()
+
+    response = client.listen.v1.media.transcribe_file(
+        request=audio_data,
+        model="nova-2-general",
+        language=os.environ.get("SOURCE_LANGUAGE", "en"),
+        smart_format=True,
+        punctuate=True,
+        utterances=True,
+        utt_split=0.8,
+    )
+    utterances = getattr(response.results, "utterances", None) or []
+    if not utterances:
+        channels = getattr(response.results, "channels", None) or []
+        if not channels:
+            raise RuntimeError("文字起こし結果が空です")
+        words = channels[0].alternatives[0].words or []
+        return _group_words(
+            [{"word": w.word, "start": w.start, "end": w.end} for w in words]
+        )
+    return [
+        {"start": u.start, "end": u.end, "transcript": u.transcript}
+        for u in utterances
+        if u.transcript
+    ]
+
+
+def _group_words(words: list[dict], max_words: int = 12, max_duration: float = 5.0) -> list[dict]:
+    if not words:
+        return []
+    segments: list[dict] = []
+    current: list[dict] = []
+    seg_start = words[0]["start"]
+    for idx, word in enumerate(words):
+        current.append(word)
+        if len(current) >= max_words or (word["end"] - seg_start) >= max_duration:
+            segments.append({"start": seg_start, "end": word["end"],
+                              "transcript": " ".join(w["word"] for w in current)})
+            current = []
+            if idx + 1 < len(words):
+                seg_start = words[idx + 1]["start"]
+    if current:
+        segments.append({"start": seg_start, "end": current[-1]["end"],
+                          "transcript": " ".join(w["word"] for w in current)})
+    return segments
+
+
+async def _video_translate(utterances: list[dict], api_key: str) -> list[dict]:
+    from google import genai
+
+    client = genai.Client(api_key=api_key)
+    translated: list[dict] = []
+    batch_size = 10
+    for i in range(0, len(utterances), batch_size):
+        batch = utterances[i : i + batch_size]
+        numbered = "\n".join(f"{j+1}. {u['transcript']}" for j, u in enumerate(batch))
+        prompt = (
+            "あなたはプロの翻訳者です。"
+            "以下の英語テキストをそれぞれ自然な日本語に翻訳してください。"
+            "字幕として表示されるため、簡潔で読みやすい文にしてください。"
+            "番号付きリストで返してください（例: 1. 翻訳文）。説明や原文は含めないでください。\n\n"
+            f"{numbered}"
+        )
+        response = await asyncio.to_thread(
+            client.models.generate_content,
+            model="gemini-2.5-flash",
+            contents=prompt,
+        )
+        raw = response.text or ""
+        ja_texts: list[str] = []
+        for line in (ln.strip() for ln in raw.split("\n") if ln.strip()):
+            m = re.match(r"\d+\.\s*(.*)", line)
+            ja_texts.append(m.group(1) if m else line)
+        while len(ja_texts) < len(batch):
+            ja_texts.append(batch[len(ja_texts)]["transcript"])
+        for u, ja in zip(batch, ja_texts):
+            translated.append({"start": u["start"], "end": u["end"],
+                                "original": u["transcript"], "japanese": ja})
+    return translated
+
+
+def _seconds_to_srt(s: float) -> str:
+    h, rem = divmod(int(s), 3600)
+    m, sec = divmod(rem, 60)
+    ms = int((s % 1) * 1000)
+    return f"{h:02d}:{m:02d}:{sec:02d},{ms:03d}"
+
+
+def _video_create_srt(translated: list[dict], srt_path: str) -> None:
+    lines: list[str] = []
+    for i, seg in enumerate(translated, 1):
+        lines += [str(i), f"{_seconds_to_srt(seg['start'])} --> {_seconds_to_srt(seg['end'])}",
+                  seg["japanese"], ""]
+    with open(srt_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+
+def _video_burn_subtitles(video_path: str, srt_path: str, output_path: str) -> None:
+    srt_escaped = srt_path.replace("\\", "/").replace(":", "\\:")
+    result = subprocess.run(
+        [
+            "ffmpeg", "-y", "-i", video_path, "-vf",
+            f"subtitles='{srt_escaped}':force_style='FontName=Arial Unicode MS,FontSize=20,"
+            "PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=2,Alignment=2'",
+            "-c:a", "copy", output_path,
+        ],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"字幕焼き込みエラー:\n{result.stderr[-500:]}")
+
+
+async def process_video(video_path: str | None, domain: str, deepgram_key: str = "", google_key: str = ""):
+    """動画ファイルに日本語字幕を生成して焼き込む（Gradio generator）。"""
+    if video_path is None:
+        yield "ファイルを選択してください", None, None
+        return
+
+    deepgram_key = deepgram_key.strip() or os.environ.get("DEEPGRAM_API_KEY", "")
+    google_key = google_key.strip() or os.environ.get("GOOGLE_API_KEY", "")
+    if not deepgram_key or not google_key:
+        yield "❌ エラー: APIキーが未設定です（DEEPGRAM_API_KEY, GOOGLE_API_KEY）", None, None
+        return
+
+    tmp_dir = tempfile.mkdtemp()
+    audio_path = os.path.join(tmp_dir, "audio.wav")
+    srt_path = os.path.join(tmp_dir, "subtitles_ja.srt")
+    output_path = os.path.join(tmp_dir, "subtitled.mp4")
+    log = ""
+
+    def step(msg: str) -> str:
+        nonlocal log
+        log += msg + "\n"
+        return log
+
+    try:
+        yield step("🎵 音声を抽出中..."), None, None
+        await asyncio.to_thread(_video_extract_audio, video_path, audio_path)
+        yield step("✅ 音声抽出完了"), None, None
+
+        yield step("📝 文字起こし中（Deepgram）..."), None, None
+        utterances = await asyncio.to_thread(_video_transcribe, audio_path, deepgram_key)
+        yield step(f"✅ 文字起こし完了: {len(utterances)} セグメント"), None, None
+
+        yield step(f"🌐 日本語に翻訳中（Gemini / ドメイン: {domain}）..."), None, None
+        translated = await _video_translate(utterances, google_key)
+        yield step(f"✅ 翻訳完了: {len(translated)} セグメント"), None, None
+
+        yield step("📄 SRTファイル生成中..."), None, None
+        _video_create_srt(translated, srt_path)
+        yield step("✅ SRTファイル生成完了"), None, None
+
+        yield step("🎬 字幕を動画に焼き込み中（時間がかかります）..."), None, None
+        await asyncio.to_thread(_video_burn_subtitles, video_path, srt_path, output_path)
+        yield step("✅ 字幕焼き込み完了"), None, None
+
+        yield step("\n🎉 完了！下のボタンからダウンロードしてください。"), srt_path, output_path
+
+    except Exception as exc:
+        yield step(f"❌ エラー: {exc}"), None, None
+
+
+# ---------------------------------------------------------------------------
+
 def build_demo() -> gr.Blocks:
     with gr.Blocks(title="Real-time Translation Demo") as demo:
         gr.Markdown("# Real-time ASR + MT Demo")
         gr.Markdown(
             "Stream microphone audio to Deepgram and translate with Gemini/OpenAI."
         )
+
+        with gr.Accordion("API Keys", open=True):
+            gr.Markdown(
+                "Enter your API keys below. Keys are used only in your session and never stored.\n\n"
+                "- [Deepgram API key](https://console.deepgram.com/) (free tier available)\n"
+                "- [Google AI API key](https://aistudio.google.com/apikey) (free tier available)"
+            )
+            with gr.Row():
+                deepgram_key_input = gr.Textbox(
+                    label="Deepgram API Key",
+                    placeholder="Enter your Deepgram API key",
+                    type="password",
+                )
+                google_key_input = gr.Textbox(
+                    label="Google AI API Key",
+                    placeholder="Enter your Google AI (Gemini) API key",
+                    type="password",
+                )
 
         state = gr.State(None)
         status = gr.Markdown(_status("stopped"))
@@ -368,6 +587,23 @@ def build_demo() -> gr.Blocks:
                     process_button = gr.Button("Process File", variant="primary")
                     cancel_button = gr.Button("Cancel", variant="stop")
 
+            with gr.TabItem("🎬 動画字幕"):
+                gr.Markdown("動画ファイルをアップロードすると、日本語字幕を生成して焼き込みます。")
+                video_input = gr.Video(
+                    label="動画ファイル（MP4, MOV, AVI など）",
+                    sources=["upload"],
+                )
+                domain_input = gr.Dropdown(
+                    choices=["general", "economics", "technology", "medical", "legal", "particle_physics"],
+                    value="general",
+                    label="ドメイン（専門分野）",
+                )
+                video_run_btn = gr.Button("🎬 字幕を生成する", variant="primary")
+                video_log = gr.Textbox(label="処理ログ", lines=10, interactive=False)
+                with gr.Row():
+                    srt_output = gr.File(label="📄 SRTファイル ダウンロード")
+                    video_output = gr.File(label="🎬 字幕付き動画 ダウンロード")
+
         with gr.Row():
             transcript_box = gr.Textbox(
                 label="Transcription (source)",
@@ -382,7 +618,7 @@ def build_demo() -> gr.Blocks:
 
         start_button.click(
             start_session,
-            inputs=[state],
+            inputs=[state, deepgram_key_input, google_key_input],
             outputs=[state, status, transcript_box, translation_box],
         )
         stop_button.click(
@@ -404,7 +640,7 @@ def build_demo() -> gr.Blocks:
 
         process_button.click(
             process_audio_file,
-            inputs=[audio_file, state],
+            inputs=[audio_file, state, deepgram_key_input, google_key_input],
             outputs=[state, status, transcript_box, translation_box],
         )
 
@@ -412,6 +648,12 @@ def build_demo() -> gr.Blocks:
             cancel_processing,
             inputs=[state],
             outputs=[state, status],
+        )
+
+        video_run_btn.click(
+            process_video,
+            inputs=[video_input, domain_input, deepgram_key_input, google_key_input],
+            outputs=[video_log, srt_output, video_output],
         )
 
     return demo
