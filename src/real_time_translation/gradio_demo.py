@@ -483,16 +483,86 @@ def _video_burn_subtitles(video_path: str, srt_path: str, output_path: str) -> N
         raise RuntimeError(f"字幕焼き込みエラー:\n{result.stderr[-500:]}")
 
 
-async def process_video(video_path: str | None, domain: str, deepgram_key: str = "", google_key: str = ""):
+async def _compute_scores(translated: list[dict], google_key: str) -> tuple[float | None, float | None]:
+    """xCOMET（LLM-as-judge）と chrF（逆翻訳）スコアを計算する。"""
+    import re
+    from google import genai
+
+    client = genai.Client(api_key=google_key)
+    sample = translated[:20]
+    srcs = [s["original"] for s in sample]
+    mts = [s["japanese"] for s in sample]
+
+    # xcomet_score: LLM-as-judge
+    judge_prompt = (
+        "あなたはプロの翻訳評価者です。以下の英日翻訳ペアをそれぞれ評価し、"
+        "翻訳品質を0.00〜1.00のスコアで採点してください。"
+        "番号付きリストで数値のみ返してください（例: 1. 0.85）。\n\n"
+        + "\n".join(f"{i+1}. EN: {s}\n   JA: {m}" for i, (s, m) in enumerate(zip(srcs, mts)))
+    )
+    judge_resp = await asyncio.to_thread(
+        client.models.generate_content,
+        model="gemini-2.5-flash",
+        contents=judge_prompt,
+    )
+    xcomet_score: float | None = None
+    scores = []
+    for line in (judge_resp.text or "").split("\n"):
+        m = re.match(r"\d+\.\s*([\d.]+)", line.strip())
+        if m:
+            try:
+                scores.append(float(m.group(1)))
+            except ValueError:
+                pass
+    if scores:
+        xcomet_score = round(sum(scores) / len(scores), 4)
+
+    # chrf_score: 逆翻訳 + sacrebleu
+    back_prompt = (
+        "Translate the following Japanese sentences back to English. "
+        "Return only the translations as a numbered list (e.g. 1. text). "
+        "Do not include explanations.\n\n"
+        + "\n".join(f"{i+1}. {m}" for i, m in enumerate(mts))
+    )
+    back_resp = await asyncio.to_thread(
+        client.models.generate_content,
+        model="gemini-2.5-flash",
+        contents=back_prompt,
+    )
+    chrf_score: float | None = None
+    back_texts: list[str] = []
+    for line in (back_resp.text or "").split("\n"):
+        line = line.strip()
+        if line and line[0].isdigit() and ". " in line:
+            back_texts.append(line.split(". ", 1)[1])
+        elif line and line[0].isdigit() and "." in line:
+            back_texts.append(line.split(".", 1)[1].strip())
+    if len(back_texts) >= len(srcs) // 2:
+        back_texts = back_texts[: len(srcs)]
+        from sacrebleu.metrics import CHRF
+        chrf = CHRF()
+        raw = chrf.corpus_score(back_texts, [srcs]).score  # 0〜100
+        chrf_score = round(raw / 100, 4)
+
+    return xcomet_score, chrf_score
+
+
+async def process_video(
+    video_path: str | None,
+    domain: str,
+    deepgram_key: str = "",
+    google_key: str = "",
+    evaluate_scores: bool = False,
+):
     """動画ファイルに日本語字幕を生成して焼き込む（Gradio generator）。"""
     if video_path is None:
-        yield "ファイルを選択してください", None, None
+        yield "ファイルを選択してください", None, None, ""
         return
 
     deepgram_key = deepgram_key.strip() or os.environ.get("DEEPGRAM_API_KEY", "")
     google_key = google_key.strip() or os.environ.get("GOOGLE_API_KEY", "")
     if not deepgram_key or not google_key:
-        yield "❌ エラー: APIキーが未設定です（DEEPGRAM_API_KEY, GOOGLE_API_KEY）", None, None
+        yield "❌ エラー: APIキーが未設定です（DEEPGRAM_API_KEY, GOOGLE_API_KEY）", None, None, ""
         return
 
     tmp_dir = tempfile.mkdtemp()
@@ -507,30 +577,44 @@ async def process_video(video_path: str | None, domain: str, deepgram_key: str =
         return log
 
     try:
-        yield step("🎵 音声を抽出中..."), None, None
+        yield step("🎵 音声を抽出中..."), None, None, ""
         await asyncio.to_thread(_video_extract_audio, video_path, audio_path)
-        yield step("✅ 音声抽出完了"), None, None
+        yield step("✅ 音声抽出完了"), None, None, ""
 
-        yield step("📝 文字起こし中（Deepgram）..."), None, None
+        yield step("📝 文字起こし中（Deepgram）..."), None, None, ""
         utterances = await asyncio.to_thread(_video_transcribe, audio_path, deepgram_key)
-        yield step(f"✅ 文字起こし完了: {len(utterances)} セグメント"), None, None
+        yield step(f"✅ 文字起こし完了: {len(utterances)} セグメント"), None, None, ""
 
-        yield step(f"🌐 日本語に翻訳中（Gemini / ドメイン: {domain}）..."), None, None
+        yield step(f"🌐 日本語に翻訳中（Gemini / ドメイン: {domain}）..."), None, None, ""
         translated = await _video_translate(utterances, google_key)
-        yield step(f"✅ 翻訳完了: {len(translated)} セグメント"), None, None
+        yield step(f"✅ 翻訳完了: {len(translated)} セグメント"), None, None, ""
 
-        yield step("📄 SRTファイル生成中..."), None, None
+        yield step("📄 SRTファイル生成中..."), None, None, ""
         _video_create_srt(translated, srt_path)
-        yield step("✅ SRTファイル生成完了"), None, None
+        yield step("✅ SRTファイル生成完了"), None, None, ""
 
-        yield step("🎬 字幕を動画に焼き込み中（時間がかかります）..."), None, None
+        yield step("🎬 字幕を動画に焼き込み中（時間がかかります）..."), None, None, ""
         await asyncio.to_thread(_video_burn_subtitles, video_path, srt_path, output_path)
-        yield step("✅ 字幕焼き込み完了"), None, None
+        yield step("✅ 字幕焼き込み完了"), None, None, ""
 
-        yield step("\n🎉 完了！下のボタンからダウンロードしてください。"), srt_path, output_path
+        score_text = ""
+        if evaluate_scores:
+            yield step("📊 翻訳スコアを評価中（LLM-as-judge + 逆翻訳 chrF）..."), srt_path, output_path, ""
+            xcomet, chrf = await _compute_scores(translated, google_key)
+            xcomet_str = f"{xcomet:.4f}" if xcomet is not None else "計算失敗"
+            chrf_str = f"{chrf:.4f}" if chrf is not None else "計算失敗"
+            score_text = (
+                f"xCOMET（LLM判定）: {xcomet_str}\n"
+                f"chrF（逆翻訳）:     {chrf_str}\n\n"
+                f"xCOMET は意味的な正確さ（0〜1、高いほど良い）\n"
+                f"chrF は文字n-gram一致率（英日間では0.4〜0.5が目安）"
+            )
+            yield step("✅ スコア評価完了"), srt_path, output_path, score_text
+
+        yield step("\n🎉 完了！下のボタンからダウンロードしてください。"), srt_path, output_path, score_text
 
     except Exception as exc:
-        yield step(f"❌ エラー: {exc}"), None, None
+        yield step(f"❌ エラー: {exc}"), None, None, ""
 
 
 # ---------------------------------------------------------------------------
@@ -598,11 +682,22 @@ def build_demo() -> gr.Blocks:
                     value="general",
                     label="ドメイン（専門分野）",
                 )
+                evaluate_scores_checkbox = gr.Checkbox(
+                    label="📊 翻訳スコアを評価する（xCOMET + chrF）",
+                    value=False,
+                    info="チェックするとGeminiによるLLM-as-judge評価と逆翻訳chrFスコアを計算します（追加で1〜2分かかります）",
+                )
                 video_run_btn = gr.Button("🎬 字幕を生成する", variant="primary")
                 video_log = gr.Textbox(label="処理ログ", lines=10, interactive=False)
                 with gr.Row():
                     srt_output = gr.File(label="📄 SRTファイル ダウンロード")
                     video_output = gr.File(label="🎬 字幕付き動画 ダウンロード")
+                score_output = gr.Textbox(
+                    label="📊 翻訳スコア評価結果",
+                    lines=5,
+                    interactive=False,
+                    visible=True,
+                )
 
         with gr.Row():
             transcript_box = gr.Textbox(
@@ -652,8 +747,8 @@ def build_demo() -> gr.Blocks:
 
         video_run_btn.click(
             process_video,
-            inputs=[video_input, domain_input, deepgram_key_input, google_key_input],
-            outputs=[video_log, srt_output, video_output],
+            inputs=[video_input, domain_input, deepgram_key_input, google_key_input, evaluate_scores_checkbox],
+            outputs=[video_log, srt_output, video_output, score_output],
         )
 
     return demo
