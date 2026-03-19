@@ -682,10 +682,10 @@ def build_demo() -> gr.Blocks:
                     value="general",
                     label="ドメイン（専門分野）",
                 )
+                gr.Markdown("📊 **翻訳スコアを評価する場合はチェック**（Gemini LLM-as-judge + 逆翻訳 chrF。追加で1〜2分かかります）")
                 evaluate_scores_checkbox = gr.Checkbox(
-                    label="📊 翻訳スコアを評価する（xCOMET + chrF）",
+                    label="スコアを評価する（xCOMET + chrF）",
                     value=False,
-                    info="チェックするとGeminiによるLLM-as-judge評価と逆翻訳chrFスコアを計算します（追加で1〜2分かかります）",
                 )
                 video_run_btn = gr.Button("🎬 字幕を生成する", variant="primary")
                 video_log = gr.Textbox(label="処理ログ", lines=10, interactive=False)
