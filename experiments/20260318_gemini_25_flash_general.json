@@ -1,0 +1,8 @@
+{
+  "date": "2026-03-18",
+  "model": "gemini-2.5-flash",
+  "domain": "general",
+  "xcomet_score": 0.96,
+  "chrf_score": 0.4192,
+  "notes": "index.mp4 を処理。165 セグメント翻訳。"
+}
