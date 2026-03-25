@@ -567,7 +567,7 @@ def _video_burn_subtitles(video_path: str, srt_path: str, output_path: str) -> N
     result = subprocess.run(
         [
             "ffmpeg", "-y", "-i", video_path, "-vf",
-            f"subtitles='{srt_escaped}':force_style='FontName=Arial Unicode MS,FontSize=20,"
+            f"subtitles='{srt_escaped}':charenc=UTF-8:force_style='FontName=Noto Sans CJK JP,FontSize=20,"
             "PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=2,Alignment=2'",
             "-c:a", "copy", output_path,
         ],
