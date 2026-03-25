@@ -8,6 +8,4 @@ from real_time_translation.gradio_demo import build_demo
 
 demo = build_demo()
 demo.queue()
-
-if __name__ == "__main__":
-    demo.launch()
+demo.launch()
