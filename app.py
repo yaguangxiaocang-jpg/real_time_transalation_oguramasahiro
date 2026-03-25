@@ -8,4 +8,4 @@ from real_time_translation.gradio_demo import build_demo
 
 demo = build_demo()
 demo.queue()
-demo.launch()
+demo.launch(ssr_mode=False)
