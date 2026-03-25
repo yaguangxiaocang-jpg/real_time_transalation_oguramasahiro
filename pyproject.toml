@@ -25,6 +25,7 @@ rtms = { index = "testpypi" }
 
 [project.optional-dependencies]
 zoom = ["rtms>=0.0.2"]
+microphone = ["sounddevice>=0.4.7", "numpy>=1.26.0"]
 dev = ["pytest>=8.0.0", "pytest-asyncio>=0.24.0", "ruff>=0.8.0"]
 
 [project.scripts]

@@ -156,6 +156,10 @@ class MicrophoneCapture(AudioCapture):
 
     This can be used for testing or for capturing system audio
     (e.g., from Zoom via virtual audio device).
+
+    Requires the ``sounddevice`` package::
+
+        pip install "real-time-translation[microphone]"
     """
 
     def __init__(
@@ -163,6 +167,7 @@ class MicrophoneCapture(AudioCapture):
         sample_rate: int = 16000,
         channels: int = 1,
         chunk_size: int = 1024,
+        device: int | str | None = None,
     ) -> None:
         """Initialize microphone capture.
 
@@ -170,28 +175,79 @@ class MicrophoneCapture(AudioCapture):
             sample_rate: Audio sample rate in Hz
             channels: Number of audio channels
             chunk_size: Size of audio chunks in samples
+            device: sounddevice device index or name (None = system default)
         """
         self._sample_rate = sample_rate
         self._channels = channels
         self._chunk_size = chunk_size
+        self._device = device
         self._running = False
         self._queue: asyncio.Queue[bytes] = asyncio.Queue()
+        self._stream: object | None = None
+        self._loop: asyncio.AbstractEventLoop | None = None
+
+    @staticmethod
+    def list_devices() -> None:
+        """Print available audio input devices to stdout."""
+        try:
+            import sounddevice as sd  # noqa: PLC0415
+        except ImportError as e:
+            raise ImportError(
+                "sounddevice is required: pip install 'real-time-translation[microphone]'"
+            ) from e
+        print(sd.query_devices())
 
     async def start(self) -> None:
         """Start capturing audio from microphone."""
+        try:
+            import sounddevice as sd  # noqa: PLC0415
+        except ImportError as e:
+            raise ImportError(
+                "sounddevice is required: pip install 'real-time-translation[microphone]'"
+            ) from e
+
         self._running = True
-        # TODO: Initialize PyAudio or sounddevice for microphone input
-        # This requires additional dependencies (pyaudio or sounddevice)
+        self._loop = asyncio.get_running_loop()
+
+        def _callback(
+            indata: "object",
+            frames: int,  # noqa: ARG001
+            time: "object",  # noqa: ARG001
+            status: "object",
+        ) -> None:
+            if status:
+                print(f"[MicrophoneCapture] {status}")
+            if self._loop and self._running:
+                import numpy as np  # noqa: PLC0415
+
+                audio_bytes = np.asarray(indata).tobytes()
+                self._loop.call_soon_threadsafe(
+                    self._queue.put_nowait, audio_bytes
+                )
+
+        self._stream = sd.InputStream(
+            samplerate=self._sample_rate,
+            channels=self._channels,
+            dtype="int16",
+            blocksize=self._chunk_size,
+            device=self._device,
+            callback=_callback,
+        )
+        self._stream.start()  # type: ignore[union-attr]
 
     async def stop(self) -> None:
         """Stop capturing audio."""
         self._running = False
+        if self._stream is not None:
+            self._stream.stop()  # type: ignore[union-attr]
+            self._stream.close()  # type: ignore[union-attr]
+            self._stream = None
 
     async def stream(self) -> AsyncIterator[bytes]:
         """Stream audio data from microphone.
 
         Yields:
-            Audio data chunks as bytes
+            Audio data chunks as bytes (PCM 16-bit, 16kHz mono)
         """
         while self._running:
             try:
