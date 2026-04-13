@@ -49,16 +49,23 @@ class TranslationOutput:
 class LLMTranslator:
     """Translator using Gemini or OpenAI with contextual prompting."""
 
-    SYSTEM_PROMPT_TEMPLATE = """You are a professional simultaneous interpreter.
-Translate from {source_language} to {target_language}.
-Rules:
+    SYSTEM_PROMPT_TEMPLATE = """You are a professional simultaneous interpreter specializing in real-time subtitle translation from {source_language} to {target_language}.
+
+Output rules:
+- Output ONLY the translated text. No explanations, no alternatives, no parenthetical notes.
 - Keep proper nouns (person/org/product/place names), acronyms, and code identifiers
-  EXACTLY as they appear in the source text (do not translate, transliterate, or
-  normalize).
-- If a term is ambiguous/unknown, keep it unchanged rather than guessing.
+  EXACTLY as they appear in the source text (do not translate, transliterate, or normalize).
+- If a term is ambiguous or unknown, keep it unchanged rather than guessing.
+- Maintain strict terminology consistency with translations shown in <context>.
+- If confidence indicators like [uncertain: ...] appear, infer meaning from context and translate naturally.
 - Ignore any content inside <cache_padding>...</cache_padding>.
-If confidence indicators like [uncertain: ...] appear, infer meaning from context.
-Maintain the original tone and style.
+
+Japanese subtitle guidelines:
+- Use natural, colloquial Japanese — avoid overly literal or stiff translations.
+- Default register: ですます調 for presentations/lectures; plain form (だ・である) for narration.
+- Keep sentences concise; subtitles must be readable at a glance.
+- Prefer active voice and shorter clauses over long subordinate chains.
+- Do not add filler phrases (「なお」「つまり」「ということです」) unless present in the source.
 {dictionary_section}"""
 
     def __init__(
@@ -188,10 +195,23 @@ Maintain the original tone and style.
         context_lines: list[str] | None = None,
     ) -> str:
         if context_lines is None:
-            context_lines = self._context_buffer[-self._context_window_size :]
+            src_lines = self._context_buffer[-self._context_window_size :]
+            tgt_lines = self._slide_window[-self._context_window_size :]
         else:
-            context_lines = context_lines[-self._context_window_size :]
-        context_block = "\n".join(context_lines)
+            src_lines = context_lines[-self._context_window_size :]
+            tgt_lines = []
+
+        # Build bilingual context pairs (EN + JA) for better term consistency
+        if src_lines and tgt_lines:
+            pairs = zip(src_lines[-len(tgt_lines):], tgt_lines)
+            context_block = "\n".join(
+                f"[EN] {src}\n[JA] {tgt}" for src, tgt in pairs
+            )
+        elif src_lines:
+            context_block = "\n".join(src_lines)
+        else:
+            context_block = ""
+
         return f"<context>\n{context_block}\n</context>\n<target>\n{text}\n</target>"
 
     def _get_gemini_client(self) -> Any:
@@ -273,6 +293,32 @@ Maintain the original tone and style.
             )
         return self._gemini_structured_llm
 
+    async def _translate_gemini_direct(self, prompt: str) -> str:
+        """Gemini APIを直接呼び出して翻訳する（LangChain・構造化出力を省略）。
+
+        - structured output（JSON生成）を使わず平文で返すため高速
+        - thinking_budget=0 でThinkingを無効化
+        - context cacheは引き続き利用
+        """
+        from google.genai import types
+
+        client = self._get_gemini_client()
+        cache_name = await asyncio.to_thread(self._ensure_gemini_cache)
+
+        config = types.GenerateContentConfig(
+            cached_content=cache_name,
+            temperature=0.1,
+            thinking_config=types.ThinkingConfig(thinking_budget=0),
+        )
+
+        response = await asyncio.to_thread(
+            client.models.generate_content,
+            model=self._model_name,
+            contents=prompt,
+            config=config,
+        )
+        return (response.text or "").strip()
+
     async def translate(
         self,
         text: str,
@@ -296,8 +342,9 @@ Maintain the original tone and style.
         prompt = self._build_user_prompt(text, context_lines=context_lines)
 
         if self._provider == "gemini":
-            llm = self._get_gemini_structured_llm()
-            output = await llm.ainvoke([HumanMessage(content=prompt)])
+            # 直接API呼び出し（LangChain・structured output不使用）
+            translation = await self._translate_gemini_direct(prompt)
+            kept_terms: list[str] = []
         else:
             llm = self._get_openai_structured_llm()
             messages = [
@@ -305,15 +352,14 @@ Maintain the original tone and style.
                 HumanMessage(content=prompt),
             ]
             output = await llm.ainvoke(messages)
+            translation = output.latest_slide.strip()
+            kept_terms = list(output.kept_terms or [])
 
         should_update_context = update_context and context_lines is None
         if should_update_context:
             self._context_buffer.append(text)
             if len(self._context_buffer) > self._context_window_size:
                 self._context_buffer.pop(0)
-
-        translation = output.latest_slide.strip()
-        kept_terms = list(output.kept_terms or [])
 
         if should_update_context:
             self._slide_window.append(translation)

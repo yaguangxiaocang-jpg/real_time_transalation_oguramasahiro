@@ -2,6 +2,7 @@
 
 import asyncio
 import contextlib
+import time
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
@@ -27,6 +28,7 @@ class TranslationResult:
     slide_window: list[str] = field(default_factory=list)
     start_time: float = 0.0
     end_time: float = 0.0
+    translation_delay: float = 0.0
 
 
 @dataclass
@@ -35,6 +37,7 @@ class QueuedTranscription:
 
     original: TranscriptionResult
     text_for_translation: str
+    queued_at: float = field(default_factory=time.monotonic)
 
 
 class TranslationPipeline:
@@ -82,15 +85,20 @@ class TranslationPipeline:
             else config.openai_model
         )
 
-        self._translator = LLMTranslator(
-            provider=config.llm_provider,  # type: ignore
-            api_key=api_key or "",
-            model=model,
-            source_language=self._language_name(config.source_language),
-            target_language=self._language_name(config.target_language),
-            dictionary_path=config.dictionary_path,
-            context_window_size=config.context_window_size,
-        )
+        _num_workers = 3
+        self._translators: list[LLMTranslator] = [
+            LLMTranslator(
+                provider=config.llm_provider,  # type: ignore
+                api_key=api_key or "",
+                model=model,
+                source_language=self._language_name(config.source_language),
+                target_language=self._language_name(config.target_language),
+                dictionary_path=config.dictionary_path,
+                context_window_size=config.context_window_size,
+            )
+            for _ in range(_num_workers)
+        ]
+        self._translator = self._translators[0]
 
         self._running = False
         self._on_result: Callable[[TranslationResult], None] | None = None
@@ -132,8 +140,8 @@ class TranslationPipeline:
         """Start the translation pipeline."""
         self._running = True
 
-        # Initialize translator (e.g., Gemini context cache)
-        await self._translator.prepare()
+        # Initialize translators (e.g., Gemini context cache)
+        await asyncio.gather(*[t.prepare() for t in self._translators])
 
         # Connect to Deepgram
         await self._transcriber.connect()
@@ -145,7 +153,7 @@ class TranslationPipeline:
         self._tasks = [
             asyncio.create_task(self._audio_to_transcription()),
             asyncio.create_task(self._collect_transcriptions()),
-            asyncio.create_task(self._translation_worker()),
+            *[asyncio.create_task(self._translation_worker(t)) for t in self._translators],
         ]
 
     async def stop(self) -> None:
@@ -221,12 +229,18 @@ class TranslationPipeline:
         except asyncio.CancelledError:
             pass
 
-    async def _translation_worker(self) -> None:
+    async def _translation_worker(self, translator: LLMTranslator) -> None:
         """Consume queued transcriptions and translate."""
+        import logging
+        logger = logging.getLogger(__name__)
         try:
             while self._running:
                 queued = await self._transcription_queue.get()
-                output = await self._translator.translate(queued.text_for_translation)
+                try:
+                    output = await translator.translate(queued.text_for_translation)
+                except Exception as exc:
+                    logger.error("Translation error: %s", exc)
+                    continue
                 translation_result = TranslationResult(
                     original_text=queued.original.text,
                     translated_text=output.latest_slide,
@@ -236,15 +250,22 @@ class TranslationPipeline:
                     slide_window=output.slide_window,
                     start_time=queued.original.start_time,
                     end_time=queued.original.end_time,
+                    translation_delay=time.monotonic() - queued.queued_at,
                 )
                 if self._on_result:
                     self._on_result(translation_result)
         except asyncio.CancelledError:
             pass
 
+    @property
+    def pending_count(self) -> int:
+        """Number of transcriptions waiting to be translated."""
+        return self._transcription_queue.qsize()
+
     def clear_context(self) -> None:
         """Clear translation context buffer."""
-        self._translator.clear_context()
+        for translator in self._translators:
+            translator.clear_context()
 
     async def run(self) -> None:
         """Run the pipeline until stopped."""

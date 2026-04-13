@@ -68,10 +68,31 @@ class DemoSession:
     translation_lines: list[str] = field(default_factory=list)
     interim_transcript: str = ""  # Current interim transcript
     cancel_requested: bool = False  # Flag to cancel file processing
+    recent_delays: list[float] = field(default_factory=list)  # Last N translation delays (seconds)
 
 
 def _status(message: str) -> str:
     return f"Status: {message}"
+
+
+def _delay_display(avg_delay: float, pending: int) -> str:
+    if avg_delay <= 0:
+        return "⏱ 遅延: 計測中..."
+    if avg_delay < 2.0:
+        icon = "🟢"
+        label = "良好"
+    elif avg_delay < 5.0:
+        icon = "🟡"
+        label = "やや遅延"
+    else:
+        icon = "🔴"
+        label = "遅延大"
+    bar_filled = min(10, int(avg_delay / 10 * 10))
+    bar = "█" * bar_filled + "░" * (10 - bar_filled)
+    return (
+        f"{icon} **翻訳遅延: {avg_delay:.1f}秒** ({label})　"
+        f"`{bar}`　翻訳待ち: **{pending}件**"
+    )
 
 
 def _timestamp() -> str:
@@ -361,9 +382,9 @@ async def process_audio_file(
     return state, _status(status_text), transcript, translation
 
 
-async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str, str]:
+async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str, str, str]:
     if state is None:
-        return "", "", _status("click Start to initialize")
+        return "", "", _status("click Start to initialize"), "⏱ 遅延: -"
 
     audio_bytes = _normalize_audio_chunk(chunk)
     if audio_bytes:
@@ -387,6 +408,10 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
         state.interim_transcript = ""
         if result.slide_window:
             latest_slide_window = result.slide_window
+        if result.translation_delay > 0:
+            state.recent_delays.append(result.translation_delay)
+            if len(state.recent_delays) > 10:
+                state.recent_delays.pop(0)
 
         if len(state.transcript_lines) > MAX_DISPLAY_LINES:
             state.transcript_lines = state.transcript_lines[-MAX_DISPLAY_LINES:]
@@ -406,7 +431,11 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
     else:
         translation = "\n".join(state.translation_lines[-state.window_size :])
 
-    return transcript, translation, _status("running")
+    avg_delay = sum(state.recent_delays) / len(state.recent_delays) if state.recent_delays else 0.0
+    pending = state.pipeline.pending_count
+    delay_text = _delay_display(avg_delay, pending)
+
+    return transcript, translation, _status("running"), delay_text
 
 
 # ---------------------------------------------------------------------------
@@ -765,6 +794,7 @@ def build_demo() -> gr.Blocks:
 
         state = gr.State(None)
         status = gr.Markdown(_status("stopped"))
+        delay_indicator = gr.Markdown("⏱ 遅延: -")
 
         with gr.Row():
             start_button = gr.Button("Start", variant="primary")
@@ -863,7 +893,7 @@ def build_demo() -> gr.Blocks:
         audio.stream(
             handle_audio,
             inputs=[audio, state],
-            outputs=[transcript_box, translation_box, status],
+            outputs=[transcript_box, translation_box, status, delay_indicator],
         )
 
         process_button.click(
