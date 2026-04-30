@@ -4,13 +4,36 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import logging
 import os
+import random
 import re
 import subprocess
 import tempfile
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any
+
+logger = logging.getLogger(__name__)
+
+
+async def _gemini_generate_with_retry(client: Any, model: str, contents: Any, max_retries: int = 5) -> Any:
+    """503/429 エラー時に指数バックオフでリトライしながら Gemini API を呼ぶ。"""
+    for attempt in range(max_retries):
+        try:
+            return await asyncio.to_thread(
+                client.models.generate_content,
+                model=model,
+                contents=contents,
+            )
+        except Exception as e:
+            err_str = str(e)
+            if attempt < max_retries - 1 and ("503" in err_str or "429" in err_str or "UNAVAILABLE" in err_str or "ResourceExhausted" in err_str):
+                wait = (2 ** attempt) + random.uniform(0, 1)
+                logger.warning("Gemini API error (%s), retrying in %.1fs (attempt %d/%d)", e, wait, attempt + 1, max_retries)
+                await asyncio.sleep(wait)
+            else:
+                raise
 
 import audioop
 import gradio as gr
@@ -69,15 +92,16 @@ class DemoSession:
     interim_transcript: str = ""  # Current interim transcript
     cancel_requested: bool = False  # Flag to cancel file processing
     recent_delays: list[float] = field(default_factory=list)  # Last N translation delays (seconds)
+    latest_delay: float = 0.0  # Most recent ASR→translation latency (seconds)
 
 
 def _status(message: str) -> str:
     return f"Status: {message}"
 
 
-def _delay_display(avg_delay: float, pending: int) -> str:
+def _delay_display(latest_delay: float, avg_delay: float, pending: int) -> str:
     if avg_delay <= 0:
-        return "⏱ 遅延: 計測中..."
+        return "⏱ 音声認識→和訳: 計測中..."
     if avg_delay < 2.0:
         icon = "🟢"
         label = "良好"
@@ -89,8 +113,9 @@ def _delay_display(avg_delay: float, pending: int) -> str:
         label = "遅延大"
     bar_filled = min(10, int(avg_delay / 10 * 10))
     bar = "█" * bar_filled + "░" * (10 - bar_filled)
+    latest_str = f"{latest_delay:.2f}秒" if latest_delay > 0 else "-"
     return (
-        f"{icon} **翻訳遅延: {avg_delay:.1f}秒** ({label})　"
+        f"{icon} **音声認識→和訳: 最新 {latest_str} / 平均 {avg_delay:.1f}秒** ({label})　"
         f"`{bar}`　翻訳待ち: **{pending}件**"
     )
 
@@ -247,12 +272,12 @@ async def start_session(
     )
 
 
-async def stop_session(state: DemoSession | None) -> tuple[DemoSession | None, str]:
+async def stop_session(state: DemoSession | None) -> tuple[DemoSession | None, str, str]:
     if state is None:
-        return None, _status("stopped")
+        return None, _status("stopped"), "⏱ 音声認識→和訳: -"
 
     await state.pipeline.stop()
-    return None, _status("stopped")
+    return None, _status("stopped"), "⏱ 音声認識→和訳: -"
 
 
 async def clear_logs(state: DemoSession | None) -> tuple[str, str]:
@@ -384,7 +409,7 @@ async def process_audio_file(
 
 async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str, str, str]:
     if state is None:
-        return "", "", _status("click Start to initialize"), "⏱ 遅延: -"
+        return "", "", _status("click Start to initialize"), "⏱ 音声認識→和訳: -"
 
     audio_bytes = _normalize_audio_chunk(chunk)
     if audio_bytes:
@@ -409,6 +434,7 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
         if result.slide_window:
             latest_slide_window = result.slide_window
         if result.translation_delay > 0:
+            state.latest_delay = result.translation_delay
             state.recent_delays.append(result.translation_delay)
             if len(state.recent_delays) > 10:
                 state.recent_delays.pop(0)
@@ -433,7 +459,7 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
 
     avg_delay = sum(state.recent_delays) / len(state.recent_delays) if state.recent_delays else 0.0
     pending = state.pipeline.pending_count
-    delay_text = _delay_display(avg_delay, pending)
+    delay_text = _delay_display(state.latest_delay, avg_delay, pending)
 
     return transcript, translation, _status("running"), delay_text
 
@@ -537,6 +563,7 @@ async def _video_translate(
     api_key: str,
     source_language: str = "en",
     target_language: str = "ja",
+    on_batch=None,  # callback(batch_idx, total_batches)
 ) -> list[dict]:
     from google import genai
 
@@ -546,7 +573,10 @@ async def _video_translate(
 
     translated: list[dict] = []
     batch_size = 10
+    total_batches = max(1, (len(utterances) + batch_size - 1) // batch_size)
     for i in range(0, len(utterances), batch_size):
+        if on_batch:
+            on_batch(i // batch_size, total_batches)
         batch = utterances[i : i + batch_size]
         numbered = "\n".join(f"{j+1}. {u['transcript']}" for j, u in enumerate(batch))
         prompt = (
@@ -557,11 +587,7 @@ async def _video_translate(
             f"Do not include explanations or the original text.\n\n"
             f"{numbered}"
         )
-        response = await asyncio.to_thread(
-            client.models.generate_content,
-            model="gemini-2.5-flash",
-            contents=prompt,
-        )
+        response = await _gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
         raw = response.text or ""
         tgt_texts: list[str] = []
         for line in (ln.strip() for ln in raw.split("\n") if ln.strip()):
@@ -591,12 +617,34 @@ def _video_create_srt(translated: list[dict], srt_path: str) -> None:
         f.write("\n".join(lines))
 
 
+def _pick_cjk_font() -> str:
+    """Return a CJK-capable font name available on the current OS."""
+    import platform
+    if platform.system() == "Windows":
+        # Yu Gothic is bundled with Windows 8.1+; fall back to Meiryo UI
+        import subprocess as _sp
+        for font in ("Yu Gothic", "Meiryo UI", "MS Gothic"):
+            try:
+                out = _sp.run(
+                    ["fc-list", f":family={font}"],
+                    capture_output=True, text=True,
+                )
+                if out.stdout.strip():
+                    return font
+            except FileNotFoundError:
+                pass
+        return "Yu Gothic"
+    # Linux / macOS
+    return "Noto Sans CJK JP"
+
+
 def _video_burn_subtitles(video_path: str, srt_path: str, output_path: str) -> None:
     srt_escaped = srt_path.replace("\\", "/").replace(":", "\\:")
+    font_name = _pick_cjk_font()
     result = subprocess.run(
         [
             "ffmpeg", "-y", "-i", video_path, "-vf",
-            f"subtitles='{srt_escaped}':charenc=UTF-8:force_style='FontName=Noto Sans CJK JP,FontSize=20,"
+            f"subtitles='{srt_escaped}':charenc=UTF-8:force_style='FontName={font_name},FontSize=20,"
             "PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=2,Alignment=2'",
             "-c:a", "copy", output_path,
         ],
@@ -624,11 +672,7 @@ async def _compute_scores(translated: list[dict], google_key: str) -> tuple[floa
         "番号付きリストで数値のみ返してください（例: 1. 0.85）。\n\n"
         + "\n".join(f"{i+1}. EN: {s}\n   JA: {m}" for i, (s, m) in enumerate(zip(srcs, mts)))
     )
-    judge_resp = await asyncio.to_thread(
-        client.models.generate_content,
-        model="gemini-2.5-flash",
-        contents=judge_prompt,
-    )
+    judge_resp = await _gemini_generate_with_retry(client, "gemini-2.5-flash", judge_prompt)
     xcomet_score: float | None = None
     scores = []
     for line in (judge_resp.text or "").split("\n"):
@@ -648,11 +692,7 @@ async def _compute_scores(translated: list[dict], google_key: str) -> tuple[floa
         "Do not include explanations.\n\n"
         + "\n".join(f"{i+1}. {m}" for i, m in enumerate(mts))
     )
-    back_resp = await asyncio.to_thread(
-        client.models.generate_content,
-        model="gemini-2.5-flash",
-        contents=back_prompt,
-    )
+    back_resp = await _gemini_generate_with_retry(client, "gemini-2.5-flash", back_prompt)
     chrf_score: float | None = None
     back_texts: list[str] = []
     for line in (back_resp.text or "").split("\n"):
@@ -679,6 +719,7 @@ async def process_video(
     evaluate_scores: bool = False,
     source_lang: str = "English",
     target_lang: str = "Japanese (日本語)",
+    gr_progress=gr.Progress(),
 ):
     """動画ファイルに字幕を生成して焼き込む（Gradio generator）。"""
     if video_path is None:
@@ -699,6 +740,16 @@ async def process_video(
     audio_path = os.path.join(tmp_dir, "audio.wav")
     srt_path = os.path.join(tmp_dir, "subtitles.srt")
     output_path = os.path.join(tmp_dir, "subtitled.mp4")
+
+    # 日本語などの非 ASCII ファイル名は Windows で問題を起こすため ASCII パスにコピーする
+    import shutil
+    safe_video_path = os.path.join(tmp_dir, "input.mp4")
+    try:
+        shutil.copy2(video_path, safe_video_path)
+        video_path = safe_video_path
+    except Exception:
+        pass  # コピー失敗時は元のパスで続行
+
     log = ""
 
     def step(msg: str) -> str:
@@ -707,30 +758,46 @@ async def process_video(
         return log
 
     try:
+        gr_progress(0.0, desc="開始...")
         yield step("🎵 音声を抽出中..."), None, None, ""
         await asyncio.to_thread(_video_extract_audio, video_path, audio_path)
+        gr_progress(0.10, desc="音声抽出完了")
         yield step("✅ 音声抽出完了"), None, None, ""
 
+        gr_progress(0.10, desc="文字起こし中（Deepgram）...")
         yield step("📝 文字起こし中（Deepgram）..."), None, None, ""
         utterances = await asyncio.to_thread(
             _video_transcribe, audio_path, deepgram_key, source_code
         )
+        gr_progress(0.30, desc=f"文字起こし完了: {len(utterances)} セグメント")
         yield step(f"✅ 文字起こし完了: {len(utterances)} セグメント"), None, None, ""
 
+        total_batches = max(1, (len(utterances) + 9) // 10)
         yield step(f"🌐 {target_display}に翻訳中（Gemini / ドメイン: {domain}）..."), None, None, ""
-        translated = await _video_translate(utterances, google_key, source_code, target_code)
+
+        def on_batch(batch_idx: int, total: int) -> None:
+            frac = 0.30 + 0.40 * (batch_idx / total)
+            gr_progress(frac, desc=f"翻訳中... ({batch_idx}/{total} バッチ)")
+
+        translated = await _video_translate(utterances, google_key, source_code, target_code, on_batch)
+        gr_progress(0.70, desc=f"翻訳完了: {len(translated)} セグメント")
         yield step(f"✅ 翻訳完了: {len(translated)} セグメント"), None, None, ""
 
+        gr_progress(0.72, desc="SRTファイル生成中...")
         yield step("📄 SRTファイル生成中..."), None, None, ""
         _video_create_srt(translated, srt_path)
+        gr_progress(0.75, desc="SRTファイル生成完了")
         yield step("✅ SRTファイル生成完了"), None, None, ""
 
+        gr_progress(0.75, desc="字幕焼き込み中（時間がかかります）...")
         yield step("🎬 字幕を動画に焼き込み中（時間がかかります）..."), None, None, ""
         await asyncio.to_thread(_video_burn_subtitles, video_path, srt_path, output_path)
+        gr_progress(0.95, desc="字幕焼き込み完了")
         yield step("✅ 字幕焼き込み完了"), None, None, ""
 
         score_text = ""
         if evaluate_scores:
+            gr_progress(0.95, desc="スコア評価中...")
             yield step("📊 翻訳スコアを評価中（LLM-as-judge + 逆翻訳 chrF）..."), srt_path, output_path, ""
             xcomet, chrf = await _compute_scores(translated, google_key)
             xcomet_str = f"{xcomet:.4f}" if xcomet is not None else "計算失敗"
@@ -741,8 +808,10 @@ async def process_video(
                 f"xCOMET は意味的な正確さ（0〜1、高いほど良い）\n"
                 f"chrF は文字n-gram一致率（英日間では0.4〜0.5が目安）"
             )
+            gr_progress(0.99, desc="スコア評価完了")
             yield step("✅ スコア評価完了"), srt_path, output_path, score_text
 
+        gr_progress(1.0, desc="完了！")
         yield step("\n🎉 完了！下のボタンからダウンロードしてください。"), srt_path, output_path, score_text
 
     except Exception as exc:
@@ -794,7 +863,7 @@ def build_demo() -> gr.Blocks:
 
         state = gr.State(None)
         status = gr.Markdown(_status("stopped"))
-        delay_indicator = gr.Markdown("⏱ 遅延: -")
+        delay_indicator = gr.Markdown("⏱ 音声認識→和訳: -")
 
         with gr.Row():
             start_button = gr.Button("Start", variant="primary")
@@ -882,7 +951,7 @@ def build_demo() -> gr.Blocks:
         stop_button.click(
             stop_session,
             inputs=[state],
-            outputs=[state, status],
+            outputs=[state, status, delay_indicator],
         )
         clear_button.click(
             clear_logs,

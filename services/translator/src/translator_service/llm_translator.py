@@ -1,15 +1,16 @@
-"""LLM-based translator with Gemini/OpenAI support and context caching."""
+"""LLM-based translator with Gemini/OpenAI support."""
 
 from __future__ import annotations
 
 import asyncio
-import contextlib
-import re
+import logging
+import random
 from collections.abc import AsyncIterator
 from dataclasses import dataclass
-from datetime import timedelta
 from pathlib import Path
 from typing import Any, Literal
+
+logger = logging.getLogger(__name__)
 
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import HumanMessage, SystemMessage
@@ -56,7 +57,6 @@ Rules:
   EXACTLY as they appear in the source text (do not translate, transliterate, or
   normalize).
 - If a term is ambiguous/unknown, keep it unchanged rather than guessing.
-- Ignore any content inside <cache_padding>...</cache_padding>.
 If confidence indicators like [uncertain: ...] appear, infer meaning from context.
 Maintain the original tone and style.
 {dictionary_section}"""
@@ -80,16 +80,12 @@ Maintain the original tone and style.
         self._context_window_size = context_window_size
 
         self._openai_llm: BaseChatModel | None = None
-        self._gemini_llm: BaseChatModel | None = None
         self._openai_structured_llm: Any | None = None
-        self._gemini_structured_llm: Any | None = None
         self._context_buffer: list[str] = []
         self._slide_window: list[str] = []
         self._system_prompt_cache: str | None = None
 
         self._gemini_client: Any | None = None
-        self._gemini_cache_name: str | None = None
-        self._gemini_cache_ttl = timedelta(hours=12)
 
         self._dictionary = TermDictionary()
         if dictionary_path:
@@ -99,7 +95,6 @@ Maintain the original tone and style.
         """Load terminology dictionary from CSV file."""
         count = self._dictionary.load_csv(path)
         self._system_prompt_cache = None
-        self._invalidate_gemini_cache()
         return count
 
     @property
@@ -107,23 +102,13 @@ Maintain the original tone and style.
         return self._dictionary
 
     async def prepare(self) -> None:
-        """Warm up translator state (e.g., create Gemini cache)."""
-        if self._provider == "gemini":
-            await asyncio.to_thread(self._ensure_gemini_cache)
+        """Warm up translator state."""
+        # Context caching is not used (requires paid Gemini plan).
+        pass
 
     def refresh_cache(self) -> None:
-        """Invalidate cached system prompt and Gemini cache."""
+        """Invalidate cached system prompt."""
         self._system_prompt_cache = None
-        self._invalidate_gemini_cache()
-
-    def _invalidate_gemini_cache(self) -> None:
-        if self._gemini_cache_name and self._gemini_client:
-            with contextlib.suppress(Exception):
-                self._gemini_client.caches.delete(name=self._gemini_cache_name)
-
-        self._gemini_cache_name = None
-        self._gemini_llm = None
-        self._gemini_structured_llm = None
 
     def _get_openai_llm(self) -> BaseChatModel:
         if self._openai_llm is None:
@@ -172,64 +157,6 @@ Maintain the original tone and style.
             self._gemini_client = genai.Client(api_key=self._api_key)
         return self._gemini_client
 
-    def _create_gemini_cache(self) -> str:
-        from google.genai import types
-
-        client = self._get_gemini_client()
-        base_system_prompt = self._get_system_prompt()
-        ttl_seconds = int(self._gemini_cache_ttl.total_seconds())
-
-        def _create(system_instruction: str) -> str:
-            config = types.CreateCachedContentConfig(
-                display_name="real-time-translation-system",
-                system_instruction=system_instruction,
-                contents=None,
-                ttl=f"{ttl_seconds}s",
-            )
-            cache = client.caches.create(model=self._model_name, config=config)
-            return cache.name
-
-        try:
-            return _create(base_system_prompt)
-        except Exception as exc:
-            message = str(exc)
-            match = re.search(
-                r"total_token_count=(\d+), min_total_token_count=(\d+)",
-                message,
-            )
-            if "Cached content is too small" not in message or match is None:
-                raise
-
-            total = int(match.group(1))
-            minimum = int(match.group(2))
-            extra = max(0, minimum - total) + 256
-            padding = (
-                "\n\n<cache_padding>\n"
-                "IGNORE EVERYTHING IN THIS TAG. It only exists to satisfy the "
-                "minimum cached-content token requirement.\n"
-                + ("PAD " * extra)
-                + "\n</cache_padding>"
-            )
-            return _create(base_system_prompt + padding)
-
-    def _ensure_gemini_cache(self) -> str:
-        if self._gemini_cache_name is None:
-            self._gemini_cache_name = self._create_gemini_cache()
-        return self._gemini_cache_name
-
-    def _get_gemini_llm(self) -> BaseChatModel:
-        if self._gemini_llm is None:
-            from langchain_google_genai import ChatGoogleGenerativeAI
-
-            cache_name = self._ensure_gemini_cache()
-            self._gemini_llm = ChatGoogleGenerativeAI(
-                model=self._model_name,
-                google_api_key=self._api_key,
-                temperature=0.3,
-                cached_content=cache_name,
-            )
-        return self._gemini_llm
-
     def _get_openai_structured_llm(self) -> Any:
         if self._openai_structured_llm is None:
             self._openai_structured_llm = self._get_openai_llm().with_structured_output(
@@ -237,12 +164,39 @@ Maintain the original tone and style.
             )
         return self._openai_structured_llm
 
-    def _get_gemini_structured_llm(self) -> Any:
-        if self._gemini_structured_llm is None:
-            self._gemini_structured_llm = self._get_gemini_llm().with_structured_output(
-                TranslationLLMOutput
-            )
-        return self._gemini_structured_llm
+    async def _translate_gemini_direct(self, prompt: str, max_retries: int = 5) -> str:
+        """Gemini APIを直接呼び出して翻訳する（コンテキストキャッシュ不使用）。
+
+        503/429エラー時は指数バックオフでリトライ。
+        """
+        from google.genai import types
+
+        client = self._get_gemini_client()
+        system_prompt = self._get_system_prompt()
+
+        config = types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            temperature=0.3,
+        )
+
+        for attempt in range(max_retries):
+            try:
+                response = await asyncio.to_thread(
+                    client.models.generate_content,
+                    model=self._model_name,
+                    contents=prompt,
+                    config=config,
+                )
+                return (response.text or "").strip()
+            except Exception as e:
+                err = str(e)
+                retryable = any(k in err for k in ("503", "429", "UNAVAILABLE", "ResourceExhausted", "quota"))
+                if attempt < max_retries - 1 and retryable:
+                    wait = (2 ** attempt) + random.uniform(0, 1)
+                    logger.warning("Gemini API error (%s), retrying in %.1fs (attempt %d/%d)", e, wait, attempt + 1, max_retries)
+                    await asyncio.sleep(wait)
+                else:
+                    raise
 
     async def translate(
         self,
@@ -258,8 +212,8 @@ Maintain the original tone and style.
         prompt = self._build_user_prompt(text, context_lines=context_lines)
 
         if self._provider == "gemini":
-            llm = self._get_gemini_structured_llm()
-            output = await llm.ainvoke([HumanMessage(content=prompt)])
+            translation = await self._translate_gemini_direct(prompt)
+            kept_terms: list[str] = []
         else:
             llm = self._get_openai_structured_llm()
             messages = [
@@ -267,15 +221,14 @@ Maintain the original tone and style.
                 HumanMessage(content=prompt),
             ]
             output = await llm.ainvoke(messages)
+            translation = output.latest_slide.strip()
+            kept_terms = list(output.kept_terms or [])
 
         should_update_context = update_context and context_lines is None
         if should_update_context:
             self._context_buffer.append(text)
             if len(self._context_buffer) > self._context_window_size:
                 self._context_buffer.pop(0)
-
-        translation = output.latest_slide.strip()
-        kept_terms = list(output.kept_terms or [])
 
         if should_update_context:
             self._slide_window.append(translation)

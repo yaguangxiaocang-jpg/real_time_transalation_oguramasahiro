@@ -8,6 +8,7 @@ Real-time Translation App Launcher
 
 from __future__ import annotations
 
+import os
 import sys
 import socket
 import threading
@@ -19,6 +20,16 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT / "src"))
 
+# Windows で日本語ファイル名を含むパスを aiofiles が開けない問題の対処
+# PYTHONUTF8=1 でファイルパスの UTF-8 処理を強制する
+os.environ.setdefault("PYTHONUTF8", "1")
+
+# Gradio の一時ファイルをプロジェクト内の ASCII パスに保存することで
+# Windows の非 ASCII パス問題を回避する
+_gradio_tmp = str(ROOT / "gradio_tmp")
+os.makedirs(_gradio_tmp, exist_ok=True)
+os.environ.setdefault("GRADIO_TEMP_DIR", _gradio_tmp)
+
 # pythonw.exe では stdout/stderr が None になる。
 # uvicorn のログ設定が sys.stdout.isatty() を呼ぶため、
 # None のままだと ValueError で起動できない。ログファイルへリダイレクトする。
@@ -28,7 +39,7 @@ if sys.stderr is None:
     sys.stderr = open(ROOT / "launcher_stderr.log", "w", encoding="utf-8", buffering=1)
 
 HOST = "127.0.0.1"
-PORT = 7860
+PORT = 7861
 URL = f"http://{HOST}:{PORT}"
 
 

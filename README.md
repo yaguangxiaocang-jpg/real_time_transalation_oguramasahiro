@@ -9,283 +9,161 @@ app_file: app.py
 pinned: false
 ---
 
-# Real-time Translation
+# 動画字幕生成・リアルタイム翻訳ツール
 
-Zoomミーティングの音声をリアルタイムに文字起こし・翻訳するシステム。
-動画ファイルへの日本語字幕追加スクリプト (`add_subtitles.py`) も含む。
-
-## 機能一覧
-
-| 機能 | スクリプト/コマンド | 説明 |
-|---|---|---|
-| リアルタイム翻訳 (Zoom RTMS) | `uv run real-time-translation` | Zoom音声をリアルタイムで翻訳 |
-| リアルタイム翻訳 (Webデモ) | `uv run real-time-translation-demo` | ブラウザマイク入力で翻訳 |
-| 動画字幕追加 | `python add_subtitles.py <動画>` | MP4に日本語字幕を焼き込む |
+動画ファイルに日本語字幕を自動生成したり、マイクの音声をリアルタイムで翻訳するツールです。
 
 ---
 
-## 動画字幕追加スクリプト (`add_subtitles.py`)
+## このツールでできること
 
-動画ファイルから音声を抽出し、Deepgramで文字起こし、Geminiで日本語翻訳して字幕を焼き込みます。
-
-### 処理フロー
-
-```
-動画ファイル → ffmpeg（音声抽出）→ Deepgram（文字起こし）→ Gemini（日本語翻訳）→ SRT生成 → ffmpeg（字幕焼き込み）→ 字幕付き動画
-```
-
-### 必要な環境変数
-
-`.env` ファイルに以下を設定してください：
-
-```env
-DEEPGRAM_API_KEY=your_deepgram_api_key
-GOOGLE_API_KEY=your_google_api_key
-SOURCE_LANGUAGE=en          # 元言語（省略時: en）
-TRANSLATION_DOMAIN=general  # 翻訳ドメイン（実験記録用、省略時: general）
-```
-
-### 使い方
-
-```bash
-# 動画ファイルを指定して実行
-python add_subtitles.py "C:\path\to\video.mp4"
-
-# 引数なしで実行（デフォルトパスを使用）
-python add_subtitles.py
-```
-
-### 出力ファイル
-
-| ファイル | 説明 |
+| 機能 | 説明 |
 |---|---|
-| `<元ファイル名>_subtitled.mp4` | 字幕焼き込み済み動画 |
-| `<元ファイル名>_ja.srt` | SRT字幕ファイル（単体利用可） |
+| **動画に字幕を付ける** | 英語の動画を自動で文字起こし・翻訳し、日本語字幕付き動画を生成します |
+| **マイクをリアルタイム翻訳** | マイクに向かって話すと、リアルタイムで文字起こし・翻訳されます |
+| **音声ファイルを翻訳** | WAV・MP3 などの音声ファイルをアップロードして翻訳できます |
 
-### 自動評価・実験記録
+### 実績
 
-実行後、翻訳品質の自動評価を行い `experiments/` フォルダに記録します：
-
-- **xcomet_score**: Gemini LLM-as-judge による品質スコア（0〜1）
-- **chrf_score**: 逆翻訳 + chrF によるスコア（0〜1）
-
-### 依存パッケージ
-
-```bash
-pip install python-dotenv deepgram-sdk google-genai sacrebleu
-```
-
-ffmpeg が PATH に通っている必要があります。
+- 90分の講義動画への字幕生成に対応
+- 翻訳品質スコア xCOMET: **0.9925**（人間翻訳に近い水準）
+- SRT 字幕ファイルの出力にも対応（YouTube などへの字幕アップロードに使用可）
 
 ---
 
-## リアルタイム翻訳システム構成
+## 必要なもの
 
-```
-Zoom RTMS → AudioCapture → Deepgram WebSocket → LLM (Gemini/OpenAI) → 翻訳出力
-```
+### APIキー（2つ）
 
-## セットアップ
+このツールは外部の AI サービスを使っています。利用には各サービスの API キーが必要です。
+どちらも**無料枠**で始められます。
+#支払方法の設定を絶対に忘れない
+#従量課金しないと止まる
+#### 1. Deepgram（音声を文字にするサービス）
+1. [https://console.deepgram.com/](https://console.deepgram.com/) にアクセス
+2. アカウントを作成してログイン
+3. ダッシュボードの「API Keys」から新しいキーを作成
+4. 表示された文字列をコピーして保管
 
-```bash
-# 環境変数の設定
-cp .env.example .env
-# .envファイルを編集してAPIキーを設定
-```
+#### 2. Google AI（Gemini）（文字を翻訳するサービス）
+1. [https://aistudio.google.com/apikey](https://aistudio.google.com/apikey) にアクセス
+2. Google アカウントでログイン
+3. 「APIキーを作成」をクリック
+4. 表示された文字列をコピーして保管
 
-## 環境変数
 
-| 変数名                      | 説明                        | 必須         |
-| --------------------------- | --------------------------- | ------------ |
-| `ZOOM_CLIENT_ID`            | Zoom RTMS Client ID         | 今回は不要   |
-| `ZOOM_CLIENT_SECRET`        | Zoom RTMS Client Secret     | 今回は不要   |
-| `DEEPGRAM_API_KEY`          | Deepgram APIキー            | ✓            |
-| `DEEPGRAM_MODEL`            | Deepgramモデル名            |              |
-| `DEEPGRAM_ENDPOINTING`      | 無音検知の確定(ms)          |              |
-| `DEEPGRAM_UTTERANCE_END_MS` | 発話終了検知(ms)            |              |
-| `DEEPGRAM_INTERIM_RESULTS`  | Interim出力有無             |              |
-| `DEEPGRAM_SMART_FORMAT`     | smart_format有無            |              |
-| `DEEPGRAM_VAD_EVENTS`       | VADイベント有無             |              |
-| `LLM_PROVIDER`              | `gemini` または `openai`    | ✓            |
-| `GOOGLE_API_KEY`            | Google AI APIキー           | Gemini使用時 |
-| `OPENAI_API_KEY`            | OpenAI APIキー              | OpenAI使用時 |
-| `SOURCE_LANGUAGE`           | 元言語コード (例: `en`)     |              |
-| `TARGET_LANGUAGE`           | 翻訳先言語コード (例: `ja`) |              |
-| `CONTEXT_WINDOW_SIZE`       | 文脈保持の文数              |              |
-| `TRANSLATION_QUEUE_SIZE`    | 翻訳キューサイズ            |              |
-| `DICTIONARY_PATH`           | 用語辞書CSVパス             |              |
+> **無料枠の制限について**
+> Gemini 無料枠では 1 分あたり約 10〜15 回の API 呼び出しが上限です。
+> 90 分の動画の字幕生成には 90 分程度かかります。
 
-`DEEPGRAM_UTTERANCE_END_MS` を設定すると、UtteranceEndイベントで
-直近のinterim結果を確定として扱い、文脈のまとまりを優先できます。
+---
 
-### マイクロサービス用追加環境変数
+## セットアップ（最初だけ）
 
-| 変数名                        | 説明                         | 必須 |
-| ----------------------------- | ---------------------------- | ---- |
-| `RTMP_URL`                    | NMSのRTMP入力URL             | ✓    |
-| `WS_PUBLISH_URL`              | WSサービスへのPublish URL    | ✓    |
-| `TRANSLATION_API_URL`         | 翻訳API URL                  | ✓    |
-| `DICTIONARY_PATH`             | 用語辞書CSVパス（keyterm用） |      |
-| `ZOOM_CAPTION_URL`            | Zoom字幕API URL              |      |
-| `ZOOM_CAPTION_LANG`           | Zoom字幕の言語コード         |      |
-| `ASR_SEND_INTERIM`            | ASRのinterimをWSへ送信       |      |
-| `TRANSLATE_INTERIM`           | interimを翻訳へ送信          |      |
-| `ASR_PARTIAL_MIN_INTERVAL_MS` | interim送信間隔(ms)          |      |
-| `TRANSLATION_CONCURRENCY`     | 翻訳同時実行数               |      |
-| `HTTP_TIMEOUT`                | HTTPタイムアウト(秒)         |      |
+### 前提条件
 
-`DICTIONARY_PATH`で指定したCSVファイルの`source_term`列がDeepgramの[Keyterm Prompting](https://developers.deepgram.com/docs/keyterm)として渡され、専門用語の認識精度が向上します。
+- Windows 10 / 11
+- インターネット接続
 
-`ZOOM_CAPTION_URL`を設定すると、翻訳結果がZoomミーティングの字幕として表示されます。URLはZoomミーティング内で「字幕を有効化」→「APIトークンをコピー」から取得できます。詳細は[Zoomサポート](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060372)を参照。
+### 手順
+
+1. このフォルダ内の **`launch.bat`** をダブルクリックして起動します
+2. 初回起動時は自動でブラウザが開きます
+   - 開かない場合は [http://localhost:7861](http://localhost:7861) をブラウザで開いてください
+3. 画面上部の「API Keys」欄に Deepgram と Google AI のキーを入力します
+
+> タスクトレイ（画面右下）にアイコンが表示されます。右クリックして「終了」を選ぶとアプリが終了します。
+
+---
 
 ## 使い方
 
-```bash
-# Zoom RTMS向けCLI
-uv run real-time-translation
+### 動画に字幕を付ける（主な用途）
 
-# Webデモ (Gradio / マイク入力)
-uv run real-time-translation-demo
+1. アプリを起動してブラウザを開く
+2. **「🎬 動画字幕」タブ**をクリック
+3. 「動画ファイル」欄に動画をドラッグ＆ドロップ（または「Upload」をクリック）
+4. 「ドメイン」で動画の専門分野を選択（迷ったら `general`）
+5. **「🎬 字幕を生成する」**ボタンをクリック
+6. 処理が終わったら「字幕付き動画」と「SRT ファイル」をダウンロード
 
-# マイクロサービス単体起動（各サービスのディレクトリで実行）
-cd services/ws
-uv sync
-uv run real-time-translation-ws
-
-cd ../translator
-uv sync
-uv run real-time-translation-translate
-
-cd ../asr
-uv sync
-uv run real-time-translation-asr
-```
-
-WebデモはZoom認証なしで動作します。`DEEPGRAM_API_KEY` と `LLM_PROVIDER`
-に応じたAPIキーのみ設定してください。
-
-## Docker マイクロサービス構成
-
-```bash
-# Docker Composeで起動
-docker compose up --build
-```
-
-各サービスは `services/<name>/pyproject.toml` を持つ独立パッケージです。
-
-### エンドポイント
-
-| サービス            | URL                               |
-| ------------------- | --------------------------------- |
-| RTMP入力            | `rtmp://localhost:1935/live/zoom` |
-| 字幕WebSocket       | `ws://localhost:8001/ws/caption`  |
-| NMS管理画面         | `http://localhost:8000/admin`     |
-| ngrokダッシュボード | `http://localhost:4040`           |
-
-### 主なサービス
-
-| サービス   | 説明                                     |
-| ---------- | ---------------------------------------- |
-| `nms`      | Node-Media-Server (RTMP受信)             |
-| `ngrok`    | RTMPポートをインターネットに公開         |
-| `deepgram` | RTMP → Deepgram ASR、結果をWS/翻訳へ中継 |
-| `gemini`   | 翻訳API (FastAPI)                        |
-| `ws`       | 字幕配信用WebSocket (FastAPI)            |
-
-### ngrok設定（Zoomカスタムストリーミング用）
-
-Zoomのカスタムストリーミングをローカル環境で受信するには、ngrokでRTMPポートを公開する必要があります。
-
-1. **ngrokアカウント設定**
-   - [ngrokダッシュボード](https://dashboard.ngrok.com/get-started/your-authtoken)から認証トークンを取得
-   - [設定ページ](https://dashboard.ngrok.com/settings#id-verification)でクレジットカードを登録（TCPトンネル利用に必要、課金なし）
-
-2. **環境変数設定**
-   ```bash
-   # .envファイルに追加
-   NGROK_AUTHTOKEN=your_token_here
-   ```
-
-3. **トンネルURLの確認**
-   ```bash
-   # ngrokダッシュボードでトンネルURLを確認
-   curl -s http://localhost:4040/api/tunnels | jq '.tunnels[0].public_url'
-   # 例: tcp://0.tcp.jp.ngrok.io:12345
-   ```
-
-4. **Zoomでの設定**
-   - Streaming URL: `rtmp://0.tcp.jp.ngrok.io:12345/live`
-   - Streaming Key: `zoom`
-
-### デバッグモード
-
-WebSocketに流れるメッセージを確認するためのデバッグサービスを起動できます。
-
-```bash
-# デバッグモードで起動
-docker compose --profile debug up -d
-
-# デバッグログを確認
-docker compose logs -f ws-debug
-
-# デバッグモードを含めてすべて停止
-docker compose --profile debug down
-```
-
-> **Note**:
-> `ws-debug`は`profiles: [debug]`で定義されているため、通常の`docker compose down`では停止されません。必ず`--profile debug`を付けて停止してください。
-
-マイクロサービス用の環境変数例は `.env.example` に追加済みです。
-
-Gemini利用時は `google.genai` (google-genai) のContext Cachingで
-システムプロンプト/辞書をキャッシュし、LangChainの
-`ChatGoogleGenerativeAI(cached_content=...)` 経由で参照します。 Context
-Cacheは最小トークン数の制約があるため、プロンプトが小さい場合は 自動的に
-`<cache_padding>` を付与してキャッシュを作成します。
-
-翻訳はStructured Outputで `latest_slide`（最新の翻訳）と `kept_terms`
-（固有名詞/曖昧語として保持した語）を返し、Webデモでは直近 `CONTEXT_WINDOW_SIZE`
-文のスライドウィンド表示を行います。
-
-## 開発
-
-```bash
-# テストの実行
-uv run pytest
-
-# コードフォーマット
-uv run ruff format .
-
-# リント
-uv run ruff check .
-```
-
-## プロジェクト構造
+**処理の流れ（ログで確認できます）：**
 
 ```
-src/real_time_translation/
-├── audio/           # 音声取得モジュール
-│   ├── __init__.py
-│   └── capture.py   # AudioCapture, ZoomRTMSCapture
-├── transcription/   # 文字起こしモジュール
-│   ├── __init__.py
-│   └── deepgram_client.py  # DeepgramTranscriber
-├── translation/     # 翻訳モジュール
-│   ├── __init__.py
-│   └── llm_translator.py   # LLMTranslator (Gemini/OpenAI)
-├── __init__.py
-├── config.py        # 設定管理
-├── gradio_demo.py   # Gradioデモ
-├── main.py          # CLIエントリーポイント
-└── pipeline.py      # パイプライン統合
-services/
-├── asr/
-│   ├── pyproject.toml
-│   └── src/asr_service/      # ASRサービス実装
-├── translator/
-│   ├── pyproject.toml
-│   └── src/translator_service/ # 翻訳サービス実装
-└── ws/
-    ├── pyproject.toml
-    └── src/ws_service/       # WebSocket配信サービス実装
+🎵 音声を抽出中...
+📝 文字起こし中（Deepgram）...
+🌐 日本語に翻訳中（Gemini）...
+🎬 字幕を動画に焼き込み中...
+🎉 完了！
 ```
+
+> **所要時間の目安**
+> 動画の長さとほぼ同じ時間がかかります（90分動画 → 約90分）
+
+---
+
+### マイクをリアルタイム翻訳する
+
+1. **「🎤 Microphone」タブ**をクリック
+2. **「Start」**ボタンをクリック
+3. マイクに向かって話す（英語など）
+4. 画面下部に文字起こしと翻訳が表示される
+5. 終了するときは**「Stop」**をクリック
+
+---
+
+### 出力ファイルについて
+
+| ファイル | 説明 | 使い方 |
+|---|---|---|
+| 字幕付き動画（MP4） | 日本語字幕が焼き込まれた動画 | そのまま共有・配信に使用 |
+| SRT ファイル | 字幕データのみ（動画なし） | YouTube などへの字幕追加に使用 |
+
+#### SRT ファイルを YouTube に使う場合
+1. YouTube Studio で動画をアップロード
+2. 「字幕」タブ → 「ファイルをアップロード」
+3. ダウンロードした `.srt` ファイルを選択
+
+---
+
+## よくある質問
+
+**Q. 動画をアップロードできない**
+アプリを再起動してください（`launch.bat` をダブルクリック）。
+それでも解決しない場合、ブラウザのキャッシュをクリアするか、別のブラウザを試してください。
+
+**Q. 「APIキーが未設定です」と表示される**
+画面上部の「API Keys」欄に Deepgram と Google AI のキーが入力されているか確認してください。
+
+**Q. 翻訳が途中で止まった**
+Gemini の無料枠のレート制限（1分あたりの上限）に達した可能性があります。
+エラーが出た場合はしばらく待ってから再試行してください。アプリは自動でリトライします。
+
+**Q. 字幕の日本語が文字化けしている**
+Windows の場合は自動で日本語対応フォント（Yu Gothic）が使われます。
+正しく表示されない場合はお知らせください。
+
+**Q. 処理をキャンセルしたい**
+動画字幕タブの「🎬 字幕を生成する」ボタン付近に処理中の進捗が表示されます。
+音声ファイルタブには「Cancel」ボタンがあります。
+
+---
+
+## 翻訳品質について
+
+| スコア | 意味 | 今回の結果 |
+|---|---|---|
+| xCOMET | AI が採点した翻訳の意味的な正確さ（0〜1、高いほど良い） | **0.9925**（非常に高品質） |
+| chrF | 逆翻訳による文字一致率（英日間では 0.37〜0.45 が目安） | **0.3745**（標準的） |
+
+xCOMET の 0.99 は人間の翻訳者に近い水準です。
+
+---
+
+## サポート・お問い合わせ
+
+問題が解決しない場合は、以下の情報を添えてご連絡ください。
+
+- 発生した操作の手順
+- エラーメッセージ（あれば）
+- `launcher_error.log` ファイルの内容（プロジェクトフォルダ内）

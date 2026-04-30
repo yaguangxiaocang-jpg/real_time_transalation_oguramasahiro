@@ -25,3 +25,11 @@ uv.lock
 
 # Environment
 .env
+
+# Logs
+*.log
+
+# Temp / generated files
+gradio_tmp/
+*.zip
+*.docx
