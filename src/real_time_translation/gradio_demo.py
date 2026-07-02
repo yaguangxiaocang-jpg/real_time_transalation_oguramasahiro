@@ -195,6 +195,7 @@ async def start_session(
     google_key: str = "",
     source_lang: str = "English",
     target_lang: str = "Japanese (日本語)",
+    domain: str = "general",
 ) -> tuple[DemoSession | None, str, str, str]:
     if state is not None:
         transcript = "\n".join(state.transcript_lines)
@@ -214,6 +215,7 @@ async def start_session(
                 google_api_key=google_key.strip(),
                 source_language=source_code,
                 target_language=target_code,
+                domain=domain,
             )
         else:
             config = Config.from_env(require_zoom=False)
@@ -231,6 +233,7 @@ async def start_session(
                 context_window_size=config.context_window_size,
                 translation_queue_size=config.translation_queue_size,
                 dictionary_path=config.dictionary_path,
+                domain=domain,
             )
     except Exception as exc:
         return None, _status(f"error: {exc}"), "", ""
@@ -306,6 +309,7 @@ async def process_audio_file(
     google_key: str = "",
     source_lang: str = "English",
     target_lang: str = "Japanese (日本語)",
+    domain: str = "general",
 ) -> tuple[DemoSession | None, str, str, str]:
     """Process an uploaded audio file through the pipeline."""
     if file_path is None:
@@ -314,7 +318,7 @@ async def process_audio_file(
     # Start session if not already running
     if state is None:
         state, status, _, _ = await start_session(
-            None, deepgram_key, google_key, source_lang, target_lang
+            None, deepgram_key, google_key, source_lang, target_lang, domain
         )
         if state is None:
             return None, status, "", ""
@@ -558,46 +562,44 @@ def _group_words(words: list[dict], max_words: int = 12, max_duration: float = 5
     return segments
 
 
-async def _video_translate(
+async def _video_translate_with_pipeline(
     utterances: list[dict],
     api_key: str,
     source_language: str = "en",
     target_language: str = "ja",
-    on_batch=None,  # callback(batch_idx, total_batches)
+    domain: str = "general",
+    on_progress=None,  # callback(utt_idx, total)
 ) -> list[dict]:
-    from google import genai
+    """Translate video utterances using the same LLMTranslator pipeline as microphone mode.
 
-    client = genai.Client(api_key=api_key)
-    src_name = _to_full_name(source_language)
-    tgt_name = _to_full_name(target_language)
+    Uses context window, domain-aware system prompt, and thinking_budget=1024
+    for higher accuracy in offline (non-realtime) processing.
+    """
+    from real_time_translation.translation.llm_translator import LLMTranslator
+
+    translator = LLMTranslator(
+        provider="gemini",
+        api_key=api_key,
+        model="gemini-2.5-flash",
+        source_language=_to_full_name(source_language),
+        target_language=_to_full_name(target_language),
+        domain=domain,
+        context_window_size=5,
+        thinking_budget=1024,
+    )
 
     translated: list[dict] = []
-    batch_size = 10
-    total_batches = max(1, (len(utterances) + batch_size - 1) // batch_size)
-    for i in range(0, len(utterances), batch_size):
-        if on_batch:
-            on_batch(i // batch_size, total_batches)
-        batch = utterances[i : i + batch_size]
-        numbered = "\n".join(f"{j+1}. {u['transcript']}" for j, u in enumerate(batch))
-        prompt = (
-            f"You are a professional translator. "
-            f"Translate each of the following {src_name} texts into natural {tgt_name}. "
-            f"These will be displayed as subtitles, so keep them concise and readable. "
-            f"Return as a numbered list (e.g., 1. translated text). "
-            f"Do not include explanations or the original text.\n\n"
-            f"{numbered}"
-        )
-        response = await _gemini_generate_with_retry(client, "gemini-2.5-flash", prompt)
-        raw = response.text or ""
-        tgt_texts: list[str] = []
-        for line in (ln.strip() for ln in raw.split("\n") if ln.strip()):
-            m = re.match(r"\d+\.\s*(.*)", line)
-            tgt_texts.append(m.group(1) if m else line)
-        while len(tgt_texts) < len(batch):
-            tgt_texts.append(batch[len(tgt_texts)]["transcript"])
-        for u, tgt in zip(batch, tgt_texts):
-            translated.append({"start": u["start"], "end": u["end"],
-                                "original": u["transcript"], "japanese": tgt})
+    total = len(utterances)
+    for i, utt in enumerate(utterances):
+        if on_progress:
+            on_progress(i, total)
+        output = await translator.translate(utt["transcript"])
+        translated.append({
+            "start": utt["start"],
+            "end": utt["end"],
+            "original": utt["transcript"],
+            "japanese": output.latest_slide,
+        })
     return translated
 
 
@@ -772,14 +774,15 @@ async def process_video(
         gr_progress(0.30, desc=f"文字起こし完了: {len(utterances)} セグメント")
         yield step(f"✅ 文字起こし完了: {len(utterances)} セグメント"), None, None, ""
 
-        total_batches = max(1, (len(utterances) + 9) // 10)
         yield step(f"🌐 {target_display}に翻訳中（Gemini / ドメイン: {domain}）..."), None, None, ""
 
-        def on_batch(batch_idx: int, total: int) -> None:
-            frac = 0.30 + 0.40 * (batch_idx / total)
-            gr_progress(frac, desc=f"翻訳中... ({batch_idx}/{total} バッチ)")
+        def on_progress(utt_idx: int, total: int) -> None:
+            frac = 0.30 + 0.40 * (utt_idx / max(total, 1))
+            gr_progress(frac, desc=f"翻訳中... ({utt_idx}/{total} セグメント)")
 
-        translated = await _video_translate(utterances, google_key, source_code, target_code, on_batch)
+        translated = await _video_translate_with_pipeline(
+            utterances, google_key, source_code, target_code, domain, on_progress
+        )
         gr_progress(0.70, desc=f"翻訳完了: {len(translated)} セグメント")
         yield step(f"✅ 翻訳完了: {len(translated)} セグメント"), None, None, ""
 
@@ -856,8 +859,13 @@ def build_demo() -> gr.Blocks:
                 value="Japanese (日本語)",
                 label="Target Language",
             )
+            domain_input = gr.Dropdown(
+                choices=["general", "economics", "technology", "medical", "legal", "particle_physics"],
+                value="general",
+                label="ドメイン（専門分野）",
+            )
         gr.Markdown(
-            "_Note: Language changes take effect when you click **Start** (or Process File). "
+            "_Note: Language/domain changes take effect when you click **Start** (or Process File / 字幕を生成する). "
             "Stop and restart the session to switch languages mid-session._",
         )
 
@@ -890,15 +898,10 @@ def build_demo() -> gr.Blocks:
                     cancel_button = gr.Button("Cancel", variant="stop")
 
             with gr.TabItem("🎬 動画字幕"):
-                gr.Markdown("動画ファイルをアップロードすると、字幕を生成して焼き込みます。")
+                gr.Markdown("動画ファイルをアップロードすると、字幕を生成して焼き込みます。ドメインは上部の共通設定を使用します。")
                 video_input = gr.Video(
                     label="動画ファイル（MP4, MOV, AVI など）",
                     sources=["upload"],
-                )
-                domain_input = gr.Dropdown(
-                    choices=["general", "economics", "technology", "medical", "legal", "particle_physics"],
-                    value="general",
-                    label="ドメイン（専門分野）",
                 )
                 gr.Markdown("📊 **翻訳スコアを評価する場合はチェック**（Gemini LLM-as-judge + 逆翻訳 chrF。追加で1〜2分かかります）")
                 evaluate_scores_checkbox = gr.Checkbox(
@@ -945,7 +948,7 @@ def build_demo() -> gr.Blocks:
 
         start_button.click(
             start_session,
-            inputs=[state, deepgram_key_input, google_key_input, source_lang_input, target_lang_input],
+            inputs=[state, deepgram_key_input, google_key_input, source_lang_input, target_lang_input, domain_input],
             outputs=[state, status, transcript_box, translation_box],
         )
         stop_button.click(
@@ -967,7 +970,7 @@ def build_demo() -> gr.Blocks:
 
         process_button.click(
             process_audio_file,
-            inputs=[audio_file, state, deepgram_key_input, google_key_input, source_lang_input, target_lang_input],
+            inputs=[audio_file, state, deepgram_key_input, google_key_input, source_lang_input, target_lang_input, domain_input],
             outputs=[state, status, transcript_box, translation_box],
         )
 
@@ -987,6 +990,7 @@ def build_demo() -> gr.Blocks:
             ],
             outputs=[video_log, srt_output, video_output, score_output],
         )
+
 
     return demo
 

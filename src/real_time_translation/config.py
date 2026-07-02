@@ -42,8 +42,10 @@ class Config:
     # Translation settings
     source_language: str = "en"
     target_language: str = "ja"
-    context_window_size: int = 3
+    context_window_size: int = 5
     translation_queue_size: int = 10
+    domain: str = "general"
+    thinking_budget: int = 0
 
     # Dictionary
     dictionary_path: Path | None = None
@@ -135,7 +137,9 @@ class Config:
             openai_model=os.getenv("OPENAI_MODEL", "gpt-4o"),
             source_language=os.getenv("SOURCE_LANGUAGE", "en"),
             target_language=os.getenv("TARGET_LANGUAGE", "ja"),
-            context_window_size=int(os.getenv("CONTEXT_WINDOW_SIZE", "3")),
+            context_window_size=int(os.getenv("CONTEXT_WINDOW_SIZE", "5")),
             translation_queue_size=int(os.getenv("TRANSLATION_QUEUE_SIZE", "10")),
+            domain=os.getenv("DOMAIN", "general"),
+            thinking_budget=int(os.getenv("THINKING_BUDGET", "0")),
             dictionary_path=dictionary_path,
         )

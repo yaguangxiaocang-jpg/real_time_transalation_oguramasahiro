@@ -2,6 +2,7 @@
 
 import asyncio
 import contextlib
+import threading
 import time
 from collections.abc import Callable
 from dataclasses import dataclass, field
@@ -31,12 +32,56 @@ class TranslationResult:
     translation_delay: float = 0.0
 
 
+class SharedTranslationContext:
+    """全ワーカーが共有する翻訳コンテキスト。
+
+    - ワーカーは翻訳前にスナップショットを取得（読み取り並列OK）
+    - 翻訳後はシーケンス番号順に結果をコミット（順序保証）
+    - これにより並列処理しながらも文脈の一貫性を保つ
+    """
+
+    def __init__(self, window_size: int = 5) -> None:
+        self._lock = threading.Lock()
+        self._src_buffer: list[str] = []
+        self._tgt_buffer: list[str] = []
+        self._window_size = window_size
+        self._next_commit_seq: int = 0
+        self._pending: dict[int, tuple[str, str]] = {}
+
+    def snapshot(self) -> tuple[list[str], list[str]]:
+        """翻訳前に呼ぶ。現時点のコンテキストのコピーを返す。"""
+        with self._lock:
+            return list(self._src_buffer), list(self._tgt_buffer)
+
+    def commit(self, seq: int, src_text: str, tgt_text: str) -> None:
+        """翻訳後に呼ぶ。seq順にコンテキストへ追記する。"""
+        with self._lock:
+            self._pending[seq] = (src_text, tgt_text)
+            while self._next_commit_seq in self._pending:
+                s, t = self._pending.pop(self._next_commit_seq)
+                self._src_buffer.append(s)
+                self._tgt_buffer.append(t)
+                if len(self._src_buffer) > self._window_size:
+                    self._src_buffer.pop(0)
+                if len(self._tgt_buffer) > self._window_size:
+                    self._tgt_buffer.pop(0)
+                self._next_commit_seq += 1
+
+    def clear(self) -> None:
+        with self._lock:
+            self._src_buffer.clear()
+            self._tgt_buffer.clear()
+            self._pending.clear()
+            self._next_commit_seq = 0
+
+
 @dataclass
 class QueuedTranscription:
     """Queued transcription with masked text when needed."""
 
     original: TranscriptionResult
     text_for_translation: str
+    seq: int = 0
     queued_at: float = field(default_factory=time.monotonic)
 
 
@@ -95,10 +140,17 @@ class TranslationPipeline:
                 target_language=self._language_name(config.target_language),
                 dictionary_path=config.dictionary_path,
                 context_window_size=config.context_window_size,
+                domain=config.domain,
+                thinking_budget=config.thinking_budget,
             )
             for _ in range(_num_workers)
         ]
         self._translator = self._translators[0]
+
+        self._shared_context = SharedTranslationContext(
+            window_size=config.context_window_size
+        )
+        self._seq_counter: int = 0
 
         self._running = False
         self._on_result: Callable[[TranslationResult], None] | None = None
@@ -223,31 +275,54 @@ class TranslationPipeline:
                 queued = QueuedTranscription(
                     original=result,
                     text_for_translation=masked_text,
+                    seq=self._seq_counter,
                 )
+                self._seq_counter += 1
                 with contextlib.suppress(asyncio.QueueFull):
                     self._transcription_queue.put_nowait(queued)
         except asyncio.CancelledError:
             pass
 
     async def _translation_worker(self, translator: LLMTranslator) -> None:
-        """Consume queued transcriptions and translate."""
+        """Consume queued transcriptions and translate using shared context."""
         import logging
         logger = logging.getLogger(__name__)
         try:
             while self._running:
                 queued = await self._transcription_queue.get()
+
+                # 翻訳前に共有コンテキストのスナップショットを取得
+                # （複数ワーカーが同じ文脈を読むため表記ゆれを防ぐ）
+                src_ctx, tgt_ctx = self._shared_context.snapshot()
+
                 try:
-                    output = await translator.translate(queued.text_for_translation)
+                    output = await translator.translate(
+                        queued.text_for_translation,
+                        src_context=src_ctx,
+                        tgt_context=tgt_ctx,
+                        update_context=False,  # 個別バッファは使わない
+                    )
                 except Exception as exc:
                     logger.error("Translation error: %s", exc)
+                    # エラーでもシーケンスを進めてコンテキストが詰まらないようにする
+                    self._shared_context.commit(queued.seq, queued.original.text, "")
                     continue
+
+                # 順序を守ってコンテキストへコミット
+                self._shared_context.commit(
+                    queued.seq,
+                    queued.original.text,
+                    output.latest_slide,
+                )
+
+                _, current_tgt = self._shared_context.snapshot()
                 translation_result = TranslationResult(
                     original_text=queued.original.text,
                     translated_text=output.latest_slide,
                     is_final=queued.original.is_final,
                     confidence=queued.original.confidence,
                     kept_terms=output.kept_terms,
-                    slide_window=output.slide_window,
+                    slide_window=current_tgt,
                     start_time=queued.original.start_time,
                     end_time=queued.original.end_time,
                     translation_delay=time.monotonic() - queued.queued_at,
@@ -264,6 +339,7 @@ class TranslationPipeline:
 
     def clear_context(self) -> None:
         """Clear translation context buffer."""
+        self._shared_context.clear()
         for translator in self._translators:
             translator.clear_context()
 

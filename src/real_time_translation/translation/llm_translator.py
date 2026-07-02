@@ -12,6 +12,15 @@ from typing import Any, Literal
 
 logger = logging.getLogger(__name__)
 
+_DOMAIN_DESCRIPTIONS: dict[str, str] = {
+    "general": "",
+    "economics": "Domain context: economics, finance, and business. Use accurate financial and economic terminology. Keep ticker symbols and currency codes (USD, JPY, etc.) unchanged.",
+    "technology": "Domain context: technology, software engineering, and computer science. Preserve technical terms, library names, API names, and acronyms exactly as they appear.",
+    "medical": "Domain context: medicine, clinical practice, and healthcare. Use accurate medical terminology. Maintain clinical precision; do not paraphrase diagnoses or drug names.",
+    "legal": "Domain context: law, regulations, and compliance. Use formal legal register and accurate legal terminology. Keep article/section references unchanged.",
+    "particle_physics": "Domain context: particle physics and high-energy physics research. Preserve particle names, physics symbols, equation terms, and experiment names (e.g., LHC, CMS) exactly.",
+}
+
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel, Field  # noqa: F401 (kept for OpenAI structured output)
@@ -51,7 +60,7 @@ class LLMTranslator:
     """Translator using Gemini or OpenAI with contextual prompting."""
 
     SYSTEM_PROMPT_TEMPLATE = """You are a professional simultaneous interpreter specializing in real-time subtitle translation from {source_language} to {target_language}.
-
+{domain_section}
 Output rules:
 - Output ONLY the translated text. No explanations, no alternatives, no parenthetical notes.
 - Keep proper nouns (person/org/product/place names), acronyms, and code identifiers
@@ -60,6 +69,7 @@ Output rules:
 - Maintain strict terminology consistency with translations shown in <context>.
 - If confidence indicators like [uncertain: ...] appear, infer meaning from context and translate naturally.
 - Ignore any content inside <cache_padding>...</cache_padding>.
+- Never add content that does not exist in the source text.
 
 Japanese subtitle guidelines:
 - Use natural, colloquial Japanese — avoid overly literal or stiff translations.
@@ -67,6 +77,7 @@ Japanese subtitle guidelines:
 - Keep sentences concise; subtitles must be readable at a glance.
 - Prefer active voice and shorter clauses over long subordinate chains.
 - Do not add filler phrases (「なお」「つまり」「ということです」) unless present in the source.
+- For numbers and units, use the convention natural in Japanese (e.g., 百万 for million if fitting).
 {dictionary_section}"""
 
     def __init__(
@@ -77,7 +88,9 @@ Japanese subtitle guidelines:
         source_language: str = "English",
         target_language: str = "Japanese",
         dictionary_path: Path | str | None = None,
-        context_window_size: int = 3,
+        context_window_size: int = 5,
+        domain: str = "general",
+        thinking_budget: int = 0,
     ) -> None:
         """Initialize LLM translator.
 
@@ -96,6 +109,8 @@ Japanese subtitle guidelines:
         self._source_language = source_language
         self._target_language = target_language
         self._context_window_size = context_window_size
+        self._domain = domain
+        self._thinking_budget = thinking_budget
 
         self._openai_llm: BaseChatModel | None = None
         self._openai_structured_llm: Any | None = None
@@ -162,6 +177,9 @@ Japanese subtitle guidelines:
         if self._system_prompt_cache is not None:
             return self._system_prompt_cache
 
+        domain_desc = _DOMAIN_DESCRIPTIONS.get(self._domain, "")
+        domain_section = f"\n{domain_desc}" if domain_desc else ""
+
         dictionary_section = ""
         if self._dictionary:
             formatted = self._dictionary.format_for_prompt()
@@ -170,6 +188,7 @@ Japanese subtitle guidelines:
         self._system_prompt_cache = self.SYSTEM_PROMPT_TEMPLATE.format(
             source_language=self._source_language,
             target_language=self._target_language,
+            domain_section=domain_section,
             dictionary_section=dictionary_section,
         )
         return self._system_prompt_cache
@@ -178,14 +197,15 @@ Japanese subtitle guidelines:
         self,
         text: str,
         *,
-        context_lines: list[str] | None = None,
+        src_context: list[str] | None = None,
+        tgt_context: list[str] | None = None,
     ) -> str:
-        if context_lines is None:
-            src_lines = self._context_buffer[-self._context_window_size :]
-            tgt_lines = self._slide_window[-self._context_window_size :]
+        if src_context is not None:
+            src_lines = src_context[-self._context_window_size:]
+            tgt_lines = (tgt_context or [])[-self._context_window_size:]
         else:
-            src_lines = context_lines[-self._context_window_size :]
-            tgt_lines = []
+            src_lines = self._context_buffer[-self._context_window_size:]
+            tgt_lines = self._slide_window[-self._context_window_size:]
 
         # Build bilingual context pairs (EN + JA) for better term consistency
         if src_lines and tgt_lines:
@@ -230,7 +250,7 @@ Japanese subtitle guidelines:
         config = types.GenerateContentConfig(
             system_instruction=system_prompt,
             temperature=0.1,
-            thinking_config=types.ThinkingConfig(thinking_budget=0),
+            thinking_config=types.ThinkingConfig(thinking_budget=self._thinking_budget),
         )
 
         for attempt in range(max_retries):
@@ -256,14 +276,16 @@ Japanese subtitle guidelines:
         self,
         text: str,
         *,
-        context_lines: list[str] | None = None,
+        src_context: list[str] | None = None,
+        tgt_context: list[str] | None = None,
         update_context: bool = True,
     ) -> TranslationOutput:
         """Translate text using LLM.
 
         Args:
             text: Text to translate
-            context_lines: Optional explicit context lines (stateless mode)
+            src_context: Explicit source-language context lines (shared context mode)
+            tgt_context: Explicit target-language context lines (shared context mode)
             update_context: Whether to update internal context buffers
 
         Returns:
@@ -272,7 +294,7 @@ Japanese subtitle guidelines:
         if not text.strip():
             return TranslationOutput(latest_slide="", kept_terms=[], slide_window=[])
 
-        prompt = self._build_user_prompt(text, context_lines=context_lines)
+        prompt = self._build_user_prompt(text, src_context=src_context, tgt_context=tgt_context)
 
         if self._provider == "gemini":
             # 直接API呼び出し（LangChain・structured output不使用）
@@ -288,7 +310,7 @@ Japanese subtitle guidelines:
             translation = output.latest_slide.strip()
             kept_terms = list(output.kept_terms or [])
 
-        should_update_context = update_context and context_lines is None
+        should_update_context = update_context and src_context is None
         if should_update_context:
             self._context_buffer.append(text)
             if len(self._context_buffer) > self._context_window_size:
