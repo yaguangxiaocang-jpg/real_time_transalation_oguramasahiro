@@ -21,6 +21,8 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
+sys.path.insert(0, str(Path(__file__).parent / "src"))
+
 load_dotenv()
 
 DEEPGRAM_API_KEY = os.environ["DEEPGRAM_API_KEY"]
@@ -28,6 +30,12 @@ GOOGLE_API_KEY = os.environ["GOOGLE_API_KEY"]
 SOURCE_LANGUAGE = os.environ.get("SOURCE_LANGUAGE", "en")
 TRANSLATION_DOMAIN = os.environ.get("TRANSLATION_DOMAIN", "general")
 GEMINI_MODEL = "gemini-2.5-flash"
+
+# gradio_demo.py の _FULL_NAME と同じマッピング（LLMTranslator のプロンプトに使う言語名）
+_LANGUAGE_NAMES = {
+    "en": "English", "ja": "Japanese", "zh": "Chinese",
+    "ko": "Korean", "es": "Spanish", "fr": "French", "de": "German",
+}
 
 EXPERIMENTS_DIR = Path(__file__).parent / "experiments"
 
@@ -263,60 +271,38 @@ def group_words_into_segments(
 
 
 async def translate_segments(utterances: list[dict]) -> list[dict]:
-    """Geminiで各セグメントを日本語に翻訳する。"""
-    from google import genai
-    from google.genai import types
+    """マイクのリアルタイム翻訳と同じ LLMTranslator パイプラインで各セグメントを翻訳する。
+
+    文脈窓・ドメイン別プロンプトを共有し、オフライン処理なので
+    thinking_budget=1024 で精度を優先する（gradio_demo.py の
+    _video_translate_with_pipeline と同じ設定）。
+    """
+    from real_time_translation.translation.llm_translator import LLMTranslator
 
     print("Geminiで日本語翻訳中...")
-    client = genai.Client(api_key=GOOGLE_API_KEY)
+    translator = LLMTranslator(
+        provider="gemini",
+        api_key=GOOGLE_API_KEY,
+        model=GEMINI_MODEL,
+        source_language=_LANGUAGE_NAMES.get(SOURCE_LANGUAGE, "English"),
+        target_language="Japanese",
+        domain=TRANSLATION_DOMAIN,
+        context_window_size=5,
+        thinking_budget=1024,
+    )
 
     translated = []
     total = len(utterances)
 
-    batch_size = 10
-    for i in range(0, total, batch_size):
-        batch = utterances[i : i + batch_size]
-        texts = [u["transcript"] for u in batch]
-
-        numbered = "\n".join(f"{j+1}. {t}" for j, t in enumerate(texts))
-        prompt = (
-            "あなたはプロの翻訳者です。"
-            "以下の英語テキストをそれぞれ自然な日本語に翻訳してください。"
-            "字幕として表示されるため、簡潔で読みやすい文にしてください。"
-            "番号付きリストで返してください（例: 1. 翻訳文）。説明や原文は含めないでください。\n\n"
-            f"{numbered}"
-        )
-
-        response = await asyncio.to_thread(
-            client.models.generate_content,
-            model="gemini-2.5-flash",
-            contents=prompt,
-        )
-        raw_text = response.text if response.text else ""
-        lines = [l.strip() for l in raw_text.split("\n") if l.strip()]
-
-        ja_texts = []
-        for line in lines:
-            if line and line[0].isdigit() and ". " in line:
-                ja_texts.append(line.split(". ", 1)[1])
-            elif line and line[0].isdigit() and "." in line:
-                ja_texts.append(line.split(".", 1)[1].strip())
-            else:
-                ja_texts.append(line)
-
-        # 不足分は原文で補完
-        while len(ja_texts) < len(batch):
-            ja_texts.append(batch[len(ja_texts)]["transcript"])
-
-        for u, ja in zip(batch, ja_texts):
-            translated.append({
-                "start": u["start"],
-                "end": u["end"],
-                "original": u["transcript"],
-                "japanese": ja,
-            })
-
-        print(f"  翻訳済み: {min(i + batch_size, total)}/{total}")
+    for i, u in enumerate(utterances):
+        output = await translator.translate(u["transcript"])
+        translated.append({
+            "start": u["start"],
+            "end": u["end"],
+            "original": u["transcript"],
+            "japanese": output.latest_slide,
+        })
+        print(f"  翻訳済み: {i + 1}/{total}")
 
     print("翻訳完了")
     return translated
