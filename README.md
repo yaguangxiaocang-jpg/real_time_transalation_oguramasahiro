@@ -128,6 +128,47 @@ pinned: false
 
 ## 更新履歴
 
+### 2026/07/02
+
+#### 変更内容
+
+**① `add_subtitles.py`（CLI版の動画字幕生成スクリプト）も統一**
+
+2026/06/30 の統一作業では Gradio アプリ内の動画字幕タブ（`gradio_demo.py`）のみが
+`LLMTranslator` に統一されており、実験用の独立 CLI スクリプト `add_subtitles.py` は
+旧来の Gemini 直接バッチ翻訳のままでした。今回 `add_subtitles.py` の `translate_segments()`
+を書き換え、マイク・動画と同じ `LLMTranslator`（`context_window_size=5`, `thinking_budget=1024`）
+を使うよう統一しました。これにより3経路（マイク・動画字幕タブ・CLIスクリプト）すべてが
+同じ翻訳エンジンで検証できるようになりました。
+
+**② 統一後 初の翻訳精度実験を実施**
+
+`short_test.mp4`（90秒の経済学講義動画）で統一後の翻訳精度を検証しました
+（`experiments/20260702_gemini_25_flash_economics.json`）。
+
+| 指標 | 結果 |
+|------|------|
+| xCOMET（LLM判定） | 1.0 |
+| chrF（逆翻訳ベース） | 0.4337 |
+
+自動評価スコアは良好でしたが、手動で字幕プレビューを確認したところ、Deepgramの
+utterance（発話単位）分割が1文の途中で発生するケースを発見しました。
+
+```
+[00:00:16,045] in The United States. It's called the federal
+  → 米国では。フェデラルと呼ばれています。
+```
+
+`LLMTranslator` は各utteranceを独立に（前方向の文脈のみを見て）翻訳するため、
+文が複数utteranceに跨ると、後続の文脈が見えず文法的に不自然な訳になることが
+分かりました。これは元々ユーザーから指摘のあった「マイクのリアルタイム翻訳が
+シンプル過ぎる」という課題を裏付ける具体例です。
+
+#### 次の試行（進行中）
+
+- Deepgramのutteranceのうち文末の句読点（`. ! ?`）で終わっていないものを
+  次のutteranceと結合してから翻訳する前処理を追加し、同じ動画で比較実験を実施予定。
+
 ### 2026/06/30
 
 #### 変更内容
