@@ -1,0 +1,8 @@
+{
+  "date": "2026-07-02",
+  "model": "gemini-2.5-flash",
+  "domain": "economics",
+  "xcomet_score": 1.0,
+  "chrf_score": 0.4337,
+  "notes": "統一後(LLMTranslator, thinking_budget=1024, context_window=5)初の実験。short_test.mp4(90秒、経済学の講義)を処理、25セグメント翻訳。xCOMET=1.0/chrF=0.4337と自動評価は良好だが、手動確認でDeepgramのUtterance分割が文の途中で発生するケースを発見: 'So this this is the shortest term interest rate' / 'in The United States. It's called the federal' / 'funds rate,' の3セグメントに分割され、各セグメントを独立翻訳した結果、中間セグメントの訳が「米国では。フェデラルと呼ばれています。」という文法的に不自然な訳になった(正しくは「これは米国における最短期間の金利で、フェデラルファンドレートと呼ばれています」のような一文になるべき)。src_context/tgt_contextによる過去方向の文脈共有はあるが、未来方向(後続セグメント)の先読みがないため、文が複数セグメントに跨る場合に精度が落ちることが分かった。次の試行: (1)Deepgramのutteranceを句読点や無音長で結合してから翻訳する前処理を試す、(2)先読み1セグメント分をプロンプトに含める、などを検証予定。"
+}
