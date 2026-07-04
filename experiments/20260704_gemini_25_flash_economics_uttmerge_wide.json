@@ -1,0 +1,8 @@
+{
+  "date": "2026-07-04",
+  "model": "gemini-2.5-flash",
+  "domain": "economics",
+  "xcomet_score": 1.0,
+  "chrf_score": 0.4994,
+  "notes": "uttmerge実験(max_words=40/max_duration=12s)の副作用対策として上限を緩めた版(max_words=60/max_duration=20s)。25→11セグメント(uttmergeは12)。結果、xCOMETは1.0に回復(uttmergeでは0.9783)、chrFは0.4994(baseline 0.4337より改善、uttmergeの0.5433よりは低下)。字幕プレビュー確認では、以前max_words=40で打ち切られていた'Now, most of the people who deal in this'以降が同一セグメントに収まり、文末で終わらない中途半端なセグメントが解消された。トレードオフ: 1セグメントが長くなり(最大60語/20秒)、字幕としての表示単位はやや大きくなるが、文法的な自然さと精度を優先するなら本設定(wide)の方がバランスが良いと判断。add_subtitles.pyのデフォルト値をmax_words=60, max_duration=20s, MERGE_UTTERANCES=trueに更新した。"
+}

@@ -35,7 +35,7 @@ GEMINI_MODEL = "gemini-2.5-flash"
 # 比較実験する際に、experiments/*.jsonが上書きされないようにするため）
 EXPERIMENT_TAG = os.environ.get("EXPERIMENT_TAG", "")
 # 文末で終わっていないDeepgram utteranceを次のutteranceと結合してから翻訳するか
-MERGE_UTTERANCES = os.environ.get("MERGE_UTTERANCES", "false").lower() == "true"
+MERGE_UTTERANCES = os.environ.get("MERGE_UTTERANCES", "true").lower() == "true"
 
 # gradio_demo.py の _FULL_NAME と同じマッピング（LLMTranslator のプロンプトに使う言語名）
 _LANGUAGE_NAMES = {
@@ -283,8 +283,8 @@ _SENTENCE_END_RE = re.compile(r"[.!?][\"'”\)\]]*$")
 
 def merge_incomplete_utterances(
     utterances: list[dict],
-    max_duration: float = 12.0,
-    max_words: int = 40,
+    max_duration: float = 20.0,
+    max_words: int = 60,
 ) -> list[dict]:
     """文末の句読点で終わっていないutteranceを次のutteranceと結合する。
 
