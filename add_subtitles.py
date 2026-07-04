@@ -13,6 +13,7 @@ import asyncio
 import csv
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -30,6 +31,11 @@ GOOGLE_API_KEY = os.environ["GOOGLE_API_KEY"]
 SOURCE_LANGUAGE = os.environ.get("SOURCE_LANGUAGE", "en")
 TRANSLATION_DOMAIN = os.environ.get("TRANSLATION_DOMAIN", "general")
 GEMINI_MODEL = "gemini-2.5-flash"
+# 実験記録のファイル名・notesに付与するタグ（同日・同domainで複数バリエーションを
+# 比較実験する際に、experiments/*.jsonが上書きされないようにするため）
+EXPERIMENT_TAG = os.environ.get("EXPERIMENT_TAG", "")
+# 文末で終わっていないDeepgram utteranceを次のutteranceと結合してから翻訳するか
+MERGE_UTTERANCES = os.environ.get("MERGE_UTTERANCES", "false").lower() == "true"
 
 # gradio_demo.py の _FULL_NAME と同じマッピング（LLMTranslator のプロンプトに使う言語名）
 _LANGUAGE_NAMES = {
@@ -124,11 +130,13 @@ def save_experiment_record(
 
     today = date.today().strftime("%Y%m%d")
     model_slug = GEMINI_MODEL.replace("-", "_").replace(".", "")
-    json_name = f"{today}_{model_slug}_{TRANSLATION_DOMAIN}.json"
+    tag_suffix = f"_{EXPERIMENT_TAG}" if EXPERIMENT_TAG else ""
+    json_name = f"{today}_{model_slug}_{TRANSLATION_DOMAIN}{tag_suffix}.json"
     json_path = EXPERIMENTS_DIR / json_name
 
     auto_notes = (
         f"{video_path.name} を処理。{len(translated)} セグメント翻訳。"
+        + (f" [tag={EXPERIMENT_TAG}]" if EXPERIMENT_TAG else "")
         + (f" {notes}" if notes else "")
     )
 
@@ -270,6 +278,48 @@ def group_words_into_segments(
     return segments
 
 
+_SENTENCE_END_RE = re.compile(r"[.!?][\"'”\)\]]*$")
+
+
+def merge_incomplete_utterances(
+    utterances: list[dict],
+    max_duration: float = 12.0,
+    max_words: int = 40,
+) -> list[dict]:
+    """文末の句読点で終わっていないutteranceを次のutteranceと結合する。
+
+    Deepgramのutterance分割は無音区間の長さで決まるため、1文が途中の
+    息継ぎ位置で複数utteranceに分断されることがある（例:
+    "in The United States. It's called the federal" / "funds rate,"）。
+    各utteranceを独立に翻訳するとこうした断片が文法的に不自然な訳になる
+    ため、文末punctuationが来るまで結合してから翻訳に渡す。
+    """
+    if not utterances:
+        return utterances
+
+    merged: list[dict] = []
+    buf = dict(utterances[0])
+
+    for nxt in utterances[1:]:
+        text = buf["transcript"].strip()
+        duration = buf["end"] - buf["start"]
+        word_count = len(text.split())
+
+        if (
+            not _SENTENCE_END_RE.search(text)
+            and duration < max_duration
+            and word_count < max_words
+        ):
+            buf["transcript"] = f"{text} {nxt['transcript'].strip()}"
+            buf["end"] = nxt["end"]
+        else:
+            merged.append(buf)
+            buf = dict(nxt)
+
+    merged.append(buf)
+    return merged
+
+
 async def translate_segments(utterances: list[dict]) -> list[dict]:
     """マイクのリアルタイム翻訳と同じ LLMTranslator パイプラインで各セグメントを翻訳する。
 
@@ -379,6 +429,11 @@ async def main(video_path: str) -> None:
 
         # 2. 文字起こし
         utterances = await asyncio.to_thread(transcribe_audio, audio_path)
+
+        if MERGE_UTTERANCES:
+            before = len(utterances)
+            utterances = merge_incomplete_utterances(utterances)
+            print(f"utterance結合: {before} → {len(utterances)} セグメント")
 
         if not utterances:
             print("文字起こし結果が空です。動画に音声が含まれているか確認してください。")

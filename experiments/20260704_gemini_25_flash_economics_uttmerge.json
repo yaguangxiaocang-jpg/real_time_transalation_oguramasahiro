@@ -1,0 +1,8 @@
+{
+  "date": "2026-07-04",
+  "model": "gemini-2.5-flash",
+  "domain": "economics",
+  "xcomet_score": 0.9783,
+  "chrf_score": 0.5433,
+  "notes": "2026-07-02実験のutterance分断問題への対策実験。merge_incomplete_utterances()で文末punctuation(. ! ?)が来るまでDeepgram utteranceを結合してから翻訳(max_duration=12s, max_words=40)。25→12セグメントに削減。結果、2026-07-02で問題になった 'in The United States. It's called the federal' / 'funds rate,' の分断は解消: 結合後は「これは米国における最短期間の金利です。フェデラルファンドレートと呼ばれ、オーバーナイトレートです。」と自然な訳になった。定量的にはchrF 0.4337→0.5433に改善(逆翻訳が原文により近づいた)。一方xCOMETは1.0→0.9783にわずかに低下(LLM判定は元々満点付近で頭打ちのため大差ではない可能性)。副作用: max_words=40の上限で結合が打ち切られ、新たに「そして、これを扱うほとんどの人々は」のような文末で終わらない結合セグメントが発生(次セグメントに続きがある)。max_wordsの上限を緩めるか、句読点だけでなく次セグメントの先頭が大文字で始まるかも判定に使うなど、結合ロジックの調整余地あり。総合的には結合ありの方が精度向上と判断、次はMERGE_UTTERANCESをデフォルトtrueにする方向で検討。"
+}
