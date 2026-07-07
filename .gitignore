@@ -31,5 +31,6 @@ uv.lock
 
 # Temp / generated files
 gradio_tmp/
+translated_script/
 *.zip
 *.docx

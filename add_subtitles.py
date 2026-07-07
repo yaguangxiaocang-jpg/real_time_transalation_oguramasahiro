@@ -44,6 +44,7 @@ _LANGUAGE_NAMES = {
 }
 
 EXPERIMENTS_DIR = Path(__file__).parent / "experiments"
+TRANSLATED_SCRIPT_DIR = Path(__file__).parent / "translated_script"
 
 
 async def compute_scores(translated: list[dict]) -> tuple[float | None, float | None]:
@@ -417,7 +418,8 @@ async def main(video_path: str) -> None:
 
     output_dir = video_path.parent
     stem = video_path.stem
-    srt_path = str(output_dir / f"{stem}_ja.srt")
+    TRANSLATED_SCRIPT_DIR.mkdir(exist_ok=True)
+    srt_path = str(TRANSLATED_SCRIPT_DIR / f"{stem}_ja.srt")
     output_path = str(output_dir / f"{stem}_subtitled.mp4")
 
     with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:

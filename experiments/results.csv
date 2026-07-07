@@ -7,3 +7,4 @@
 2026-07-04,gemini-2.5-flash,economics,0.9783,0.5433,"[tag=uttmerge] 2026-07-02のutterance分断問題への対策。文末punctuationまでDeepgram utteranceを結合してから翻訳(25→12セグメント)。分断されていた文が自然な訳になり、chrFは0.4337→0.5433に改善。xCOMETは1.0→0.9783にわずかに低下(誤差範囲の可能性)。max_words=40の上限で結合が打ち切られ文末で終わらないセグメントが新たに発生する副作用あり。総合的に結合ありの方が良好、MERGE_UTTERANCESをデフォルト化する方向で検討。"
 2026-07-04,gemini-2.5-flash,economics,1.0,0.4994,"[tag=uttmerge_wide] uttmerge(max_words=40/12s)の副作用(結合打ち切りで文末が不完全なセグメント発生)対策として上限を緩和(max_words=60/20s)、25→11セグメント。xCOMETは1.0に回復、chrFは0.4994(baselineより改善、uttmergeよりは低下)。打ち切りによる不自然な途中セグメントは解消。バランスが良いためこの設定をadd_subtitles.pyのデフォルトに採用(MERGE_UTTERANCES=true)。"
 2026-07-06,gemini-2.5-flash,technology,0.9971,0.5378,short_test_llm.mp4 を処理。7 セグメント翻訳。 [tag=shortclip_llm2025]
+2026-07-06,gemini-2.5-flash,technology,1.0,0.7038,short_test_llm8.mp4 を処理。8 セグメント翻訳。 [tag=shortclip_llm8]

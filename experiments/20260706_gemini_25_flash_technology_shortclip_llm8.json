@@ -1,0 +1,8 @@
+{
+  "date": "2026-07-06",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "xcomet_score": 1.0,
+  "chrf_score": 0.7038,
+  "notes": "short_test_llm8.mp4 を処理。8 セグメント翻訳。 [tag=shortclip_llm8]"
+}
