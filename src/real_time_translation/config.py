@@ -47,6 +47,27 @@ class Config:
     domain: str = "general"
     thinking_budget: int = 0
 
+    # 文分断対策（utterance結合）。マイクのリアルタイム翻訳と動画字幕（add_subtitles.py）
+    # で同じアルゴリズム（transcription/utterance_merge.py）を使う。
+    merge_utterances: bool = True
+    utterance_merge_max_duration: float = 8.0
+    utterance_merge_max_words: int = 30
+
+    # utterance分断検出のLLM分類器（incomplete_end_detector）。失敗時は句読点の
+    # 正規表現へ自動フォールバックする。動画/CLI（バッチ）とマイク（ストリーミング、
+    # タイムアウト付き）でそれぞれ独立にON/OFFできる。
+    incomplete_end_detection_enabled: bool = True
+    incomplete_end_detection_enabled_realtime: bool = True
+    incomplete_end_detection_timeout: float = 0.6
+    incomplete_end_detection_model: str | None = None  # 空ならgemini_modelを流用
+
+    # 翻訳完全性チェック（文字数比の異常検知で訳し漏れの疑いを検出）
+    completeness_check_enabled: bool = True
+    completeness_ratio_threshold: float = 0.5
+
+    # Gemini無料枠のレート制限目安（1分あたりの呼び出し上限）。UI警告表示にのみ使用。
+    gemini_free_tier_rpm: int = 15
+
     # Dictionary
     dictionary_path: Path | None = None
 
@@ -141,5 +162,31 @@ class Config:
             translation_queue_size=int(os.getenv("TRANSLATION_QUEUE_SIZE", "10")),
             domain=os.getenv("DOMAIN", "general"),
             thinking_budget=int(os.getenv("THINKING_BUDGET", "0")),
+            merge_utterances=_get_bool_env("MERGE_UTTERANCES", True),
+            utterance_merge_max_duration=float(
+                os.getenv("UTTERANCE_MERGE_MAX_DURATION", "8.0")
+            ),
+            utterance_merge_max_words=int(
+                os.getenv("UTTERANCE_MERGE_MAX_WORDS", "30")
+            ),
+            incomplete_end_detection_enabled=_get_bool_env(
+                "INCOMPLETE_END_DETECTION_ENABLED", True
+            ),
+            incomplete_end_detection_enabled_realtime=_get_bool_env(
+                "INCOMPLETE_END_DETECTION_ENABLED_REALTIME", True
+            ),
+            incomplete_end_detection_timeout=float(
+                os.getenv("INCOMPLETE_END_DETECTION_TIMEOUT", "0.6")
+            ),
+            incomplete_end_detection_model=(
+                os.getenv("INCOMPLETE_END_DETECTION_MODEL", "").strip() or None
+            ),
+            completeness_check_enabled=_get_bool_env(
+                "COMPLETENESS_CHECK_ENABLED", True
+            ),
+            completeness_ratio_threshold=float(
+                os.getenv("COMPLETENESS_RATIO_THRESHOLD", "0.5")
+            ),
+            gemini_free_tier_rpm=int(os.getenv("GEMINI_FREE_TIER_RPM", "15")),
             dictionary_path=dictionary_path,
         )

@@ -105,6 +105,14 @@ class TermDictionary:
         """
         return self._entries.get(term.lower())
 
+    def entries(self) -> list[DictionaryEntry]:
+        """Return all dictionary entries.
+
+        Returns:
+            List of all entries (order not guaranteed)
+        """
+        return list(self._entries.values())
+
     def format_for_prompt(self) -> str:
         """Format dictionary for inclusion in LLM prompt.
 

@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import random
+import time
 from collections.abc import AsyncIterator
 from dataclasses import dataclass
 from pathlib import Path
@@ -26,6 +27,7 @@ from langchain_core.messages import HumanMessage, SystemMessage
 from pydantic import BaseModel, Field  # noqa: F401 (kept for OpenAI structured output)
 
 from real_time_translation.translation.dictionary import TermDictionary
+from real_time_translation.translation.usage_tracking import LlmUsageRecord, UsageSink
 
 
 class TranslationLLMOutput(BaseModel):
@@ -91,6 +93,7 @@ Japanese subtitle guidelines:
         context_window_size: int = 5,
         domain: str = "general",
         thinking_budget: int = 0,
+        usage_sink: UsageSink | None = None,
     ) -> None:
         """Initialize LLM translator.
 
@@ -102,6 +105,9 @@ Japanese subtitle guidelines:
             target_language: Target language name
             dictionary_path: Optional path to CSV dictionary file
             context_window_size: Number of previous lines to keep as context
+            usage_sink: Optional sink to record per-call token usage
+                (see `translation.usage_tracking`). Pass a fresh instance per
+                pipeline run / video job, not a shared global one.
         """
         self._provider = provider
         self._api_key = api_key
@@ -111,6 +117,7 @@ Japanese subtitle guidelines:
         self._context_window_size = context_window_size
         self._domain = domain
         self._thinking_budget = thinking_budget
+        self._usage_sink = usage_sink
 
         self._openai_llm: BaseChatModel | None = None
         self._openai_structured_llm: Any | None = None
@@ -120,10 +127,18 @@ Japanese subtitle guidelines:
 
         self._gemini_client: Any | None = None
 
-        # Load dictionary if provided
+        # Load dictionary if provided. ファイルが見つからない/壊れている場合でも
+        # 翻訳自体は辞書なしで継続できるようにする（動画字幕パスなど、これまで
+        # 辞書を読んでいなかった経路に新しく配線した際に、ファイル未配置で
+        # アプリ全体が落ちるのを防ぐため）。
         self._dictionary = TermDictionary()
         if dictionary_path:
-            self.load_dictionary(dictionary_path)
+            try:
+                self.load_dictionary(dictionary_path)
+            except OSError as exc:
+                logger.warning(
+                    "Failed to load terminology dictionary %s: %s", dictionary_path, exc
+                )
 
     def load_dictionary(self, path: Path | str) -> int:
         """Load terminology dictionary from CSV file.
@@ -234,6 +249,53 @@ Japanese subtitle guidelines:
             )
         return self._openai_structured_llm
 
+    def _record_gemini_usage(self, response: Any, duration_ms: float) -> None:
+        if self._usage_sink is None:
+            return
+        usage = getattr(response, "usage_metadata", None)
+        if usage is None:
+            return
+        self._usage_sink.push(
+            LlmUsageRecord(
+                model=self._model_name,
+                node="translate",
+                prompt_tokens=getattr(usage, "prompt_token_count", None) or 0,
+                completion_tokens=getattr(usage, "candidates_token_count", None) or 0,
+                thinking_tokens=getattr(usage, "thoughts_token_count", None) or 0,
+                duration_ms=duration_ms,
+            )
+        )
+
+    def _record_openai_usage(self, output: Any, duration_ms: float) -> None:
+        """OpenAI経路の使用量記録（ベストエフォート）。
+
+        `with_structured_output` 経由だとusage_metadataが失われる場合があるため、
+        取得できなければ何もしない。
+        """
+        if self._usage_sink is None:
+            return
+        usage = getattr(output, "usage_metadata", None) or getattr(
+            output, "response_metadata", {}
+        ).get("token_usage")
+        if not usage:
+            return
+        def get(key: str, default: Any = None) -> Any:
+            if isinstance(usage, dict):
+                return usage.get(key, default)
+            return getattr(usage, key, default)
+
+        self._usage_sink.push(
+            LlmUsageRecord(
+                model=self._model_name,
+                node="translate",
+                prompt_tokens=get("input_tokens", get("prompt_tokens", 0)) or 0,
+                completion_tokens=(
+                    get("output_tokens", get("completion_tokens", 0)) or 0
+                ),
+                duration_ms=duration_ms,
+            )
+        )
+
     async def _translate_gemini_direct(self, prompt: str, max_retries: int = 5) -> str:
         """Gemini APIを直接呼び出して翻訳する（LangChain・構造化出力を省略）。
 
@@ -255,12 +317,14 @@ Japanese subtitle guidelines:
 
         for attempt in range(max_retries):
             try:
+                call_start = time.monotonic()
                 response = await asyncio.to_thread(
                     client.models.generate_content,
                     model=self._model_name,
                     contents=prompt,
                     config=config,
                 )
+                self._record_gemini_usage(response, (time.monotonic() - call_start) * 1000)
                 return (response.text or "").strip()
             except Exception as e:
                 err = str(e)
@@ -306,7 +370,9 @@ Japanese subtitle guidelines:
                 SystemMessage(content=self._get_system_prompt()),
                 HumanMessage(content=prompt),
             ]
+            call_start = time.monotonic()
             output = await llm.ainvoke(messages)
+            self._record_openai_usage(output, (time.monotonic() - call_start) * 1000)
             translation = output.latest_slide.strip()
             kept_terms = list(output.kept_terms or [])
 

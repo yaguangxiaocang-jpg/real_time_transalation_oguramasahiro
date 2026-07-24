@@ -36,6 +36,24 @@ GEMINI_MODEL = "gemini-2.5-flash"
 EXPERIMENT_TAG = os.environ.get("EXPERIMENT_TAG", "")
 # 文末で終わっていないDeepgram utteranceを次のutteranceと結合してから翻訳するか
 MERGE_UTTERANCES = os.environ.get("MERGE_UTTERANCES", "true").lower() == "true"
+# 用語辞書（CSV: source_term,target_term,notes）。マイクのリアルタイム翻訳
+# （pipeline.py）にはこれまで渡っていたが、動画字幕パスでは配線されて
+# いなかったため追加。
+DICTIONARY_PATH = os.environ.get("DICTIONARY_PATH") or None
+# utterance分断検出のLLM分類器（失敗時は正規表現へ自動フォールバック）
+INCOMPLETE_END_DETECTION_ENABLED = (
+    os.environ.get("INCOMPLETE_END_DETECTION_ENABLED", "true").lower() == "true"
+)
+INCOMPLETE_END_DETECTION_MODEL = (
+    os.environ.get("INCOMPLETE_END_DETECTION_MODEL") or GEMINI_MODEL
+)
+# 翻訳完全性チェック（文字数比の異常検知で訳し漏れの疑いを検出）
+COMPLETENESS_CHECK_ENABLED = (
+    os.environ.get("COMPLETENESS_CHECK_ENABLED", "true").lower() == "true"
+)
+COMPLETENESS_RATIO_THRESHOLD = float(
+    os.environ.get("COMPLETENESS_RATIO_THRESHOLD", "0.5")
+)
 
 # gradio_demo.py の _FULL_NAME と同じマッピング（LLMTranslator のプロンプトに使う言語名）
 _LANGUAGE_NAMES = {
@@ -45,6 +63,7 @@ _LANGUAGE_NAMES = {
 
 EXPERIMENTS_DIR = Path(__file__).parent / "experiments"
 TRANSLATED_SCRIPT_DIR = Path(__file__).parent / "translated_script"
+SEGMENTS_DIR = Path(__file__).parent / "experiments" / "segments"
 
 
 async def compute_scores(translated: list[dict]) -> tuple[float | None, float | None]:
@@ -125,6 +144,7 @@ def save_experiment_record(
     xcomet_score: float | None = None,
     chrf_score: float | None = None,
     notes: str = "",
+    report: dict | None = None,
 ) -> None:
     """実験結果をexperimentsフォルダに保存する。"""
     EXPERIMENTS_DIR.mkdir(exist_ok=True)
@@ -135,10 +155,21 @@ def save_experiment_record(
     json_name = f"{today}_{model_slug}_{TRANSLATION_DOMAIN}{tag_suffix}.json"
     json_path = EXPERIMENTS_DIR / json_name
 
+    report_notes = ""
+    if report:
+        flagged = report.get("flagged_count", 0)
+        misses = report.get("terminology_misses") or []
+        report_notes = f" [{report.get('usage_summary', '')}]"
+        if flagged:
+            report_notes += f" [要確認: {flagged}件]"
+        if misses:
+            report_notes += f" [用語漏れ: {', '.join(misses)}]"
+
     auto_notes = (
         f"{video_path.name} を処理。{len(translated)} セグメント翻訳。"
         + (f" [tag={EXPERIMENT_TAG}]" if EXPERIMENT_TAG else "")
         + (f" {notes}" if notes else "")
+        + report_notes
     )
 
     record = {
@@ -169,6 +200,50 @@ def save_experiment_record(
             record["notes"],
         ])
     print(f"results.csv を更新: {csv_path}")
+
+
+def save_segments(
+    translated: list[dict], video_path: Path, report: dict | None = None
+) -> Path:
+    """セグメント単位の生データ（原文・訳文・タイムスタンプ）を保存する。
+
+    experiments/*.json の集計スコア・notesだけでは、後から「この動画・この訳が
+    正しかったか」を検証できない（原文がどこにも残らない）。ここで生データを
+    残しておくことで、evaluation/benchmarks/ 用のベンチマークデータセットを
+    後から人手でレビュー・選定できるようにする（正解データを都度作り直す手間を防ぐ）。
+
+    `report`（translate_segments が返す使用量・要確認件数・用語漏れ）も
+    合わせて残し、後からパラメータ変更の影響を追跡できるようにする。
+    """
+    SEGMENTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    today = date.today().strftime("%Y%m%d")
+    tag_suffix = f"_{EXPERIMENT_TAG}" if EXPERIMENT_TAG else ""
+    json_path = SEGMENTS_DIR / f"{today}_{video_path.stem}{tag_suffix}.json"
+
+    record = {
+        "date": date.today().strftime("%Y-%m-%d"),
+        "video": video_path.name,
+        "model": GEMINI_MODEL,
+        "domain": TRANSLATION_DOMAIN,
+        "merge_utterances": MERGE_UTTERANCES,
+        "report": report or {},
+        "segments": [
+            {
+                "start": seg["start"],
+                "end": seg["end"],
+                "source": seg["original"],
+                "mt_ja": seg["japanese"],
+                "review_flag": seg.get("review_flag"),
+            }
+            for seg in translated
+        ],
+    }
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(record, f, ensure_ascii=False, indent=2)
+    print(f"セグメント生データを保存: {json_path}")
+    return json_path
 
 
 def extract_audio(video_path: str, audio_path: str) -> None:
@@ -279,58 +354,33 @@ def group_words_into_segments(
     return segments
 
 
-_SENTENCE_END_RE = re.compile(r"[.!?][\"'”\)\]]*$")
+# merge_incomplete_utterances はマイクのリアルタイム翻訳（pipeline.py の
+# StreamingUtteranceMerger）と同じアルゴリズムを共有する（transcription/utterance_merge.py）。
+from real_time_translation.transcription.utterance_merge import (
+    merge_incomplete_utterances,
+)
 
 
-def merge_incomplete_utterances(
-    utterances: list[dict],
-    max_duration: float = 20.0,
-    max_words: int = 60,
-) -> list[dict]:
-    """文末の句読点で終わっていないutteranceを次のutteranceと結合する。
-
-    Deepgramのutterance分割は無音区間の長さで決まるため、1文が途中の
-    息継ぎ位置で複数utteranceに分断されることがある（例:
-    "in The United States. It's called the federal" / "funds rate,"）。
-    各utteranceを独立に翻訳するとこうした断片が文法的に不自然な訳になる
-    ため、文末punctuationが来るまで結合してから翻訳に渡す。
-    """
-    if not utterances:
-        return utterances
-
-    merged: list[dict] = []
-    buf = dict(utterances[0])
-
-    for nxt in utterances[1:]:
-        text = buf["transcript"].strip()
-        duration = buf["end"] - buf["start"]
-        word_count = len(text.split())
-
-        if (
-            not _SENTENCE_END_RE.search(text)
-            and duration < max_duration
-            and word_count < max_words
-        ):
-            buf["transcript"] = f"{text} {nxt['transcript'].strip()}"
-            buf["end"] = nxt["end"]
-        else:
-            merged.append(buf)
-            buf = dict(nxt)
-
-    merged.append(buf)
-    return merged
-
-
-async def translate_segments(utterances: list[dict]) -> list[dict]:
+async def translate_segments(utterances: list[dict]) -> tuple[list[dict], dict]:
     """マイクのリアルタイム翻訳と同じ LLMTranslator パイプラインで各セグメントを翻訳する。
 
     文脈窓・ドメイン別プロンプトを共有し、オフライン処理なので
     thinking_budget=1024 で精度を優先する（gradio_demo.py の
     _video_translate_with_pipeline と同じ設定）。
+
+    戻り値は (翻訳済みセグメント一覧, レポート) のタプル。レポートには
+    LLM使用量サマリ・要確認セグメント件数・用語漏れ一覧を含む。
     """
+    from real_time_translation.translation.completeness_check import CompletenessTracker
     from real_time_translation.translation.llm_translator import LLMTranslator
+    from real_time_translation.translation.terminology_check import (
+        check_terminology,
+        format_terminology_misses,
+    )
+    from real_time_translation.translation.usage_tracking import UsageSink
 
     print("Geminiで日本語翻訳中...")
+    usage_sink = UsageSink()
     translator = LLMTranslator(
         provider="gemini",
         api_key=GOOGLE_API_KEY,
@@ -340,23 +390,63 @@ async def translate_segments(utterances: list[dict]) -> list[dict]:
         domain=TRANSLATION_DOMAIN,
         context_window_size=5,
         thinking_budget=1024,
+        dictionary_path=DICTIONARY_PATH,
+        usage_sink=usage_sink,
+    )
+    completeness_tracker = CompletenessTracker(
+        ratio_threshold=COMPLETENESS_RATIO_THRESHOLD
     )
 
     translated = []
     total = len(utterances)
+    flagged_count = 0
 
     for i, u in enumerate(utterances):
         output = await translator.translate(u["transcript"])
+
+        review_flag = None
+        if COMPLETENESS_CHECK_ENABLED:
+            flag = completeness_tracker.check(u["transcript"], output.latest_slide)
+            if flag is not None:
+                review_flag = flag.flag
+                flagged_count += 1
+                print(f"  ⚠️ 要確認（{flag.flag}）: {u['transcript'][:60]}")
+
         translated.append({
             "start": u["start"],
             "end": u["end"],
             "original": u["transcript"],
             "japanese": output.latest_slide,
+            "review_flag": review_flag,
         })
         print(f"  翻訳済み: {i + 1}/{total}")
 
     print("翻訳完了")
-    return translated
+
+    terminology_result = check_terminology(
+        [(seg["original"], seg["japanese"]) for seg in translated],
+        translator.dictionary,
+    )
+    print(f"  {usage_sink.summary_text()}")
+    print(f"  {format_terminology_misses(terminology_result.misses)}")
+    if flagged_count:
+        print(f"  ⚠️ 要確認セグメント: {flagged_count}/{total}件")
+
+    report = {
+        "usage_summary": usage_sink.summary_text(),
+        "usage_calls": sum(a.calls for a in usage_sink.aggregate_by_model()),
+        "usage_prompt_tokens": sum(
+            a.prompt_tokens for a in usage_sink.aggregate_by_model()
+        ),
+        "usage_completion_tokens": sum(
+            a.completion_tokens for a in usage_sink.aggregate_by_model()
+        ),
+        "flagged_count": flagged_count,
+        "terminology_misses": [
+            f"{m.source_term}→{m.target_term}" for m in terminology_result.misses
+        ],
+    }
+    return translated, report
 
 
 def seconds_to_srt_time(seconds: float) -> str:
@@ -369,7 +459,7 @@ def seconds_to_srt_time(seconds: float) -> str:
 
 
 def create_srt(translated: list[dict], srt_path: str) -> None:
-    """SRT字幕ファイルを生成する。"""
+    """SRT字幕ファイル（日本語のみ、動画への焼き込み用）を生成する。"""
     print(f"SRTファイル生成中: {srt_path}")
     lines = []
     for i, seg in enumerate(translated, 1):
@@ -383,6 +473,24 @@ def create_srt(translated: list[dict], srt_path: str) -> None:
     with open(srt_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
     print("SRTファイル生成完了")
+
+
+def create_bilingual_srt(translated: list[dict], srt_path: str) -> None:
+    """英語原文と日本語訳を1ブロックに並記したSRTファイルを生成する（translated_script/保存用）。"""
+    print(f"英日併記SRTファイル生成中: {srt_path}")
+    lines = []
+    for i, seg in enumerate(translated, 1):
+        start = seconds_to_srt_time(seg["start"])
+        end = seconds_to_srt_time(seg["end"])
+        lines.append(str(i))
+        lines.append(f"{start} --> {end}")
+        lines.append(seg["original"])
+        lines.append(seg["japanese"])
+        lines.append("")
+
+    with open(srt_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    print("英日併記SRTファイル生成完了")
 
 
 def burn_subtitles(video_path: str, srt_path: str, output_path: str) -> None:
@@ -424,6 +532,8 @@ async def main(video_path: str) -> None:
 
     with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
         audio_path = tmp.name
+    with tempfile.NamedTemporaryFile(suffix=".srt", delete=False) as tmp:
+        burn_srt_path = tmp.name
 
     try:
         # 1. 音声抽出
@@ -434,7 +544,30 @@ async def main(video_path: str) -> None:
 
         if MERGE_UTTERANCES:
             before = len(utterances)
-            utterances = merge_incomplete_utterances(utterances)
+            if INCOMPLETE_END_DETECTION_ENABLED:
+                from real_time_translation.config import Config as _Config
+                from real_time_translation.transcription.utterance_merge import (
+                    DEFAULT_MAX_DURATION,
+                    DEFAULT_MAX_WORDS,
+                    merge_incomplete_utterances_with_detector,
+                )
+
+                detector_config = _Config(
+                    deepgram_api_key=DEEPGRAM_API_KEY,
+                    llm_provider="gemini",
+                    zoom_client_id="",
+                    zoom_client_secret="",
+                    google_api_key=GOOGLE_API_KEY,
+                    gemini_model=GEMINI_MODEL,
+                    incomplete_end_detection_model=INCOMPLETE_END_DETECTION_MODEL,
+                    utterance_merge_max_duration=DEFAULT_MAX_DURATION,
+                    utterance_merge_max_words=DEFAULT_MAX_WORDS,
+                )
+                utterances = await merge_incomplete_utterances_with_detector(
+                    utterances, detector_config
+                )
+            else:
+                utterances = merge_incomplete_utterances(utterances)
             print(f"utterance結合: {before} → {len(utterances)} セグメント")
 
         if not utterances:
@@ -442,11 +575,16 @@ async def main(video_path: str) -> None:
             sys.exit(1)
 
         # 3. 翻訳
-        translated = await translate_segments(utterances)
+        translated, report = await translate_segments(utterances)
 
-        # 4. SRT生成
-        create_srt(translated, srt_path)
-        print(f"\nSRTファイル: {srt_path}")
+        # 原文・訳文・タイムスタンプの生データを保存
+        # （経験的に、集計スコアだけ残すと後からベンチマークデータを作れなくなるため）
+        save_segments(translated, video_path, report)
+
+        # 4. SRT生成（動画焼き込み用は日本語のみ、translated_script/保存用は英日併記）
+        create_srt(translated, burn_srt_path)
+        create_bilingual_srt(translated, srt_path)
+        print(f"\nSRTファイル（英日併記）: {srt_path}")
 
         # プレビュー
         print("\n--- 字幕プレビュー（最初の5件） ---")
@@ -455,20 +593,24 @@ async def main(video_path: str) -> None:
             print(f"  → {seg['japanese']}")
         print("---\n")
 
-        # 5. 字幕焼き込み
-        burn_subtitles(str(video_path), srt_path, output_path)
+        # 5. 字幕焼き込み（日本語のみ）
+        burn_subtitles(str(video_path), burn_srt_path, output_path)
 
         print(f"\n完了!")
         print(f"字幕付き動画: {output_path}")
-        print(f"SRTファイル:  {srt_path}")
+        print(f"SRTファイル（英日併記）: {srt_path}")
 
         # 6. 自動評価スコアを計算して実験記録を保存
         xcomet_score, chrf_score = await compute_scores(translated)
-        save_experiment_record(translated, video_path, xcomet_score, chrf_score)
+        save_experiment_record(
+            translated, video_path, xcomet_score, chrf_score, report=report
+        )
 
     finally:
         if os.path.exists(audio_path):
             os.unlink(audio_path)
+        if os.path.exists(burn_srt_path):
+            os.unlink(burn_srt_path)
 
 
 if __name__ == "__main__":

@@ -128,6 +128,227 @@ pinned: false
 
 ## 更新履歴
 
+### 2026/07/23
+
+#### 変更内容
+
+**翻訳品質チェック4点を追加し、マイクのリアルタイム翻訳・動画字幕生成の両方に適用**
+
+これまで自動評価（xCOMET/chrF）はあったが、「今まさに訳し漏れが起きていないか」
+「用語辞書が実際に守られているか」「LLM呼び出しが無料枠の上限に近づいていない
+か」をその場で検知する仕組みがなかった。今回、以下の4つを追加した
+（マイクのリアルタイム翻訳 `pipeline.py` と動画字幕生成の両方に適用）。
+
+1. **翻訳完全性チェック（要確認フラグ）** — `translation/completeness_check.py`。
+   原文の文字数に対する訳文の文字数比を直近セグメントの中央値と比較し、
+   極端に低い（＝訳が短すぎる＝訳し漏れの疑いがある）セグメントに
+   `⚠️ 要確認` フラグを立てる。API呼び出し不要の統計的ヒューリスティック。
+2. **LLM使用量トラッキング／レート制限警告** — `translation/usage_tracking.py`。
+   呼び出しごとのトークン数を記録し、モデル別に集計。Gemini無料枠の目安
+   （既定15回/分、`GEMINI_FREE_TIER_RPM`）に近づくとUIに警告を表示する。
+   「翻訳が途中で止まった」（下記FAQ）に事前に気づけるようにする狙い。
+3. **utterance分断検出のLLM分類器化** — `transcription/incomplete_end_detector.py`。
+   これまで「文末が `. ! ? ` で終わっているか」という正規表現だけで
+   utterance結合の要否を判定していたが、句読点が付かない/正規表現でカバーし
+   きれないケースを取りこぼしていた。軽量LLMによるバッチ判定を追加し、
+   判定に失敗した場合は正規表現へ自動フォールバックする。マイク（ストリーミング）
+   側は `INCOMPLETE_END_DETECTION_TIMEOUT`（既定0.6秒）でタイムアウトし、
+   リアルタイム性を壊さないようにしている。
+4. **用語辞書カバレッジ検査** — `translation/terminology_check.py`。
+   `LLMTranslator` は用語辞書をプロンプトに埋め込むだけで、実際に使われたかは
+   検証していなかった。「原文にその用語が出たのに訳文に期待訳語が出ていない」
+   ケース（用語漏れ）を検出するようにした。
+
+**実装の過程で見つかった既存の不整合を合わせて修正**
+
+- **動画字幕タブ（`gradio_demo.py::process_video`、= `app.py`/`launch.bat` が
+  使う本番エントリーポイント）に utterance 結合が一切適用されていなかった。**
+  `add_subtitles.py`（実験用CLIスクリプト）だけが結合していたため、
+  CLAUDE.md が前提とする「マイクと動画/CLIは同じアルゴリズムを共有」は
+  実際のGradio動画タブには当てはまっていなかった。今回、動画タブにも
+  同じutterance結合処理を追加した。
+- **動画字幕パス（`add_subtitles.py` / `gradio_demo.py` の動画タブ）は
+  `LLMTranslator` に用語辞書（`DICTIONARY_PATH`）を渡していなかった。**
+  マイクのリアルタイム翻訳にしか辞書が効いていなかったため、両経路に配線した。
+
+**設定項目を追加**（`config.py` / `.env`）
+
+| 環境変数 | デフォルト | 説明 |
+|---|---|---|
+| `INCOMPLETE_END_DETECTION_ENABLED` | `true` | utterance分断検出のLLM分類器を使うか（動画/CLI側） |
+| `INCOMPLETE_END_DETECTION_ENABLED_REALTIME` | `true` | 同上（マイク側。タイムアウトあり） |
+| `INCOMPLETE_END_DETECTION_TIMEOUT` | `0.6`（秒） | マイク側のLLM判定タイムアウト。超えたら正規表現にフォールバック |
+| `INCOMPLETE_END_DETECTION_MODEL` | 空（`GEMINI_MODEL`を流用） | 分類専用に別モデルを使いたい場合に指定 |
+| `COMPLETENESS_CHECK_ENABLED` | `true` | 翻訳完全性チェックのON/OFF |
+| `COMPLETENESS_RATIO_THRESHOLD` | `0.5` | 直近中央値の何倍を下回ったら要確認フラグを立てるか |
+| `GEMINI_FREE_TIER_RPM` | `15` | Gemini無料枠のレート制限目安（UI警告表示にのみ使用） |
+
+#### 未検証
+
+- 実APIキーを使ったエンドツーエンドの動作確認（マイク・動画タブとも）は
+  未実施。ロジックはユニットテスト（モック）で担保している。
+- utterance分断検出のLLM分類器化による翻訳精度への効果（xCOMET/chrFの変化）は
+  未計測。次回、`evaluation/run_benchmark.py` で before/after 比較を行う予定。
+
+---
+
+**LLM第8回講義動画（継続学習・MOEがテーマ、`2d07bb74`）からベンチマーク5件を追加し、
+reference-based chrFで精度評価**
+
+これまでの `experiments/*.json` は逆翻訳ベースのchrF（英→日→英に戻して原文と比較）
+または LLM-as-judge のxCOMETのみで、「人間が作った正解訳とどれだけ一致するか」を
+直接測るベンチマークは `evaluation/benchmarks/economics_federal_funds_rate.json`
+の1件（1セグメントのみ）しかなかった。
+
+今回、既存の切り出し済みクリップ5本（`clips/2d07bb74_clip1〜5.mp4`、
+`experiments/segments/` に文字起こし結果が残っていたためDeepgram再実行なし）を使い、
+各クリップの英語原文（合計47セグメント、technology ドメイン）を claude-sonnet-5 が
+独立に和訳し、`evaluation/benchmarks/technology_moe_2d07bb74_clip{1-5}.json` として
+登録した（`reference_status: draft_needs_human_review`）。この正解訳に対して現行の
+`LLMTranslator`（gemini-2.5-flash, thinking_budget=1024）の出力を
+`evaluation/run_benchmark.py` で評価した。
+
+| クリップ | セグメント数 | chrF（reference-based） |
+|---|---|---|
+| clip1 | 9 | 0.588 |
+| clip2 | 9 | 0.686 |
+| clip3 | 11 | 0.607 |
+| clip4 | 9 | 0.565 |
+| clip5 | 9 | 0.572 |
+| **平均** | 47 | **0.603** |
+
+全セグメントを目視確認したが、意味の取り違えや訳抜けは無く、chrFが1.0にならない
+主な要因は言い回しの違い（接続詞の有無・語順・同義語選択）だった。一方で2点、
+改善余地を確認した。
+
+- Deepgramが "T5" → "TIFINE"、"PaLM" → "Parm" のように誤認識した箇所を、
+  翻訳もそのまま誤認識のまま出力していた（辞書に無い固有名詞のASR誤りは
+  補正されない）。`dictionary.csv` に補正用エントリを足すことで改善できる見込み。
+- clip3の1セグメントで、1文の訳が3行に不自然に改行されて出力された（原因未調査）。
+
+生の翻訳結果は `experiments/20260723_gemini_25_flash_benchmark_technology_moe_2d07bb74_clip{1-5}.json`
+に保存済み。正解訳は人手レビュー未了のため、本格運用前に専門家の確認が必要。
+
+### 2026/07/11
+
+#### 変更内容
+
+**英日併記SRTファイルの出力（`add_subtitles.py`）**
+
+これまで `translated_script/` フォルダに保存されるSRTファイルは日本語訳のみでした。
+今回、認識した英語原文と日本語訳を1つの字幕ブロックに2行で並記して出力するように
+変更しました（`create_bilingual_srt()`）。
+
+```
+1
+00:00:00,240 --> 00:00:04,319
+Base as it prioritize the new specific domain.
+新しいドメインを優先することが弊害となっています。
+```
+
+動画への字幕焼き込み（`burn_subtitles`）は従来通り日本語のみです。焼き込み用の
+SRTは処理中だけ使う一時ファイルに分離し（永続化せず処理後に削除）、
+`translated_script/*_ja.srt` は英日併記版のみが残るようにしました。
+
+---
+
+### 2026/07/08
+
+#### 変更内容
+
+**マイクのリアルタイム翻訳にも文分断対策を実装**
+
+2026/07/02〜07/04 の実験で見つかった「Deepgramのutterance分割が文の途中で
+発生し、断片が不自然な訳になる」問題（`merge_incomplete_utterances`）は、
+これまで `add_subtitles.py`（動画字幕・CLI経路）にのみ実装されており、
+マイクのリアルタイム翻訳パイプライン（`pipeline.py`）には未反映でした。
+
+今回、結合ロジックを `src/real_time_translation/transcription/utterance_merge.py`
+に切り出し、以下の2つの実装で共有するようにしました。
+
+- `merge_incomplete_utterances()`：バッチ版（`add_subtitles.py` が使用）
+- `StreamingUtteranceMerger`：ストリーミング版（`pipeline.py` が使用）。
+  Deepgramの `is_final=True` 結果を1件ずつ受け取り、文末の句読点
+  （`. ! ?`）で終わっていなければ内部バッファに保持し、次のfinal結果が
+  来るまで翻訳キューに積まない（＝**字幕の確定表示を少し遅らせてから
+  結合する**）。文末に達するか、上限（デフォルト: 8秒 or 30語）を超えたら
+  結合を確定し、翻訳キューに送る。
+
+これにより「in The United States. It's called the federal」/「funds rate,」
+のような分断も、マイク経由のリアルタイム翻訳で同様に解消されます。
+
+**設定項目を追加**（`config.py` / `.env`）
+
+| 環境変数 | デフォルト | 説明 |
+|---|---|---|
+| `MERGE_UTTERANCES` | `true` | utterance結合のON/OFF |
+| `UTTERANCE_MERGE_MAX_DURATION` | `8.0`（秒） | 結合を打ち切るまでの最大長さ |
+| `UTTERANCE_MERGE_MAX_WORDS` | `30`（語） | 結合を打ち切るまでの最大語数 |
+
+動画/CLI側（`add_subtitles.py`）はオフライン処理のため従来通り
+`max_duration=20.0秒 / max_words=60語` と長めの上限のまま。マイク側は
+リアルタイム性を優先し、字幕確定の遅延が大きくなりすぎないよう
+短めの上限（8秒 / 30語）をデフォルトにしています。
+
+**パイプライン停止時のバッファ処理**
+
+`TranslationPipeline.stop()` で、結合待ちのまま残っていた未確定の断片は
+`flush()` で強制的に翻訳キューへ送るようにし、末尾の発話が失われないように
+しました。`clear_context()`（文脈クリア操作）でも結合バッファをリセットします。
+
+**テスト追加**
+
+`tests/test_utterance_merge.py` にバッチ版・ストリーミング版それぞれの
+結合ロジック（文末判定・秒数上限・語数上限・flush）のユニットテストを追加。
+
+#### 未検証
+
+- 実際のマイク入力（ライブ音声）でのA/B比較実験はまだ実施していません
+  （ユニットテストでロジックの正しさのみ確認済み）。次回、動画と同様に
+  xCOMET/chrFで実地検証する予定です。
+- リアルタイム性への影響（字幕確定までの体感遅延）も未計測です。
+
+---
+
+**固定ベンチマークデータセットの導入（`evaluation/`）**
+
+`experiments/results.csv` を見直したところ、これまでの比較実験は
+毎回違う動画（index.mp4 → short_test.mp4 → short_test_llm.mp4 →
+short_test_llm8.mp4 …）・違うセグメント数で行われており、スコアの変化が
+「パイプラインの変更によるもの」か「その回だけたまたま訳しやすい動画
+だったから」なのかを区別できないという問題がありました。また、
+`experiments/*.json` には集計スコアと所感（notes）しか残しておらず、
+原文・訳文そのものはどこにも保存されていなかったため、後から
+ベンチマークデータを作ろうにも材料がない状態でした。
+
+対策として以下を追加しました。
+
+1. **`add_subtitles.py` に生データ保存機能を追加**：実行のたびに
+   `experiments/segments/YYYYMMDD_<動画名>.json` へ、全セグメントの
+   原文・訳文・タイムスタンプを自動保存するようにしました。
+   今後の実験から、ベンチマーク候補データが自然に蓄積されます。
+2. **`evaluation/` フォルダを新設**：固定入力データ（`raw_utterances`）と
+   人手レビュー済み正解訳（`reference_ja`）をセットにした
+   ベンチマークファイル（`evaluation/benchmarks/*.json`）と、それを
+   実行して reference-based chrF を計測する
+   `evaluation/run_benchmark.py` を追加しました。
+   `--thinking-budget` / `--context-window-size` で設定を変えながら、
+   同じデータに対して before/after を比較できます。
+3. **seedベンチマークを1件追加**：2026-07-02の実験で見つかった
+   「federal funds rate」の文分断の実例（`experiments/20260702_...json`の
+   notesから復元）を `evaluation/benchmarks/economics_federal_funds_rate.json`
+   として登録しました。正解訳はClaudeが作成した草案のため
+   `reference_status: "draft_needs_human_review"` としており、本格運用前に
+   人手レビューが必要です。
+4. **`CLAUDE.md` に運用ルールを追記**：「アドホック実験」（探索的、動画は
+   毎回変えてよい）と「ベンチマーク実験」（回帰テスト、入力データは固定）を
+   使い分けるルールを明文化しました。
+
+これにより、今後 utterance結合のパラメータやプロンプトを調整する際は、
+`evaluation/run_benchmark.py` で固定データに対する before/after を
+直接比較できるようになります（動画を選び直す手間や、目視での
+字幕プレビュー確認への依存を減らせます）。
+
 ### 2026/07/06
 
 #### 変更内容

@@ -46,6 +46,21 @@ from real_time_translation.pipeline import TranslationPipeline, TranslationResul
 TARGET_SAMPLE_RATE = 16000
 MAX_DISPLAY_LINES = 50
 
+# 動画字幕タブ（本番エントリーポイント）向けの設定。add_subtitles.py（実験用CLI）と
+# 同じ環境変数を読む。以前はここに utterance 結合・辞書配線が一切なく、
+# add_subtitles.py だけの機能になっていたため合わせて追加した。
+VIDEO_MERGE_UTTERANCES = os.environ.get("MERGE_UTTERANCES", "true").lower() == "true"
+VIDEO_DICTIONARY_PATH = os.environ.get("DICTIONARY_PATH") or None
+VIDEO_INCOMPLETE_END_DETECTION_ENABLED = (
+    os.environ.get("INCOMPLETE_END_DETECTION_ENABLED", "true").lower() == "true"
+)
+VIDEO_COMPLETENESS_CHECK_ENABLED = (
+    os.environ.get("COMPLETENESS_CHECK_ENABLED", "true").lower() == "true"
+)
+VIDEO_COMPLETENESS_RATIO_THRESHOLD = float(
+    os.environ.get("COMPLETENESS_RATIO_THRESHOLD", "0.5")
+)
+
 # Language options: list of (display name, language code)
 LANGUAGE_OPTIONS: list[tuple[str, str]] = [
     ("English", "en"),
@@ -122,6 +137,19 @@ def _delay_display(latest_delay: float, avg_delay: float, pending: int) -> str:
 
 def _timestamp() -> str:
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
+def _usage_line(pipeline: TranslationPipeline) -> str:
+    """LLM使用量とGemini無料枠のレート制限への近さを1行で表示する。"""
+    status = pipeline.usage_status()
+    line = f"📊 {pipeline.usage_summary_text()}"
+    if status.near_limit:
+        line += (
+            f"　⚠️ 直近1分で{status.calls_last_60s}回呼び出し"
+            f"（無料枠目安 {status.limit}回/分 に接近。"
+            "しばらく待つとエラーを回避できます）"
+        )
+    return line
 
 
 def _convert_file_to_pcm(file_path: str) -> bytes:
@@ -251,6 +279,11 @@ async def start_session(
         if result.kept_terms:
             kept = ", ".join(result.kept_terms)
             print(f"[{timestamp}] Kept terms: {kept}")
+        if result.review_flag:
+            print(
+                f"[{timestamp}] ⚠️ 要確認 ({result.review_flag}): "
+                f"{result.translated_text}"
+            )
         with contextlib.suppress(asyncio.QueueFull):
             results_queue.put_nowait(result)
 
@@ -279,8 +312,16 @@ async def stop_session(state: DemoSession | None) -> tuple[DemoSession | None, s
     if state is None:
         return None, _status("stopped"), "⏱ 音声認識→和訳: -"
 
+    from real_time_translation.translation.terminology_check import (
+        format_terminology_misses,
+    )
+
+    usage_line = _usage_line(state.pipeline)
+    terminology_line = format_terminology_misses(state.pipeline.terminology_report().misses)
+
     await state.pipeline.stop()
-    return None, _status("stopped"), "⏱ 音声認識→和訳: -"
+    summary = f"⏱ 音声認識→和訳: -\n\n{usage_line}\n\n{terminology_line}"
+    return None, _status("stopped"), summary
 
 
 async def clear_logs(state: DemoSession | None) -> tuple[str, str]:
@@ -432,8 +473,11 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
             continue
 
         # Final result - add to history and clear interim
+        translated_display = (
+            f"⚠️ {result.translated_text}" if result.review_flag else result.translated_text
+        )
         state.transcript_lines.append(result.original_text)
-        state.translation_lines.append(result.translated_text)
+        state.translation_lines.append(translated_display)
         state.interim_transcript = ""
         if result.slide_window:
             latest_slide_window = result.slide_window
@@ -464,6 +508,7 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
     avg_delay = sum(state.recent_delays) / len(state.recent_delays) if state.recent_delays else 0.0
     pending = state.pipeline.pending_count
     delay_text = _delay_display(state.latest_delay, avg_delay, pending)
+    delay_text += "\n\n" + _usage_line(state.pipeline)
 
     return transcript, translation, _status("running"), delay_text
 
@@ -569,14 +614,23 @@ async def _video_translate_with_pipeline(
     target_language: str = "ja",
     domain: str = "general",
     on_progress=None,  # callback(utt_idx, total)
-) -> list[dict]:
+    dictionary_path: str | None = None,
+) -> tuple[list[dict], dict]:
     """Translate video utterances using the same LLMTranslator pipeline as microphone mode.
 
     Uses context window, domain-aware system prompt, and thinking_budget=1024
     for higher accuracy in offline (non-realtime) processing.
-    """
-    from real_time_translation.translation.llm_translator import LLMTranslator
 
+    Returns (translated_segments, report). `report` carries LLM usage summary,
+    the count of segments flagged for review, and terminology dictionary misses
+    (see `translation.completeness_check` / `translation.terminology_check`).
+    """
+    from real_time_translation.translation.completeness_check import CompletenessTracker
+    from real_time_translation.translation.llm_translator import LLMTranslator
+    from real_time_translation.translation.terminology_check import check_terminology
+    from real_time_translation.translation.usage_tracking import UsageSink
+
+    usage_sink = UsageSink()
     translator = LLMTranslator(
         provider="gemini",
         api_key=api_key,
@@ -586,21 +640,48 @@ async def _video_translate_with_pipeline(
         domain=domain,
         context_window_size=5,
         thinking_budget=1024,
+        dictionary_path=dictionary_path,
+        usage_sink=usage_sink,
+    )
+    completeness_tracker = CompletenessTracker(
+        ratio_threshold=VIDEO_COMPLETENESS_RATIO_THRESHOLD
     )
 
     translated: list[dict] = []
     total = len(utterances)
+    flagged_count = 0
     for i, utt in enumerate(utterances):
         if on_progress:
             on_progress(i, total)
         output = await translator.translate(utt["transcript"])
+
+        review_flag = None
+        if VIDEO_COMPLETENESS_CHECK_ENABLED:
+            flag = completeness_tracker.check(utt["transcript"], output.latest_slide)
+            if flag is not None:
+                review_flag = flag.flag
+                flagged_count += 1
+
         translated.append({
             "start": utt["start"],
             "end": utt["end"],
             "original": utt["transcript"],
             "japanese": output.latest_slide,
+            "review_flag": review_flag,
         })
-    return translated
+
+    terminology_result = check_terminology(
+        [(seg["original"], seg["japanese"]) for seg in translated],
+        translator.dictionary,
+    )
+    report = {
+        "usage_summary": usage_sink.summary_text(),
+        "flagged_count": flagged_count,
+        "terminology_misses": [
+            f"{m.source_term}→{m.target_term}" for m in terminology_result.misses
+        ],
+    }
+    return translated, report
 
 
 def _seconds_to_srt(s: float) -> str:
@@ -771,8 +852,43 @@ async def process_video(
         utterances = await asyncio.to_thread(
             _video_transcribe, audio_path, deepgram_key, source_code
         )
-        gr_progress(0.30, desc=f"文字起こし完了: {len(utterances)} セグメント")
+        gr_progress(0.25, desc=f"文字起こし完了: {len(utterances)} セグメント")
         yield step(f"✅ 文字起こし完了: {len(utterances)} セグメント"), None, None, ""
+
+        # utterance分断対策（文末で終わっていない断片の結合）。
+        # 以前はこのGradio動画タブには適用されておらず、add_subtitles.py（実験用CLI）
+        # にしかない機能だったため追加。
+        if VIDEO_MERGE_UTTERANCES:
+            before_count = len(utterances)
+            if VIDEO_INCOMPLETE_END_DETECTION_ENABLED:
+                from real_time_translation.transcription.utterance_merge import (
+                    DEFAULT_MAX_DURATION,
+                    DEFAULT_MAX_WORDS,
+                    merge_incomplete_utterances_with_detector,
+                )
+
+                detector_config = Config(
+                    deepgram_api_key=deepgram_key,
+                    llm_provider="gemini",
+                    zoom_client_id="",
+                    zoom_client_secret="",
+                    google_api_key=google_key,
+                    gemini_model="gemini-2.5-flash",
+                    utterance_merge_max_duration=DEFAULT_MAX_DURATION,
+                    utterance_merge_max_words=DEFAULT_MAX_WORDS,
+                )
+                utterances = await merge_incomplete_utterances_with_detector(
+                    utterances, detector_config
+                )
+            else:
+                from real_time_translation.transcription.utterance_merge import (
+                    merge_incomplete_utterances,
+                )
+
+                utterances = merge_incomplete_utterances(utterances)
+            merge_desc = f"utterance結合: {before_count} → {len(utterances)} セグメント"
+            gr_progress(0.30, desc=merge_desc)
+            yield step(f"✅ {merge_desc}"), None, None, ""
 
         yield step(f"🌐 {target_display}に翻訳中（Gemini / ドメイン: {domain}）..."), None, None, ""
 
@@ -780,11 +896,27 @@ async def process_video(
             frac = 0.30 + 0.40 * (utt_idx / max(total, 1))
             gr_progress(frac, desc=f"翻訳中... ({utt_idx}/{total} セグメント)")
 
-        translated = await _video_translate_with_pipeline(
-            utterances, google_key, source_code, target_code, domain, on_progress
+        translated, translation_report = await _video_translate_with_pipeline(
+            utterances,
+            google_key,
+            source_code,
+            target_code,
+            domain,
+            on_progress,
+            dictionary_path=VIDEO_DICTIONARY_PATH,
         )
         gr_progress(0.70, desc=f"翻訳完了: {len(translated)} セグメント")
         yield step(f"✅ 翻訳完了: {len(translated)} セグメント"), None, None, ""
+        yield step(f"📊 {translation_report['usage_summary']}"), None, None, ""
+        if translation_report["flagged_count"]:
+            flagged_desc = (
+                f"⚠️ 要確認セグメント: {translation_report['flagged_count']}"
+                f"/{len(translated)}件"
+            )
+            yield step(flagged_desc), None, None, ""
+        if translation_report["terminology_misses"]:
+            misses_str = ", ".join(translation_report["terminology_misses"])
+            yield step(f"⚠️ 用語漏れ: {misses_str}"), None, None, ""
 
         gr_progress(0.72, desc="SRTファイル生成中...")
         yield step("📄 SRTファイル生成中..."), None, None, ""
