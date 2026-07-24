@@ -1,0 +1,90 @@
+{
+  "date": "2026-07-24",
+  "video": "2d07bb74_v2_clip5.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "report": {
+    "usage_summary": "LLM使用量: 10回呼び出し / 入力31,350トークン / 出力232トークン",
+    "usage_calls": 10,
+    "usage_prompt_tokens": 31350,
+    "usage_completion_tokens": 232,
+    "flagged_count": 0,
+    "terminology_misses": [
+      "PR→PR",
+      "ORM→ORM"
+    ]
+  },
+  "segments": [
+    {
+      "start": 0.16,
+      "end": 4.58,
+      "source": "Performance, scaling curve when compared to dense model counterparts.",
+      "mt_ja": "密なモデルと比較した場合のパフォーマンス、スケーリング曲線。",
+      "review_flag": null
+    },
+    {
+      "start": 7.7599998,
+      "end": 23.965,
+      "source": "And here, we see the learning efficiency benefits of MOE models compared to similarly sized dense models like g b t three. And it was the first time at Google we show the decoder owning MOE outperforming g b t three.",
+      "mt_ja": "ここでは、GPT-3のような同サイズの密なモデルと比較して、MOEモデルの学習効率の利点が見られます。GoogleでデコーダのみのMOEがGPT-3を上回る性能を示したのは初めてでした。",
+      "review_flag": null
+    },
+    {
+      "start": 28.039999,
+      "end": 39.5,
+      "source": "And now we will transition to the challenge of continual learning, how to manage and update these massive models over time with training from without training from scratch.",
+      "mt_ja": "さて、次は継続学習の課題です。ゼロから再学習せずに、これらの大規模モデルを長期的に管理・更新する方法についてです。",
+      "review_flag": null
+    },
+    {
+      "start": 41.935,
+      "end": 45.635002,
+      "source": "And there are two major motivations for continual learning.",
+      "mt_ja": "そして、継続学習には2つの大きな動機があります。",
+      "review_flag": null
+    },
+    {
+      "start": 46.015,
+      "end": 49.555,
+      "source": "The first major motivation is dealing with temporal datasets.",
+      "mt_ja": "最初の大きな動機は、時系列データセットに対処することです。",
+      "review_flag": null
+    },
+    {
+      "start": 50.335,
+      "end": 54.115,
+      "source": "Language trends and word knowledge are constantly changing.",
+      "mt_ja": "言語のトレンドや語彙知識は常に変化しています。",
+      "review_flag": null
+    },
+    {
+      "start": 54.72,
+      "end": 58.34,
+      "source": "If we will only train our model once, they quickly become outdated.",
+      "mt_ja": "モデルを一度だけ学習させると、すぐに古くなってしまいます。",
+      "review_flag": null
+    },
+    {
+      "start": 58.72,
+      "end": 70.325005,
+      "source": "We need to keep our massive models updated with new information from sources like Google Search, online forums, and GitHub, which are constantly producing new examples.",
+      "mt_ja": "Google検索、オンラインフォーラム、GitHubといった、常に新しい例を生み出す情報源からの情報で、大規模モデルを更新し続ける必要があります。",
+      "review_flag": null
+    },
+    {
+      "start": 70.945,
+      "end": 80.165,
+      "source": "Training entire larger language models from scratch or even just fully fine tuning the model is incredibly time and resource consuming.",
+      "mt_ja": "大規模言語モデル全体をゼロから学習させたり、完全にファインチューニングするだけでも、膨大な時間とリソースがかかります。",
+      "review_flag": null
+    },
+    {
+      "start": 81.17169,
+      "end": 90.02669,
+      "source": "Continual learning allows us to train on new examples, which is much cheaper process without performing a full expense.",
+      "mt_ja": "継続学習により、新しい例で学習できます。これは、全体を再学習するような費用をかけずに、はるかに安価なプロセスです。",
+      "review_flag": null
+    }
+  ]
+}

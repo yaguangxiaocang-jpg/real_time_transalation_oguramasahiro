@@ -1,0 +1,75 @@
+{
+  "date": "2026-07-11",
+  "video": "2d07bb74_clip3.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "segments": [
+    {
+      "start": 0.39999998,
+      "end": 8.34,
+      "source": "G p t three and the parm two architectures, highlighting the different masking techniques used in their attention components.",
+      "mt_ja": "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われる異なるマスキング手法について説明します。"
+    },
+    {
+      "start": 10.8,
+      "end": 21.425,
+      "source": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+      "mt_ja": "違いを見ると、T5のような古いモデルは生成があまり得意ではなく、タスク固有のファインチューニングが必要でした。"
+    },
+    {
+      "start": 22.125,
+      "end": 29.69,
+      "source": "Newer, decoder only models like g p three achieve strong generalization capability through in context learning.",
+      "mt_ja": "GPT-3のような新しいデコーダーのみのモデルは、インコンテキスト学習によって高い汎化能力を実現します。"
+    },
+    {
+      "start": 30.23,
+      "end": 38.57,
+      "source": "And the PARM two, which uses prefix modeling, is a bit more expressive as it is bidirectional in in the attention layer.",
+      "mt_ja": "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、少し表現力が高くなっています。"
+    },
+    {
+      "start": 42.125,
+      "end": 57.62,
+      "source": "As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters.",
+      "mt_ja": "密なモデルのサイズが大幅に増加しました。T5は元々110億パラメータに達し、Googleでは「1つの巨大なモデル」と呼んでいます。GPT-3は1750億パラメータです。"
+    },
+    {
+      "start": 58.16,
+      "end": 61.78,
+      "source": "And later, Parm reached 500,000,000,000 parameters.",
+      "mt_ja": "そしてその後、PaLMは5000億パラメータに達しました。"
+    },
+    {
+      "start": 62.72,
+      "end": 67.86,
+      "source": "But as dense model got bigger, the cost and the training time become unsustainable.",
+      "mt_ja": "しかし、密なモデルが巨大化するにつれて、コストと学習時間が持続不可能になりました。"
+    },
+    {
+      "start": 68.915,
+      "end": 74.055,
+      "source": "This leads us to the question, what comes after the end of a dense model scaling?",
+      "mt_ja": "そこで疑問です。密なモデルのスケーリングの終焉の先には何が来るのでしょうか？"
+    },
+    {
+      "start": 77.475,
+      "end": 81.17031,
+      "source": "And the answer is mixture of experts or MOE.",
+      "mt_ja": "そして、その答えは混合エキスパート、またはMOEです。"
+    },
+    {
+      "start": 81.87031,
+      "end": 85.57031,
+      "source": "This is how we continue the exponential scaling trend.",
+      "mt_ja": "こうして、指数関数的なスケーリングの傾向を継続していきます。"
+    },
+    {
+      "start": 87.71031,
+      "end": 89.41031,
+      "source": "Looking back at the timeline,",
+      "mt_ja": "タイムラインを振り返ると、"
+    }
+  ]
+}

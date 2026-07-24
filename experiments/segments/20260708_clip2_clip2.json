@@ -1,0 +1,51 @@
+{
+  "date": "2026-07-08",
+  "video": "clip2.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "segments": [
+    {
+      "start": 0.64,
+      "end": 4.74,
+      "source": "Leading to faster inference and more efficient serving configurations.",
+      "mt_ja": "推論の高速化と、より効率的なサービング構成につながります。"
+    },
+    {
+      "start": 6.08,
+      "end": 17.985,
+      "source": "Additionally, this approach enables expert prefetching through memory offloading, significantly increasing the total servable capacity on a fixed hardware topology.",
+      "mt_ja": "さらに、このアプローチはメモリオフロードによるエキスパートプリフェッチを可能にし、固定されたハードウェアトポロジーにおける提供可能総容量を大幅に増加させます。"
+    },
+    {
+      "start": 22.765,
+      "end": 34.68,
+      "source": "And the MOA architecture fundamentally enables stronger serving performance by design, supporting a larger number of experts and leading to faster decoding and inference.",
+      "mt_ja": "MOAアーキテクチャは、設計上、より強力なサービング性能を実現し、より多くのエキスパートをサポートすることで、デコーディングと推論の高速化につながります。"
+    },
+    {
+      "start": 40.315,
+      "end": 51.535,
+      "source": "To summarize, sustainable scaling of dense large language models is reaching an end. The mixture of expert approach is now critical to advancing large language model scaling.",
+      "mt_ja": "まとめると、密な大規模言語モデルの持続可能なスケーリングは限界に達しつつあります。エキスパート混合アプローチは、大規模言語モデルのスケーリングを進める上で今や不可欠です。"
+    },
+    {
+      "start": 52.160004,
+      "end": 58.660004,
+      "source": "We've shown how MOE enables to measure forward looking area, continued learning, and modularity.",
+      "mt_ja": "MOEが、将来を見据えた領域の測定、継続的な学習、モジュール性をどのように可能にするかを示しました。"
+    },
+    {
+      "start": 59.36,
+      "end": 62.74,
+      "source": "Thank you for your time, and I'd be happy to take any questions.",
+      "mt_ja": "ご清聴ありがとうございました。ご質問があればお答えします。"
+    },
+    {
+      "start": 70.195,
+      "end": 70.695,
+      "source": "Hi.",
+      "mt_ja": "こんにちは。"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "date": "2026-07-24",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "xcomet_score": 0.995,
+  "chrf_score": 0.6317,
+  "notes": "2d07bb74_v2_clip5.mp4 を処理。10 セグメント翻訳。 [tag=2d07bb74_v2_clip5] [LLM使用量: 10回呼び出し / 入力31,350トークン / 出力232トークン] [用語漏れ: PR→PR, ORM→ORM]"
+}

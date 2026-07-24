@@ -8,3 +8,26 @@
 2026-07-04,gemini-2.5-flash,economics,1.0,0.4994,"[tag=uttmerge_wide] uttmerge(max_words=40/12s)の副作用(結合打ち切りで文末が不完全なセグメント発生)対策として上限を緩和(max_words=60/20s)、25→11セグメント。xCOMETは1.0に回復、chrFは0.4994(baselineより改善、uttmergeよりは低下)。打ち切りによる不自然な途中セグメントは解消。バランスが良いためこの設定をadd_subtitles.pyのデフォルトに採用(MERGE_UTTERANCES=true)。"
 2026-07-06,gemini-2.5-flash,technology,0.9971,0.5378,short_test_llm.mp4 を処理。7 セグメント翻訳。 [tag=shortclip_llm2025]
 2026-07-06,gemini-2.5-flash,technology,1.0,0.7038,short_test_llm8.mp4 を処理。8 セグメント翻訳。 [tag=shortclip_llm8]
+2026-07-08,gemini-2.5-flash,general,0.9231,0.6951,clip1.mp4 を処理。13 セグメント翻訳。 [tag=clip1]
+2026-07-08,gemini-2.5-flash,technology,1.0,0.6844,clip1.mp4 を処理。13 セグメント翻訳。 [tag=clip1]
+2026-07-08,gemini-2.5-flash,technology,1.0,0.7035,clip2.mp4 を処理。7 セグメント翻訳。 [tag=clip2]
+2026-07-11,gemini-2.5-flash,technology,0.98,0.7254,2d07bb74_clip1.mp4 を処理。9 セグメント翻訳。 [tag=2d07bb74_clip1]
+2026-07-11,gemini-2.5-flash,technology,0.9889,0.6677,2d07bb74_clip2.mp4 を処理。9 セグメント翻訳。 [tag=2d07bb74_clip2]
+2026-07-11,gemini-2.5-flash,technology,0.9964,0.6155,2d07bb74_clip3.mp4 を処理。11 セグメント翻訳。 [tag=2d07bb74_clip3]
+2026-07-11,gemini-2.5-flash,technology,0.9633,0.682,2d07bb74_clip4.mp4 を処理。9 セグメント翻訳。 [tag=2d07bb74_clip4]
+2026-07-11,gemini-2.5-flash,technology,0.9222,0.6677,2d07bb74_clip5.mp4 を処理。9 セグメント翻訳。 [tag=2d07bb74_clip5]
+2026-07-23,gemini-2.5-flash,technology,,0.5878,"[benchmark=technology_moe_2d07bb74_clip1] 固定データセット（9セグメント）に対するreference-based chrF評価。thinking_budget=1024, context_window_size=5。"
+2026-07-23,gemini-2.5-flash,technology,,0.607,"[benchmark=technology_moe_2d07bb74_clip3] 固定データセット（11セグメント）に対するreference-based chrF評価。thinking_budget=1024, context_window_size=5。"
+2026-07-23,gemini-2.5-flash,technology,,0.5646,"[benchmark=technology_moe_2d07bb74_clip4] 固定データセット（9セグメント）に対するreference-based chrF評価。thinking_budget=1024, context_window_size=5。"
+2026-07-23,gemini-2.5-flash,technology,,0.5723,"[benchmark=technology_moe_2d07bb74_clip5] 固定データセット（9セグメント）に対するreference-based chrF評価。thinking_budget=1024, context_window_size=5。"
+2026-07-23,gemini-2.5-flash,technology,,0.6855,"[benchmark=technology_moe_2d07bb74_clip2] 固定データセット（9セグメント）に対するreference-based chrF評価。thinking_budget=1024, context_window_size=5。"
+2026-07-24,gemini-2.5-flash,technology,0.9955,0.61,"2d07bb74_v2_clip1.mp4 を処理。11 セグメント翻訳。 [tag=2d07bb74_v2_clip1] [LLM使用量: 11回呼び出し / 入力35,104トークン / 出力267トークン] [用語漏れ: WER→WER, PR→PR, BI→BI]"
+2026-07-24,gemini-2.5-flash,technology,1.0,0.6334,"2d07bb74_v2_clip2.mp4 を処理。7 セグメント翻訳。 [tag=2d07bb74_v2_clip2] [LLM使用量: 7回呼び出し / 入力22,492トークン / 出力238トークン] [用語漏れ: PR→PR, BI→BI]"
+2026-07-24,gemini-2.5-flash,technology,0.9929,0.7475,"2d07bb74_v2_clip3.mp4 を処理。7 セグメント翻訳。 [tag=2d07bb74_v2_clip3] [LLM使用量: 7回呼び出し / 入力22,021トークン / 出力217トークン] [用語漏れ: PR→PR, ORM→ORM]"
+2026-07-24,gemini-2.5-flash,technology,0.9938,0.6658,"2d07bb74_v2_clip4.mp4 を処理。8 セグメント翻訳。 [tag=2d07bb74_v2_clip4] [LLM使用量: 8回呼び出し / 入力25,442トークン / 出力227トークン] [用語漏れ: WER→WER, AWS→AWS]"
+2026-07-24,gemini-2.5-flash,technology,0.995,0.6317,"2d07bb74_v2_clip5.mp4 を処理。10 セグメント翻訳。 [tag=2d07bb74_v2_clip5] [LLM使用量: 10回呼び出し / 入力31,350トークン / 出力232トークン] [用語漏れ: PR→PR, ORM→ORM]"
+2026-07-24,gemini-2.5-flash,technology,0.9822,0.6574,"[benchmark=technology_moe_2d07bb74_clip1] 固定データセット（9セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。"
+2026-07-24,gemini-2.5-flash,technology,0.9833,0.7046,"[benchmark=technology_moe_2d07bb74_clip2] 固定データセット（9セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。"
+2026-07-24,gemini-2.5-flash,technology,1.0,0.6069,"[benchmark=technology_moe_2d07bb74_clip3] 固定データセット（11セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。"
+2026-07-24,gemini-2.5-flash,technology,1.0,0.5792,"[benchmark=technology_moe_2d07bb74_clip4] 固定データセット（9セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。"
+2026-07-24,gemini-2.5-flash,technology,1.0,0.54,"[benchmark=technology_moe_2d07bb74_clip5] 固定データセット（9セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。"

@@ -1,0 +1,63 @@
+{
+  "date": "2026-07-11",
+  "video": "2d07bb74_clip5.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "segments": [
+    {
+      "start": 0.16,
+      "end": 12.82,
+      "source": "The MOA with a frozen backbone training with the targeted data owning was found to be as efficient or even more FLOPS efficient than a baseline MOE trained on the mixture of the data.",
+      "mt_ja": "ターゲットデータでバックボーンを固定して学習したMOAは、データ混合で学習したベースラインMOEよりも、FLOPS効率が同等かそれ以上でした。"
+    },
+    {
+      "start": 16.015,
+      "end": 22.195,
+      "source": "And at the 3,000,000,000 parameter scale, the MOA, again, approved to be highly efficient.",
+      "mt_ja": "そして30億パラメータの規模で、MOAは再び高い効率性を示しました。"
+    },
+    {
+      "start": 22.814999,
+      "end": 36.1,
+      "source": "Specifically, a technique called MOA tail patching using only domain data improved our MMLU score by approximately 30 points, showing both efficiency and the significant quality gain.",
+      "mt_ja": "具体的には、ドメインデータのみを使用するMOAテールパッチングと呼ばれる手法は、MMLUスコアを約30ポイント向上させ、効率性と大幅な品質向上を示しました。"
+    },
+    {
+      "start": 40.255,
+      "end": 48.595,
+      "source": "And, to generalize this MOA into a pretraining setting, we've explored the mixture of domain experts idea.",
+      "mt_ja": "そして、このMOAを事前学習の設定に一般化するため、ドメインエキスパートの混合というアイデアを検討しました。"
+    },
+    {
+      "start": 48.975002,
+      "end": 54.755,
+      "source": "And this involves experts on sharding the data and the shared parameters in the attention mechanism.",
+      "mt_ja": "そしてこれには、データシャーディングのエキスパートと、アテンションメカニズムにおける共有パラメータが関わります。"
+    },
+    {
+      "start": 55.640003,
+      "end": 67.020004,
+      "source": "And the performance benefits including faster inference, reduced communication, smaller activated parameters per query, and the ability to fit many more experts.",
+      "mt_ja": "そして、パフォーマンス上の利点としては、推論の高速化、通信量の削減、クエリあたりの活性化パラメータの小型化、そしてより多くのエキスパートを搭載できる能力が挙げられます。"
+    },
+    {
+      "start": 67.845,
+      "end": 75.625,
+      "source": "And the model, leverage metadata containing a domain ID to map a sequence of tokens to a domain mask.",
+      "mt_ja": "そしてモデルは、ドメインIDを含むメタデータを活用し、トークンンシーケンスをドメインマスクにマッピングします。"
+    },
+    {
+      "start": 75.925,
+      "end": 86.27032,
+      "source": "And this mask forces, tokens to be routed to a small subset of experts, which effectively reduces the all to all communication overhead.",
+      "mt_ja": "そしてこのマスクは、トークンを少数のエキスパートのサブセットにルーティングすることで、all to allの通信オーバーヘッドを効果的に削減します。"
+    },
+    {
+      "start": 86.730316,
+      "end": 90.00531,
+      "source": "And this coarse grained routing also reduces the number of",
+      "mt_ja": "そしてこの粗粒度ルーティングは、〜の数も削減します。"
+    }
+  ]
+}

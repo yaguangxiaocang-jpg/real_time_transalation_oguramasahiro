@@ -1,0 +1,63 @@
+{
+  "date": "2026-07-11",
+  "video": "2d07bb74_clip4.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "segments": [
+    {
+      "start": 0.56,
+      "end": 8.9,
+      "source": "This only prevents forgetting, but also ensures that private data trained on one adapter is not leaked to the public modules.",
+      "mt_ja": "これは忘却を防ぐだけでなく、あるアダプターで学習されたプライベートデータがパブリックモジュールに漏洩するのを防ぎます。"
+    },
+    {
+      "start": 9.84,
+      "end": 24.974998,
+      "source": "And in this way, we can continuously train adapted modules to handle coding task or turn another module into, you know, chatbot conversational agents, etcetera. Alternatively, we can even turn, like, a module into, you know, chess experts.",
+      "mt_ja": "このようにして、コーディングタスクを処理する適応モジュールを継続的に学習させたり、別のモジュールをチャットボットの会話エージェントなどに変えたりできます。あるいは、モジュールをチェスの専門家にすることも可能です。"
+    },
+    {
+      "start": 30.28,
+      "end": 32.86,
+      "source": "The benefit of MOA are numerous.",
+      "mt_ja": "MOAの利点は多数あります。"
+    },
+    {
+      "start": 33.48,
+      "end": 43.5,
+      "source": "There are fewer activated parameters per query, easier for development, and the ability for, different teams to develop adapters independently.",
+      "mt_ja": "クエリあたりの活性化されるパラメータが少なく、開発が容易で、異なるチームがアダプターを独立して開発できます。"
+    },
+    {
+      "start": 44.395,
+      "end": 49.535,
+      "source": "It also provides a very strong compartmentalization and privacy guarantees.",
+      "mt_ja": "また、非常に強力なコンパートメント化とプライバシーの保証を提供します。"
+    },
+    {
+      "start": 52.715,
+      "end": 58.095,
+      "source": "And in general, we create a mixture of adapters in a traditional MOE setting.",
+      "mt_ja": "そして一般的に、従来のMOE設定でアダプターの混合を作成します。"
+    },
+    {
+      "start": 58.4,
+      "end": 68.34,
+      "source": "So instead of creating mixture of experts in general forms, we can create a mixture of domain experts, while each domain consists a few of experts.",
+      "mt_ja": "そのため、一般的な形式で専門家の混合を作成する代わりに、各ドメインが少数の専門家で構成されるドメイン専門家の混合を作成できます。"
+    },
+    {
+      "start": 72.515,
+      "end": 82.695,
+      "source": "And we can apply block level mask to activate or deactivate a entire MOE layer and treat a entire layer as domain experts.",
+      "mt_ja": "そして、ブロックレベルマスクを適用してMOEレイヤー全体を活性化または非活性化し、レイヤー全体をドメインエキスパートとして扱うことができます。"
+    },
+    {
+      "start": 84.92032,
+      "end": 89.980316,
+      "source": "Alternatively, we can implement mixture of adapters using a layer wise domain",
+      "mt_ja": "別の方法として、レイヤーごとのドメインを使用してアダプターの混合を実装できます。"
+    }
+  ]
+}

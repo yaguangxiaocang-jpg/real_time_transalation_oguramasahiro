@@ -1,0 +1,76 @@
+{
+  "date": "2026-07-24",
+  "video": "2d07bb74_v2_clip4.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "report": {
+    "usage_summary": "LLM使用量: 8回呼び出し / 入力25,442トークン / 出力227トークン",
+    "usage_calls": 8,
+    "usage_prompt_tokens": 25442,
+    "usage_completion_tokens": 227,
+    "flagged_count": 0,
+    "terminology_misses": [
+      "WER→WER",
+      "AWS→AWS"
+    ]
+  },
+  "segments": [
+    {
+      "start": 12.385,
+      "end": 16.885,
+      "source": "Good evening, everyone. I'm Yanqi Zhou. I'm a research scientist at Google DeepMind.",
+      "mt_ja": "皆さん、こんばんは。Yanqi Zhouです。Google DeepMindのリサーチサイエンティストを務めています。",
+      "review_flag": null
+    },
+    {
+      "start": 17.505001,
+      "end": 21.845001,
+      "source": "Today, I'm excited to talk about the future of large language model scaling.",
+      "mt_ja": "今日は、大規模言語モデルのスケーリングの未来についてお話しします。",
+      "review_flag": null
+    },
+    {
+      "start": 22.305,
+      "end": 34.11,
+      "source": "We will be discussing how the field is moving beyond the traditional power laws of dense models toward a more efficient and sustainable future through modularity and sparsity.",
+      "mt_ja": "この分野が、密なモデルの従来のべき乗則を超え、モジュール性とスパース性を通じて、より効率的で持続可能な未来へと移行していることについて議論します。",
+      "review_flag": null
+    },
+    {
+      "start": 36.57,
+      "end": 57.33,
+      "source": "Here's a look at what we are covered today. We will start by setting the historical context with Moore's law and the power law. Then we will look at Google's large language models, like BERT and TFI, before diving into the core of today's talk, scaling large language models with mixture of experts, or MOE.",
+      "mt_ja": "本日のアジェンダです。まず、ムーアの法則とべき乗則で歴史的背景を説明します。次に、BERTやTFIといったGoogleの大規模言語モデルを見ていきます。その後、本日の講演の核心である、Mixture of Experts、略してMOEを用いた大規模言語モデルのスケーリングについて掘り下げます。",
+      "review_flag": null
+    },
+    {
+      "start": 58.27,
+      "end": 64.53,
+      "source": "Finally, we will cover two important advancements built on MOE, continued learning and modularity.",
+      "mt_ja": "最後に、MOEに基づいて構築された2つの重要な進歩、継続学習とモジュール性について取り上げます。",
+      "review_flag": null
+    },
+    {
+      "start": 65.465004,
+      "end": 70.045,
+      "source": "And we will conclude with a final summary and open the floor for questions.",
+      "mt_ja": "最後にまとめを行い、質疑応答の時間に移ります。",
+      "review_flag": null
+    },
+    {
+      "start": 74.345,
+      "end": 79.805,
+      "source": "And this section gives us the background for why we are seeking new methods to scale.",
+      "mt_ja": "このセクションでは、新しいスケーリング方法を模索する背景を説明します。",
+      "review_flag": null
+    },
+    {
+      "start": 82.43,
+      "end": 90.02669,
+      "source": "So Gordon Moore famously postulated that the number of transistors on a chip would double every",
+      "mt_ja": "ゴードン・ムーアは、チップ上のトランジスタ数が毎[期間]倍増すると有名に提唱しました。",
+      "review_flag": null
+    }
+  ]
+}

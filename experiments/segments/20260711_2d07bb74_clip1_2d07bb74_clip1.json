@@ -1,0 +1,63 @@
+{
+  "date": "2026-07-11",
+  "video": "2d07bb74_clip1.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "segments": [
+    {
+      "start": 0.24,
+      "end": 3.46,
+      "source": "Base as it prioritize the new specific domain.",
+      "mt_ja": "新しい特定のドメインを優先することを基盤としています。"
+    },
+    {
+      "start": 4.3199997,
+      "end": 16.005,
+      "source": "Continuous learning techniques are necessary to ensure, the model successfully adapts to the new domain while retaining its original, valuable, generalist capabilities.",
+      "mt_ja": "モデルが新しいドメインにうまく適応し、元の価値ある汎用能力を保持するには、継続学習技術が必要です。"
+    },
+    {
+      "start": 20.625,
+      "end": 24.085,
+      "source": "And the core problem, is, of course, forgetting.",
+      "mt_ja": "そして、核となる問題は、もちろん、忘却です。"
+    },
+    {
+      "start": 24.625,
+      "end": 31.83,
+      "source": "If we train only on the new datasets, the performance on the original dataset data distribution will drop significantly.",
+      "mt_ja": "新しいデータセットのみで学習すると、元のデータセットのデータ分布における性能は大幅に低下します。"
+    },
+    {
+      "start": 32.69,
+      "end": 40.87,
+      "source": "And the goal here is to build a general model that can adapt to new data while retaining knowledge of the old.",
+      "mt_ja": "そして、ここでの目標は、古い知識を保持しながら、新しいデータに適応できる汎用モデルを構築することです。"
+    },
+    {
+      "start": 44.885002,
+      "end": 59.18,
+      "source": "And our solution is to use a distribution based MOE architecture to progressively add more experts for new data distributions and use regularization techniques to mitigate forgetting.",
+      "mt_ja": "そして、私たちの解決策は、分布ベースのMOEアーキテクチャを使い、新しいデータ分布向けにエキスパートを徐々に追加し、忘却を軽減するために正則化技術を用いることです。"
+    },
+    {
+      "start": 62.12,
+      "end": 73.205,
+      "source": "And this approach uses both regularization to prevent the model from overfeeding new data and drifting too far from the original weights.",
+      "mt_ja": "このアプローチは、モデルが新しいデータに過学習したり、元の重みから大きく逸脱したりするのを防ぐため、正則化を用います。"
+    },
+    {
+      "start": 73.745,
+      "end": 85.205,
+      "source": "And then expansion, which allows the model to dynamically add new experts to handle the new data distribution and to offer, you know, new model capacity to absorb the new knowledge.",
+      "mt_ja": "そして、拡張です。これは、モデルが新しいデータ分布に対応するため、新しいエキスパートを動的に追加し、新しい知識を吸収する新たなモデル容量を提供します。"
+    },
+    {
+      "start": 88.87025,
+      "end": 90.00531,
+      "source": "Specifically, we",
+      "mt_ja": "具体的には、私たちは"
+    }
+  ]
+}

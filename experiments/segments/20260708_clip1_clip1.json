@@ -1,0 +1,87 @@
+{
+  "date": "2026-07-08",
+  "video": "clip1.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "segments": [
+    {
+      "start": 0.24,
+      "end": 4.1,
+      "source": "Bigger, the cost and the training time become unsustainable.",
+      "mt_ja": "規模が大きくなると、コストと学習時間が維持できなくなります。"
+    },
+    {
+      "start": 4.7999997,
+      "end": 10.099999,
+      "source": "This leads us to the question, what comes after the end of a dense model scaling?",
+      "mt_ja": "このことから、密なモデルのスケーリングの限界の先に何があるのか、という疑問が生じます。"
+    },
+    {
+      "start": 13.36,
+      "end": 17.275,
+      "source": "And the answer is mixture of experts or MOE.",
+      "mt_ja": "そして、その答えは混合エキスパート、あるいはMOEです。"
+    },
+    {
+      "start": 17.815,
+      "end": 21.595001,
+      "source": "This is how we continue the exponential scaling trend.",
+      "mt_ja": "こうして、指数関数的なスケーリングトレンドを継続します。"
+    },
+    {
+      "start": 23.735,
+      "end": 33.97,
+      "source": "Looking back at the timeline, the 2022 GLAM model at 1,200,000,000,000 parameters broke the 500,000,000,000 barrier of dense models.",
+      "mt_ja": "タイムラインを振り返ると、2022年のGLAMモデルは1兆2000億パラメータで、密なモデルの5000億の壁を破りました。"
+    },
+    {
+      "start": 34.59,
+      "end": 40.69,
+      "source": "GLAM achieved this by using MOE architecture, showing efficient scaling is possible.",
+      "mt_ja": "GLAMはMOEアーキテクチャを用いることでこれを達成し、効率的なスケーリングが可能であることを示しました。"
+    },
+    {
+      "start": 43.735,
+      "end": 51.515,
+      "source": "GLAM uses a decoder only architecture with sparsely gated networks, leveraging the g top two routing function.",
+      "mt_ja": "GLAMはデコーダーのみのアーキテクチャを使用しており、スパースゲートネットワークとg top twoルーティング関数を活用しています。"
+    },
+    {
+      "start": 51.975,
+      "end": 60.25,
+      "source": "This allowed us to scale the total parameters up to 1,200,000,000,000 while only activating a much smaller fraction.",
+      "mt_ja": "これにより、総パラメータを1兆2000億までスケールアップしつつ、アクティブにするのははるかに少ない部分のみでした。"
+    },
+    {
+      "start": 60.79,
+      "end": 65.61,
+      "source": "It activates just 97,000,000,000 for any single input.",
+      "mt_ja": "単一の入力に対しては、わずか970億をアクティブにするだけです。"
+    },
+    {
+      "start": 68.47,
+      "end": 71.21,
+      "source": "This diagram illustrates the GLAM architecture.",
+      "mt_ja": "この図はGLAMアーキテクチャを示しています。"
+    },
+    {
+      "start": 71.985,
+      "end": 80.725006,
+      "source": "It interleaves standard dense layers with sparse layers composed of sparsely activated feed forward networks.",
+      "mt_ja": "標準的な密な層と、スパースに活性化されたフィードフォワードネットワークからなるスパースな層を交互に配置しています。"
+    },
+    {
+      "start": 81.58501,
+      "end": 88.321,
+      "source": "And the g sharp top two gating function dynamically selects which two experts process the information.",
+      "mt_ja": "そして、g sharp top twoゲーティング関数は、どの2つのエキスパートが情報を処理するかを動的に選択します。"
+    },
+    {
+      "start": 89.261,
+      "end": 90.001,
+      "source": "Since we",
+      "mt_ja": "我々が"
+    }
+  ]
+}

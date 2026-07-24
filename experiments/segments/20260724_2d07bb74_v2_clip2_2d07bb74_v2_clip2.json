@@ -1,0 +1,69 @@
+{
+  "date": "2026-07-24",
+  "video": "2d07bb74_v2_clip2.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "report": {
+    "usage_summary": "LLM使用量: 7回呼び出し / 入力22,492トークン / 出力238トークン",
+    "usage_calls": 7,
+    "usage_prompt_tokens": 22492,
+    "usage_completion_tokens": 238,
+    "flagged_count": 0,
+    "terminology_misses": [
+      "PR→PR",
+      "BI→BI"
+    ]
+  },
+  "segments": [
+    {
+      "start": 0.79999995,
+      "end": 14.259999,
+      "source": "And in the MOA experiments, we use two types of datasets, domain data, which is only the new target specific data, and mixture data, which combines the original pretraining data with the new domain data.",
+      "mt_ja": "MOA実験では、2種類のデータセットを使用します。新しいターゲットに特化したデータのみであるドメインデータと、元の事前学習データと新しいドメインデータを組み合わせた混合データです。",
+      "review_flag": null
+    },
+    {
+      "start": 16.095001,
+      "end": 28.435001,
+      "source": "And in this setting, we use domain data, our target QA, to enhance the mass, downstream evaluation, and then we use q Quizlet to, you know, improve the MMLU scoring.",
+      "mt_ja": "この設定では、大規模なダウンストリーム評価を強化するために、ターゲットQAであるドメインデータを使用し、MMLUスコアを改善するためにQuizletを使用します。",
+      "review_flag": null
+    },
+    {
+      "start": 31.0,
+      "end": 48.355003,
+      "source": "And as a baseline, we found that training a standard MOE only on the new domain data only results in clear forgetting, measured by public perplexity here. And then this was consistent across different model sizes and the different domain datasets.",
+      "mt_ja": "ベースラインとして、新しいドメインデータのみで標準MOEを学習させると、明らかな忘却が生じることがわかりました。これは公開パープレキシティで測定され、異なるモデルサイズやドメインデータセットで一貫していました。",
+      "review_flag": null
+    },
+    {
+      "start": 48.895,
+      "end": 57.075,
+      "source": "So if you check the right figure, this is the the perplexity eval on assessable eval, datasets at Google.",
+      "mt_ja": "右の図を見ていただくと、これはGoogleの評価可能なデータセットにおけるパープレキシティ評価です。",
+      "review_flag": null
+    },
+    {
+      "start": 57.61,
+      "end": 69.79,
+      "source": "And the green curve is we we con we continue training on the data, domain data only on the MOE model. And apparently, it results in forgetting because the complexity becomes bigger than one.",
+      "mt_ja": "緑の曲線は、MOEモデルでドメインデータのみで学習を継続した場合です。パープレキシティが1より大きくなるため、明らかに忘却が生じています。",
+      "review_flag": null
+    },
+    {
+      "start": 70.89,
+      "end": 82.595,
+      "source": "And then the key to MOA is training the domain specific adapters while keeping the massive backbone frozen.",
+      "mt_ja": "そして、MOAの鍵は、大規模なバックボーンをフリーズさせたまま、ドメイン固有のアダプターを学習させることです。",
+      "review_flag": null
+    },
+    {
+      "start": 83.17162,
+      "end": 89.51163,
+      "source": "And this guarantees no forgetting and eliminates the need to even access the original pretraining data.",
+      "mt_ja": "これにより忘却が起こらないことが保証され、元の事前学習データにアクセスする必要さえなくなります。",
+      "review_flag": null
+    }
+  ]
+}

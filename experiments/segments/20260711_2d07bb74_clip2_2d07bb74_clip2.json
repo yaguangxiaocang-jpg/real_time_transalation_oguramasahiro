@@ -1,0 +1,63 @@
+{
+  "date": "2026-07-11",
+  "video": "2d07bb74_clip2.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "segments": [
+    {
+      "start": 0.08,
+      "end": 4.1,
+      "source": "By setting the historical context with Moore's law and the power law.",
+      "mt_ja": "ムーアの法則とパワーローで歴史的背景を設定します。"
+    },
+    {
+      "start": 4.4,
+      "end": 17.255001,
+      "source": "Then we will look at Google's large language models, like BERT and TFI, before diving into the core of today's talk, scaling large language models with mixture of experts, or MOE.",
+      "mt_ja": "次に、GoogleのBERTやTFIといった大規模言語モデルについて見ていきます。その後、本日の講演の核心である、Mixture of Experts（MOE）による大規模言語モデルのスケーリングについて深く掘り下げます。"
+    },
+    {
+      "start": 18.195,
+      "end": 24.535,
+      "source": "Finally, we will cover two important advancements built on MOE, continued learning and modularity.",
+      "mt_ja": "最後に、MOEを基盤とした2つの重要な進歩、継続学習とモジュール性について取り上げます。"
+    },
+    {
+      "start": 25.49,
+      "end": 29.99,
+      "source": "And we will conclude with a final summary and open the floor for questions.",
+      "mt_ja": "最後にまとめを行い、質疑応答に移ります。"
+    },
+    {
+      "start": 34.29,
+      "end": 39.75,
+      "source": "And this section gives us the background for why we are seeking new methods to scale.",
+      "mt_ja": "このセクションでは、新しいスケーリング手法を求める背景を説明します。"
+    },
+    {
+      "start": 42.344997,
+      "end": 50.765,
+      "source": "So Gordon Moore famously postulated that the number of transistors on a chip would double every two years.",
+      "mt_ja": "ゴードン・ムーアは、チップ上のトランジスタの数が2年ごとに倍増すると提唱しました。"
+    },
+    {
+      "start": 51.305,
+      "end": 55.324997,
+      "source": "However, we are now reaching the physical limits of this law.",
+      "mt_ja": "しかし、今、この法則の物理的な限界に達しつつあります。"
+    },
+    {
+      "start": 55.890003,
+      "end": 70.07,
+      "source": "Issues like the high temperature of transistors and the memory war, which limits memory bandwidth, mean we can no longer rely on traditional chip advances to fuel the exponential growth of large language models.",
+      "mt_ja": "トランジスタの高温化や、メモリ帯域幅を制限するメモリウォールといった問題により、大規模言語モデルの指数関数的な成長を支えるための、従来のチップの進歩にはもはや頼ることができません。"
+    },
+    {
+      "start": 74.375,
+      "end": 90.00531,
+      "source": "And, the scaling of deep learning model was for a long time governed by the predictable power laws, As shown in seminal papers from Baidu in 2017 and the OpenAI paper from 2020, there was",
+      "mt_ja": "ディープラーニングモデルのスケーリングは、長い間、予測可能なべき乗則に支配されていました。2017年のBaiduの画期的な論文や2020年のOpenAIの論文で示されたように、そこには"
+    }
+  ]
+}

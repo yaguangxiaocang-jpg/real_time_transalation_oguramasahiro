@@ -1,0 +1,69 @@
+{
+  "date": "2026-07-24",
+  "video": "2d07bb74_v2_clip3.mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "merge_utterances": true,
+  "report": {
+    "usage_summary": "LLM使用量: 7回呼び出し / 入力22,021トークン / 出力217トークン",
+    "usage_calls": 7,
+    "usage_prompt_tokens": 22021,
+    "usage_completion_tokens": 217,
+    "flagged_count": 0,
+    "terminology_misses": [
+      "PR→PR",
+      "ORM→ORM"
+    ]
+  },
+  "segments": [
+    {
+      "start": 0.24,
+      "end": 6.2599998,
+      "source": "Subset of experts, which effectively reduces the all to all communication overhead.",
+      "mt_ja": "専門家の一部が、総当たり通信のオーバーヘッドを効果的に削減します。",
+      "review_flag": null
+    },
+    {
+      "start": 6.72,
+      "end": 16.825,
+      "source": "And this coarse grained routing also reduces the number of activated parameters per batch, leading to faster inference and more efficient serving configurations.",
+      "mt_ja": "この粗粒度ルーティングは、バッチあたりのアクティブ化されるパラメータ数を削減し、より速い推論とより効率的なサービング構成につながります。",
+      "review_flag": null
+    },
+    {
+      "start": 18.244999,
+      "end": 30.04,
+      "source": "Additionally, this approach enables expert prefetching through memory offloading, significantly increasing the total servable capacity on a fixed hardware topology.",
+      "mt_ja": "さらに、このアプローチはメモリオフロードを通じてエキスパートのプリフェッチを可能にし、固定されたハードウェアトポロジー上での提供可能な総容量を大幅に増加させます。",
+      "review_flag": null
+    },
+    {
+      "start": 34.739998,
+      "end": 46.695,
+      "source": "And the MOA architecture fundamentally enables stronger serving performance by design, supporting a larger number of experts and leading to faster decoding and inference.",
+      "mt_ja": "MOAアーキテクチャは、設計上、より高いサービング性能を根本的に可能にし、より多くのエキスパートをサポートすることで、デコーディングと推論を高速化します。",
+      "review_flag": null
+    },
+    {
+      "start": 52.38,
+      "end": 63.52,
+      "source": "To summarize, sustainable scaling of dense large language models is reaching an end. The mixture of expert approach is now critical to advancing large language model scaling.",
+      "mt_ja": "まとめると、密な大規模言語モデルの持続可能なスケーリングは限界に達しつつあります。\nMixture of Expertアプローチは、大規模言語モデルのスケーリングを進める上で今や不可欠です。",
+      "review_flag": null
+    },
+    {
+      "start": 64.205,
+      "end": 70.705,
+      "source": "We've shown how MOE enables to measure forward looking area, continual learning, and modularity.",
+      "mt_ja": "MOEが、将来を見据えた領域、継続学習、モジュール性をどのように可能にするかを示しました。",
+      "review_flag": null
+    },
+    {
+      "start": 71.325,
+      "end": 74.705,
+      "source": "Thank you for your time, and I'd be happy to take any questions.",
+      "mt_ja": "ご清聴ありがとうございました。ご質問があればお受けします。",
+      "review_flag": null
+    }
+  ]
+}
