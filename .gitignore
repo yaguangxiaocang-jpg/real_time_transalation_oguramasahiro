@@ -34,3 +34,8 @@ gradio_tmp/
 translated_script/
 *.zip
 *.docx
+
+# Test video clips (large binaries, kept local only)
+/clips/
+short_test_llm8.mp4
+short_test_llm8_subtitled.mp4
