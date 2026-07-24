@@ -1,0 +1,34 @@
+{
+  "benchmark_id": "technology_moe_2d07bb74_clip3",
+  "domain": "technology",
+  "description": "LLM講義動画（継続学習・破滅的忘却・MOEがテーマ、2d07bb74）のclip3。文字起こしは experiments/segments/20260711_2d07bb74_clip3_2d07bb74_clip3.json から流用（Deepgram再実行なし）。reference_ja は claude-sonnet-5 が英文から独立に作成した訳（人手レビュー未了）。",
+  "raw_utterances": [
+    {"start": 0.39999998, "end": 8.34, "transcript": "G p t three and the parm two architectures, highlighting the different masking techniques used in their attention components."},
+    {"start": 10.8, "end": 21.425, "transcript": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning."},
+    {"start": 22.125, "end": 29.69, "transcript": "Newer, decoder only models like g p three achieve strong generalization capability through in context learning."},
+    {"start": 30.23, "end": 38.57, "transcript": "And the PARM two, which uses prefix modeling, is a bit more expressive as it is bidirectional in in the attention layer."},
+    {"start": 42.125, "end": 57.62, "transcript": "As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters."},
+    {"start": 58.16, "end": 61.78, "transcript": "And later, Parm reached 500,000,000,000 parameters."},
+    {"start": 62.72, "end": 67.86, "transcript": "But as dense model got bigger, the cost and the training time become unsustainable."},
+    {"start": 68.915, "end": 74.055, "transcript": "This leads us to the question, what comes after the end of a dense model scaling?"},
+    {"start": 77.475, "end": 81.17031, "transcript": "And the answer is mixture of experts or MOE."},
+    {"start": 81.87031, "end": 85.57031, "transcript": "This is how we continue the exponential scaling trend."},
+    {"start": 87.71031, "end": 89.41031, "transcript": "Looking back at the timeline,"}
+  ],
+  "reference_ja": [
+    "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で使われているマスキング手法の違いを見ていきます。",
+    "違いを見てみると、T5のような従来のモデルは生成があまり得意ではなく、タスクごとのファインチューニングが必要でした。",
+    "GPT-3のような新しいデコーダー専用モデルは、インコンテキスト学習によって高い汎化能力を実現しています。",
+    "一方、プレフィックスモデリングを用いるPaLM 2は、アテンション層が双方向であるため、やや表現力が高くなっています。",
+    "密なモデルの規模は急激に拡大しており、T5はもともと110億パラメータに達し、Google内では「ひとつの巨大なモデル」と呼ばれています。GPT-3は1750億パラメータです。",
+    "その後、PaLMは5000億パラメータに達しました。",
+    "しかし、密なモデルが巨大化するにつれて、コストと学習時間は持続不可能になっていきました。",
+    "そこで疑問が生まれます。密なモデルのスケーリングが限界を迎えた後には何が来るのでしょうか。",
+    "その答えが、混合エキスパート、すなわちMOEです。",
+    "こうして、指数関数的なスケーリングの流れを継続していきます。",
+    "これまでの流れを振り返ると、"
+  ],
+  "reference_status": "draft_needs_human_review",
+  "reference_note": "claude-sonnet-5が2026-07-23に、英語原文から独立に作成した訳。過去実行のmt_jaは一切参照していない。専門家レビュー前のため、本格運用前に人手で確認すること。",
+  "expected_merged_count": 11
+}

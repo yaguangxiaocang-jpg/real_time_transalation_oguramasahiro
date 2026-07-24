@@ -1,0 +1,30 @@
+{
+  "benchmark_id": "technology_moe_2d07bb74_clip4",
+  "domain": "technology",
+  "description": "LLM講義動画（継続学習・破滅的忘却・MOEがテーマ、2d07bb74）のclip4。文字起こしは experiments/segments/20260711_2d07bb74_clip4_2d07bb74_clip4.json から流用（Deepgram再実行なし）。reference_ja は claude-sonnet-5 が英文から独立に作成した訳（人手レビュー未了）。",
+  "raw_utterances": [
+    {"start": 0.56, "end": 8.9, "transcript": "This only prevents forgetting, but also ensures that private data trained on one adapter is not leaked to the public modules."},
+    {"start": 9.84, "end": 24.974998, "transcript": "And in this way, we can continuously train adapted modules to handle coding task or turn another module into, you know, chatbot conversational agents, etcetera. Alternatively, we can even turn, like, a module into, you know, chess experts."},
+    {"start": 30.28, "end": 32.86, "transcript": "The benefit of MOA are numerous."},
+    {"start": 33.48, "end": 43.5, "transcript": "There are fewer activated parameters per query, easier for development, and the ability for, different teams to develop adapters independently."},
+    {"start": 44.395, "end": 49.535, "transcript": "It also provides a very strong compartmentalization and privacy guarantees."},
+    {"start": 52.715, "end": 58.095, "transcript": "And in general, we create a mixture of adapters in a traditional MOE setting."},
+    {"start": 58.4, "end": 68.34, "transcript": "So instead of creating mixture of experts in general forms, we can create a mixture of domain experts, while each domain consists a few of experts."},
+    {"start": 72.515, "end": 82.695, "transcript": "And we can apply block level mask to activate or deactivate a entire MOE layer and treat a entire layer as domain experts."},
+    {"start": 84.92032, "end": 89.980316, "transcript": "Alternatively, we can implement mixture of adapters using a layer wise domain"}
+  ],
+  "reference_ja": [
+    "これは忘却を防ぐだけでなく、あるアダプターで学習したプライベートなデータが、公開モジュールに漏れないことも保証します。",
+    "このようにして、コーディングタスクを扱うためのアダプターモジュールを継続的に学習させたり、別のモジュールをチャットボットのような対話エージェントに仕立てたりできます。あるいは、あるモジュールをチェスの専門家にすることさえ可能です。",
+    "MOAの利点は数多くあります。",
+    "クエリごとに活性化されるパラメータが少なく、開発がしやすく、異なるチームがそれぞれ独立してアダプターを開発できます。",
+    "また、非常に強力な区画化とプライバシー保証も提供します。",
+    "一般的には、従来のMOE構成の中でアダプターの混合を作成します。",
+    "つまり、一般的な形の混合エキスパートを作る代わりに、各ドメインが少数のエキスパートから成る、ドメインエキスパートの混合を作ることができます。",
+    "ブロック単位のマスクを適用してMOEレイヤー全体を有効・無効にし、レイヤー全体をドメインエキスパートとして扱うこともできます。",
+    "あるいは、レイヤー単位のドメインを用いてアダプターの混合を実装することもできます。"
+  ],
+  "reference_status": "draft_needs_human_review",
+  "reference_note": "claude-sonnet-5が2026-07-23に、英語原文から独立に作成した訳。過去実行のmt_jaは一切参照していない。専門家レビュー前のため、本格運用前に人手で確認すること。",
+  "expected_merged_count": 9
+}

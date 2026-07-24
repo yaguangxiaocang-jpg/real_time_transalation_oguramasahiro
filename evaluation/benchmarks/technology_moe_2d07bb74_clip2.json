@@ -1,0 +1,30 @@
+{
+  "benchmark_id": "technology_moe_2d07bb74_clip2",
+  "domain": "technology",
+  "description": "LLM講義動画（継続学習・破滅的忘却・MOEがテーマ、2d07bb74）のclip2。文字起こしは experiments/segments/20260711_2d07bb74_clip2_2d07bb74_clip2.json から流用（Deepgram再実行なし）。reference_ja は claude-sonnet-5 が英文から独立に作成した訳（人手レビュー未了）。",
+  "raw_utterances": [
+    {"start": 0.08, "end": 4.1, "transcript": "By setting the historical context with Moore's law and the power law."},
+    {"start": 4.4, "end": 17.255001, "transcript": "Then we will look at Google's large language models, like BERT and TFI, before diving into the core of today's talk, scaling large language models with mixture of experts, or MOE."},
+    {"start": 18.195, "end": 24.535, "transcript": "Finally, we will cover two important advancements built on MOE, continued learning and modularity."},
+    {"start": 25.49, "end": 29.99, "transcript": "And we will conclude with a final summary and open the floor for questions."},
+    {"start": 34.29, "end": 39.75, "transcript": "And this section gives us the background for why we are seeking new methods to scale."},
+    {"start": 42.344997, "end": 50.765, "transcript": "So Gordon Moore famously postulated that the number of transistors on a chip would double every two years."},
+    {"start": 51.305, "end": 55.324997, "transcript": "However, we are now reaching the physical limits of this law."},
+    {"start": 55.890003, "end": 70.07, "transcript": "Issues like the high temperature of transistors and the memory war, which limits memory bandwidth, mean we can no longer rely on traditional chip advances to fuel the exponential growth of large language models."},
+    {"start": 74.375, "end": 90.00531, "transcript": "And, the scaling of deep learning model was for a long time governed by the predictable power laws, As shown in seminal papers from Baidu in 2017 and the OpenAI paper from 2020, there was"}
+  ],
+  "reference_ja": [
+    "ムーアの法則とべき乗則という歴史的背景を設定することから始めます。",
+    "次に、BERTやT5といったGoogleの大規模言語モデルを見た上で、本日の講演の核心である、Mixture of Experts（MOE）による大規模言語モデルのスケーリングに入っていきます。",
+    "最後に、MOEを基盤とした2つの重要な進展、継続学習とモジュール性について取り上げます。",
+    "そして最後にまとめを行い、質疑応答の時間を設けます。",
+    "このセクションでは、なぜ新しいスケーリング手法を求めているのか、その背景を説明します。",
+    "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに倍増すると提唱したことで知られています。",
+    "しかし、今やこの法則は物理的な限界に近づきつつあります。",
+    "トランジスタの発熱や、メモリ帯域幅を制限するメモリウォールといった課題により、大規模言語モデルの指数関数的な成長を、従来のチップの進歩だけに頼ることはもはやできません。",
+    "ディープラーニングモデルのスケーリングは長い間、予測可能なべき乗則に支配されていました。2017年のBaiduによる先駆的な論文や2020年のOpenAIの論文で示された通り、そこには"
+  ],
+  "reference_status": "draft_needs_human_review",
+  "reference_note": "claude-sonnet-5が2026-07-23に、英語原文から独立に作成した訳。過去実行のmt_jaは一切参照していない。専門家レビュー前のため、本格運用前に人手で確認すること。",
+  "expected_merged_count": 9
+}

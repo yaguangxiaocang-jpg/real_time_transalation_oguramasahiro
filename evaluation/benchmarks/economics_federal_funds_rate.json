@@ -1,0 +1,28 @@
+{
+  "benchmark_id": "economics_federal_funds_rate",
+  "domain": "economics",
+  "description": "2026-07-02の実験（experiments/20260702_gemini_25_flash_economics.json）で見つかった、Deepgramのutterance分割が1文の途中で発生する実例。文分断対策（merge_incomplete_utterances / StreamingUtteranceMerger）の効果を、固定データに対して回帰テストするためのベンチマーク。",
+  "raw_utterances": [
+    {
+      "start": 0.0,
+      "end": 2.5,
+      "transcript": "So this this is the shortest term interest rate"
+    },
+    {
+      "start": 2.5,
+      "end": 5.0,
+      "transcript": "in The United States. It's called the federal"
+    },
+    {
+      "start": 5.0,
+      "end": 6.2,
+      "transcript": "funds rate,"
+    }
+  ],
+  "reference_ja": [
+    "これは米国における最短期間の金利で、フェデラルファンドレートと呼ばれています。"
+  ],
+  "reference_status": "draft_needs_human_review",
+  "reference_note": "claude-sonnet-5が2026-07-08に作成した草案。専門家によるレビュー前のため、正式なベンチマークとして使う前に一度人手で確認してください。",
+  "expected_merged_count": 1
+}

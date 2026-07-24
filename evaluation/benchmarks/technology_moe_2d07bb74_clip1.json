@@ -1,0 +1,30 @@
+{
+  "benchmark_id": "technology_moe_2d07bb74_clip1",
+  "domain": "technology",
+  "description": "LLM講義動画（継続学習・破滅的忘却・MOEがテーマ、2d07bb74）のclip1。文字起こしは experiments/segments/20260711_2d07bb74_clip1_2d07bb74_clip1.json から流用（Deepgram再実行なし）。reference_ja は claude-sonnet-5 が英文から独立に作成した訳（人手レビュー未了）。",
+  "raw_utterances": [
+    {"start": 0.24, "end": 3.46, "transcript": "Base as it prioritize the new specific domain."},
+    {"start": 4.3199997, "end": 16.005, "transcript": "Continuous learning techniques are necessary to ensure, the model successfully adapts to the new domain while retaining its original, valuable, generalist capabilities."},
+    {"start": 20.625, "end": 24.085, "transcript": "And the core problem, is, of course, forgetting."},
+    {"start": 24.625, "end": 31.83, "transcript": "If we train only on the new datasets, the performance on the original dataset data distribution will drop significantly."},
+    {"start": 32.69, "end": 40.87, "transcript": "And the goal here is to build a general model that can adapt to new data while retaining knowledge of the old."},
+    {"start": 44.885002, "end": 59.18, "transcript": "And our solution is to use a distribution based MOE architecture to progressively add more experts for new data distributions and use regularization techniques to mitigate forgetting."},
+    {"start": 62.12, "end": 73.205, "transcript": "And this approach uses both regularization to prevent the model from overfeeding new data and drifting too far from the original weights."},
+    {"start": 73.745, "end": 85.205, "transcript": "And then expansion, which allows the model to dynamically add new experts to handle the new data distribution and to offer, you know, new model capacity to absorb the new knowledge."},
+    {"start": 88.87025, "end": 90.00531, "transcript": "Specifically, we"}
+  ],
+  "reference_ja": [
+    "新しい特定のドメインを優先することをベースとしています。",
+    "モデルが新しいドメインにうまく適応しつつ、元の貴重な汎用能力を維持できるようにするには、継続学習の技術が必要です。",
+    "そして、核心的な問題はもちろん忘却です。",
+    "新しいデータセットだけで学習すると、元のデータセットの分布における性能が大きく低下してしまいます。",
+    "ここでの目標は、古いデータの知識を保持しながら新しいデータに適応できる汎用モデルを構築することです。",
+    "私たちの解決策は、分布ベースのMOEアーキテクチャを用いて新しいデータ分布ごとにエキスパートを段階的に追加し、正則化技術によって忘却を軽減することです。",
+    "このアプローチでは、モデルが新しいデータに過剰適応したり、元の重みから大きく逸脱したりしないよう、正則化を用います。",
+    "そして拡張です。これにより、モデルは新しいデータ分布に対応するためのエキスパートを動的に追加し、新しい知識を吸収するための新たなモデル容量を持てるようになります。",
+    "具体的には、私たちは"
+  ],
+  "reference_status": "draft_needs_human_review",
+  "reference_note": "claude-sonnet-5が2026-07-23に、英語原文から独立に作成した訳。過去実行のmt_jaは一切参照していない。専門家レビュー前のため、本格運用前に人手で確認すること。",
+  "expected_merged_count": 9
+}
