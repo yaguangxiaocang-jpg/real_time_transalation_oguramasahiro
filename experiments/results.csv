@@ -31,3 +31,4 @@
 2026-07-24,gemini-2.5-flash,technology,1.0,0.6069,"[benchmark=technology_moe_2d07bb74_clip3] 固定データセット（11セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。"
 2026-07-24,gemini-2.5-flash,technology,1.0,0.5792,"[benchmark=technology_moe_2d07bb74_clip4] 固定データセット（9セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。"
 2026-07-24,gemini-2.5-flash,technology,1.0,0.54,"[benchmark=technology_moe_2d07bb74_clip5] 固定データセット（9セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。"
+2026-07-28,gemini-2.5-flash,general,1.0,0.6946,"2d07bb74c1f408e21e4e4ec7e3dbdb02 (1).mp4 を処理。105 セグメント翻訳。 [LLM使用量: 105回呼び出し / 入力339,157トークン / 出力2,933トークン] [用語漏れ: WER→WER, temperature→温度パラメータ, RAG→RAG, PR→PR, demo→デモ, TPU→TPU, AWS→AWS, ORM→ORM, SLA→SLA, BI→BI]"

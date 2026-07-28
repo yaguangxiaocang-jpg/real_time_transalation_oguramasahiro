@@ -1,0 +1,763 @@
+{
+  "date": "2026-07-28",
+  "video": "2d07bb74c1f408e21e4e4ec7e3dbdb02 (1).mp4",
+  "model": "gemini-2.5-flash",
+  "domain": "general",
+  "merge_utterances": true,
+  "report": {
+    "usage_summary": "LLM使用量: 105回呼び出し / 入力339,157トークン / 出力2,933トークン",
+    "usage_calls": 105,
+    "usage_prompt_tokens": 339157,
+    "usage_completion_tokens": 2933,
+    "flagged_count": 0,
+    "terminology_misses": [
+      "WER→WER",
+      "temperature→温度パラメータ",
+      "RAG→RAG",
+      "PR→PR",
+      "demo→デモ",
+      "TPU→TPU",
+      "AWS→AWS",
+      "ORM→ORM",
+      "SLA→SLA",
+      "BI→BI"
+    ]
+  },
+  "segments": [
+    {
+      "start": 72.204994,
+      "end": 76.945,
+      "source": "Good evening, everyone. I'm Yanqi Zhou. I'm a research scientist at Google DeepMind.",
+      "mt_ja": "皆さん、こんばんは。周 燕妮と申します。Google DeepMindでリサーチサイエンティストをしています。",
+      "review_flag": null
+    },
+    {
+      "start": 77.485,
+      "end": 81.825,
+      "source": "Today, I'm excited to talk about the future of large language model scaling.",
+      "mt_ja": "今日は、大規模言語モデルのスケーリングの未来についてお話しできることを楽しみにしています。",
+      "review_flag": null
+    },
+    {
+      "start": 82.284996,
+      "end": 94.03,
+      "source": "We will be discussing how the field is moving beyond the traditional power laws of dense models toward a more efficient and sustainable future through modularity and sparsity.",
+      "mt_ja": "従来の密なモデルのべき乗則を超え、モジュール性とスパース性によって、より効率的で持続可能な未来へと、この分野がどう進んでいるかについてお話しします。",
+      "review_flag": null
+    },
+    {
+      "start": 96.49,
+      "end": 117.299995,
+      "source": "Here's a look at what we are covered today. We will start by setting the historical context with Moore's law and the power law. Then we will look at Google's large language models, like BERT and TFI, before diving into the core of today's talk, scaling large language models with mixture of experts, or MOE.",
+      "mt_ja": "本日のアジェンダです。まず、ムーアの法則とべき乗則を用いて歴史的背景を説明します。次に、BERTやTFIといったGoogleの大規模言語モデルについて見ていきます。その後、本日の講演の核心であるMixture of Experts、略してMOEによる大規模言語モデルのスケーリングについて深く掘り下げます。",
+      "review_flag": null
+    },
+    {
+      "start": 118.24,
+      "end": 124.579994,
+      "source": "Finally, we will cover two important advancements built on MOE, continued learning and modularity.",
+      "mt_ja": "最後に、MOEを基盤とした2つの重要な進歩、継続学習とモジュール性について説明します。",
+      "review_flag": null
+    },
+    {
+      "start": 125.395004,
+      "end": 129.975,
+      "source": "And we will conclude with a final summary and open the floor for questions.",
+      "mt_ja": "最後にまとめを行い、質疑応答の時間に移ります。",
+      "review_flag": null
+    },
+    {
+      "start": 134.275,
+      "end": 139.735,
+      "source": "And this section gives us the background for why we are seeking new methods to scale.",
+      "mt_ja": "このセクションでは、なぜ新しいスケーリング方法を求めているのか、その背景を説明します。",
+      "review_flag": null
+    },
+    {
+      "start": 142.4,
+      "end": 150.73999,
+      "source": "So Gordon Moore famously postulated that the number of transistors on a chip would double every two years.",
+      "mt_ja": "ゴードン・ムーアは、チップ上のトランジスタの数が2年ごとに倍増すると提唱しました。",
+      "review_flag": null
+    },
+    {
+      "start": 151.28,
+      "end": 155.38,
+      "source": "However, we are now reaching the physical limits of this law.",
+      "mt_ja": "しかし、今、この法則の物理的な限界に達しつつあります。",
+      "review_flag": null
+    },
+    {
+      "start": 155.875,
+      "end": 170.13501,
+      "source": "Issues like the high temperature of transistors and the memory war, which limits memory bandwidth, mean we can no longer rely on traditional chip advances to fuel the exponential growth of large large language models.",
+      "mt_ja": "トランジスタの高温化や、メモリ帯域幅を制限するメモリ戦争といった問題により、大規模言語モデルの指数関数的な成長を支える従来のチップの進歩には、もはや頼ることができません。",
+      "review_flag": null
+    },
+    {
+      "start": 174.39,
+      "end": 181.85,
+      "source": "And, the scaling of deep learning model was for a long time governed by the predictable power laws.",
+      "mt_ja": "そして、深層学習モデルのスケーリングは、長い間、予測可能なべき乗則に従っていました。",
+      "review_flag": null
+    },
+    {
+      "start": 182.39,
+      "end": 197.675,
+      "source": "As shown in seminal papers from Baidu in 2017 and the OpenAI paper from 2020, there was a direct, predictable relationship between model size, data size, and the final performance of the model.",
+      "mt_ja": "2017年のBaidu、2020年のOpenAIの画期的な論文で示されたように、モデルサイズ、データサイズ、最終的なモデルのパフォーマンスには、直接的で予測可能な関係がありました。",
+      "review_flag": null
+    },
+    {
+      "start": 201.29,
+      "end": 210.59,
+      "source": "Next, let's briefly look at Google's early and the found foundational contributions to the large language models landscape with the BERT and the T5 models.",
+      "mt_ja": "次に、GoogleがBERTとT5モデルで大規模言語モデルの分野に果たした、初期の基盤となる貢献を簡単に見ていきましょう。",
+      "review_flag": null
+    },
+    {
+      "start": 211.965,
+      "end": 216.785,
+      "source": "BERT is an encoder only model that is bidirectional and a non causal.",
+      "mt_ja": "BERTは、双方向で非因果的なエンコーダーのみのモデルです。",
+      "review_flag": null
+    },
+    {
+      "start": 217.405,
+      "end": 224.865,
+      "source": "This made this model excellent for tasks like summarization and classifications, such as the Glue benchmarks.",
+      "mt_ja": "このモデルは、要約や分類といったタスク、例えばGlueベンチマークなどで優れた性能を発揮しました。",
+      "review_flag": null
+    },
+    {
+      "start": 225.69,
+      "end": 234.11,
+      "source": "However, it was not the best for language generation and, crucially, required fine tuning for specific tasks.",
+      "mt_ja": "しかし、言語生成には最適ではなく、決定的に重要なのは、特定のタスクにはファインチューニングが必要でした。",
+      "review_flag": null
+    },
+    {
+      "start": 239.66501,
+      "end": 243.525,
+      "source": "BERT's pretraining used the mask language modeling objective.",
+      "mt_ja": "BERTの事前学習では、マスク言語モデリング目的が使用されました。",
+      "review_flag": null
+    },
+    {
+      "start": 244.065,
+      "end": 250.325,
+      "source": "Well, we replaced a span of randomly masked tokens with a single sentinel token.",
+      "mt_ja": "ランダムにマスクされたトークンのスパンを、単一のセンチネルトークンで置き換えました。",
+      "review_flag": null
+    },
+    {
+      "start": 250.76001,
+      "end": 255.1,
+      "source": "This bidirectional context helps the model learn deeper relationships.",
+      "mt_ja": "この双方向の文脈により、モデルはより深い関係性を学習できます。",
+      "review_flag": null
+    },
+    {
+      "start": 258.44,
+      "end": 261.9,
+      "source": "Annotify introduced a major conceptual simplification.",
+      "mt_ja": "Annotifyは、概念を大きく単純化しました。",
+      "review_flag": null
+    },
+    {
+      "start": 263.055,
+      "end": 270.995,
+      "source": "It covered every single problem from translation to question answering into a text to text format.",
+      "mt_ja": "翻訳から質問応答まで、あらゆる問題をテキストからテキスト形式でカバーしました。",
+      "review_flag": null
+    },
+    {
+      "start": 271.855,
+      "end": 277.075,
+      "source": "Everything is just taking text as an input and producing text as output.",
+      "mt_ja": "全てがテキストを入力とし、テキストを出力として生成するだけです。",
+      "review_flag": null
+    },
+    {
+      "start": 280.7,
+      "end": 292.56,
+      "source": "And this text to text philosophy allowed us to simplify the entire model pipeline, standardizing on a encoder decoder architecture and the fine tuning process.",
+      "mt_ja": "このテキストからテキストという考え方により、モデルパイプライン全体を簡素化し、エンコーダーデコーダーアーキテクチャとファインチューニングプロセスを標準化できました。",
+      "review_flag": null
+    },
+    {
+      "start": 296.065,
+      "end": 308.245,
+      "source": "And here, you can see a visual comparison of a TFi, GPT three, and the PARAM two architectures, highlighting the different masking techniques used in their attention components.",
+      "mt_ja": "ここでは、TFi、GPT three、PARAM twoのアーキテクチャを視覚的に比較しています。アテンションコンポーネントで使われる異なるマスキング技術が強調されています。",
+      "review_flag": null
+    },
+    {
+      "start": 310.78,
+      "end": 321.52002,
+      "source": "If we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+      "mt_ja": "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+      "review_flag": null
+    },
+    {
+      "start": 322.115,
+      "end": 329.655,
+      "source": "Newer, decoder only models like g p three achieve strong generalization capability through in context learning.",
+      "mt_ja": "GPT threeのような新しいデコーダーのみのモデルは、インコンテキスト学習を通じて高い汎化能力を実現します。",
+      "review_flag": null
+    },
+    {
+      "start": 330.195,
+      "end": 338.61002,
+      "source": "And the PARM two, which uses prefix modeling, is a bit more expressive as it is bidirectional in in the attention layer.",
+      "mt_ja": "そして、プレフィックスモデリングを使用するPARAM twoは、アテンション層で双方向であるため、少し表現力が高くなります。",
+      "review_flag": null
+    },
+    {
+      "start": 342.11002,
+      "end": 357.57498,
+      "source": "As we saw a massive jump in the size of dense models, TIFI originally reaches 11,000,000,000 parameters, and we call it one giant model at Google, and the GPG3 at 175,000,000,000 parameters.",
+      "mt_ja": "密なモデルのサイズが飛躍的に増大しました。TIFIは元々110億パラメータに達し、Googleでは「one giant model」と呼んでいます。GPG3は1750億パラメータです。",
+      "review_flag": null
+    },
+    {
+      "start": 358.195,
+      "end": 361.815,
+      "source": "And later, Parm reached 500,000,000,000 parameters.",
+      "mt_ja": "その後、Parmは5000億パラメータに達しました。",
+      "review_flag": null
+    },
+    {
+      "start": 362.81,
+      "end": 368.03,
+      "source": "But as dense model got bigger, the cost and the training time become unsustainable.",
+      "mt_ja": "しかし、密なモデルが大規模化するにつれて、コストと学習時間が維持できなくなりました。",
+      "review_flag": null
+    },
+    {
+      "start": 368.73,
+      "end": 374.03,
+      "source": "This leads us to the question, what comes after the end of a dense model scaling?",
+      "mt_ja": "では、密なモデルのスケーリングの終焉の次は何でしょうか？",
+      "review_flag": null
+    },
+    {
+      "start": 377.545,
+      "end": 381.165,
+      "source": "And the answer is mixture of experts or MOE.",
+      "mt_ja": "そして、その答えは混合エキスパートモデル、またはMOEです。",
+      "review_flag": null
+    },
+    {
+      "start": 381.785,
+      "end": 385.64502,
+      "source": "This is how we continue the exponential scaling trend.",
+      "mt_ja": "こうして、指数関数的なスケーリングのトレンドを継続します。",
+      "review_flag": null
+    },
+    {
+      "start": 387.70502,
+      "end": 397.94,
+      "source": "Looking back at the timeline, the 2022 GLAM model, at 1,200,000,000,000 parameters, broke the 500,000,000,000 barrier of dense models.",
+      "mt_ja": "タイムラインを振り返ると、2022年のGLAMモデルは1.2兆パラメータで、密なモデルの5000億パラメータの壁を破りました。",
+      "review_flag": null
+    },
+    {
+      "start": 398.56,
+      "end": 404.655,
+      "source": "GLAM achieved this by using MOE architecture, showing efficient scaling is possible.",
+      "mt_ja": "GLAMはMOEアーキテクチャを用いることでこれを達成し、効率的なスケーリングが可能であることを示しました。",
+      "review_flag": null
+    },
+    {
+      "start": 407.67502,
+      "end": 415.45502,
+      "source": "Glam uses a decoder only architecture with sparsely gated networks, leveraging the g sharp top two routing function.",
+      "mt_ja": "Glamは、デコーダーのみのアーキテクチャを採用しており、スパースゲート型ネットワークとg sharp top twoルーティング機能を活用しています。",
+      "review_flag": null
+    },
+    {
+      "start": 416.00998,
+      "end": 424.27,
+      "source": "This allowed us to scale the total parameters up to 1,200,000,000,000 while only activating a much smaller fraction.",
+      "mt_ja": "これにより、総パラメータ数を1.2兆まで拡張しつつ、実際に活性化するのはごく一部に抑えることができました。",
+      "review_flag": null
+    },
+    {
+      "start": 424.81,
+      "end": 429.55,
+      "source": "It activates just 97,000,000,000 for any single input.",
+      "mt_ja": "単一の入力に対して活性化するのは、わずか970億です。",
+      "review_flag": null
+    },
+    {
+      "start": 432.52502,
+      "end": 435.185,
+      "source": "This diagram illustrates the GLAM architecture.",
+      "mt_ja": "この図はGLAMアーキテクチャを示しています。",
+      "review_flag": null
+    },
+    {
+      "start": 435.80502,
+      "end": 444.625,
+      "source": "It interleaves standard dense layers with sparse layers composed of sparsely activated feed forward networks.",
+      "mt_ja": "標準の全結合層と、疎に活性化されたフィードフォワードネットワークで構成される疎な層を交互に配置しています。",
+      "review_flag": null
+    },
+    {
+      "start": 445.65,
+      "end": 452.31,
+      "source": "And the g sharp top two gating function dynamically selects which two experts process the information.",
+      "mt_ja": "そして、g sharp top twoゲーティング機能は、どの2つのエキスパートが情報を処理するかを動的に選択します。",
+      "review_flag": null
+    },
+    {
+      "start": 453.25,
+      "end": 461.875,
+      "source": "Since we interleave the dense layer and sparse layer, the parameters of the model scale sublinearly with the number of experts.",
+      "mt_ja": "全結合層と疎な層を交互に配置しているため、モデルのパラメータはエキスパートの数に対して準線形にスケールします。",
+      "review_flag": null
+    },
+    {
+      "start": 466.175,
+      "end": 484.51,
+      "source": "And these results demonstrate the few short performance of natural language understanding and the natural language generation task, showing that MOE models, which scale their activated parameters, maintain a strong performance, scaling curve when compared to dense model counterparts.",
+      "mt_ja": "これらの結果は、自然言語理解と自然言語生成タスクにおけるフューショット性能を示しています。\n活性化されたパラメータをスケールさせるMOEモデルは、密なモデルと比較して、強力な性能スケーリングカーブを維持します。",
+      "review_flag": null
+    },
+    {
+      "start": 487.745,
+      "end": 496.005,
+      "source": "And here, we see the learning efficiency benefits of MOE models compared to similarly sized dense models like GPT-three.",
+      "mt_ja": "そしてここでは、GPT-3のような同規模の密なモデルと比較して、MOEモデルの学習効率のメリットが見られます。",
+      "review_flag": null
+    },
+    {
+      "start": 496.785,
+      "end": 503.96,
+      "source": "And it was the first time at Google we show the decoder only MOE outperforming GPT three.",
+      "mt_ja": "そして、Googleで初めて、デコーダーのみのMOEがGPT-3を上回る性能を示しました。",
+      "review_flag": null
+    },
+    {
+      "start": 508.02002,
+      "end": 519.51495,
+      "source": "And now we will transition to the challenge of continual learning, how to manage and update these massive models over time with training from without training from scratch.",
+      "mt_ja": "そして、次に継続学習の課題に移ります。\nこれらの巨大なモデルを、ゼロから再学習することなく、時間とともに管理し、更新する方法についてです。",
+      "review_flag": null
+    },
+    {
+      "start": 521.975,
+      "end": 529.57996,
+      "source": "And there are two major motivations for continual learning. The first major motivation is dealing with temporal datasets.",
+      "mt_ja": "継続学習には、主に2つの動機があります。\n1つ目の主な動機は、時系列データセットへの対応です。",
+      "review_flag": null
+    },
+    {
+      "start": 530.36,
+      "end": 534.13995,
+      "source": "Language trends and word knowledge are constantly changing.",
+      "mt_ja": "言語のトレンドや語彙知識は常に変化しています。",
+      "review_flag": null
+    },
+    {
+      "start": 534.68,
+      "end": 538.3,
+      "source": "If we will only train our model once, they quickly become outdated.",
+      "mt_ja": "モデルを一度だけ学習させると、すぐに古くなってしまいます。",
+      "review_flag": null
+    },
+    {
+      "start": 538.605,
+      "end": 550.225,
+      "source": "We need to keep our massive models updated with new information from sources like Google Search, online forums, and GitHub, which are constantly producing new examples.",
+      "mt_ja": "Google検索、オンラインフォーラム、GitHubといった、常に新しい例を生み出す情報源からの情報で、巨大なモデルを更新し続ける必要があります。",
+      "review_flag": null
+    },
+    {
+      "start": 550.99005,
+      "end": 560.21,
+      "source": "Training entire larger language models from scratch or even just fully fine tuning the model is incredibly time and resource consuming.",
+      "mt_ja": "大規模言語モデル全体をゼロから学習させたり、完全にファインチューニングするだけでも、膨大な時間とリソースがかかります。",
+      "review_flag": null
+    },
+    {
+      "start": 561.15,
+      "end": 573.005,
+      "source": "Continual learning allows us to train on new examples, which is much cheaper process without performing a full expensive retraining cycle every couple of months.",
+      "mt_ja": "継続学習は、数ヶ月ごとに高価な再学習サイクルを全て行うことなく、新しい例で学習することを可能にする、はるかに安価なプロセスです。",
+      "review_flag": null
+    },
+    {
+      "start": 573.865,
+      "end": 576.525,
+      "source": "The second motivation is domain adaptation.",
+      "mt_ja": "2つ目の動機はドメイン適応です。",
+      "review_flag": null
+    },
+    {
+      "start": 577.19,
+      "end": 583.37,
+      "source": "This is about taking a powerful generalist model and specializing it for a targeted domain.",
+      "mt_ja": "これは、強力な汎用モデルを特定のドメイン向けに特化させることです。",
+      "review_flag": null
+    },
+    {
+      "start": 583.75,
+      "end": 594.415,
+      "source": "We want to fine tune the model for a specific application, such as turning a generalist large range model into a highly specialized chatbot or a coding assistant?",
+      "mt_ja": "特定のアプリケーション向けにモデルをファインチューニングしたい、ということでしょうか？\n例えば、汎用的な大規模モデルを、高度に特化したチャットボットやコーディングアシスタントに変えるような用途で。",
+      "review_flag": null
+    },
+    {
+      "start": 595.275,
+      "end": 599.455,
+      "source": "Well, we fine tune a general model on a new specialized datasets.",
+      "mt_ja": "ええ、汎用モデルを新しい特化データセットでファインチューニングします。",
+      "review_flag": null
+    },
+    {
+      "start": 599.915,
+      "end": 603.855,
+      "source": "The model runs to the risk of catastrophic forgetting.",
+      "mt_ja": "モデルは壊滅的忘却のリスクがあります。",
+      "review_flag": null
+    },
+    {
+      "start": 604.475,
+      "end": 610.48,
+      "source": "It can quickly lose the original broad knowledge base as it prioritize the new specific domain.",
+      "mt_ja": "新しい特化ドメインを優先すると、元の幅広い知識をすぐに失ってしまう可能性があります。",
+      "review_flag": null
+    },
+    {
+      "start": 611.5,
+      "end": 623.055,
+      "source": "Continual learning techniques are necessary to ensure, the model successfully adapts to the new domain while retaining its original, valuable, generalist capabilities.",
+      "mt_ja": "モデルが新しいドメインに適応しつつ、元の汎用能力を維持するには、継続学習技術が不可欠です。",
+      "review_flag": null
+    },
+    {
+      "start": 627.59503,
+      "end": 631.055,
+      "source": "And the core problem, is, of course, forgetting.",
+      "mt_ja": "そして、核となる問題は、もちろん、忘却です。",
+      "review_flag": null
+    },
+    {
+      "start": 631.59503,
+      "end": 638.76996,
+      "source": "If we train only on the new datasets, the performance on the original dataset data distribution will drop significantly.",
+      "mt_ja": "新しいデータセットだけで学習させると、元のデータセットのデータ分布に対する性能は大幅に低下します。",
+      "review_flag": null
+    },
+    {
+      "start": 639.63,
+      "end": 647.89,
+      "source": "And the goal here is to build a general model that can adapt to new data while retaining knowledge of the old.",
+      "mt_ja": "ここでの目標は、古い知識を保持しながら、新しいデータに適応できる汎用モデルを構築することです。",
+      "review_flag": null
+    },
+    {
+      "start": 651.905,
+      "end": 666.15,
+      "source": "And our solution is to use a distribution based MOE architecture to progressively add more experts for new data distributions and use regularization techniques to mitigate forgetting.",
+      "mt_ja": "そして、私たちの解決策は、分布ベースのMOEアーキテクチャを使い、新しいデータ分布に対応するエキスパートを漸進的に追加し、正則化技術で忘却を軽減することです。",
+      "review_flag": null
+    },
+    {
+      "start": 669.09,
+      "end": 680.195,
+      "source": "And this approach uses both regularization to prevent the model from overfeeding new data and drifting too far from the original weights.",
+      "mt_ja": "このアプローチは、モデルが新しいデータに過学習するのを防ぎ、元の重みから大きく逸脱しないように、正則化を使用します。",
+      "review_flag": null
+    },
+    {
+      "start": 680.735,
+      "end": 692.195,
+      "source": "And then expansion, which allows the model to dynamically add new experts to handle the new data distribution and to offer, you know, new model capacity to absorb the new knowledge.",
+      "mt_ja": "そして拡張機能です。これにより、モデルは新しいデータ分布に対応するため、新しいエキスパートを動的に追加し、新しい知識を吸収するモデル容量を増やします。",
+      "review_flag": null
+    },
+    {
+      "start": 695.70996,
+      "end": 711.975,
+      "source": "Specifically, we expand the new experts for new distributions, partially freeze the old experts, and then train the model using a learning without forgetting loss or LWF, which is designed to suppress memory loss.",
+      "mt_ja": "具体的には、新しい分布のために新しいエキスパートを拡張し、古いエキスパートを部分的に凍結します。そして、記憶喪失を抑制するよう設計されたLWF（Learning Without Forgetting loss）を用いてモデルを学習させます。",
+      "review_flag": null
+    },
+    {
+      "start": 715.15497,
+      "end": 726.14996,
+      "source": "And as the results shows, by using the combined expansion and the regularization techniques, we are able to successful successfully suppress the catastrophic forgetting issue.",
+      "mt_ja": "結果が示すように、拡張と正則化の組み合わせ技術を用いることで、壊滅的忘却の問題を抑制することに成功しました。",
+      "review_flag": null
+    },
+    {
+      "start": 726.52997,
+      "end": 736.79,
+      "source": "And we can see our methods, provides, you know, better accuracy, and, lower the forgetting when there's a data distribution shift.",
+      "mt_ja": "私たちの手法は、データ分布がシフトした際に、精度を向上させ、忘却を軽減できることがわかります。",
+      "review_flag": null
+    },
+    {
+      "start": 738.825,
+      "end": 763.06,
+      "source": "And this slide summarizes the final quantitative benefits achieved with the continued learning MOE approach when comparing our lifelong MOE methods with the related work, including online l two regularization, memory replay, our methods on average outperforms, the related work. And then finally, we will discuss",
+      "mt_ja": "このスライドは、継続学習MOEアプローチで達成された最終的な定量的メリットをまとめたものです。オンラインL2正則化やメモリリプレイを含む関連研究と、私たちのライフロングMOE手法を比較した場合、私たちの手法は平均して関連研究を上回ります。そして最後に、議論します",
+      "review_flag": null
+    },
+    {
+      "start": 763.83997,
+      "end": 771.225,
+      "source": "modularity, a complementary approach to efficient and sustainable large language model development.",
+      "mt_ja": "モジュール性、効率的で持続可能な大規模言語モデル開発への補完的なアプローチについてです。",
+      "review_flag": null
+    },
+    {
+      "start": 772.725,
+      "end": 774.185,
+      "source": "And what is modularity?",
+      "mt_ja": "モジュール性とは何でしょうか？",
+      "review_flag": null
+    },
+    {
+      "start": 775.125,
+      "end": 782.61,
+      "source": "In a simple term, modularity means breaking down large complex models into smaller distinct components.",
+      "mt_ja": "簡単に言えば、モジュール性とは、大規模で複雑なモデルを、より小さく明確なコンポーネントに分解することです。",
+      "review_flag": null
+    },
+    {
+      "start": 785.23004,
+      "end": 790.69,
+      "source": "And a mixture of adapters or MOA takes this concept one step further.",
+      "mt_ja": "アダプターの混合、つまりMOAは、この概念をさらに一歩進めます。",
+      "review_flag": null
+    },
+    {
+      "start": 791.07,
+      "end": 798.745,
+      "source": "The main large language model backbone is frozen here, and a small task specific adapters are trained independently.",
+      "mt_ja": "主要な大規模言語モデルのバックボーンは固定され、小さなタスク固有のアダプターが個別に学習されます。",
+      "review_flag": null
+    },
+    {
+      "start": 799.60504,
+      "end": 808.905,
+      "source": "And this is only prevents forgetting, but also ensures that private data trained on one adapter is not leaked to the public modules.",
+      "mt_ja": "これは忘却を防ぐだけでなく、1つのアダプターで学習されたプライベートデータが公開モジュールに漏洩しないことも保証します。",
+      "review_flag": null
+    },
+    {
+      "start": 809.8,
+      "end": 820.7,
+      "source": "And in this way, we can continuously train adapted modules to handle coding task or turn another module into, you know, chatbot conversational agents, etcetera.",
+      "mt_ja": "このようにして、コーディングタスクに対応する調整されたモジュールを継続的に学習させたり、別のモジュールをチャットボットの会話エージェントなどに変えたりすることができます。",
+      "review_flag": null
+    },
+    {
+      "start": 821.08,
+      "end": 824.94,
+      "source": "Alternatively, we can even turn, like, a module into, you know, chess experts.",
+      "mt_ja": "あるいは、モジュールをチェスの専門家にする、といったこともできます。",
+      "review_flag": null
+    },
+    {
+      "start": 830.33496,
+      "end": 832.83496,
+      "source": "The benefit of MOA are numerous.",
+      "mt_ja": "MOAの利点は多数あります。",
+      "review_flag": null
+    },
+    {
+      "start": 833.535,
+      "end": 843.55,
+      "source": "There are fewer activated parameters per query, easier for development, and the ability for, different teams to develop adapters independently.",
+      "mt_ja": "クエリごとの活性化パラメータが少なく、開発が容易で、異なるチームがアダプターを独立して開発できます。",
+      "review_flag": null
+    },
+    {
+      "start": 844.41003,
+      "end": 849.47003,
+      "source": "It also provides a very strong compartmentalization and privacy guarantees.",
+      "mt_ja": "また、厳格な区画化とプライバシーの保証も提供します。",
+      "review_flag": null
+    },
+    {
+      "start": 852.865,
+      "end": 868.325,
+      "source": "And in general, we create a mixture of adapters in a traditional MOE setting. So instead of creating mixture of experts in general forms, we can create a mixture of domain experts, while each domain consists a few of experts.",
+      "mt_ja": "一般的に、従来のMOE設定ではアダプターの混合を作成します。\nつまり、一般的なエキスパートの混合ではなく、各ドメインが少数のエキスパートで構成されるドメインエキスパートの混合を作成できます。",
+      "review_flag": null
+    },
+    {
+      "start": 872.44,
+      "end": 882.7,
+      "source": "And we can apply block level mask to activate or deactivate a entire MOE layer and treat a entire layer as domain experts.",
+      "mt_ja": "そして、ブロックレベルマスクを適用して、MOEレイヤー全体を活性化・非活性化し、レイヤー全体をドメインエキスパートとして扱うことができます。",
+      "review_flag": null
+    },
+    {
+      "start": 885.16504,
+      "end": 897.66504,
+      "source": "Alternatively, we can implement mixture of adapters using a layerized domain masking. And this work in general, well in any, works well in any MOE based architectures.",
+      "mt_ja": "あるいは、レイヤー化されたドメインマスキングを使ってアダプターの混合を実装することも可能です。これは一般的に、MOEベースのあらゆるアーキテクチャでうまく機能します。",
+      "review_flag": null
+    },
+    {
+      "start": 900.73,
+      "end": 914.19,
+      "source": "And in the MOE experiments, we use two types of datasets, domain data, which is, only the new target specific data, and the mixture data, which combines the original pretraining data with the new domain data.",
+      "mt_ja": "MOE実験では、2種類のデータセットを使用します。新しいターゲット固有のデータのみであるドメインデータと、元の事前学習データと新しいドメインデータを組み合わせた混合データです。",
+      "review_flag": null
+    },
+    {
+      "start": 916.14496,
+      "end": 928.40497,
+      "source": "And in this setting, we use domain data, our target QA, to enhance the mass, downstream evaluation, and then we use q Quizlet to, you know, improve the MMLU scoring.",
+      "mt_ja": "この設定では、ターゲットQAであるドメインデータを使って、マス、ダウンストリーム評価を強化し、MMLUスコアリングを向上させるためにq Quizletを使います。",
+      "review_flag": null
+    },
+    {
+      "start": 930.92004,
+      "end": 943.18,
+      "source": "And as a baseline, we found that training a standard MOE only on the new domain data only results in clear forgetting, measured by public perplexity here.",
+      "mt_ja": "ベースラインとして、新しいドメインデータのみで標準MOEを訓練すると、ここで公開されているパープレキシティで測定される明らかな忘却が生じることが分かりました。",
+      "review_flag": null
+    },
+    {
+      "start": 943.495,
+      "end": 948.315,
+      "source": "And then this was consistent across different model sizes and the different domain datasets.",
+      "mt_ja": "そして、これは異なるモデルサイズと異なるドメインデータセット間で一貫していました。",
+      "review_flag": null
+    },
+    {
+      "start": 948.935,
+      "end": 957.11505,
+      "source": "So if you check the right figure, this is the the perplexity eval on assessable eval, datasets at Google.",
+      "mt_ja": "では、右の図をご覧ください。これはGoogleの評価可能なデータセットにおけるパープレキシティの評価です。",
+      "review_flag": null
+    },
+    {
+      "start": 957.575,
+      "end": 969.81,
+      "source": "And the green curve is we we con we continue training on the data domain data only on the MOE model. And apparently, it results in forgetting because the perplexity becomes bigger than one.",
+      "mt_ja": "緑の曲線は、MOEモデルでドメインデータのみを使って学習を続けたものです。パープレキシティが1より大きくなるため、明らかに忘却が生じています。",
+      "review_flag": null
+    },
+    {
+      "start": 970.99,
+      "end": 982.595,
+      "source": "And the key to MOA is training the domain specific adapters while keeping the massive backbone frozen.",
+      "mt_ja": "MOAの鍵は、大規模なバックボーンを凍結したまま、ドメイン固有のアダプターを訓練することです。",
+      "review_flag": null
+    },
+    {
+      "start": 983.135,
+      "end": 994.75,
+      "source": "And this guarantees no forgetting and eliminates the need to even access the original pre training data, allowing for independent development of the adapters that can be easily combined.",
+      "mt_ja": "これにより忘却は発生せず、元の事前学習データへのアクセスも不要になります。\nアダプターは独立して開発でき、簡単に組み合わせられます。",
+      "review_flag": null
+    },
+    {
+      "start": 997.44995,
+      "end": 1012.855,
+      "source": "And at the 900,000,000 parameter scale, the MOA with a frozen backbone training with the targeted data owning was found to be as efficient or even more FLOPS efficient than a baseline MOE trained on the mixture of the data.",
+      "mt_ja": "9億パラメータ規模のMOAでは、\nフリーズされたバックボーンとターゲットデータのみでの学習が、\nデータ混合で学習したベースラインMOEよりも、\nFLOPS効率が同等かそれ以上であることが分かりました。",
+      "review_flag": null
+    },
+    {
+      "start": 1016.10004,
+      "end": 1022.2,
+      "source": "And at the 3,000,000,000 parameter scale, the MOA, again, approved to be highly efficient.",
+      "mt_ja": "30億パラメータ規模でも、MOAはここでも高い効率性を示すことが分かりました。",
+      "review_flag": null
+    },
+    {
+      "start": 1022.82,
+      "end": 1036.015,
+      "source": "Specifically, a technique called MOA tail patching using only domain data improved our MMLU score by approximately 30 points, showing both efficiency and a significant quality gain.",
+      "mt_ja": "具体的には、MOAテールパッチングと呼ばれる手法で、ドメインデータのみを使用することで、MMLUスコアを約30ポイント向上させ、効率性と大幅な品質向上を示しました。",
+      "review_flag": null
+    },
+    {
+      "start": 1040.11,
+      "end": 1054.69,
+      "source": "And, to generalize this MOA into a pretraining setting, we've explored the mixture of domain experts idea. And this involves experts on sharding the data and the shared parameters in the attention mechanism.",
+      "mt_ja": "このMOAを事前学習設定に汎化するため、ドメインエキスパートの混合というアイデアを探求しました。\nこれには、データシャーディングのエキスパートと、アテンション機構における共有パラメータが含まれます。",
+      "review_flag": null
+    },
+    {
+      "start": 1055.595,
+      "end": 1067.0549,
+      "source": "And the performance benefits including faster inference, reduced communication, smaller activated parameters per query, and the ability to fit many more experts.",
+      "mt_ja": "そして、パフォーマンス上の利点としては、推論の高速化、通信量の削減、クエリあたりの有効化パラメータの小型化、そしてより多くのエキスパートを適合できる能力が挙げられます。",
+      "review_flag": null
+    },
+    {
+      "start": 1067.8701,
+      "end": 1075.5701,
+      "source": "And the model, leverage metadata containing a domain ID to map a sequence of tokens to a domain mask.",
+      "mt_ja": "そしてモデルは、ドメインIDを含むメタデータを活用し、トークンシーケンスをドメインマスクにマッピングします。",
+      "review_flag": null
+    },
+    {
+      "start": 1075.8701,
+      "end": 1086.255,
+      "source": "And this mask forces, tokens to be routed to a small subset of experts, which effectively reduces the all to all communication overhead.",
+      "mt_ja": "このマスクにより、トークンは少数のエキスパートにルーティングされ、オールツーオール通信のオーバーヘッドを効果的に削減します。",
+      "review_flag": null
+    },
+    {
+      "start": 1086.7949,
+      "end": 1096.735,
+      "source": "And this coarse grained routing also reduces the number of activated parameters per batch, leading to faster inference and more efficient serving configurations.",
+      "mt_ja": "この粗粒度ルーティングも、バッチあたりの有効化パラメータ数を削減し、推論の高速化とより効率的なサービング構成につながります。",
+      "review_flag": null
+    },
+    {
+      "start": 1098.33,
+      "end": 1109.95,
+      "source": "Additionally, this approach enables expert prefetching through memory offloading, significantly increasing the total servable capacity on a fixed hardware topology.",
+      "mt_ja": "さらに、このアプローチはメモリオフロードを通じてエキスパートのプリフェッチを可能にし、固定されたハードウェアトポロジー上での総サービング容量を大幅に増加させます。",
+      "review_flag": null
+    },
+    {
+      "start": 1114.775,
+      "end": 1126.635,
+      "source": "And the MOA architecture fundamentally enables stronger serving performance by design, supporting a larger number of experts and leading to faster decoding and inference.",
+      "mt_ja": "MOAアーキテクチャは、設計により根本的に優れたサービング性能を実現し、より多くのエキスパートをサポートすることで、デコーディングと推論の高速化につながります。",
+      "review_flag": null
+    },
+    {
+      "start": 1132.46,
+      "end": 1143.5199,
+      "source": "To summarize, sustainable scaling of dense large language models is reaching an end. The mixture of expert approach is now critical to advancing large language model scaling.",
+      "mt_ja": "まとめると、密な大規模言語モデルの持続可能なスケーリングは限界に達しつつあります。\n大規模言語モデルのスケーリングを進める上で、Mixture of Expertアプローチが今や不可欠です。",
+      "review_flag": null
+    },
+    {
+      "start": 1144.1951,
+      "end": 1150.6951,
+      "source": "We've shown how MOE enables to measure forward looking area, continual learning, and modularity.",
+      "mt_ja": "MOEが将来を見据えた領域、継続学習、モジュール性をどのように可能にするかを示しました。",
+      "review_flag": null
+    },
+    {
+      "start": 1151.3151,
+      "end": 1154.6951,
+      "source": "Thank you for your time, and I'd be happy to take any questions.",
+      "mt_ja": "ご清聴ありがとうございました。ご質問があれば喜んでお答えいたします。",
+      "review_flag": null
+    },
+    {
+      "start": 3617.545,
+      "end": 3618.045,
+      "source": "Hi.",
+      "mt_ja": "こんにちは。",
+      "review_flag": null
+    }
+  ]
+}
