@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import logging
 import random
+import re
 import time
 from collections.abc import AsyncIterator
 from dataclasses import dataclass
@@ -12,6 +13,24 @@ from pathlib import Path
 from typing import Any, Literal
 
 logger = logging.getLogger(__name__)
+
+_PROMPT_DELIMITER_RE = re.compile(
+    r"<\s*/?\s*(?:context|target|cache_padding)\s*>", re.IGNORECASE
+)
+
+
+def _strip_prompt_delimiters(text: str) -> str:
+    """プロンプトの内部区切りタグ（<target>等）がLLM出力に漏れた場合に除去する。
+
+    末尾が前置詞などで不自然に途切れる短いチャンク（例: "...to prevent the
+    model from"）を翻訳させると、モデルが `</target>` のようなプロンプト構造を
+    そのまま出力に混入させることが実験で複数回再現した。プロンプト側の指示
+    （SYSTEM_PROMPT_TEMPLATEのOutput rules）だけでは防ぎきれないため、
+    出力側でも機械的に取り除く。
+    """
+    cleaned = _PROMPT_DELIMITER_RE.sub("", text)
+    return re.sub(r"\n{2,}", "\n", cleaned).strip()
+
 
 _DOMAIN_DESCRIPTIONS: dict[str, str] = {
     "general": "",
@@ -65,6 +84,9 @@ class LLMTranslator:
 {domain_section}
 Output rules:
 - Output ONLY the translated text. No explanations, no alternatives, no parenthetical notes.
+- Never output the literal delimiter strings <context>, </context>, <target>, </target>,
+  <cache_padding>, or </cache_padding> — these are internal prompt markers, not part of the
+  subtitle, and must never appear in your output even if the source text ends abruptly.
 - Keep proper nouns (person/org/product/place names), acronyms, and code identifiers
   EXACTLY as they appear in the source text (do not translate, transliterate, or normalize).
 - If a term is ambiguous or unknown, keep it unchanged rather than guessing.
@@ -375,6 +397,8 @@ Japanese subtitle guidelines:
             self._record_openai_usage(output, (time.monotonic() - call_start) * 1000)
             translation = output.latest_slide.strip()
             kept_terms = list(output.kept_terms or [])
+
+        translation = _strip_prompt_delimiters(translation)
 
         should_update_context = update_context and src_context is None
         if should_update_context:
