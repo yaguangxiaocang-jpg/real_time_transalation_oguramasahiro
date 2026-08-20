@@ -56,21 +56,41 @@ def load_benchmark(path: Path) -> dict:
     return benchmark
 
 
-def merge_raw_utterances(benchmark: dict) -> list[dict]:
-    """動画字幕・マイクと同じ結合アルゴリズムを適用する。"""
+def merge_raw_utterances(
+    benchmark: dict,
+    *,
+    max_duration: float | None = None,
+    max_words: int | None = None,
+) -> list[dict]:
+    """動画字幕・マイクと同じ結合アルゴリズムを適用する。
+
+    Args:
+        max_duration: 結合を打ち切るまでの最大長さ（秒）。`None`なら
+            `merge_incomplete_utterances`の既定値（動画/CLIと同じ20秒）を使う。
+        max_words: 結合を打ち切るまでの最大語数。`None`なら既定値（60語）を使う。
+            チャンク長のトレードオフ検証（`chunk_length_sweep.py`）で、
+            マイク側の設定（8秒/30語）や、それより短い値を試すために公開している。
+    """
     from real_time_translation.transcription.utterance_merge import (
+        DEFAULT_MAX_DURATION,
+        DEFAULT_MAX_WORDS,
         merge_incomplete_utterances,
     )
 
-    merged = merge_incomplete_utterances(benchmark["raw_utterances"])
+    merged = merge_incomplete_utterances(
+        benchmark["raw_utterances"],
+        max_duration=DEFAULT_MAX_DURATION if max_duration is None else max_duration,
+        max_words=DEFAULT_MAX_WORDS if max_words is None else max_words,
+    )
 
     expected = benchmark.get("expected_merged_count")
-    if expected is not None and len(merged) != expected:
-        print(
-            f"注意: 結合後のセグメント数が想定と異なります"
-            f"（期待={expected}, 実際={len(merged)}）。"
-            "結合ロジックの変更でセグメント分割が変わった可能性があります。"
-        )
+    if max_duration is None and max_words is None and expected is not None:
+        if len(merged) != expected:
+            print(
+                f"注意: 結合後のセグメント数が想定と異なります"
+                f"（期待={expected}, 実際={len(merged)}）。"
+                "結合ロジックの変更でセグメント分割が変わった可能性があります。"
+            )
 
     return merged
 

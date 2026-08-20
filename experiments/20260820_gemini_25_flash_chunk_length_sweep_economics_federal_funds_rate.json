@@ -1,0 +1,109 @@
+{
+  "date": "2026-08-20",
+  "model": "gemini-2.5-flash",
+  "benchmark_id": "economics_federal_funds_rate",
+  "sweep": [
+    {
+      "max_duration": 1.0,
+      "max_words": 5,
+      "segment_count": 3,
+      "avg_chunk_seconds": 2.07,
+      "max_chunk_seconds": 2.5,
+      "first_chunk_seconds": 2.5,
+      "doc_chrf": 0.4042,
+      "merged_texts": [
+        "So this this is the shortest term interest rate",
+        "in The United States. It's called the federal",
+        "funds rate,"
+      ],
+      "translated_texts": [
+        "これは最短期の金利です。",
+        "米国で。フェデラルと呼ばれています。",
+        "ファンド金利、"
+      ]
+    },
+    {
+      "max_duration": 2.0,
+      "max_words": 8,
+      "segment_count": 3,
+      "avg_chunk_seconds": 2.07,
+      "max_chunk_seconds": 2.5,
+      "first_chunk_seconds": 2.5,
+      "doc_chrf": 0.3278,
+      "merged_texts": [
+        "So this this is the shortest term interest rate",
+        "in The United States. It's called the federal",
+        "funds rate,"
+      ],
+      "translated_texts": [
+        "これは最短期の金利です。",
+        "米国では、それはフェデラルと",
+        "ファンドレートです。"
+      ]
+    },
+    {
+      "max_duration": 3.0,
+      "max_words": 10,
+      "segment_count": 2,
+      "avg_chunk_seconds": 3.1,
+      "max_chunk_seconds": 5.0,
+      "first_chunk_seconds": 5.0,
+      "doc_chrf": 0.2322,
+      "merged_texts": [
+        "So this this is the shortest term interest rate in The United States. It's called the federal",
+        "funds rate,"
+      ],
+      "translated_texts": [
+        "これはアメリカの最短期の金利です。フェデラルと",
+        "ファンド金利です。"
+      ]
+    },
+    {
+      "max_duration": 4.0,
+      "max_words": 15,
+      "segment_count": 2,
+      "avg_chunk_seconds": 3.1,
+      "max_chunk_seconds": 5.0,
+      "first_chunk_seconds": 5.0,
+      "doc_chrf": 0.2395,
+      "merged_texts": [
+        "So this this is the shortest term interest rate in The United States. It's called the federal",
+        "funds rate,"
+      ],
+      "translated_texts": [
+        "これはアメリカの最短期の金利です。フェデラルと",
+        "ファンズレートです。"
+      ]
+    },
+    {
+      "max_duration": 8.0,
+      "max_words": 30,
+      "segment_count": 1,
+      "avg_chunk_seconds": 6.2,
+      "max_chunk_seconds": 6.2,
+      "first_chunk_seconds": 6.2,
+      "doc_chrf": 0.5676,
+      "merged_texts": [
+        "So this this is the shortest term interest rate in The United States. It's called the federal funds rate,"
+      ],
+      "translated_texts": [
+        "これは米国の短期金利で、フェデラルファンド金利と呼ばれています。"
+      ]
+    },
+    {
+      "max_duration": 20.0,
+      "max_words": 60,
+      "segment_count": 1,
+      "avg_chunk_seconds": 6.2,
+      "max_chunk_seconds": 6.2,
+      "first_chunk_seconds": 6.2,
+      "doc_chrf": 0.3719,
+      "merged_texts": [
+        "So this this is the shortest term interest rate in The United States. It's called the federal funds rate,"
+      ],
+      "translated_texts": [
+        "これは米国の最短金利です。フェデラルファンド金利と呼ばれます。"
+      ]
+    }
+  ]
+}
