@@ -1,0 +1,15 @@
+{
+  "benchmark_id": "technology_fragment_moe_definition",
+  "domain": "technology",
+  "description": "チャンク長トレードオフ検証のため2026-08-20に新規取得。2d07bb74_v2_clip1.mp4をDeepgramで再文字起こしし（merge適用前の生発話）、文中で分断された実例の中から2発話結合のケースを抽出した。reference_ja はclaude-sonnet-5が英文から独立に作成した訳（人手レビュー未了）。",
+  "raw_utterances": [
+    {"start": 77.5, "end": 79.8, "transcript": "And the answer is mixture of experts"},
+    {"start": 80.4, "end": 81.2, "transcript": "or MOE."}
+  ],
+  "reference_ja": [
+    "その答えが、Mixture of Experts、すなわちMOEです。"
+  ],
+  "reference_status": "draft_needs_human_review",
+  "reference_note": "claude-sonnet-5が2026-08-20に、英語原文から独立に作成した訳。専門家レビュー前のため、本格運用前に人手で確認すること。",
+  "expected_merged_count": 1
+}

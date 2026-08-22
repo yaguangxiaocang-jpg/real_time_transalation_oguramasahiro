@@ -1,0 +1,111 @@
+{
+  "date": "2026-08-22",
+  "model": "gemini-2.5-flash",
+  "benchmark_id": "technology_fragment_t5_finetuning",
+  "sweep": [
+    {
+      "max_duration": 1.0,
+      "max_words": 5,
+      "segment_count": 4,
+      "avg_chunk_seconds": 2.15,
+      "max_chunk_seconds": 4.1,
+      "first_chunk_seconds": 1.9,
+      "doc_chrf": 0.6159,
+      "merged_texts": [
+        "If we we look at the differences,",
+        "older models like t five were not as strong on generation",
+        "and needed task specific",
+        "fine tuning."
+      ],
+      "translated_texts": [
+        "違いを見てみると、",
+        "T5のような古いモデルは、生成能力がそれほど強くありませんでした。",
+        "タスク固有の対応が必要でした。",
+        "ファインチューニングが必要でした。"
+      ]
+    },
+    {
+      "max_duration": 2.0,
+      "max_words": 8,
+      "segment_count": 2,
+      "avg_chunk_seconds": 5.15,
+      "max_chunk_seconds": 6.8,
+      "first_chunk_seconds": 6.8,
+      "doc_chrf": 0.6772,
+      "merged_texts": [
+        "If we we look at the differences, older models like t five were not as strong on generation",
+        "and needed task specific fine tuning."
+      ],
+      "translated_texts": [
+        "違いを見てみると、T5のような古いモデルは生成能力がそれほど強くありませんでした。",
+        "タスク固有のファインチューニングが必要でした。"
+      ]
+    },
+    {
+      "max_duration": 3.0,
+      "max_words": 10,
+      "segment_count": 2,
+      "avg_chunk_seconds": 5.15,
+      "max_chunk_seconds": 6.8,
+      "first_chunk_seconds": 6.8,
+      "doc_chrf": 0.6772,
+      "merged_texts": [
+        "If we we look at the differences, older models like t five were not as strong on generation",
+        "and needed task specific fine tuning."
+      ],
+      "translated_texts": [
+        "違いを見てみると、T5のような古いモデルは生成能力がそれほど強くありませんでした。",
+        "タスク固有のファインチューニングが必要でした。"
+      ]
+    },
+    {
+      "max_duration": 4.0,
+      "max_words": 15,
+      "segment_count": 2,
+      "avg_chunk_seconds": 5.15,
+      "max_chunk_seconds": 6.8,
+      "first_chunk_seconds": 6.8,
+      "doc_chrf": 0.7454,
+      "merged_texts": [
+        "If we we look at the differences, older models like t five were not as strong on generation",
+        "and needed task specific fine tuning."
+      ],
+      "translated_texts": [
+        "違いを見てみると、T5のような古いモデルは生成があまり強くありませんでした。",
+        "タスク固有のファインチューニングが必要でした。"
+      ]
+    },
+    {
+      "max_duration": 8.0,
+      "max_words": 30,
+      "segment_count": 2,
+      "avg_chunk_seconds": 4.95,
+      "max_chunk_seconds": 9.1,
+      "first_chunk_seconds": 9.1,
+      "doc_chrf": 0.5249,
+      "merged_texts": [
+        "If we we look at the differences, older models like t five were not as strong on generation and needed task specific",
+        "fine tuning."
+      ],
+      "translated_texts": [
+        "違いを見ると、T5のような古いモデルは生成能力がそれほど強くなく、タスク固有のものを必要としました。",
+        "ファインチューニングです。"
+      ]
+    },
+    {
+      "max_duration": 20.0,
+      "max_words": 60,
+      "segment_count": 1,
+      "avg_chunk_seconds": 10.8,
+      "max_chunk_seconds": 10.8,
+      "first_chunk_seconds": 10.8,
+      "doc_chrf": 0.8421,
+      "merged_texts": [
+        "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning."
+      ],
+      "translated_texts": [
+        "違いを見ると、T5のような古いモデルは生成があまり得意ではなく、タスク固有のファインチューニングが必要でした。"
+      ]
+    }
+  ]
+}

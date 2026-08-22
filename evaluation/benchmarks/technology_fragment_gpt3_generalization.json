@@ -1,0 +1,16 @@
+{
+  "benchmark_id": "technology_fragment_gpt3_generalization",
+  "domain": "technology",
+  "description": "チャンク長トレードオフ検証のため2026-08-20に新規取得。2d07bb74_v2_clip1.mp4をDeepgramで再文字起こしし（merge適用前の生発話）、文中で分断された実例の中から3発話結合のケースを抽出した。'g p three'はGPT-3のASR誤認識（2026-08-11の調査と同じパターン）。reference_ja はclaude-sonnet-5が英文から独立に作成した訳（人手レビュー未了）。",
+  "raw_utterances": [
+    {"start": 22.1, "end": 26.8, "transcript": "Newer, decoder only models like g p three achieved strong generalization"},
+    {"start": 27.2, "end": 27.7, "transcript": "capability"},
+    {"start": 28.2, "end": 29.6, "transcript": "through in context learning."}
+  ],
+  "reference_ja": [
+    "GPT-3のような、より新しいデコーダのみのモデルは、インコンテキスト学習によって高い汎化能力を達成しました。"
+  ],
+  "reference_status": "draft_needs_human_review",
+  "reference_note": "claude-sonnet-5が2026-08-20に、英語原文から独立に作成した訳。専門家レビュー前のため、本格運用前に人手で確認すること。ASR誤認識（g p three→GPT-3）の補正は辞書側の別課題のため、正解訳では正しい表記に修正済み。",
+  "expected_merged_count": 1
+}

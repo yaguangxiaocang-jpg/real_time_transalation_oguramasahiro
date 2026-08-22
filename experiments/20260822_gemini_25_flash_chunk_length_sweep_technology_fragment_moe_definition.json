@@ -1,0 +1,101 @@
+{
+  "date": "2026-08-22",
+  "model": "gemini-2.5-flash",
+  "benchmark_id": "technology_fragment_moe_definition",
+  "sweep": [
+    {
+      "max_duration": 1.0,
+      "max_words": 5,
+      "segment_count": 2,
+      "avg_chunk_seconds": 1.55,
+      "max_chunk_seconds": 2.3,
+      "first_chunk_seconds": 2.3,
+      "doc_chrf": 0.1787,
+      "merged_texts": [
+        "And the answer is mixture of experts",
+        "or MOE."
+      ],
+      "translated_texts": [
+        "そして、その答えは混合エキスパートです。",
+        "またはMOEです。"
+      ]
+    },
+    {
+      "max_duration": 2.0,
+      "max_words": 8,
+      "segment_count": 2,
+      "avg_chunk_seconds": 1.55,
+      "max_chunk_seconds": 2.3,
+      "first_chunk_seconds": 2.3,
+      "doc_chrf": 0.1787,
+      "merged_texts": [
+        "And the answer is mixture of experts",
+        "or MOE."
+      ],
+      "translated_texts": [
+        "そして、その答えはエキスパート混合です。",
+        "または MOE です。"
+      ]
+    },
+    {
+      "max_duration": 3.0,
+      "max_words": 10,
+      "segment_count": 1,
+      "avg_chunk_seconds": 3.7,
+      "max_chunk_seconds": 3.7,
+      "first_chunk_seconds": 3.7,
+      "doc_chrf": 0.1806,
+      "merged_texts": [
+        "And the answer is mixture of experts or MOE."
+      ],
+      "translated_texts": [
+        "その答えは混合エキスパート、またはMOEです。"
+      ]
+    },
+    {
+      "max_duration": 4.0,
+      "max_words": 15,
+      "segment_count": 1,
+      "avg_chunk_seconds": 3.7,
+      "max_chunk_seconds": 3.7,
+      "first_chunk_seconds": 3.7,
+      "doc_chrf": 0.1806,
+      "merged_texts": [
+        "And the answer is mixture of experts or MOE."
+      ],
+      "translated_texts": [
+        "その答えは混合エキスパート、または MOE です。"
+      ]
+    },
+    {
+      "max_duration": 8.0,
+      "max_words": 30,
+      "segment_count": 1,
+      "avg_chunk_seconds": 3.7,
+      "max_chunk_seconds": 3.7,
+      "first_chunk_seconds": 3.7,
+      "doc_chrf": 0.1477,
+      "merged_texts": [
+        "And the answer is mixture of experts or MOE."
+      ],
+      "translated_texts": [
+        "答えは、混合エキスパート、または MOE です。"
+      ]
+    },
+    {
+      "max_duration": 20.0,
+      "max_words": 60,
+      "segment_count": 1,
+      "avg_chunk_seconds": 3.7,
+      "max_chunk_seconds": 3.7,
+      "first_chunk_seconds": 3.7,
+      "doc_chrf": 0.1811,
+      "merged_texts": [
+        "And the answer is mixture of experts or MOE."
+      ],
+      "translated_texts": [
+        "そして、その答えは混合エキスパート、略してMOEです。"
+      ]
+    }
+  ]
+}

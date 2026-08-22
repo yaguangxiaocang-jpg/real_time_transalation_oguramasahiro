@@ -1,0 +1,105 @@
+{
+  "date": "2026-08-22",
+  "model": "gemini-2.5-flash",
+  "benchmark_id": "technology_fragment_gpt3_generalization",
+  "sweep": [
+    {
+      "max_duration": 1.0,
+      "max_words": 5,
+      "segment_count": 2,
+      "avg_chunk_seconds": 3.55,
+      "max_chunk_seconds": 4.7,
+      "first_chunk_seconds": 4.7,
+      "doc_chrf": 0.7032,
+      "merged_texts": [
+        "Newer, decoder only models like g p three achieved strong generalization",
+        "capability through in context learning."
+      ],
+      "translated_texts": [
+        "GPT-3のような、より新しいデコーダーのみのモデルは、高い汎化性能を示しました。",
+        "インコンテキスト学習を通じてその能力を達成しました。"
+      ]
+    },
+    {
+      "max_duration": 2.0,
+      "max_words": 8,
+      "segment_count": 2,
+      "avg_chunk_seconds": 3.55,
+      "max_chunk_seconds": 4.7,
+      "first_chunk_seconds": 4.7,
+      "doc_chrf": 0.5964,
+      "merged_texts": [
+        "Newer, decoder only models like g p three achieved strong generalization",
+        "capability through in context learning."
+      ],
+      "translated_texts": [
+        "GPT-3のような新しいデコーダーのみのモデルは、高い汎化性能を達成しました。",
+        "インコンテキスト学習を通じて。"
+      ]
+    },
+    {
+      "max_duration": 3.0,
+      "max_words": 10,
+      "segment_count": 2,
+      "avg_chunk_seconds": 3.55,
+      "max_chunk_seconds": 4.7,
+      "first_chunk_seconds": 4.7,
+      "doc_chrf": 0.4555,
+      "merged_texts": [
+        "Newer, decoder only models like g p three achieved strong generalization",
+        "capability through in context learning."
+      ],
+      "translated_texts": [
+        "GPT-3のような新しいデコーダーのみのモデルは、高い汎化性能を発揮しました。",
+        "in-context学習によってです。"
+      ]
+    },
+    {
+      "max_duration": 4.0,
+      "max_words": 15,
+      "segment_count": 2,
+      "avg_chunk_seconds": 3.55,
+      "max_chunk_seconds": 4.7,
+      "first_chunk_seconds": 4.7,
+      "doc_chrf": 0.5303,
+      "merged_texts": [
+        "Newer, decoder only models like g p three achieved strong generalization",
+        "capability through in context learning."
+      ],
+      "translated_texts": [
+        "GPT-3のような新しいデコーダーのみのモデルは、高い汎化性能を発揮しました。",
+        "コンテキスト内学習によって。"
+      ]
+    },
+    {
+      "max_duration": 8.0,
+      "max_words": 30,
+      "segment_count": 1,
+      "avg_chunk_seconds": 7.5,
+      "max_chunk_seconds": 7.5,
+      "first_chunk_seconds": 7.5,
+      "doc_chrf": 0.8518,
+      "merged_texts": [
+        "Newer, decoder only models like g p three achieved strong generalization capability through in context learning."
+      ],
+      "translated_texts": [
+        "GPT-3のような新しいデコーダーのみのモデルは、インコンテキスト学習によって高い汎化能力を達成しました。"
+      ]
+    },
+    {
+      "max_duration": 20.0,
+      "max_words": 60,
+      "segment_count": 1,
+      "avg_chunk_seconds": 7.5,
+      "max_chunk_seconds": 7.5,
+      "first_chunk_seconds": 7.5,
+      "doc_chrf": 0.6959,
+      "merged_texts": [
+        "Newer, decoder only models like g p three achieved strong generalization capability through in context learning."
+      ],
+      "translated_texts": [
+        "GPT-3のような新しいデコーダーのみのモデルは、インコンテキスト学習によって強い汎化能力を獲得しました。"
+      ]
+    }
+  ]
+}
