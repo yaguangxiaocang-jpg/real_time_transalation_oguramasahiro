@@ -1,0 +1,12 @@
+{
+  "date": "2026-08-25",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "notes": "unnaturalness_check_enabled（不自然度スコアによるチャンク動的延長）のbefore/after検証。config.pyのコメントに従い、有効化前の検証として実施。データ: experiments/segments/20260824_2d07bb74_v2_clip1_raw_unmerged.json（26生発話、Deepgramで新規取得）。pipeline.pyと同じ経路（StreamingUtteranceMerger + naturalness_detector.score_unnaturalness、閾値0.6、context_size=3）をオフラインで再現。結果: OFF=13セグメント、ON=11セグメント。不自然度チェックは26発話中14回、閾値0.6以上で発火（すべてscore=0.80〜0.90に集中しており、温度0.0にもかかわらず0.90が10回と偏っていた＝スコアの粒度が粗く、判定の解像度が低い可能性）。1件、既に句点で終わっている完結した文（'...highlighting the different masking techniques used in their attention components.'）が次の（内容的に無関係な）発話と結合される過剰結合の事例を目視で確認した。LLM-as-judgeスコアはOFF=0.9846、ON=1.0とほぼ差がなく（両方0.98以上でスコアが天井に張り付いており、この検証だけでは判別力不足）、品質改善を裏付ける強い根拠にはならなかった。結論: 現状のプロンプト/閾値のままでは過剰発火（false positive）のリスクが高く、reference-basedの評価（LLM自己採点ではなくchrF等）で再検証してから有効化を検討すべき。",
+  "xcomet_score_off": 0.9846,
+  "xcomet_score_on": 1.0,
+  "segment_count_off": 13,
+  "segment_count_on": 11,
+  "fired_count": 14,
+  "fired_out_of": 26
+}
