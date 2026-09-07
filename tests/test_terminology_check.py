@@ -60,6 +60,34 @@ def test_case_insensitive_source_matching() -> None:
     assert result.ok is True
 
 
+def test_short_acronym_source_does_not_false_positive_on_substring() -> None:
+    # "PR" は "process" の部分文字列だが、単語としては原文に出現していない。
+    dictionary = _dictionary(("PR", "PR"))
+    pairs = [("We will process the request.", "リクエストを処理します。")]
+
+    result = check_terminology(pairs, dictionary)
+    assert result.ok is True  # 対象外（原文にPRという単語自体は出てこない）
+
+
+def test_short_acronym_target_does_not_false_positive_on_substring() -> None:
+    # 訳文中に"BI"という単語は無いが、"bidirectional"に部分一致してしまわないことを確認。
+    dictionary = _dictionary(("BI", "BI"))
+    pairs = [("Business intelligence tools are BI tools.", "bidirectionalな層です。")]
+
+    result = check_terminology(pairs, dictionary)
+    assert result.ok is False  # 原文にBIという単語自体は出現しているので対象
+    assert result.misses[0].target_term == "BI"
+
+
+def test_short_acronym_matches_as_whole_word() -> None:
+    dictionary = _dictionary(("PR", "PR"))
+    pairs = [("Please open a PR for this change.", "この変更のPRを開いてください。")]
+
+    result = check_terminology(pairs, dictionary)
+    assert result.ok is True
+    assert result.misses == []
+
+
 def test_format_terminology_misses_empty() -> None:
     assert "なし" in format_terminology_misses([])
 
