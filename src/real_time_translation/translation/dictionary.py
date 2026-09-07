@@ -1,8 +1,13 @@
 """Dictionary management for domain-specific terminology."""
 
 import csv
+import re
 from dataclasses import dataclass
 from pathlib import Path
+
+# ASR（Deepgram）のキーワードブースト対象として妥当な用語かの判定用。
+# 英数字・スペース・ハイフンのみで構成される表記（頭字語・モデル名など）を想定。
+_ASCII_TERM_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 \-\.]*$")
 
 
 @dataclass
@@ -130,6 +135,46 @@ class TermDictionary:
             lines.append(line)
 
         return "\n".join(lines)
+
+    def keep_as_is_terms(self) -> list[str]:
+        """翻訳時に変換されず「そのまま使う」用語だけを抽出する（重複除去）。
+
+        source_term と target_term が一致するエントリ（例: `T5,T5`, `PaLM,PaLM`,
+        `MOE,MOE`, `AWS,AWS`）は、翻訳時に変換されない固有名詞・頭字語・モデル名
+        であり、かつASR誤認識対策として `dictionary.csv` に事前登録されている
+        用語群と重なる（2026-08-11の調査参照）。source != target のエントリ
+        （通常の訳語ペアや、`TIFINE,T5,...` のようなASR誤認識パターン補正用の
+        エントリ）は対象外とする——後者を含めるとDeepgramに誤認識形そのもの
+        （"TIFINE"等）を強化してしまい逆効果になるため。
+
+        `as_asr_keywords`（Deepgramブースト用）と
+        `whisper_reverify.reverify_terms`（Whisper再検証用）の両方から使われる。
+
+        Returns:
+            用語文字列のリスト（元の表記のまま、boost値等の付加情報なし）。
+        """
+        keywords: list[str] = []
+        seen: set[str] = set()
+        for entry in self._entries.values():
+            term = entry.source_term.strip()
+            if term.lower() != entry.target_term.strip().lower():
+                continue
+            if not _ASCII_TERM_RE.match(term):
+                continue
+            key = term.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            keywords.append(term)
+        return keywords
+
+    def as_asr_keywords(self, boost: float = 2.0) -> list[str]:
+        """Deepgramのキーワードブースト用に「そのまま使う」用語だけを抽出する。
+
+        Returns:
+            "term:boost" 形式の文字列リスト（Deepgram `keywords` パラメータ用）。
+        """
+        return [f"{term}:{boost}" for term in self.keep_as_is_terms()]
 
     def __len__(self) -> int:
         """Return number of entries."""

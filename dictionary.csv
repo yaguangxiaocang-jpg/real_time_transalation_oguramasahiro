@@ -8,6 +8,7 @@ fine-tuning,ファインチューニング,
 inference,推論,
 latency,レイテンシー,遅延
 throughput,スループット,
+memory wall,メモリウォール,計算機アーキテクチャ用語（メモリ帯域がボトルネックになる現象）
 real-time,リアルタイム,
 transcription,文字起こし,
 # --- ASR / 音声認識 ---
@@ -36,9 +37,17 @@ terminology,用語,
 LLM,LLM,Large Language Model
 large language model,大規模言語モデル,
 GPT,GPT,そのまま使用
+GPT-3,GPT-3,OpenAIのモデル名
 ChatGPT,ChatGPT,製品名
 Gemini,Gemini,Googleのモデル名
 Claude,Claude,Anthropicのモデル名
+T5,T5,Googleのモデル名
+PaLM,PaLM,Googleのモデル名
+PaLM 2,PaLM 2,Googleのモデル名
+mixture of experts,Mixture of Experts,
+MOE,MOE,Mixture of Experts
+MOA,MOA,Mixture of Adapters
+FLOPS,FLOPS,浮動小数点演算数
 prompt,プロンプト,
 context window,コンテキストウィンドウ,
 token,トークン,
@@ -295,3 +304,49 @@ heatmap,ヒートマップ,
 scatter plot,散布図,
 histogram,ヒストグラム,
 KPI dashboard,KPIダッシュボード,
+# --- ASR誤認識の補正（Deepgramで実際に観測した誤変換パターン） ---
+# 音声認識(Deepgram)側の誤りは辞書では直せないが、既知の誤変換文字列を
+# ここに登録しておくことで翻訳段階で正しい用語に補正できる（2026-08-11に
+# evaluation/benchmarks/technology_moe_2d07bb74_clip2/clip3.json で実証済み）。
+# 新しい動画で別の誤変換パターンが見つかったら随時追記すること。
+TIFINE,T5,DeepgramがT5を誤認識した形
+TFI,T5,DeepgramがT5を誤認識した形
+Parm,PaLM,DeepgramがPaLMを誤認識した形
+PARM two,PaLM 2,DeepgramがPaLM 2を誤認識した形
+g p three,GPT-3,DeepgramがGPT-3をスペルアウトした形
+g p g three,GPT-3,DeepgramがGPT-3をスペルアウトした形（余分なgが混入）
+memory war,メモリウォール,Deepgramがmemory wallを誤認識した形
+# --- ASR誤認識の補正（2026-09-06、講義動画の全編通し文字起こしで新たに確認したパターン。
+# evaluation/glossary_2d07bb74_full_lecture.md 参照） ---
+TIFI,T5,DeepgramがT5を誤認識した形（TIFINEの別変種）
+GPG3,GPT-3,DeepgramがGPT-3を誤認識した形（数字表記、スペース無し）
+PARAM two,PaLM 2,DeepgramがPaLM 2を誤認識した形（PARM twoの別変種、Aが1つ多い）
+# --- 用語カバレッジ不足（2026-09-06、同上。ASR自体は概ね正しく認識できているが
+# 辞書未登録だった用語。GLaMは"glam"（華やかな）と誤訳されるリスクがあるため特に注意） ---
+power law,べき乗則,モデルスケーリング則
+Moore's law,ムーアの法則,
+dense model,高密度モデル,MOE（疎モデル）との対比で使われる
+sparsity,スパース性,
+modularity,モジュール性,
+BERT,BERT,Googleのモデル名（Bidirectional Encoder Representations from Transformers）
+GLUE,GLUE,General Language Understanding Evaluation（ベンチマーク）
+masked language modeling,マスク言語モデリング,BERTの事前学習手法
+text-to-text,テキスト・トゥ・テキスト,T5の入出力形式
+encoder-decoder,エンコーダデコーダ,
+decoder-only,デコーダオンリー,
+in-context learning,インコンテキスト学習,
+prefix LM,プレフィックスLM,PaLM 2で使われるモデリング手法
+GLaM,GLaM,GoogleのMOEモデル名（Generalist Language Model）。"glam"（華やか）と誤訳しないよう注意
+sparsely-gated,疎ゲート型,
+top-2 gating,top-2ゲーティング,MOEのルーティング手法
+feed-forward network,フィードフォワードネットワーク,
+continual learning,継続学習,
+catastrophic forgetting,破滅的忘却,
+domain adaptation,ドメイン適応,
+LWF,LWF,Learning without Forgetting
+learning without forgetting,Learning without Forgetting,忘却抑制の学習手法
+memory replay,メモリリプレイ,継続学習の手法
+L2 regularization,L2正則化,
+mixture of adapters,Mixture of Adapters,
+MMLU,MMLU,Massive Multitask Language Understanding（ベンチマーク）
+memory offloading,メモリオフローディング,
