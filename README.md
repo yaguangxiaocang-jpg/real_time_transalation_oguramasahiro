@@ -209,14 +209,60 @@ reference-basedな評価による閾値・プロンプトの見直しが引き�
 
 #### 未検証
 
-- Whisper再検証の`min_confidence`閾値（既定0.6）のチューニング（他の値での
-  precision/recall再測定）。
 - 不自然度チェックのreasonガードは、モデル自身が完結文を「まだ続く」と誤判定する
   ケースには無力なため、reference-basedな評価（正解の結合境界セットに対する
   precision/recall）でプロンプト・閾値そのものの見直しが必要。
 - gemini-3.5-flash-liteの辞書配線時chrF低下は、人手レビュー済みreferenceでの
   再確認が必要（現状のdraft referenceでは言い回しの違いと実質的な劣化を
   区別できない）。
+
+---
+
+### 2026/09/07 19:10
+
+#### 変更内容
+
+**Whisper再検証`min_confidence`のチューニング**（上記「未検証」に挙げていた項目の対応）
+
+新規スクリプト`evaluation/whisper_reverify_confidence_sweep.py`を追加。
+`technology_moe_2d07bb74_clip{1..5}`の全結合セグメントに対してfaster-whisperの
+再文字起こしを1回だけ実行し（faster-whisperはCPU推論のスレッド間非決定性で
+同一音声でもconfidenceが実行ごとに微妙にブレるため、閾値ごとに再実行すると
+このブレと閾値の効果を混同してしまう）、同じ文字起こし結果に対して
+`min_confidence`候補（0.0〜0.8）だけを変えて発火状況を比較した（Gemini API
+呼び出し無し、ローカル推論のみで完結）。
+
+- 既知の誤補正MOA→MOE（confidence 0.616）は、確認した全ての閾値候補で
+  発火しなかった。ガード1（原文が既に別の登録済み用語なら補正しない）が
+  信頼度と無関係に常時ブロックしているためで、**min_confidenceを下げても
+  この誤補正が再発するリスクは無い**ことを確認できた。
+- 正しい補正TIFINE→T5のconfidenceは0.5997と、既定値0.6のすぐ下だった。
+  この1件に関しては0.6は実質コイントスに近い閾値だったことになる。
+- 上記2点から、既定値を0.6→**0.5**に変更（`whisper_reverify.py`の
+  `DEFAULT_MIN_CONFIDENCE`、`config.py`の`whisper_reverify_min_confidence`、
+  `WHISPER_REVERIFY_MIN_CONFIDENCE`環境変数の既定値）。
+  `evaluation/whisper_reverify_ab_test.py`を全5クリップで再実行して確認した
+  結果、TIFINE→T5の補正が想定通り復活した（clip3の発火数が1→2件に）。
+
+**未解決のまま残った別件**: 正しい補正の3件目「G p t three」→GPT-3は、
+min_confidenceの値によらず今回も一度も発火しなかった。原因を調べたところ
+`min_confidence`とは無関係の別バグで、faster-whisperが`"GPT-3,"`を
+`"GPT"`と`"-3,"`という2つの単語トークンに分割して返すことがあり、
+現行のマッチング処理は候補スパンを空白区切りで結合する
+（`" ".join(whisper_norm[j1:j2])`）ため`"gpt -3"`となってしまい、辞書の
+`"gpt-3"`と一致しない。信頼度チェック以前にトークン化の時点で候補として
+成立しないため、閾値をどう調整しても回収できない。ハイフン区切り複合語の
+再結合ロジックが必要（次の課題として残す）。
+
+実験記録: `experiments/20260907_whisper_reverify_confidence_sweep.json`、
+`experiments/20260907_gemini_25_flash_whisper_reverify_ab_test.json`（上書き、
+min_confidence=0.5版）、`experiments/results.csv`。
+
+#### 未検証
+
+- 「G p t three」→GPT-3のハイフン分割トークン化問題（上記）の修正。
+- 不自然度チェック・gemini-3.5-flash-lite辞書配線chrFの2件は上と同じ
+  （未解決のまま）。
 
 ---
 

@@ -48,8 +48,11 @@ class Config:
     whisper_reverify_timeout: float = 1.5
     whisper_reverify_model_size: str = "small.en"
     # Whisper単語レベル信頼度の下限（2026-09-07追加、MOA/MOE誤補正対策）。
-    # これ未満の単語を含む置換候補は採用しない。
-    whisper_reverify_min_confidence: float = 0.6
+    # これ未満の単語を含む置換候補は採用しない。0.6ではTIFINE→T5の正しい
+    # 補正（confidence 0.5997）を取りこぼすことが判明したため0.5に調整
+    # （2026-09-07、whisper_reverify_confidence_sweep.py参照。MOA/MOE誤補正は
+    # 信頼度と無関係の別ガードで防いでいるため、閾値を下げても再発しない）。
+    whisper_reverify_min_confidence: float = 0.5
 
     # Gemini
     google_api_key: str | None = None
@@ -192,7 +195,7 @@ class Config:
                 os.getenv("WHISPER_REVERIFY_TIMEOUT", "1.5")
             ),
             whisper_reverify_min_confidence=float(
-                os.getenv("WHISPER_REVERIFY_MIN_CONFIDENCE", "0.6")
+                os.getenv("WHISPER_REVERIFY_MIN_CONFIDENCE", "0.5")
             ),
             whisper_reverify_model_size=os.getenv(
                 "WHISPER_REVERIFY_MODEL_SIZE", "small.en"

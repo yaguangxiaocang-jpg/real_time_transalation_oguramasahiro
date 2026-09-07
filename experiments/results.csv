@@ -112,3 +112,16 @@
 2026-09-07,gemini-2.5-flash,economics,,0.6147,"[benchmark=technology_fragment_2d07bb74_v2_clip1_scaling_intro][chunk_length_sweep] max_duration=8.0s, max_words=30 -> segments=13, avg_chunk=5.51s, first_chunk=7.9s, doc_chrf(reference-based, document-level)=0.6147"
 2026-09-07,gemini-2.5-flash,economics,,0.6607,"[benchmark=technology_fragment_2d07bb74_v2_clip1_scaling_intro][chunk_length_sweep] max_duration=20.0s, max_words=60 -> segments=11, avg_chunk=6.65s, first_chunk=7.9s, doc_chrf(reference-based, document-level)=0.6607"
 2026-09-07,gemini-2.5-flash,technology,,,"[chunk_length_sweep][summary][benchmark=technology_fragment_2d07bb74_v2_clip1_scaling_intro] report.txtの優先課題(3)対応。既存の断片化ベンチマーク4件（economics_federal_funds_rate + technology_fragment_*3件、いずれも生発話2〜4件）は非単調な揺れが大きく最適値を特定できなかったが、今回追加した新ベンチマーク（未結合の生発話26件、experiments/segments/20260824_2d07bb74_v2_clip1_raw_unmerged.jsonから作成）は、より長い参照訳（文書全体で評価するdoc_chrf）のおかげか、比較的単調な右肩上がりの傾向を示した: max_duration 1.0s(seg25)=0.5511 -> 2.0s(seg20)=0.5665 -> 3.0s(seg18)=0.5447(小さな谷) -> 4.0s(seg15)=0.6348 -> 8.0s(seg13,マイク既定)=0.6147 -> 20.0s(seg11,動画既定)=0.6607(最良)。3.0sでの小さな谷を除けば「長く結合するほど自然になる」という元の仮説と整合的で、データを長く・多くするほどchrFのノイズが減り傾向が見えやすくなることを示唆する。結論: 依然として「最適値」を一意に決めるには至らないが、断片化ベンチマークを増やす方向性（拡充）自体がノイズ低減に有効という手応えが得られた。次の一手は、この種の長め・自然な断片化データをさらに追加すること。"
+2026-09-07,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.0 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-07,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.3 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-07,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.4 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-07,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.5 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-07,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.55 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-07,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.6 -> 1件発火: t five->t5(conf=0.8222)
+2026-09-07,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.7 -> 1件発火: t five->t5(conf=0.8222)
+2026-09-07,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.8 -> 1件発火: t five->t5(conf=0.8222)
+2026-09-07,gemini-2.5-flash,technology,,0.6402,"[benchmark=technology_moe_2d07bb74_clip1][whisper_reverify_ab_test] segments=9, 補正発生=0件 -> doc_chrf(document-level) OFF=0.649 / ON=0.6402"
+2026-09-07,gemini-2.5-flash,technology,,0.6948,"[benchmark=technology_moe_2d07bb74_clip2][whisper_reverify_ab_test] segments=9, 補正発生=0件 -> doc_chrf(document-level) OFF=0.7067 / ON=0.6948"
+2026-09-07,gemini-2.5-flash,technology,,0.5354,"[benchmark=technology_moe_2d07bb74_clip3][whisper_reverify_ab_test] segments=11, 補正発生=2件 -> doc_chrf(document-level) OFF=0.5416 / ON=0.5354"
+2026-09-07,gemini-2.5-flash,technology,,0.6658,"[benchmark=technology_moe_2d07bb74_clip4][whisper_reverify_ab_test] segments=9, 補正発生=0件 -> doc_chrf(document-level) OFF=0.6689 / ON=0.6658"
+2026-09-07,gemini-2.5-flash,technology,,0.6266,"[benchmark=technology_moe_2d07bb74_clip5][whisper_reverify_ab_test] segments=9, 補正発生=0件 -> doc_chrf(document-level) OFF=0.614 / ON=0.6266"

@@ -28,9 +28,21 @@ faster-whisperで再文字起こしし、辞書の「そのまま使う」用語
    補正する」という元の設計意図に立ち返り、原文自体が有効な用語のときは
    常にスキップする。
 2. **Whisper側の単語レベル信頼度が閾値未満なら補正しない**
-   （`min_confidence`、既定0.6）。`whisper_client.transcribe_pcm_with_whisper`が
+   （`min_confidence`）。`whisper_client.transcribe_pcm_with_whisper`が
    返す`faster-whisper`の単語ごとの`probability`を使い、確信度の低い聞き取りを
    採用しない。
+
+**2026-09-07のmin_confidenceチューニング**（`whisper_reverify_confidence_sweep.py`、
+report.txtの優先課題(2)対応）: 上記ガード追加直後の値（0.6）で
+`technology_moe_2d07bb74_clip{1..5}`を再検証したところ、既知の誤補正
+MOA→MOE（confidence 0.616、ガード1で常にブロックされるため閾値と無関係）は
+引き続き防げていたが、正しい補正TIFINE→T5（confidence 0.5997）が0.6の
+すぐ下で弾かれ、取りこぼしていたことが判明した（faster-whisperはCPU推論の
+スレッド間非決定性で同一音声でもconfidenceが実行ごとに微妙にブレるため、
+0.6という値はこの1件に対して実質コイントスに近い）。ガード1が既知の
+誤補正パターン（MOA/MOE）を信頼度と無関係に独立して防いでいるため、
+閾値を下げてもこのパターンが再発するリスクは無い。この観測に基づき既定値を
+0.6→0.5に緩和した（0.5997との間に0.1のマージンを持たせる）。
 """
 
 from __future__ import annotations
@@ -45,7 +57,7 @@ from real_time_translation.transcription.whisper_client import (
 _WORD_RE = re.compile(r"\S+")
 _PUNCT_STRIP = ".,!?;:\"'、。"
 
-DEFAULT_MIN_CONFIDENCE = 0.6
+DEFAULT_MIN_CONFIDENCE = 0.5
 
 
 def _normalize(word: str) -> str:

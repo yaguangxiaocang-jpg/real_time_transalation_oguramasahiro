@@ -1,0 +1,247 @@
+{
+  "date": "2026-09-07",
+  "whisper_model_size": "small.en",
+  "segment_count_by_clip": {
+    "technology_moe_2d07bb74_clip1": 9,
+    "technology_moe_2d07bb74_clip2": 9,
+    "technology_moe_2d07bb74_clip3": 11,
+    "technology_moe_2d07bb74_clip4": 9,
+    "technology_moe_2d07bb74_clip5": 9
+  },
+  "candidates": [
+    {
+      "original_span": "t five",
+      "candidate": "t5",
+      "replacement": "T5",
+      "min_span_confidence": 0.8222,
+      "ambiguous_original": false,
+      "clip_id": "technology_moe_2d07bb74_clip3",
+      "segment_start": 10.8,
+      "segment_end": 21.425,
+      "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+      "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+    },
+    {
+      "original_span": "tifine",
+      "candidate": "t5",
+      "replacement": "T5",
+      "min_span_confidence": 0.5997,
+      "ambiguous_original": false,
+      "clip_id": "technology_moe_2d07bb74_clip3",
+      "segment_start": 42.125,
+      "segment_end": 57.62,
+      "deepgram_text": "As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters.",
+      "whisper_text": "As we saw a massive jump in the size of dense models, T5 originally reaches 11 billion parameters, and we call it one giant model at Google, and GPG3 at 175 billion parameters."
+    },
+    {
+      "original_span": "moa",
+      "candidate": "moe",
+      "replacement": "MOE",
+      "min_span_confidence": 0.6161,
+      "ambiguous_original": true,
+      "clip_id": "technology_moe_2d07bb74_clip5",
+      "segment_start": 0.16,
+      "segment_end": 12.82,
+      "deepgram_text": "The MOA with a frozen backbone training with the targeted data owning was found to be as efficient or even more FLOPS efficient than a baseline MOE trained on the mixture of the data.",
+      "whisper_text": "The MOE with a frozen backbone training with the targeted data owning was found to be as efficient or even more flops efficient than a baseline MOE trained on the mixture of data."
+    }
+  ],
+  "sweep": [
+    {
+      "min_confidence": 0.0,
+      "fired": [
+        {
+          "original_span": "t five",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.8222,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 10.8,
+          "segment_end": 21.425,
+          "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+          "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+        },
+        {
+          "original_span": "tifine",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.5997,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 42.125,
+          "segment_end": 57.62,
+          "deepgram_text": "As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters.",
+          "whisper_text": "As we saw a massive jump in the size of dense models, T5 originally reaches 11 billion parameters, and we call it one giant model at Google, and GPG3 at 175 billion parameters."
+        }
+      ]
+    },
+    {
+      "min_confidence": 0.3,
+      "fired": [
+        {
+          "original_span": "t five",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.8222,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 10.8,
+          "segment_end": 21.425,
+          "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+          "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+        },
+        {
+          "original_span": "tifine",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.5997,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 42.125,
+          "segment_end": 57.62,
+          "deepgram_text": "As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters.",
+          "whisper_text": "As we saw a massive jump in the size of dense models, T5 originally reaches 11 billion parameters, and we call it one giant model at Google, and GPG3 at 175 billion parameters."
+        }
+      ]
+    },
+    {
+      "min_confidence": 0.4,
+      "fired": [
+        {
+          "original_span": "t five",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.8222,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 10.8,
+          "segment_end": 21.425,
+          "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+          "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+        },
+        {
+          "original_span": "tifine",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.5997,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 42.125,
+          "segment_end": 57.62,
+          "deepgram_text": "As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters.",
+          "whisper_text": "As we saw a massive jump in the size of dense models, T5 originally reaches 11 billion parameters, and we call it one giant model at Google, and GPG3 at 175 billion parameters."
+        }
+      ]
+    },
+    {
+      "min_confidence": 0.5,
+      "fired": [
+        {
+          "original_span": "t five",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.8222,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 10.8,
+          "segment_end": 21.425,
+          "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+          "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+        },
+        {
+          "original_span": "tifine",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.5997,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 42.125,
+          "segment_end": 57.62,
+          "deepgram_text": "As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters.",
+          "whisper_text": "As we saw a massive jump in the size of dense models, T5 originally reaches 11 billion parameters, and we call it one giant model at Google, and GPG3 at 175 billion parameters."
+        }
+      ]
+    },
+    {
+      "min_confidence": 0.55,
+      "fired": [
+        {
+          "original_span": "t five",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.8222,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 10.8,
+          "segment_end": 21.425,
+          "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+          "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+        },
+        {
+          "original_span": "tifine",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.5997,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 42.125,
+          "segment_end": 57.62,
+          "deepgram_text": "As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters.",
+          "whisper_text": "As we saw a massive jump in the size of dense models, T5 originally reaches 11 billion parameters, and we call it one giant model at Google, and GPG3 at 175 billion parameters."
+        }
+      ]
+    },
+    {
+      "min_confidence": 0.6,
+      "fired": [
+        {
+          "original_span": "t five",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.8222,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 10.8,
+          "segment_end": 21.425,
+          "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+          "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+        }
+      ]
+    },
+    {
+      "min_confidence": 0.7,
+      "fired": [
+        {
+          "original_span": "t five",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.8222,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 10.8,
+          "segment_end": 21.425,
+          "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+          "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+        }
+      ]
+    },
+    {
+      "min_confidence": 0.8,
+      "fired": [
+        {
+          "original_span": "t five",
+          "candidate": "t5",
+          "replacement": "T5",
+          "min_span_confidence": 0.8222,
+          "ambiguous_original": false,
+          "clip_id": "technology_moe_2d07bb74_clip3",
+          "segment_start": 10.8,
+          "segment_end": 21.425,
+          "deepgram_text": "If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning.",
+          "whisper_text": "If we look at the differences, older models like T5 were not as strong on generation and needed task-specific fine-tuning."
+        }
+      ]
+    }
+  ]
+}
