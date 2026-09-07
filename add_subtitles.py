@@ -24,6 +24,14 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
+# Windowsではコンソール/リダイレクト先のデフォルトエンコーディングがcp932になり、
+# 絵文字（⚠️等、terminology_check.pyのformat_terminology_misses()が出力）を
+# printしようとするとUnicodeEncodeErrorでクラッシュすることがあるため、
+# 標準出力をUTF-8に固定する。
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+
 load_dotenv()
 
 DEEPGRAM_API_KEY = os.environ["DEEPGRAM_API_KEY"]
@@ -36,6 +44,13 @@ GEMINI_MODEL = "gemini-2.5-flash"
 EXPERIMENT_TAG = os.environ.get("EXPERIMENT_TAG", "")
 # 文末で終わっていないDeepgram utteranceを次のutteranceと結合してから翻訳するか
 MERGE_UTTERANCES = os.environ.get("MERGE_UTTERANCES", "true").lower() == "true"
+# 文字起こしプロバイダ（"deepgram" または "whisper"）。faster-whisperは
+# ストリーミングAPIを持たないためオフライン処理のこの経路でのみ選択可能
+# （マイクのリアルタイム翻訳はDeepgram固定）。2026-08-11の調査で、
+# DeepgramがT5/PaLM/GPT-3等のモデル名を誤認識するケースをfaster-whisperの方が
+# 正しく認識できることを確認した（README.md 更新履歴参照）。
+TRANSCRIPTION_PROVIDER = os.environ.get("TRANSCRIPTION_PROVIDER", "deepgram").lower()
+WHISPER_MODEL_SIZE = os.environ.get("WHISPER_MODEL_SIZE", "small.en")
 # 用語辞書（CSV: source_term,target_term,notes）。マイクのリアルタイム翻訳
 # （pipeline.py）にはこれまで渡っていたが、動画字幕パスでは配線されて
 # いなかったため追加。
@@ -167,6 +182,7 @@ def save_experiment_record(
 
     auto_notes = (
         f"{video_path.name} を処理。{len(translated)} セグメント翻訳。"
+        + f" [asr={TRANSCRIPTION_PROVIDER}]"
         + (f" [tag={EXPERIMENT_TAG}]" if EXPERIMENT_TAG else "")
         + (f" {notes}" if notes else "")
         + report_notes
@@ -227,6 +243,7 @@ def save_segments(
         "model": GEMINI_MODEL,
         "domain": TRANSLATION_DOMAIN,
         "merge_utterances": MERGE_UTTERANCES,
+        "transcription_provider": TRANSCRIPTION_PROVIDER,
         "report": report or {},
         "segments": [
             {
@@ -265,6 +282,22 @@ def extract_audio(video_path: str, audio_path: str) -> None:
     if result.returncode != 0:
         raise RuntimeError(f"ffmpeg音声抽出に失敗しました:\n{result.stderr}")
     print("音声抽出完了")
+
+
+def transcribe_audio_with_provider(audio_path: str) -> list[dict]:
+    """TRANSCRIPTION_PROVIDER環境変数に応じてDeepgram/faster-whisperを切り替える。"""
+    if TRANSCRIPTION_PROVIDER == "whisper":
+        from real_time_translation.transcription.whisper_client import (
+            transcribe_with_whisper,
+        )
+
+        print(f"faster-whisperで文字起こし中...（model={WHISPER_MODEL_SIZE}）")
+        result = transcribe_with_whisper(
+            audio_path, model_size=WHISPER_MODEL_SIZE, language=SOURCE_LANGUAGE
+        )
+        print(f"文字起こし完了: {len(result)} セグメント")
+        return result
+    return transcribe_audio(audio_path)
 
 
 def transcribe_audio(audio_path: str) -> list[dict]:
@@ -540,7 +573,7 @@ async def main(video_path: str) -> None:
         extract_audio(str(video_path), audio_path)
 
         # 2. 文字起こし
-        utterances = await asyncio.to_thread(transcribe_audio, audio_path)
+        utterances = await asyncio.to_thread(transcribe_audio_with_provider, audio_path)
 
         if MERGE_UTTERANCES:
             before = len(utterances)
