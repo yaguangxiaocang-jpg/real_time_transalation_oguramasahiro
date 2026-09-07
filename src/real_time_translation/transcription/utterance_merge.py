@@ -163,6 +163,18 @@ class StreamingUtteranceMerger:
         self._max_words = max_words
         self._buf: MergedUtterance | None = None
 
+    def peek_combined_text(self, text: str) -> str:
+        """`text` を次に `feed()` した場合に結合されるテキストのプレビュー。
+
+        `feed()` を呼ぶ前に、その入力を投入したらどんなテキストになるかを
+        不自然度チェック（`naturalness_detector.score_unnaturalness_with_timeout`）
+        へ渡すために使う。バッファへの反映は行わない（副作用なし）。
+        """
+        text = text.strip()
+        if self._buf is None:
+            return text
+        return f"{self._buf.text} {text}"
+
     def feed(
         self,
         text: str,
@@ -170,6 +182,7 @@ class StreamingUtteranceMerger:
         end_time: float,
         confidence: float,
         is_incomplete_override: bool | None = None,
+        force_incomplete: bool = False,
     ) -> MergedUtterance | None:
         """final文字起こし結果を1件投入する。
 
@@ -180,6 +193,11 @@ class StreamingUtteranceMerger:
             is_incomplete_override: 今回投入した `text` の末尾が不完全かどうかの
                 外部判定結果（LLM分類器など）。`None`（既定）なら従来通り
                 正規表現（`SENTENCE_END_RE`）で判定する。
+            force_incomplete: 文末が完全（句読点あり）と判定された場合でも、
+                強制的に「不完全」扱いにして結合を継続する
+                （`naturalness_detector` による不自然度チェックが閾値を超えた
+                場合に使用。max_duration/max_wordsの上限は従来通り適用される
+                ため、無限に結合が伸び続けることはない）。
         """
         text = text.strip()
         if not text:
@@ -204,6 +222,8 @@ class StreamingUtteranceMerger:
             is_complete = bool(SENTENCE_END_RE.search(self._buf.text))
         else:
             is_complete = not is_incomplete_override
+        if force_incomplete:
+            is_complete = False
 
         should_flush = (
             is_complete

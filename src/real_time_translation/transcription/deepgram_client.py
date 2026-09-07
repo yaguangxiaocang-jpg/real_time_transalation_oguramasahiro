@@ -46,6 +46,7 @@ class DeepgramTranscriber:
         keepalive_interval: float = 5.0,
         emit_interim: bool = False,
         vad_events: bool | None = None,
+        keywords: list[str] | None = None,
     ) -> None:
         """Initialize Deepgram transcriber.
 
@@ -61,6 +62,11 @@ class DeepgramTranscriber:
             keepalive_interval: Keepalive interval in seconds
             emit_interim: Whether to emit interim results to consumers
             vad_events: Whether to enable VAD events in Deepgram
+            keywords: ASR誤認識対策のキーワードブースト用語リスト
+                （`"term:boost"` 形式。`TermDictionary.as_asr_keywords()` で生成、
+                2026-08-11の専門用語誤認識調査を受けた対策）。nova-2系モデルは
+                `keywords` パラメータ、nova-3系モデルは `keyterm`（ブースト値
+                非対応、用語のみ）を使う（Deepgramの仕様差）。
         """
         self._api_key = api_key
         self._language = language
@@ -73,6 +79,7 @@ class DeepgramTranscriber:
         self._keepalive_interval = keepalive_interval
         self._emit_interim = emit_interim
         self._vad_events = vad_events
+        self._keywords = keywords or []
 
         self._client: AsyncDeepgramClient | None = None
         self._connection_cm: Any = None
@@ -110,6 +117,12 @@ class DeepgramTranscriber:
             options["utterance_end_ms"] = str(self._utterance_end_ms)
         if self._vad_events is not None:
             options["vad_events"] = _bool_str(self._vad_events)
+        if self._keywords:
+            if self._model.startswith("nova-3"):
+                # nova-3はkeywords未対応。keytermはブースト値非対応のため用語のみ渡す。
+                options["keyterm"] = [kw.split(":", 1)[0] for kw in self._keywords]
+            else:
+                options["keywords"] = self._keywords
 
         self._connection_cm = self._client.listen.v1.connect(**options)
         self._connection = await self._connection_cm.__aenter__()

@@ -2,8 +2,11 @@
 
 import asyncio
 import contextlib
+import dataclasses
+import logging
 import threading
 import time
+from collections import deque
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
@@ -17,10 +20,14 @@ from real_time_translation.transcription.deepgram_client import (
 from real_time_translation.transcription.incomplete_end_detector import (
     detect_incomplete_end_one,
 )
+from real_time_translation.transcription.naturalness_detector import (
+    score_unnaturalness_with_timeout,
+)
 from real_time_translation.transcription.utterance_merge import (
     MergedUtterance,
     StreamingUtteranceMerger,
 )
+from real_time_translation.transcription.whisper_reverify import reverify_terms
 from real_time_translation.translation.completeness_check import CompletenessTracker
 from real_time_translation.translation.dictionary import TermDictionary
 from real_time_translation.translation.llm_translator import LLMTranslator
@@ -33,6 +40,71 @@ from real_time_translation.translation.usage_tracking import RateLimitStatus, Us
 # 用語カバレッジ検査（terminology_misses）用に保持する直近ペア数。
 # 無制限に貯めるとメモリを圧迫するため、直近のセッション状況を代表できる件数に絞る。
 _TERMINOLOGY_HISTORY_SIZE = 200
+
+logger = logging.getLogger(__name__)
+
+
+class _AudioRingBuffer:
+    """マイク音声チャンクを一定時間分バッファし、Whisper再検証
+    （`whisper_reverify_enabled`）用に音声区間を切り出せるようにする。
+
+    Deepgramの`start_time`/`end_time`は音声ストリーム開始からの経過秒数
+    （送信済みバイト数ベース）を指すため、`_audio_to_transcription`で
+    `send_audio`に渡すのと同じ順序・同じチャンクを`append`することで
+    タイムスタンプの基準を一致させる。
+    """
+
+    _BYTES_PER_SAMPLE = 2  # 16-bit PCM
+
+    def __init__(
+        self,
+        sample_rate: int = 16000,
+        channels: int = 1,
+        max_seconds: float = 20.0,
+    ) -> None:
+        self._bytes_per_second = sample_rate * channels * self._BYTES_PER_SAMPLE
+        self._max_seconds = max_seconds
+        self._chunks: deque[tuple[float, bytes]] = deque()
+        self._cursor = 0.0
+
+    def append(self, data: bytes) -> None:
+        if not data:
+            return
+        self._chunks.append((self._cursor, data))
+        self._cursor += len(data) / self._bytes_per_second
+
+        cutoff = self._cursor - self._max_seconds
+        while self._chunks:
+            start, chunk = self._chunks[0]
+            if start + len(chunk) / self._bytes_per_second >= cutoff:
+                break
+            self._chunks.popleft()
+
+    def slice(
+        self, start_time: float, end_time: float, pad: float = 0.2
+    ) -> bytes | None:
+        """`[start_time - pad, end_time + pad]`秒に対応するPCMバイト列を切り出す。
+
+        バッファ範囲外（古すぎて既に破棄された等）の場合は`None`を返す。
+        """
+        lo = max(0.0, start_time - pad)
+        hi = end_time + pad
+        out = bytearray()
+        found = False
+        for chunk_start, data in self._chunks:
+            chunk_end = chunk_start + len(data) / self._bytes_per_second
+            if chunk_end <= lo or chunk_start >= hi:
+                continue
+            found = True
+            # round()（int()の切り捨てではなく）を使うのは、浮動小数点誤差
+            # （例: 0.6 - 0.4 == 0.19999999999999998）でチャンク境界が
+            # 1サンプル分削れるのを防ぐため。
+            byte_lo = max(0, round((lo - chunk_start) * self._bytes_per_second))
+            byte_hi = min(len(data), round((hi - chunk_start) * self._bytes_per_second))
+            byte_lo -= byte_lo % self._BYTES_PER_SAMPLE
+            byte_hi -= byte_hi % self._BYTES_PER_SAMPLE
+            out.extend(data[byte_lo:byte_hi])
+        return bytes(out) if found else None
 
 
 @dataclass
@@ -125,6 +197,27 @@ class TranslationPipeline:
         self._config = config
         self._audio_capture = audio_capture
 
+        # ASRキーワードブースト（Deepgramの誤認識自体を減らす根本対策）。
+        # dictionary_pathの「そのまま使う」用語（T5/PaLM/MOE/AWS等）を自動的に
+        # Deepgramへ渡す。辞書読み込みに失敗してもキーワードブーストなしで
+        # 翻訳自体は継続できるようにする。
+        deepgram_keywords: list[str] = []
+        if config.deepgram_keyword_boost_enabled and config.dictionary_path:
+            try:
+                keyword_dictionary = TermDictionary()
+                keyword_dictionary.load_csv(config.dictionary_path)
+                deepgram_keywords = keyword_dictionary.as_asr_keywords(
+                    boost=config.deepgram_keyword_boost_value
+                )
+            except OSError as exc:
+                import logging
+
+                logging.getLogger(__name__).warning(
+                    "Failed to load dictionary for ASR keyword boost %s: %s",
+                    config.dictionary_path,
+                    exc,
+                )
+
         # Initialize transcriber
         self._transcriber = DeepgramTranscriber(
             api_key=config.deepgram_api_key,
@@ -136,6 +229,7 @@ class TranslationPipeline:
             utterance_end_ms=config.deepgram_utterance_end_ms,
             vad_events=config.deepgram_vad_events,
             emit_interim=True,  # Emit interim results for real-time UI
+            keywords=deepgram_keywords,
         )
 
         # Initialize translator
@@ -191,6 +285,19 @@ class TranslationPipeline:
         )
         self._dictionary: TermDictionary = self._translator.dictionary
         self._terminology_pairs: list[tuple[str, str]] = []
+
+        # Whisper再検証（ハイブリッドASR）。既知の「そのまま使う」用語がある
+        # 場合のみ動作する（無ければ照合対象が無いので何もしない）。
+        self._whisper_keep_terms: list[str] = (
+            self._dictionary.keep_as_is_terms()
+            if config.whisper_reverify_enabled
+            else []
+        )
+        self._audio_ring: _AudioRingBuffer | None = (
+            _AudioRingBuffer(max_seconds=config.utterance_merge_max_duration + 5.0)
+            if config.whisper_reverify_enabled
+            else None
+        )
 
         self._running = False
         self._on_result: Callable[[TranslationResult], None] | None = None
@@ -262,6 +369,7 @@ class TranslationPipeline:
         # 結合バッファに残っている未確定の断片があれば、失わずに翻訳キューへ流す
         remaining = self._utterance_merger.flush()
         if remaining is not None:
+            remaining = await self._reverify_merged(remaining)
             self._enqueue_merged(remaining)
 
         # Cancel all tasks
@@ -281,9 +389,72 @@ class TranslationPipeline:
             async for audio_chunk in self._audio_capture.stream():
                 if not self._running:
                     break
+                if self._audio_ring is not None:
+                    self._audio_ring.append(audio_chunk)
                 await self._transcriber.send_audio(audio_chunk)
         except asyncio.CancelledError:
             pass
+
+    async def _reverify_text(
+        self, text: str, start_time: float, end_time: float
+    ) -> str:
+        """`text`（Deepgram確定文）をfaster-whisperで再検証し、既知用語の誤認識
+        だけを補正する（`whisper_reverify_enabled`時のみ）。
+
+        `incomplete_end_detection`/`unnaturalness_check`と同じ安全弁設計:
+        タイムアウトまたはエラー時は元のテキストをそのまま返す。
+        """
+        if self._audio_ring is None or not self._whisper_keep_terms:
+            return text
+
+        pcm = self._audio_ring.slice(start_time, end_time)
+        if not pcm:
+            return text
+
+        try:
+            corrected, fixed_terms = await asyncio.wait_for(
+                asyncio.to_thread(
+                    reverify_terms,
+                    text,
+                    pcm,
+                    self._whisper_keep_terms,
+                    model_size=self._config.whisper_reverify_model_size,
+                    language=self._config.source_language,
+                    min_confidence=self._config.whisper_reverify_min_confidence,
+                ),
+                timeout=self._config.whisper_reverify_timeout,
+            )
+        except TimeoutError:
+            logger.debug(
+                "whisper reverify timed out (%.2fs)",
+                self._config.whisper_reverify_timeout,
+            )
+            return text
+        except Exception as exc:  # noqa: BLE001
+            logger.debug("whisper reverify error: %s", exc)
+            return text
+
+        if fixed_terms:
+            logger.info("whisper reverify corrected terms: %s", fixed_terms)
+        return corrected
+
+    async def _reverify_result(
+        self, result: TranscriptionResult
+    ) -> TranscriptionResult:
+        corrected = await self._reverify_text(
+            result.text, result.start_time, result.end_time
+        )
+        if corrected == result.text:
+            return result
+        return dataclasses.replace(result, text=corrected)
+
+    async def _reverify_merged(self, merged: MergedUtterance) -> MergedUtterance:
+        corrected = await self._reverify_text(
+            merged.text, merged.start_time, merged.end_time
+        )
+        if corrected == merged.text:
+            return merged
+        return dataclasses.replace(merged, text=corrected)
 
     async def _collect_transcriptions(self) -> None:
         """Collect transcription results into a queue."""
@@ -309,6 +480,7 @@ class TranslationPipeline:
                     continue
 
                 if not self._merge_utterances:
+                    result = await self._reverify_result(result)
                     self._enqueue_transcription(result)
                     continue
 
@@ -333,6 +505,47 @@ class TranslationPipeline:
                         self._usage_sink,
                     )
 
+                # 不自然度スコアによるチャンク動的延長（設定で有効な場合のみ、既定OFF）。
+                # 文法的には文末に達していても、直前の字幕（共有コンテキストの原文・
+                # 訳文の両方）を踏まえると今訳すと唐突に見える候補はLLMに採点させ、
+                # 閾値以上なら強制的に結合を継続する。こちらもタイムアウト付きで
+                # リアルタイム性を壊さない（`incomplete_end_detection` と同じ安全弁の設計）。
+                force_incomplete = False
+                if (
+                    self._config.unnaturalness_check_enabled
+                    and self._config.google_api_key
+                ):
+                    candidate_text = self._utterance_merger.peek_combined_text(text)
+                    src_ctx, tgt_ctx = self._shared_context.snapshot()
+                    n = self._config.unnaturalness_context_size
+                    # 原文だけでなく、既に確定済みの日本語訳も参考情報として渡す
+                    # （不自然さの手がかりが日本語側の方が見えやすいことがあるため）。
+                    context_pairs = list(zip(src_ctx[-n:], tgt_ctx[-n:]))
+                    model = (
+                        self._config.unnaturalness_check_model
+                        or self._config.gemini_model
+                    )
+                    result = await score_unnaturalness_with_timeout(
+                        candidate_text,
+                        context_pairs,
+                        self._config.google_api_key,
+                        model,
+                        self._config.unnaturalness_check_timeout,
+                        self._usage_sink,
+                    )
+                    # ガード（2026-09-07追加）: スコアが閾値以上でも、モデル自身が
+                    # 理由を"complete"（実は完結している）と答えた場合は強制継続
+                    # させない。単一のスコアだけで判定すると、既に句点で終わった
+                    # 完結文を無関係な次発話と過剰結合してしまう誤検知が
+                    # 2026-08-25のAB testで確認されていたため
+                    # （`naturalness_detector.NaturalnessResult`のdocstring参照）。
+                    if (
+                        result is not None
+                        and result.score >= self._config.unnaturalness_threshold
+                        and result.reason != "complete"
+                    ):
+                        force_incomplete = True
+
                 # 文末で終わっていなければ None が返り、次のfinalと結合するまで待つ
                 # （＝字幕確定を少し遅らせて、より自然な訳を得る）
                 merged = self._utterance_merger.feed(
@@ -341,9 +554,11 @@ class TranslationPipeline:
                     result.end_time,
                     result.confidence,
                     is_incomplete_override=is_incomplete_override,
+                    force_incomplete=force_incomplete,
                 )
                 if merged is None:
                     continue
+                merged = await self._reverify_merged(merged)
                 self._enqueue_merged(merged)
         except asyncio.CancelledError:
             pass
