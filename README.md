@@ -266,6 +266,34 @@ min_confidence=0.5版）、`experiments/results.csv`。
 
 ---
 
+### 2026/09/08
+
+#### 変更内容
+
+**Deepgramキーワードブーストを動画字幕パス（`add_subtitles.py`）にも配線**
+
+`deepgram_keyword_boost_enabled`（辞書の「そのまま使う」用語をDeepgramへ渡して
+ASR誤認識自体を減らす根本対策）は`pipeline.py`（マイクのリアルタイム翻訳）には
+配線済みだったが、`add_subtitles.py`の`transcribe_audio()`（`client.listen.v1.media.
+transcribe_file()`を直接呼ぶ動画字幕パス）には配線されていなかった
+（実装漏れ）。`TermDictionary.as_asr_keywords()`を使って`keywords`パラメータを
+渡すよう追加し、`DEEPGRAM_KEYWORD_BOOST_ENABLED`/`DEEPGRAM_KEYWORD_BOOST_VALUE`
+環境変数（`config.py`と共通の名前）で制御できるようにした。
+
+`clips/2d07bb74_clip3.mp4`の冒頭10秒（`technology_moe_2d07bb74_clip3`ベンチマークの
+既知の誤認識区間）で実際にDeepgram APIを呼んで確認したところ、これまで
+"G p t three and the parm two architectures" と誤認識されていた箇所が
+"GPT three and the PaLM two architectures" に改善した（PaLMは完全一致、GPTは
+"GPT-3"ではなく"GPT three"ではあるが、辞書によるASR誤認識補正パターン
+`g p three,GPT-3`との組み合わせで翻訳段階ではこれまで通り拾える）。
+
+なお、Whisper再検証（`whisper_reverify_enabled`）・不自然度チェック
+（`unnaturalness_check_enabled`）は`pipeline.py`専用として設計されており
+（`whisper_reverify_ab_test.py`のdocstring参照）、動画字幕パスには意図的に
+未配線のまま——今回の対象はキーワードブーストのみ。
+
+---
+
 ### 2026/09/06 21:20
 
 #### 変更内容

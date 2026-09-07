@@ -55,6 +55,14 @@ WHISPER_MODEL_SIZE = os.environ.get("WHISPER_MODEL_SIZE", "small.en")
 # （pipeline.py）にはこれまで渡っていたが、動画字幕パスでは配線されて
 # いなかったため追加。
 DICTIONARY_PATH = os.environ.get("DICTIONARY_PATH") or None
+# Deepgramキーワードブースト（ASR誤認識自体を減らす根本対策）。pipeline.py
+# （マイク側）には配線済みだったが、動画字幕パス（transcribe_audio()）には
+# 配線されていなかったため追加（2026-09-08）。辞書の「そのまま使う」用語
+# （source_term == target_term）を自動的にDeepgramへ渡す。
+DEEPGRAM_KEYWORD_BOOST_ENABLED = (
+    os.environ.get("DEEPGRAM_KEYWORD_BOOST_ENABLED", "true").lower() == "true"
+)
+DEEPGRAM_KEYWORD_BOOST_VALUE = float(os.environ.get("DEEPGRAM_KEYWORD_BOOST_VALUE", "2.0"))
 # utterance分断検出のLLM分類器（失敗時は正規表現へ自動フォールバック）
 INCOMPLETE_END_DETECTION_ENABLED = (
     os.environ.get("INCOMPLETE_END_DETECTION_ENABLED", "true").lower() == "true"
@@ -300,6 +308,25 @@ def transcribe_audio_with_provider(audio_path: str) -> list[dict]:
     return transcribe_audio(audio_path)
 
 
+def _load_deepgram_keywords() -> list[str]:
+    """辞書の「そのまま使う」用語をDeepgramキーワードブースト形式に変換する。
+
+    `pipeline.py`（マイク側）と同じ`TermDictionary.as_asr_keywords()`を使う。
+    辞書未設定・読み込み失敗時はキーワードブーストなしで継続する。
+    """
+    if not DEEPGRAM_KEYWORD_BOOST_ENABLED or not DICTIONARY_PATH:
+        return []
+    from real_time_translation.translation.dictionary import TermDictionary
+
+    try:
+        dictionary = TermDictionary()
+        dictionary.load_csv(DICTIONARY_PATH)
+        return dictionary.as_asr_keywords(boost=DEEPGRAM_KEYWORD_BOOST_VALUE)
+    except OSError as exc:
+        print(f"警告: キーワードブースト用の辞書読み込みに失敗しました: {exc}")
+        return []
+
+
 def transcribe_audio(audio_path: str) -> list[dict]:
     """Deepgramで音声を文字起こしし、utterancesリストを返す。"""
     from deepgram import DeepgramClient
@@ -310,6 +337,8 @@ def transcribe_audio(audio_path: str) -> list[dict]:
     with open(audio_path, "rb") as f:
         audio_data = f.read()
 
+    deepgram_keywords = _load_deepgram_keywords()
+
     response = client.listen.v1.media.transcribe_file(
         request=audio_data,
         model="nova-2-general",
@@ -318,6 +347,7 @@ def transcribe_audio(audio_path: str) -> list[dict]:
         punctuate=True,
         utterances=True,
         utt_split=0.8,
+        keywords=deepgram_keywords or None,
     )
 
     utterances = getattr(response.results, "utterances", None) or []
