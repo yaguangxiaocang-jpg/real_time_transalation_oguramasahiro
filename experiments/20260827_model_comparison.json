@@ -1,0 +1,157 @@
+{
+  "date": "2026-08-27",
+  "results": [
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "segment_count": 1,
+      "elapsed_seconds": 3.37,
+      "avg_seconds_per_segment": 3.37,
+      "chrf_score": 0.4313,
+      "xcomet_score": 0.98,
+      "hyps": [
+        "これはアメリカの最短金利です。フェデラルファンド金利と呼ばれています。"
+      ],
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）"
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "segment_count": 1,
+      "elapsed_seconds": 1.01,
+      "avg_seconds_per_segment": 1.01,
+      "chrf_score": 0.6131,
+      "xcomet_score": 1.0,
+      "hyps": [
+        "これは米国における最も短期の金利です。フェデラルファンド金利と呼ばれています。"
+      ],
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）"
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "thinking_budget": 128,
+      "segment_count": 1,
+      "elapsed_seconds": 1.51,
+      "avg_seconds_per_segment": 1.51,
+      "chrf_score": 0.5131,
+      "xcomet_score": 0.99,
+      "hyps": [
+        "これは米国で最も短期の金利であり、フェデラルファンド金利と呼ばれています。"
+      ],
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "現行世代の標準flashモデル（同上）"
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "thinking_budget": 128,
+      "segment_count": 1,
+      "elapsed_seconds": 9.4,
+      "avg_seconds_per_segment": 9.4,
+      "chrf_score": 0.2466,
+      "xcomet_score": 1.0,
+      "hyps": [
+        "これが The United States で最も期間の短い金利で、federal funds rate と呼ばれています。"
+      ],
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "高品質・低速側の参考値（同上、Pro系はThinking必須）"
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "segment_count": 11,
+      "elapsed_seconds": 12.69,
+      "avg_seconds_per_segment": 1.15,
+      "chrf_score": 0.4845,
+      "xcomet_score": 1.0,
+      "hyps": [
+        "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使われている異なるマスキング技術に焦点を当てます。",
+        "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+        "GPT-3のような新しいデコーダーのみのモデルは、in-context learningによって高い汎化能力を実現しています。",
+        "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、より表現力があります。",
+        "密なモデルのサイズが大幅に増加しました。T5は元々110億のパラメータを持ち、Googleでは「One Giant Model」と呼んでいます。GPT-3は1750億のパラメータを持っています。",
+        "そして後に、PaLMは5000億のパラメータに達しました。",
+        "しかし、密なモデルが大きくなるにつれて、コストとトレーニング時間が持続不可能になりました。",
+        "このことから、「密なモデルのスケーリングの終焉の後に何が来るのか」という疑問が生じます。",
+        "その答えは、Mixture of Experts、略してMoEです。",
+        "これが、指数関数的なスケーリングのトレンドを継続する方法です。",
+        "タイムラインを振り返ってみると、"
+      ],
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）"
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "segment_count": 11,
+      "elapsed_seconds": 9.62,
+      "avg_seconds_per_segment": 0.87,
+      "chrf_score": 0.5496,
+      "xcomet_score": 0.9955,
+      "hyps": [
+        "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使用されている異なるマスキング技術を中心に解説します。",
+        "違いを見てみると、T5のような古いモデルは生成能力があまり高くなく、タスク固有のファインチューニングが必要でした。",
+        "GPT-3のような新しいデコーダー専用モデルは、インコンテキスト学習を通じて強力な汎化能力を実現しています。",
+        "そして、プレフィックスモデリングを使用するPaLM 2は、アテンションレイヤーで双方向であるため、より表現力が豊かになっています。",
+        "デースモデルの規模が劇的に拡大する中で、T5は初期に110億パラメータに達し、Googleではこれを巨大なモデルと呼びました。そしてGPT-3は1,750億パラメータに達しました。",
+        "そしてその後、PaLMは5000億パラメータに達しました。",
+        "しかし、デンスモデルが巨大化するにつれて、コストとトレーニング時間は持続不可能なものになりました。",
+        "ここで一つの疑問が生じます。デンスモデルのスケール限界の先には何があるのでしょうか？",
+        "そして、その答えがMixture of Experts、つまりMoEです。",
+        "これが、指数関数的なスケーリングのトレンドを継続する方法です。",
+        "タイムラインを振り返ると、"
+      ],
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）"
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "thinking_budget": 128,
+      "segment_count": 11,
+      "elapsed_seconds": 15.28,
+      "avg_seconds_per_segment": 1.39,
+      "chrf_score": 0.5335,
+      "xcomet_score": 0.9927,
+      "hyps": [
+        "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われている多様なマスキング手法に焦点を当てます。",
+        "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+        "一方、GPT-3のような新しいデコーダーのみのモデルは、インコンテキスト学習によって強力な汎化能力を実現しています。",
+        "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層が双方向であるため、より高い表現力を持っています。",
+        "デンスモデルのサイズが劇的に飛躍し、元々のT5は110億パラメータに達し、Googleではこれを巨大モデルと呼んでいました。そしてGPT-3は1750億パラメータです。",
+        "その後、PaLMは5000億パラメータに達しました。",
+        "しかし、デンスモデルが大型化するにつれて、コストとトレーニング時間は維持不可能なレベルになりました。",
+        "ここで、「デンスモデルのスケーリングの先には何があるのか？」という疑問が生じます。",
+        "その答えが Mixture of Experts、つまり MoE です。",
+        "これによって、指数関数的なスケーリングの傾向を継続させるのです。",
+        "タイムラインを振り返ってみると、"
+      ],
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "現行世代の標準flashモデル（同上）"
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "thinking_budget": 128,
+      "segment_count": 11,
+      "elapsed_seconds": 70.86,
+      "avg_seconds_per_segment": 6.44,
+      "chrf_score": 0.4438,
+      "xcomet_score": 0.9909,
+      "hyps": [
+        "GPT-3とPaLM 2のアーキテクチャを取り上げ、attentionコンポーネントで使用されるmasking手法の違いに焦点を当てます。",
+        "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+        "GPT-3のような新しいデコーダ専用モデルは、in-context learningによって高い汎化能力を実現しています。",
+        "そして、prefix modelingを使用するPaLM 2は、attentionレイヤーが双方向であるため、少し表現力が高くなっています。",
+        "dense modelのサイズが飛躍的に増大する中、当初110億パラメータに達したTIFINEはGoogleで巨大モデルと呼ばれ、g p g threeは1750億パラメータに達しました。",
+        "その後、Parmは5000億パラメータに達しました。",
+        "しかし、dense modelが大きくなるにつれて、コストとトレーニング時間が維持できなくなりました。",
+        "そこで次のような疑問が生じます。dense modelのスケーリングの先には何があるのでしょうか？",
+        "その答えは、mixture of experts、つまりMOEです。",
+        "これが、指数関数的なスケーリングのトレンドを継続する方法です。",
+        "タイムラインを振り返ると、"
+      ],
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "高品質・低速側の参考値（同上、Pro系はThinking必須）"
+    }
+  ]
+}

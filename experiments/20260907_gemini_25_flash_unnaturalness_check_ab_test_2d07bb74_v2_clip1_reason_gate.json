@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-07",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "notes": "2026-08-25のunnaturalness_check_enabled AB test（experiments/20260825_..._2d07bb74_v2_clip1.json）と同じ入力データ（experiments/segments/20260824_2d07bb74_v2_clip1_raw_unmerged.json、26生発話）で、2026-09-07に追加した2つの変更（(1)naturalness_detectorへのbilingual context(EN+JA)追加、(2)reason（理由ラベル）ガード: score>=閾値でもreason=='complete'なら強制継続させない）を適用して再検証。結果: 結合結果はOFF=13セグメント/ON=11セグメントで前回と完全一致、発火数も14/26で同一。スコア分布も0.80〜0.90に偏る同じ傾向（reasonの内訳: dangling_clause 7件、other 3件、unfinished_list_or_comparison 2件、trailing_conjunction 1件、complete 0件）。前回の報告書で名指しされた『GPT-3とPaLM 2の比較、というmasking techniquesの話で句点まで終わっている完結文』の候補も、reason=dangling_clauseとしてこの再検証でも発火しており、reasonガードはこの具体的な誤検知ケースを防げなかった（モデル自身がこの文を『まだ続く』と判断し続けている）。LLM-as-judgeスコアはOFF=1.0, ON=1.0（前回同様、天井効果で判別不能）。結論: bilingual context化・reasonガードはいずれもこのデータセットでは挙動を変えなかった（regressionは無いが、既知の誤検知も解消していない）。reasonガードは『モデルが明示的にcompleteと申告したときに無視する』安全弁としては機能する設計だが、モデル自身の判断が誤っている（本当は完結しているのにdangling_clauseと答える）ケースには無力。天井効果・過剰発火を実際に減らすには、閾値のチューニングだけでなく、reference-basedな評価（正解の結合境界セットに対するprecision/recallの実測）で判定ロジックそのものを見直す必要があるという、report.txtの元々の結論（reference-basedでの再検証が今後の課題）が今回もそのまま裏付けられた。",
+  "xcomet_score_off": 1.0,
+  "xcomet_score_on": 1.0,
+  "segment_count_off": 13,
+  "segment_count_on": 11,
+  "fired_count": 14,
+  "fired_out_of": 26,
+  "reason_breakdown": {
+    "dangling_clause": 7,
+    "other": 3,
+    "unfinished_list_or_comparison": 2,
+    "trailing_conjunction": 1,
+    "complete": 0
+  }
+}

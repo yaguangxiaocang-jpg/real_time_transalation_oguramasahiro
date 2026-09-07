@@ -1,0 +1,1193 @@
+{
+  "date": "2026-09-07",
+  "results": [
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.5,
+      "avg_seconds_per_segment_range": [
+        1.47,
+        3.53
+      ],
+      "chrf_score_mean": 0.5198,
+      "chrf_score_range": [
+        0.5198,
+        0.5198
+      ],
+      "xcomet_score_mean": 0.98,
+      "xcomet_score_range": [
+        0.98,
+        0.98
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 1,
+          "elapsed_seconds": 3.53,
+          "avg_seconds_per_segment": 3.53,
+          "chrf_score": 0.5198,
+          "xcomet_score": 0.98,
+          "hyps": [
+            "これはアメリカの短期金利で、フェデラルファンド金利と呼ばれています。"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 1,
+          "elapsed_seconds": 1.47,
+          "avg_seconds_per_segment": 1.47,
+          "chrf_score": 0.5198,
+          "xcomet_score": 0.98,
+          "hyps": [
+            "これはアメリカの短期金利で、フェデラルファンド金利と呼ばれています。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.09,
+      "avg_seconds_per_segment_range": [
+        1.0,
+        1.19
+      ],
+      "chrf_score_mean": 0.4255,
+      "chrf_score_range": [
+        0.2868,
+        0.5643
+      ],
+      "xcomet_score_mean": 0.98,
+      "xcomet_score_range": [
+        0.98,
+        0.98
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 1,
+          "elapsed_seconds": 1.0,
+          "avg_seconds_per_segment": 1.0,
+          "chrf_score": 0.2868,
+          "xcomet_score": 0.98,
+          "hyps": [
+            "米国の最も短期の金利、いわゆるフェデラルファンド金利です。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 1,
+          "elapsed_seconds": 1.19,
+          "avg_seconds_per_segment": 1.19,
+          "chrf_score": 0.5643,
+          "xcomet_score": 0.98,
+          "hyps": [
+            "これが米国における最短の金利です。フェデラルファンド金利と呼ばれています。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_fragment_2d07bb74_v2_clip1_scaling_intro",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 1.34,
+      "avg_seconds_per_segment_range": [
+        1.29,
+        1.39
+      ],
+      "chrf_score_mean": 0.6143,
+      "chrf_score_range": [
+        0.6119,
+        0.6167
+      ],
+      "xcomet_score_mean": 0.9946,
+      "xcomet_score_range": [
+        0.9891,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 11,
+          "elapsed_seconds": 15.26,
+          "avg_seconds_per_segment": 1.39,
+          "chrf_score": 0.6167,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われている異なるマスキング技術についてです。",
+            "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって高い汎化能力を実現しました。",
+            "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、より表現力があります。",
+            "高密度モデルのサイズが大幅に飛躍したように、T5は元々110億パラメータに達し、Googleでは「One Giant Model」と呼んでいます。そしてGPT-3は1750億パラメータです。",
+            "そして後に、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大きくなるにつれて、コストとトレーニング時間が持続不可能になりました。",
+            "これが、高密度モデルのスケーリングの終焉の後に何が来るのかという疑問につながります。",
+            "その答えが、Mixture of Experts、略してMOEです。",
+            "これにより、指数関数的なスケーリングのトレンドを継続できます。",
+            "タイムラインを振り返ると、"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 11,
+          "elapsed_seconds": 14.23,
+          "avg_seconds_per_segment": 1.29,
+          "chrf_score": 0.6119,
+          "xcomet_score": 0.9891,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われている異なるマスキング技術についてです。",
+            "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって高い汎化能力を実現しました。",
+            "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、より表現力があります。",
+            "高密度モデルのサイズが大幅に拡大しました。T5は元々110億パラメータに達し、Googleでは「One Giant Model」と呼んでいます。そしてGPT-3は1750億パラメータです。",
+            "その後、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大きくなるにつれて、コストとトレーニング時間が持続不可能になりました。",
+            "これにより、「高密度モデルのスケーリングの終焉の後に何が来るのか」という疑問が生じます。",
+            "その答えが、Mixture of Experts、略してMOEです。",
+            "これにより、指数関数的なスケーリングのトレンドを継続できます。",
+            "タイムラインを振り返ってみると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_fragment_2d07bb74_v2_clip1_scaling_intro",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 0.93,
+      "avg_seconds_per_segment_range": [
+        0.87,
+        0.99
+      ],
+      "chrf_score_mean": 0.5702,
+      "chrf_score_range": [
+        0.5672,
+        0.5731
+      ],
+      "xcomet_score_mean": 0.9887,
+      "xcomet_score_range": [
+        0.9773,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 11,
+          "elapsed_seconds": 10.92,
+          "avg_seconds_per_segment": 0.99,
+          "chrf_score": 0.5672,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャについて、そのアテンションコンポーネントで使用されている異なるマスキング技術に焦点を当てて説明します。",
+            "違いを見ていくと、T5のような古いモデルは生成能力があまり高くなく、タスク特異的なファインチューニングが必要でした。",
+            "新しいデコーダオンリーモデルであるGPT-3は、インコンテキスト学習を通じて高い汎化能力を実現しました。",
+            "そして、プレフィックスモデリングを採用しているPaLM 2は、アテンション層で双方向であるため、より表現力が高くなっています。",
+            "高密度モデルの規模が劇的に拡大する中で、T5は初期に110億パラメータに達し、Googleでは1つの巨大なモデルと呼ばれ、GPT-3は1,750億パラメータに達しました。",
+            "その後、PaLMは5,000億パラメータに達しました。",
+            "しかし、高密度モデルが大きくなるにつれて、コストとトレーニング時間は持続不可能なものになりました。",
+            "高密度モデルのスケーリングの限界の先に何があるのでしょうか？",
+            "そしてその答えが、Mixture of Experts、すなわちMOEです。",
+            "これが、指数関数的なスケーリングの傾向を維持する方法です。",
+            "タイムラインを振り返ると、"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 11,
+          "elapsed_seconds": 9.56,
+          "avg_seconds_per_segment": 0.87,
+          "chrf_score": 0.5731,
+          "xcomet_score": 0.9773,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使用される異なるマスキング技術に焦点を当てて説明します。",
+            "違いを見てみると、T5のような古いモデルは生成能力があまり高くなく、タスク固有のファインチューニングが必要でした。",
+            "Newer, decoder only models like g p three achieved strong generalization capability through in context learning.\n新しいデコーダオンリーモデルであるGPT-3は、インコンテキスト学習を通じて強力な汎化性能を実現しました。",
+            "そして、プレフィックスモデリングを採用しているPaLM 2は、アテンション層で双方向であるため、より表現力が高くなっています。",
+            "高密度モデルのサイズが劇的に拡大した中で、初期のT5は110億パラメータに達し、Googleではそれを単一の巨大モデルと呼び、GPT-3は1750億パラメータに達しました。",
+            "そして、その後PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大型化するにつれて、コストとトレーニング時間が持続不可能なものになりました。",
+            "高密度モデルのスケーリングの限界の次には、何が来るのでしょうか？",
+            "そして、その答えがMixture of Experts、すなわちMOEです。",
+            "これは、指数関数的なスケーリングのトレンドを継続する方法です。",
+            "タイムラインを振り返ると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_fragment_gpt3_generalization",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.37,
+      "avg_seconds_per_segment_range": [
+        1.36,
+        1.38
+      ],
+      "chrf_score_mean": 0.6304,
+      "chrf_score_range": [
+        0.6304,
+        0.6304
+      ],
+      "xcomet_score_mean": 1.0,
+      "xcomet_score_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 1,
+          "elapsed_seconds": 1.38,
+          "avg_seconds_per_segment": 1.38,
+          "chrf_score": 0.6304,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を達成しました。"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 1,
+          "elapsed_seconds": 1.36,
+          "avg_seconds_per_segment": 1.36,
+          "chrf_score": 0.6304,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を達成しました。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_fragment_gpt3_generalization",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.08,
+      "avg_seconds_per_segment_range": [
+        0.98,
+        1.18
+      ],
+      "chrf_score_mean": 0.5088,
+      "chrf_score_range": [
+        0.4971,
+        0.5204
+      ],
+      "xcomet_score_mean": 1.0,
+      "xcomet_score_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 1,
+          "elapsed_seconds": 0.98,
+          "avg_seconds_per_segment": 0.98,
+          "chrf_score": 0.4971,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "近年のGPT-3のようなデコーダオンリーモデルは、インコンテキスト学習を通じて高い汎化性能を実現しました。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 1,
+          "elapsed_seconds": 1.18,
+          "avg_seconds_per_segment": 1.18,
+          "chrf_score": 0.5204,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "より新しいデコーダオンリーモデルであるGPT-3は、インコンテキスト学習を通じて高い汎化能力を実現しました。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_fragment_moe_definition",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.29,
+      "avg_seconds_per_segment_range": [
+        1.21,
+        1.36
+      ],
+      "chrf_score_mean": 0.6736,
+      "chrf_score_range": [
+        0.6736,
+        0.6736
+      ],
+      "xcomet_score_mean": 0.995,
+      "xcomet_score_range": [
+        0.99,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 1,
+          "elapsed_seconds": 1.36,
+          "avg_seconds_per_segment": 1.36,
+          "chrf_score": 0.6736,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "その答えがMixture of Experts、略してMOEです。"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 1,
+          "elapsed_seconds": 1.21,
+          "avg_seconds_per_segment": 1.21,
+          "chrf_score": 0.6736,
+          "xcomet_score": 0.99,
+          "hyps": [
+            "その答えがMixture of Experts、略してMOEです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_fragment_moe_definition",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.04,
+      "avg_seconds_per_segment_range": [
+        1.02,
+        1.07
+      ],
+      "chrf_score_mean": 0.6396,
+      "chrf_score_range": [
+        0.617,
+        0.6621
+      ],
+      "xcomet_score_mean": 1.0,
+      "xcomet_score_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 1,
+          "elapsed_seconds": 1.07,
+          "avg_seconds_per_segment": 1.07,
+          "chrf_score": 0.6621,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "そしてその答えは、Mixture of Experts、またはMOEです。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 1,
+          "elapsed_seconds": 1.02,
+          "avg_seconds_per_segment": 1.02,
+          "chrf_score": 0.617,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "その答えは Mixture of Experts または MOE です。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_fragment_t5_finetuning",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.37,
+      "avg_seconds_per_segment_range": [
+        1.32,
+        1.42
+      ],
+      "chrf_score_mean": 0.7228,
+      "chrf_score_range": [
+        0.7228,
+        0.7228
+      ],
+      "xcomet_score_mean": 0.99,
+      "xcomet_score_range": [
+        0.98,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 1,
+          "elapsed_seconds": 1.42,
+          "avg_seconds_per_segment": 1.42,
+          "chrf_score": 0.7228,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 1,
+          "elapsed_seconds": 1.32,
+          "avg_seconds_per_segment": 1.32,
+          "chrf_score": 0.7228,
+          "xcomet_score": 0.98,
+          "hyps": [
+            "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_fragment_t5_finetuning",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.23,
+      "avg_seconds_per_segment_range": [
+        1.14,
+        1.32
+      ],
+      "chrf_score_mean": 0.6851,
+      "chrf_score_range": [
+        0.6474,
+        0.7228
+      ],
+      "xcomet_score_mean": 0.985,
+      "xcomet_score_range": [
+        0.98,
+        0.99
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 1,
+          "elapsed_seconds": 1.32,
+          "avg_seconds_per_segment": 1.32,
+          "chrf_score": 0.6474,
+          "xcomet_score": 0.99,
+          "hyps": [
+            "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 1,
+          "elapsed_seconds": 1.14,
+          "avg_seconds_per_segment": 1.14,
+          "chrf_score": 0.7228,
+          "xcomet_score": 0.98,
+          "hyps": [
+            "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_moe_2d07bb74_clip1",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.31,
+      "avg_seconds_per_segment_range": [
+        1.27,
+        1.34
+      ],
+      "chrf_score_mean": 0.6607,
+      "chrf_score_range": [
+        0.6576,
+        0.6638
+      ],
+      "xcomet_score_mean": 0.9527,
+      "xcomet_score_range": [
+        0.9444,
+        0.9611
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 9,
+          "elapsed_seconds": 12.06,
+          "avg_seconds_per_segment": 1.34,
+          "chrf_score": 0.6576,
+          "xcomet_score": 0.9611,
+          "hyps": [
+            "新しい特定のドメインを優先するためです。",
+            "モデルが新しいドメインにうまく適応しつつ、元の貴重な汎用能力を保持するために、継続学習技術が必要です。",
+            "そして、その核心的な問題は、もちろん忘却です。",
+            "新しいデータセットのみで学習すると、元のデータセットのデータ分布に対する性能が著しく低下します。",
+            "ここでの目標は、古い知識を保持しつつ、新しいデータに適応できる汎用モデルを構築することです。",
+            "そして、私たちの解決策は、分布ベースのMOEアーキテクチャを使用して、新しいデータ分布のために専門家を段階的に追加し、忘却を軽減するために正則化技術を使用することです。",
+            "このアプローチでは、正則化を用いて、モデルが新しいデータに過学習し、元の重みから大きく逸脱するのを防ぎます。",
+            "そして拡張です。これにより、モデルは新しい専門家を動的に追加して新しいデータ分布を処理し、新しい知識を吸収するための新しいモデル容量を提供できます。",
+            "具体的には、"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 9,
+          "elapsed_seconds": 11.45,
+          "avg_seconds_per_segment": 1.27,
+          "chrf_score": 0.6638,
+          "xcomet_score": 0.9444,
+          "hyps": [
+            "新しい特定のドメインを優先するためです。",
+            "モデルが元の貴重な汎用機能を保持しつつ、新しいドメインにうまく適応できるように、継続学習の技術が必要です。",
+            "そして、その核となる問題は、もちろん忘却です。",
+            "新しいデータセットのみで学習すると、元のデータセットのデータ分布に対する性能が著しく低下します。",
+            "ここでの目標は、古い知識を保持しつつ、新しいデータに適応できる汎用モデルを構築することです。",
+            "私たちの解決策は、分布ベースのMOEアーキテクチャを使用して、新しいデータ分布のために専門家を段階的に追加し、忘却を軽減するために正則化技術を使用することです。",
+            "このアプローチでは、正則化を用いて、モデルが新しいデータに過学習したり、元の重みから大きく逸脱したりするのを防ぎます。",
+            "そして拡張です。これにより、モデルは新しい専門家を動的に追加して、新しいデータ分布を処理し、新しい知識を吸収するための新しいモデル容量を提供できます。",
+            "具体的には、私たちは"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_moe_2d07bb74_clip1",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 0.9,
+      "avg_seconds_per_segment_range": [
+        0.89,
+        0.9
+      ],
+      "chrf_score_mean": 0.6267,
+      "chrf_score_range": [
+        0.6155,
+        0.6379
+      ],
+      "xcomet_score_mean": 0.9761,
+      "xcomet_score_range": [
+        0.9689,
+        0.9833
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 9,
+          "elapsed_seconds": 8.01,
+          "avg_seconds_per_segment": 0.89,
+          "chrf_score": 0.6379,
+          "xcomet_score": 0.9833,
+          "hyps": [
+            "Baseは新しい特定のドメインを優先するためです。",
+            "継続学習技術は、モデルが元の価値ある汎用的な能力を維持しつつ、新しいドメインに確実に適応するために必要です。",
+            "そして、核心的な問題はもちろん忘却です。",
+            "新しいデータセットのみで学習させると、元のデータセットのデータ分布におけるパフォーマンスが大幅に低下します。",
+            "そしてここでの目標は、古い知識を保持しながら新しいデータに適応できる汎用モデルを構築することです。",
+            "そして、私たちの解決策は、分布ベースのMOEアーキテクチャを使用して新しいデータ分布に対して専門家を段階的に追加し、正則化技術を使用して忘却を軽減することです。",
+            "このアプローチでは、モデルが新しいデータに対して過学習し、元の重みから大きく乖離するのを防ぐために、正則化が使用されます。",
+            "そして拡張により、モデルは新しいデータ分布を処理する新しい専門家を動的に追加し、新しい知識を吸収するための新しいモデル容量を提供できるようになります。",
+            "具体的には、私たちは"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 9,
+          "elapsed_seconds": 8.12,
+          "avg_seconds_per_segment": 0.9,
+          "chrf_score": 0.6155,
+          "xcomet_score": 0.9689,
+          "hyps": [
+            "ベースモデルは、新しい特異的ドメインを優先するためです。",
+            "継続学習のテクニックは、モデルが新しいドメインに適応しつつ、元の貴重な汎用能力を保持するために不可欠です。",
+            "そして、核心的な問題はもちろん忘却です。",
+            "新しいデータセットのみで学習させると、元のデータセットのデータ分布におけるパフォーマンスが大幅に低下します。",
+            "そして、ここでの目標は、古い知識を保持しながら新しいデータに適応できる汎用モデルを構築することです。",
+            "そして、私たちの解決策は、分散ベースのMOEアーキテクチャを使用して新しいデータ分布に対してより多くの専門家を段階的に追加し、正則化技術を使用して忘却を軽減することです。",
+            "そして、このアプローチでは、モデルが新しいデータに過剰適合せず、元の重みから大きく乖離するのを防ぐために正則化を使用します。",
+            "そして拡張機能により、モデルは動的に新しい専門家を追加して新しいデータ分布を処理し、新しい知識を吸収するための新しいモデル容量を提供できるようになります。",
+            "具体的には、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_moe_2d07bb74_clip2",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.27,
+      "avg_seconds_per_segment_range": [
+        1.26,
+        1.29
+      ],
+      "chrf_score_mean": 0.7026,
+      "chrf_score_range": [
+        0.696,
+        0.7092
+      ],
+      "xcomet_score_mean": 0.9889,
+      "xcomet_score_range": [
+        0.9778,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 9,
+          "elapsed_seconds": 11.33,
+          "avg_seconds_per_segment": 1.26,
+          "chrf_score": 0.7092,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "ムーアの法則とべき乗則で歴史的背景を設定することで",
+            "次に、BERTやT5のようなGoogleの大規模言語モデルを見てから、今日の講演の核心である、Mixture of Experts、略してMOEによる大規模言語モデルのスケーリングについて掘り下げていきます。",
+            "最後に、MOEを基盤とした2つの重要な進歩、継続学習とモジュール性について説明します。",
+            "そして最後にまとめを行い、質疑応答に移ります。",
+            "このセクションでは、なぜ新しいスケーリング方法を求めているのか、その背景を説明します。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに倍増すると提唱しました。",
+            "しかし、この法則は現在、物理的な限界に達しています。",
+            "トランジスタの高温化やメモリ帯域を制限するメモリウォールといった問題は、大規模言語モデルの指数関数的な成長を支えるために、従来のチップの進歩に頼ることができなくなったことを意味します。",
+            "そして、深層学習モデルのスケーリングは、長い間、予測可能なべき乗則に支配されていました。2017年のBaiduの論文や2020年のOpenAIの論文で示されたように、そこには"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 9,
+          "elapsed_seconds": 11.57,
+          "avg_seconds_per_segment": 1.29,
+          "chrf_score": 0.696,
+          "xcomet_score": 0.9778,
+          "hyps": [
+            "ムーアの法則とべき乗則で歴史的背景を設定することで",
+            "次に、BERTやT5のようなGoogleの大規模言語モデルを見てから、今日の講演の核心であるMixture of Experts、略してMOEによる大規模言語モデルのスケーリングについて掘り下げていきます。",
+            "最後に、MOEを基盤とした2つの重要な進歩、継続学習とモジュール性について説明します。",
+            "そして最後にまとめを行い、質疑応答に移ります。",
+            "このセクションでは、なぜ新しいスケーリング方法を模索しているのか、その背景を説明します。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに倍増すると提唱しました。",
+            "しかし、私たちは今、この法則の物理的な限界に達しています。",
+            "トランジスタの高温化やメモリ帯域を制限するメモリウォールといった問題は、大規模言語モデルの指数関数的な成長を支えるために、従来のチップの進歩に頼ることがもはやできないことを意味します。",
+            "そして、深層学習モデルのスケーリングは、長い間、予測可能なべき乗則に支配されていました。2017年のBaiduの論文や2020年のOpenAIの論文で示されたように、そこには"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_moe_2d07bb74_clip2",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 0.89,
+      "avg_seconds_per_segment_range": [
+        0.88,
+        0.89
+      ],
+      "chrf_score_mean": 0.6433,
+      "chrf_score_range": [
+        0.6152,
+        0.6715
+      ],
+      "xcomet_score_mean": 0.9322,
+      "xcomet_score_range": [
+        0.92,
+        0.9444
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 9,
+          "elapsed_seconds": 8.01,
+          "avg_seconds_per_segment": 0.89,
+          "chrf_score": 0.6715,
+          "xcomet_score": 0.92,
+          "hyps": [
+            "ムーアの法則とべき乗則によって歴史的背景を設定することで、",
+            "続いて、本日の本題に入る前に、BERTやT5といったGoogleの大規模言語モデルについて見ていきます。本題では、MOE（Mixture of Experts）を用いた大規模言語モデルのスケーリングについて解説します。",
+            "最後に、MOEをベースにした2つの重要な進化である、継続学習とモジュール性について解説します。",
+            "最後にまとめを行い、質疑応答に移ります。",
+            "そしてこのセクションでは、なぜ私たちがスケーリングのための新しい手法を求めているのか、その背景について説明します。",
+            "ゴードン・ムーアは、チップ上のトランジスタの数が2年ごとに倍増すると提唱しました。",
+            "しかし、私たちは現在、この法則の物理的な限界に達しつつあります。",
+            "トランジスタの発熱や、メモリ帯域幅を制限するメモリウォールといった問題により、大規模言語モデルの指数関数的な成長を維持するために、従来のチップの進化に頼ることができなくなっています。",
+            "そして、深層学習モデルのスケーリングは長い間、予測可能なべき乗則に支配されていました。2017年のBaiduの重要な論文や、2020年のOpenAIの論文に示されているように、そこには"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 9,
+          "elapsed_seconds": 7.91,
+          "avg_seconds_per_segment": 0.88,
+          "chrf_score": 0.6152,
+          "xcomet_score": 0.9444,
+          "hyps": [
+            "ムーアの法則とべき乗則の歴史的コンテキストを設定することで、",
+            "続いてGoogleの大規模言語モデルであるBERTやT5などを見たあと、本日の本題であるMixture of Experts（MOE）による大規模言語モデルのスケーリングについて解説します。",
+            "最後に、MOEをベースにした2つの重要な進化、すなわち継続学習とモジュール性について解説します。",
+            "最後にまとめを行ってから、質疑応答に移ります。",
+            "そしてこのセクションでは、新たなスケーリング手法を求める背景について説明します。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに倍増すると提唱しました。",
+            "しかし、私たちは現在、この法則の物理的限界に達しつつあります。",
+            "トランジスタの発熱や、メモリ帯域を制限するメモリウォールなどの問題により、大規模言語モデルの指数関数的成長を支えるために、従来のチップの進化だけに頼ることはできなくなっています。",
+            "そして長い間、深層学習モデルのスケーリングは予測可能なべき乗則に支配されていました。2017年のBaiduの重要な論文や、2020年のOpenAIの論文に示されているように、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 1.33,
+      "avg_seconds_per_segment_range": [
+        1.32,
+        1.34
+      ],
+      "chrf_score_mean": 0.5583,
+      "chrf_score_range": [
+        0.5527,
+        0.5639
+      ],
+      "xcomet_score_mean": 0.9964,
+      "xcomet_score_range": [
+        0.9955,
+        0.9973
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 11,
+          "elapsed_seconds": 14.57,
+          "avg_seconds_per_segment": 1.32,
+          "chrf_score": 0.5639,
+          "xcomet_score": 0.9955,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャ、そしてそれらのアテンションコンポーネントで使われている異なるマスキング技術についてです。",
+            "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって高い汎化能力を実現しています。",
+            "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、より表現力があります。",
+            "高密度モデルのサイズが大幅に拡大したように、T5は元々110億パラメータに達し、Googleではこれを「One Giant Model」と呼んでいます。GPT-3は1750億パラメータです。",
+            "そして後に、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大きくなるにつれて、コストとトレーニング時間が持続不可能になりました。",
+            "これが、高密度モデルのスケーリングの終焉の後に何が来るのかという疑問につながります。",
+            "その答えが、Mixture of Experts、略してMOEです。",
+            "これにより、指数関数的なスケーリングのトレンドを継続できます。",
+            "タイムラインを振り返ると、"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 11,
+          "elapsed_seconds": 14.74,
+          "avg_seconds_per_segment": 1.34,
+          "chrf_score": 0.5527,
+          "xcomet_score": 0.9973,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャ、そしてそれらのアテンションコンポーネントで使われている異なるマスキング技術についてです。",
+            "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって高い汎化能力を実現しています。",
+            "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、より表現力があります。",
+            "高密度モデルのサイズが大幅に飛躍したように、T5は元々110億パラメータに達し、Googleでは「One Giant Model」と呼んでいます。GPT-3は1750億パラメータです。",
+            "そして後に、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大きくなるにつれて、コストとトレーニング時間が持続不可能になりました。",
+            "これが、高密度モデルのスケーリングの終焉の後に何が来るのかという疑問につながります。",
+            "その答えが、Mixture of Experts、略してMOEです。",
+            "これにより、指数関数的なスケーリングのトレンドを継続できます。",
+            "タイムラインを振り返ると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 0.93,
+      "avg_seconds_per_segment_range": [
+        0.92,
+        0.94
+      ],
+      "chrf_score_mean": 0.5367,
+      "chrf_score_range": [
+        0.5328,
+        0.5406
+      ],
+      "xcomet_score_mean": 1.0,
+      "xcomet_score_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 11,
+          "elapsed_seconds": 10.36,
+          "avg_seconds_per_segment": 0.94,
+          "chrf_score": 0.5406,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使用される異なるマスキング技術に焦点を当てて説明します。",
+            "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "新しいデコーダオンリーモデルであるGPT-3は、インコンテキスト学習を通じて高い汎化能力を実現しています。",
+            "そして、プレフィックスモデリングを採用するPaLM 2は、アテンション層において双方向であるため、より表現力が高くなっています。",
+            "高密度モデルのサイズが大幅に拡大するにつれ、T5は初期に110億パラメータに達し、Googleではそれを1つの巨大なモデルと呼び、GPT-3は1750億パラメータに達しました。",
+            "そしてその後、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大きくなるにつれて、コストと学習時間が持続不可能になりました。",
+            "これは、高密度モデルのスケーリングの終焉の次に来るものは何かという疑問につながります。",
+            "そして、その答えがMixture of Experts、すなわちMOEです。",
+            "これが、指数関数的なスケーリングトレンドを継続する方法です。",
+            "タイムラインを振り返ると、"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 11,
+          "elapsed_seconds": 10.14,
+          "avg_seconds_per_segment": 0.92,
+          "chrf_score": 0.5328,
+          "xcomet_score": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使用されている異なるマスキング技術に焦点を当てて説明します。",
+            "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "新しいデコーダオンリーモデルであるGPT-3は、インコンテキスト学習を通じて高い汎化能力を実現しています。",
+            "そして、プレフィックスモデリングを採用するPaLM 2は、アテンションレイヤーで双方向であるため、より高い表現力を持っています。",
+            "高密度モデルのサイズが大幅に拡大する中で、T5は初期に110億パラメータに達し、Googleではこれを巨大な1つのモデルと呼び、GPT-3は1,750億パラメータに達しました。",
+            "そして、PaLMはさらに5,000億パラメータに達しました。",
+            "しかし、高密度モデルが大型化するにつれて、コストとトレーニング時間が持続不可能になりました。",
+            "高密度モデルのスケーリングが限界を迎えた後には、何が来るのでしょうか？",
+            "そして、その答えがMixture of Experts、すなわちMOEです。",
+            "これが、指数関数的なスケーリングトレンドを維持する方法です。",
+            "タイムラインを振り返ると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_moe_2d07bb74_clip4",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.47,
+      "avg_seconds_per_segment_range": [
+        1.42,
+        1.52
+      ],
+      "chrf_score_mean": 0.6237,
+      "chrf_score_range": [
+        0.6179,
+        0.6295
+      ],
+      "xcomet_score_mean": 0.9816,
+      "xcomet_score_range": [
+        0.9811,
+        0.9822
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 9,
+          "elapsed_seconds": 12.8,
+          "avg_seconds_per_segment": 1.42,
+          "chrf_score": 0.6295,
+          "xcomet_score": 0.9811,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、あるアダプターで学習されたプライベートデータが公開モジュールに漏洩しないようにします。",
+            "このようにして、コーディングタスクを処理したり、別のモジュールをチャットボットの会話エージェントにしたりと、適応型モジュールを継続的に学習させることができます。あるいは、モジュールをチェスのエキスパートにすることも可能です。",
+            "MOAの利点は数多くあります。",
+            "クエリあたりのアクティブ化されるパラメータが少なく、開発が容易で、異なるチームがアダプターを独立して開発できるという利点があります。",
+            "また、非常に強力な区分化とプライバシー保証も提供します。",
+            "そして一般的に、従来型のMOE設定でMixture of Adaptersを作成します。",
+            "つまり、一般的な形式でMixture of Expertsを作成する代わりに、各ドメインが少数のエキスパートで構成されるドメインエキスパートのMixtureを作成できます。",
+            "そして、ブロックレベルのマスクを適用してMOEレイヤー全体をアクティブ化または非アクティブ化し、レイヤー全体をドメインエキスパートとして扱うことができます。",
+            "あるいは、レイヤーごとのドメインを使用してMixture of Adaptersを実装することもできます。"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 9,
+          "elapsed_seconds": 13.64,
+          "avg_seconds_per_segment": 1.52,
+          "chrf_score": 0.6179,
+          "xcomet_score": 0.9822,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、あるアダプターで学習されたプライベートデータが公開モジュールに漏洩しないようにします。",
+            "このようにして、コーディングタスクを処理するアダプテッドモジュールを継続的にトレーニングしたり、別のモジュールをチャットボットの会話エージェントなどに変えたりできます。あるいは、モジュールをチェスのエキスパートに変えることさえ可能です。",
+            "MOAの利点は数多くあります。",
+            "クエリあたりのアクティブ化されるパラメータが少なく、開発が容易で、異なるチームがアダプターを独立して開発できるという利点があります。",
+            "また、非常に強力な区分化とプライバシー保証も提供します。",
+            "そして一般的に、従来型のMOE設定でMixture of Adaptersを作成します。",
+            "つまり、一般的な形式でMixture of Expertsを作成する代わりに、各ドメインがいくつかのエキスパートで構成されるドメインエキスパートのMixtureを作成できます。",
+            "そして、ブロックレベルのマスクを適用してMOEレイヤー全体をアクティブ化または非アクティブ化し、レイヤー全体をドメインエキスパートとして扱うことができます。",
+            "あるいは、レイヤーごとのドメインを使用してMixture of Adaptersを実装することもできます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_moe_2d07bb74_clip4",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 0.96,
+      "avg_seconds_per_segment_range": [
+        0.96,
+        0.97
+      ],
+      "chrf_score_mean": 0.5792,
+      "chrf_score_range": [
+        0.5616,
+        0.5968
+      ],
+      "xcomet_score_mean": 0.9861,
+      "xcomet_score_range": [
+        0.9833,
+        0.9889
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 9,
+          "elapsed_seconds": 8.74,
+          "avg_seconds_per_segment": 0.97,
+          "chrf_score": 0.5968,
+          "xcomet_score": 0.9833,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、1つのアダプターで学習したプライベートデータが公開モジュールに漏洩しないことも保証します。",
+            "このようにして、コーディングタスクを処理するように適応モジュールを継続的にトレーニングしたり、別のモジュールをチャットボットの会話エージェントなどに変えたりすることができます。あるいは、モジュールをチェスの専門家のように変えることさえ可能です。",
+            "MOAの利点は数多くあります。",
+            "クエリあたりの活性化パラメータが少なく、開発が容易になり、異なるチームが個別にアダプターを開発できるようになります。",
+            "また、強力なコンパートメント化とプライバシーの保証も提供します。",
+            "そして一般的に、伝統的なMOEの設定でMixture of Adaptersを作成します。",
+            "そのため、一般的な形式でMixture of Expertsを作成する代わりに、各ドメインが少数のエキスパートで構成されるドメインエキスパートの混合を作成できます。",
+            "ブロックレベルのマスクを適用してMOE層全体を有効化または無効化し、層全体をドメインエキスパートとして扱うこともできます。",
+            "別のアプローチとして、レイヤーごとのドメインを使用してMixture of Adaptersを実装することもできます"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 9,
+          "elapsed_seconds": 8.62,
+          "avg_seconds_per_segment": 0.96,
+          "chrf_score": 0.5616,
+          "xcomet_score": 0.9889,
+          "hyps": [
+            "これは forgetting を防ぐだけでなく、1つのアダプターで訓練されたプライベートデータが公開モジュールに漏洩しないことも保証します。",
+            "このようにして、適応させたモジュールを継続的に訓練し、コーディングタスクを処理させたり、別のモジュールをチャットボットのエージェントなどに変換したりすることができます。あるいは、モジュールをチェスの専門家のようにすることも可能です。",
+            "MOAのメリットは数多くあります。",
+            "クエリごとのアクティブなパラメータが少なくなり、開発が容易になり、異なるチームがアダプターを独立して開発できるようになります。",
+            "さらに、非常に強力なコンパートメント化とプライバシーの保証も提供します。",
+            "そして一般的に、伝統的なMOEの設定において Mixture of Adapters を構築します。",
+            "一般的な形で Mixture of Experts を作成する代わりに、各ドメインが少数のエキスパートで構成されるドメインエキスパートの混合を作成できます。",
+            "ブロックレベルのマスクを適用して、MOE層全体を有効化または無効化し、レイヤー全体をドメインエキスパートとして扱うこともできます。",
+            "代わりに、レイヤーごとのドメインを使用して Mixture of Adapters を実装することもできます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-2.5-flash",
+      "thinking_budget": 0,
+      "benchmark_id": "technology_moe_2d07bb74_clip5",
+      "note": "現行の本番既定モデル（マイクと同じthinking_budget=0）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.36,
+      "avg_seconds_per_segment_range": [
+        1.3,
+        1.42
+      ],
+      "chrf_score_mean": 0.6757,
+      "chrf_score_range": [
+        0.6757,
+        0.6757
+      ],
+      "xcomet_score_mean": 0.9794,
+      "xcomet_score_range": [
+        0.9644,
+        0.9944
+      ],
+      "runs": [
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 9,
+          "elapsed_seconds": 12.74,
+          "avg_seconds_per_segment": 1.42,
+          "chrf_score": 0.6757,
+          "xcomet_score": 0.9944,
+          "hyps": [
+            "フローズンバックボーンを持つMOAをターゲットデータで学習させた場合、ベースラインのMOEを混合データで学習させた場合と同等か、それ以上のFLOPS効率が得られることがわかりました。",
+            "そして30億パラメータ規模では、MOAは再び高い効率性を示すことが証明されました。",
+            "具体的には、ドメインデータのみを使用したMOAテールパッチングという手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の両方を示しました。",
+            "そして、このMOAを事前学習設定に一般化するために、ドメインエキスパートの混合というアイデアを探求しました。",
+            "これは、データをシャーディングするエキスパートと、アテンション機構における共有パラメータを含みます。",
+            "そして、より高速な推論、通信量の削減、クエリあたりの活性化パラメータの縮小、より多くのエキスパートを適合させる能力など、パフォーマンス上の利点があります。",
+            "そしてモデルは、ドメインIDを含むメタデータを活用し、トークンのシーケンスをドメインマスクにマッピングします。",
+            "このマスクにより、トークンはエキスパートの小さなサブセットにルーティングされ、オールツーオール通信のオーバーヘッドが効果的に削減されます。",
+            "この粗粒度ルーティングは、以下の数も削減します。"
+          ]
+        },
+        {
+          "model": "gemini-2.5-flash",
+          "thinking_budget": 0,
+          "segment_count": 9,
+          "elapsed_seconds": 11.67,
+          "avg_seconds_per_segment": 1.3,
+          "chrf_score": 0.6757,
+          "xcomet_score": 0.9644,
+          "hyps": [
+            "フローズンバックボーンを持つMOAをターゲットデータで学習させた場合、ベースラインのMOEを混合データで学習させた場合と同等か、それ以上のFLOPS効率が得られることがわかりました。",
+            "そして30億パラメータ規模では、MOAは再び高い効率性を示すことが証明されました。",
+            "具体的には、ドメインデータのみを使用したMOAテールパッチングという手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の両方を示しました。",
+            "そして、このMOAを事前学習設定に一般化するために、ドメインエキスパートの混合というアイデアを探求しました。",
+            "これは、データをシャーディングするエキスパートと、アテンション機構における共有パラメータを含みます。",
+            "そして、より高速な推論、通信量の削減、クエリあたりの活性化パラメータの縮小、より多くのエキスパートを適合させる能力など、パフォーマンス上の利点があります。",
+            "そしてモデルは、ドメインIDを含むメタデータを活用し、トークンのシーケンスをドメインマスクにマッピングします。",
+            "このマスクにより、トークンはエキスパートの小さなサブセットにルーティングされ、オールツーオール通信のオーバーヘッドが効果的に削減されます。",
+            "この粗粒度ルーティングは、以下の数も削減します。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "thinking_budget": 128,
+      "benchmark_id": "technology_moe_2d07bb74_clip5",
+      "note": "軽量モデル候補（thinking_budget=0は拒否されたため128で代用）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 0.94,
+      "avg_seconds_per_segment_range": [
+        0.9,
+        0.98
+      ],
+      "chrf_score_mean": 0.6559,
+      "chrf_score_range": [
+        0.6524,
+        0.6593
+      ],
+      "xcomet_score_mean": 0.9894,
+      "xcomet_score_range": [
+        0.9844,
+        0.9944
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 9,
+          "elapsed_seconds": 8.13,
+          "avg_seconds_per_segment": 0.9,
+          "chrf_score": 0.6593,
+          "xcomet_score": 0.9944,
+          "hyps": [
+            "MOAのバックボーンを固定し、ターゲットデータを所有してトレーニングする方法は、データの混合でトレーニングされたベースラインのMOEと同等か、それ以上にFLOPS効率が高いことが分かりました。",
+            "そして、30億パラメータのスケールでも、MOAは再び非常に効率的であることが証明されました。",
+            "具体的には、ドメインデータのみを使用したMOAテールパッチングという技術により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の双方が示されました。",
+            "そして、このMOAを事前学習の設定に一般化するために、ドメインエキスパートの混合というアイデアを探求しました。",
+            "これは、アテンション機構におけるデータのシャード化とパラメータの共有に関するエキスパートを含んでいます。",
+            "パフォーマンスの利点として、推論の高速化、通信の削減、クエリあたりのアクティブパラメータの削減、そしてより多くのエキスパートを収容できる能力が含まれています。",
+            "そして、このモデルは、ドメインIDを含むメタデータを活用して、トークンのシーケンスをドメインマスクにマッピングします。",
+            "そして、このマスクにより、トークンが少数のエキスパートのサブセットにルーティングされ、all-to-all通信のオーバーヘッドが効果的に削減されます。",
+            "そして、この粗い粒度のルーティングにより、次のような削減も実現されます"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash-lite",
+          "thinking_budget": 128,
+          "segment_count": 9,
+          "elapsed_seconds": 8.86,
+          "avg_seconds_per_segment": 0.98,
+          "chrf_score": 0.6524,
+          "xcomet_score": 0.9844,
+          "hyps": [
+            "バックボーンを固定したMOAをターゲットデータで学習させると、混合データで学習させたベースラインのMOEと同等か、それ以上にFLOPS効率が良いことがわかりました。",
+            "そして30億パラメータのスケールでも、MOAは非常に効率的であることが改めて証明されました。",
+            "具体的には、ドメインデータのみを使用したMOAのテイルパッチングと呼ばれる手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の双方が示されました。",
+            "そして、このMOAを事前学習のセッティングに一般化するために、混合ドメインエキスパートというアイデアを探求しました。",
+            "これは、データをシャーディングするエキスパートと、アテンション機構内の共有パラメータを含んでいます。",
+            "パフォーマンスの向上には、推論の高速化、通信量の削減、クエリあたりのアクティブパラメータの削減、そしてより多くのエキスパートを収容できる能力が含まれます。",
+            "そしてこのモデルは、ドメインIDを含むメタデータを活用して、トークンのシーケンスをドメインマスクにマッピングします。",
+            "そしてこのマスクにより、トークンがごく一部のエキスパートにルーティングされるため、all-to-all通信のオーバーヘッドが効果的に削減されます。",
+            "そして、この粗い粒度のルーティングにより、"
+          ]
+        }
+      ]
+    }
+  ]
+}
