@@ -101,19 +101,32 @@ async def translate_merged(
     *,
     context_window_size: int = 5,
     thinking_budget: int = 1024,
+    dictionary_path: Path | None = None,
+    model: str | None = None,
 ) -> list[str]:
-    """動画字幕（add_subtitles.py）と同じ LLMTranslator で各セグメントを翻訳する。"""
+    """動画字幕（add_subtitles.py）と同じ LLMTranslator で各セグメントを翻訳する。
+
+    Args:
+        dictionary_path: 用語辞書CSVのパス。`None`なら辞書なし（従来通り）。
+            動画/CLI・マイクの本番経路は`DICTIONARY_PATH`環境変数が設定されて
+            いれば常に辞書を渡しているが、これまで`run_benchmark.py`には
+            配線されておらず、ベンチマークスコアが辞書の効果を反映していな
+            かった（2026-08-11のREADME参照）。
+        model: 使用するGeminiモデル名。`None`なら既定の`GEMINI_MODEL`。
+            モデル比較実験用に上書きできるようにしている。
+    """
     from real_time_translation.translation.llm_translator import LLMTranslator
 
     translator = LLMTranslator(
         provider="gemini",
         api_key=GOOGLE_API_KEY,
-        model=GEMINI_MODEL,
+        model=model or GEMINI_MODEL,
         source_language="English",
         target_language="Japanese",
         domain=domain,
         context_window_size=context_window_size,
         thinking_budget=thinking_budget,
+        dictionary_path=dictionary_path,
     )
 
     outputs = []
@@ -179,25 +192,32 @@ def save_result(
     chrf_score: float,
     thinking_budget: int,
     context_window_size: int,
+    dictionary_path: Path | None = None,
+    model: str | None = None,
 ) -> None:
     EXPERIMENTS_DIR.mkdir(exist_ok=True)
 
+    used_model = model or GEMINI_MODEL
     today = date.today().strftime("%Y%m%d")
-    model_slug = GEMINI_MODEL.replace("-", "_").replace(".", "")
+    model_slug = used_model.replace("-", "_").replace(".", "")
     json_path = (
         EXPERIMENTS_DIR / f"{today}_{model_slug}_benchmark_{benchmark_id}.json"
     )
 
+    dict_note = (
+        f"dictionary={dictionary_path}" if dictionary_path else "dictionary=なし"
+    )
     notes = (
         f"[benchmark={benchmark_id}] 固定データセット（{len(refs)}セグメント）に対する"
         f"reference-based chrF評価 + LLM-as-judge xCOMETスコア。"
         f"thinking_budget={thinking_budget}, "
-        f"context_window_size={context_window_size}。"
+        f"context_window_size={context_window_size}, "
+        f"{dict_note}。"
     )
 
     record = {
         "date": date.today().strftime("%Y-%m-%d"),
-        "model": GEMINI_MODEL,
+        "model": used_model,
         "domain": domain,
         "benchmark_id": benchmark_id,
         "xcomet_score": xcomet_score,
@@ -234,12 +254,17 @@ def save_result(
 
 
 async def main(
-    benchmark_path: Path, thinking_budget: int, context_window_size: int
+    benchmark_path: Path,
+    thinking_budget: int,
+    context_window_size: int,
+    dictionary_path: Path | None = None,
+    model: str | None = None,
 ) -> None:
     benchmark = load_benchmark(benchmark_path)
     print(
         f"ベンチマーク実行: {benchmark['benchmark_id']} "
-        f"(domain={benchmark['domain']}, raw_utterances={len(benchmark['raw_utterances'])})"
+        f"(domain={benchmark['domain']}, raw_utterances={len(benchmark['raw_utterances'])}, "
+        f"model={model or GEMINI_MODEL}, dictionary={dictionary_path or 'なし'})"
     )
 
     merged = merge_raw_utterances(benchmark)
@@ -257,6 +282,8 @@ async def main(
         benchmark["domain"],
         context_window_size=context_window_size,
         thinking_budget=thinking_budget,
+        dictionary_path=dictionary_path,
+        model=model,
     )
 
     chrf_score = score_against_reference(hyps, refs)
@@ -281,6 +308,8 @@ async def main(
         chrf_score,
         thinking_budget,
         context_window_size,
+        dictionary_path=dictionary_path,
+        model=model,
     )
 
 
@@ -301,12 +330,39 @@ if __name__ == "__main__":
         default=5,
         help="翻訳コンテキスト窓のサイズ（既定: 5）",
     )
+    parser.add_argument(
+        "--dictionary-path",
+        type=Path,
+        default=None,
+        help=(
+            "用語辞書CSVのパス（例: dictionary.csv）。指定しなければ辞書なしで"
+            "翻訳する（従来の挙動）。本番の動画/CLI・マイク経路はDICTIONARY_PATH"
+            "環境変数が設定されていれば常に辞書を使っているため、辞書の効果を"
+            "ベンチマークスコアに反映させたい場合はここで明示的に渡すこと"
+            "（2026-08-11のREADME参照）。"
+        ),
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        default=None,
+        help="使用するGeminiモデル名（既定: gemini-2.5-flash）。モデル比較用。",
+    )
     args = parser.parse_args()
 
     if not args.benchmark.exists():
         print(f"エラー: ベンチマークファイルが見つかりません: {args.benchmark}")
         sys.exit(1)
+    if args.dictionary_path and not args.dictionary_path.exists():
+        print(f"エラー: 辞書ファイルが見つかりません: {args.dictionary_path}")
+        sys.exit(1)
 
     asyncio.run(
-        main(args.benchmark, args.thinking_budget, args.context_window_size)
+        main(
+            args.benchmark,
+            args.thinking_budget,
+            args.context_window_size,
+            dictionary_path=args.dictionary_path,
+            model=args.model,
+        )
     )

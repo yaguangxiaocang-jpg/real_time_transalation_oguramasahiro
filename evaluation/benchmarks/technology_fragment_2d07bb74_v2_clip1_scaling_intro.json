@@ -1,0 +1,153 @@
+{
+  "benchmark_id": "technology_fragment_2d07bb74_v2_clip1_scaling_intro",
+  "domain": "technology",
+  "description": "LLM講義動画（2d07bb74、GLaM/MOEスケーリング講演）のv2_clip1、未結合(raw)のDeepgram発話26件（experiments/segments/20260824_2d07bb74_v2_clip1_raw_unmerged.jsonから流用）。既存のtechnology_fragment_*（2〜4発話）より長く、文中で細かく分断された実例を多く含む（例: 'older models like t five were not as strong on generation' / 'and needed task specific' / 'fine tuning.' の3分割）ため、chunk_length_sweepの検証データを拡充する目的で追加（2026-09-07、report.txtの優先課題(3)対応）。reference_jaはclaude-opus-5が英文から独立に作成した訳（過去のmt_ja等は一切参照していない）。",
+  "raw_utterances": [
+    {
+      "start": 0.4,
+      "end": 2.8,
+      "transcript": "G p t three and the parm two architectures,"
+    },
+    {
+      "start": 3.8,
+      "end": 8.3,
+      "transcript": "highlighting the different masking techniques used in their attention components."
+    },
+    {
+      "start": 10.8,
+      "end": 12.7,
+      "transcript": "If we we look at the differences,"
+    },
+    {
+      "start": 13.5,
+      "end": 17.6,
+      "transcript": "older models like t five were not as strong on generation"
+    },
+    {
+      "start": 18.1,
+      "end": 19.9,
+      "transcript": "and needed task specific"
+    },
+    {
+      "start": 20.8,
+      "end": 21.6,
+      "transcript": "fine tuning."
+    },
+    {
+      "start": 22.1,
+      "end": 26.8,
+      "transcript": "Newer, decoder only models like g p three achieved strong generalization"
+    },
+    {
+      "start": 27.2,
+      "end": 27.7,
+      "transcript": "capability"
+    },
+    {
+      "start": 28.2,
+      "end": 29.6,
+      "transcript": "through in context learning."
+    },
+    {
+      "start": 30.2,
+      "end": 33.4,
+      "transcript": "And the PARM two, which uses prefix modeling,"
+    },
+    {
+      "start": 33.8,
+      "end": 38.6,
+      "transcript": "is a bit more expressive as it is bidirectional in in the attention layer."
+    },
+    {
+      "start": 42.1,
+      "end": 46.0,
+      "transcript": "As we saw a massive jump in the size of dense models,"
+    },
+    {
+      "start": 46.5,
+      "end": 47.5,
+      "transcript": "TIFI originally,"
+    },
+    {
+      "start": 48.3,
+      "end": 50.3,
+      "transcript": "reaches 11,000,000,000 parameters,"
+    },
+    {
+      "start": 50.9,
+      "end": 57.1,
+      "transcript": "and we call it one giant model at Google, and g p g three at 175,000,000,000"
+    },
+    {
+      "start": 57.1,
+      "end": 57.6,
+      "transcript": "parameters."
+    },
+    {
+      "start": 58.2,
+      "end": 61.4,
+      "transcript": "And later, Parm reached 500,000,000,000"
+    },
+    {
+      "start": 61.4,
+      "end": 61.9,
+      "transcript": "parameters."
+    },
+    {
+      "start": 62.8,
+      "end": 67.9,
+      "transcript": "But as dense model got bigger, the cost and the training time become unsustainable."
+    },
+    {
+      "start": 68.9,
+      "end": 70.7,
+      "transcript": "This leads us to the question,"
+    },
+    {
+      "start": 71.0,
+      "end": 74.0,
+      "transcript": "what comes after the end of a dense model scaling?"
+    },
+    {
+      "start": 77.5,
+      "end": 79.8,
+      "transcript": "And the answer is mixture of experts"
+    },
+    {
+      "start": 80.4,
+      "end": 81.2,
+      "transcript": "or MOE."
+    },
+    {
+      "start": 81.9,
+      "end": 83.3,
+      "transcript": "This is how we continue"
+    },
+    {
+      "start": 83.7,
+      "end": 85.6,
+      "transcript": "the exponential scaling trend."
+    },
+    {
+      "start": 87.7,
+      "end": 89.4,
+      "transcript": "Looking back at the timeline,"
+    }
+  ],
+  "reference_ja": [
+    "GPT-3とPaLM 2のアーキテクチャの比較で、アテンション機構で使われているマスキング手法の違いを示しています。",
+    "違いを見てみると、T5のような古いモデルは生成があまり得意ではなく、タスクごとのファインチューニングが必要でした。",
+    "GPT-3のような新しいデコーダオンリーのモデルは、インコンテキスト学習によって強力な汎化能力を実現しています。",
+    "そしてプレフィックスモデリングを用いるPaLM 2は、アテンション層が双方向であるため、少し表現力が高くなっています。",
+    "密なモデルのサイズが飛躍的に増大するのを見てきましたが、T5はもともと110億パラメータに達し、Googleではこれを「一つの巨大モデル」と呼んでいました。またGPT-3は1750億パラメータでした。",
+    "そしてその後、PaLMは5000億パラメータに達しました。",
+    "しかし、密なモデルが大きくなるにつれて、コストと学習時間が持続不可能になっていきました。",
+    "これは、密なモデルのスケーリングが行き着いた先には何があるのか、という問いにつながります。",
+    "その答えがMixture of Experts、すなわちMOEです。",
+    "これが、指数関数的なスケーリングのトレンドを継続する方法です。",
+    "これまでの歴史を振り返ってみると、"
+  ],
+  "reference_status": "draft_needs_human_review",
+  "reference_note": "claude-opus-5が2026-09-07に、英語原文から独立に作成した訳。専門家レビュー前のため、本格運用前に人手で確認すること。",
+  "expected_merged_count": null
+}

@@ -60,32 +60,49 @@ async def run_streaming_merge(
     raw_utterances: list[dict],
     *,
     use_unnaturalness_check: bool,
-) -> list[dict]:
+    translator: LLMTranslator | None = None,
+) -> tuple[list[dict], list[dict]]:
     """`pipeline.py._collect_transcriptions`と同じ経路をオフラインで再現する。
 
     Deepgramの生発話を1件ずつ`StreamingUtteranceMerger.feed()`に投入し、
     `use_unnaturalness_check=True`なら実際にGeminiで不自然度スコアを計算して
     `force_incomplete`に反映する（`pipeline.py`と同一の`naturalness_detector`
     を使用）。
+
+    `translator`を渡すと、確定したセグメントをその場で（マイク経路と同じ
+    タイミングで）翻訳し、その日本語訳を次の不自然度判定のコンテキストに含める
+    （`pipeline.py`の`SharedTranslationContext`と同じ挙動、2026-09-06の
+    bilingual context対応）。渡さなければ従来通りEN側のみを参照する
+    （`translator=None`かつ`use_unnaturalness_check=True`の組み合わせは
+    bilingual contextの効果を測れないので非推奨——比較には下のtranslatorありの
+    呼び出しを使うこと）。
     """
     merger = StreamingUtteranceMerger(max_duration=8.0, max_words=30)  # マイク既定値
-    tgt_context: list[str] = []  # 未使用（不自然度チェックは原文側のみ参照）
-    src_context_for_check: list[str] = []
+    src_context: list[str] = []
+    tgt_context: list[str] = []
     merged_out: list[dict] = []
     fired_log: list[dict] = []
 
     for u in raw_utterances:
         force_incomplete = False
-        score = None
+        nat_result = None
         if use_unnaturalness_check:
             candidate = merger.peek_combined_text(u["transcript"])
-            score = await score_unnaturalness(
+            n = UNNATURALNESS_CONTEXT_SIZE
+            context_pairs = list(zip(src_context[-n:], tgt_context[-n:]))
+            nat_result = await score_unnaturalness(
                 candidate,
-                src_context_for_check[-UNNATURALNESS_CONTEXT_SIZE:],
+                context_pairs,
                 GOOGLE_API_KEY,
                 GEMINI_MODEL,
             )
-            if score is not None and score >= UNNATURALNESS_THRESHOLD:
+            # pipeline.pyと同じガード: reason=="complete"なら強制継続させない
+            # （2026-09-07、既に完結した文の過剰結合対策）。
+            if (
+                nat_result is not None
+                and nat_result.score >= UNNATURALNESS_THRESHOLD
+                and nat_result.reason != "complete"
+            ):
                 force_incomplete = True
 
         merged = merger.feed(
@@ -96,22 +113,59 @@ async def run_streaming_merge(
             force_incomplete=force_incomplete,
         )
         if merged is not None:
-            merged_out.append(
-                {"start": merged.start_time, "end": merged.end_time, "transcript": merged.text}
-            )
-            src_context_for_check.append(merged.text)
+            entry = {
+                "start": merged.start_time,
+                "end": merged.end_time,
+                "transcript": merged.text,
+            }
+            if translator is not None:
+                result = await translator.translate(
+                    merged.text,
+                    src_context=src_context,
+                    tgt_context=tgt_context,
+                    update_context=False,
+                )
+                entry["mt_ja"] = result.latest_slide
+                tgt_context.append(result.latest_slide)
+            else:
+                tgt_context.append("")
+            src_context.append(merged.text)
+            merged_out.append(entry)
             if force_incomplete:
                 fired_log.append(
-                    {"candidate": candidate, "score": score, "note": "確定直前に発火(最終的にflush)"}
+                    {
+                        "candidate": candidate,
+                        "score": nat_result.score,
+                        "reason": nat_result.reason,
+                        "note": "確定直前に発火(最終的にflush)",
+                    }
                 )
         elif force_incomplete:
-            fired_log.append({"candidate": candidate, "score": score, "note": "結合継続を強制"})
+            fired_log.append(
+                {
+                    "candidate": candidate,
+                    "score": nat_result.score,
+                    "reason": nat_result.reason,
+                    "note": "結合継続を強制",
+                }
+            )
 
     remaining = merger.flush()
     if remaining is not None:
-        merged_out.append(
-            {"start": remaining.start_time, "end": remaining.end_time, "transcript": remaining.text}
-        )
+        entry = {
+            "start": remaining.start_time,
+            "end": remaining.end_time,
+            "transcript": remaining.text,
+        }
+        if translator is not None:
+            result = await translator.translate(
+                remaining.text,
+                src_context=src_context,
+                tgt_context=tgt_context,
+                update_context=False,
+            )
+            entry["mt_ja"] = result.latest_slide
+        merged_out.append(entry)
 
     return merged_out, fired_log
 
@@ -156,7 +210,22 @@ async def main(raw_path: Path) -> None:
     print(f"セグメント数: {len(merged_off)}\n")
 
     print("=== ON（unnaturalness_check_enabled、実際にGeminiで採点） ===")
-    merged_on, fired = await run_streaming_merge(raw, use_unnaturalness_check=True)
+    # bilingual context対応: 判定と同じタイミングで翻訳し、その日本語訳を
+    # 次の判定のコンテキストに使う（pipeline.pyと同じ経路を再現するため、
+    # ここだけtranslatorを渡す）。
+    on_translator = LLMTranslator(
+        provider="gemini",
+        api_key=GOOGLE_API_KEY,
+        model=GEMINI_MODEL,
+        source_language="English",
+        target_language="Japanese",
+        domain="technology",
+        context_window_size=CONTEXT_WINDOW_SIZE,
+        thinking_budget=0,  # マイク側の既定（低遅延優先）に合わせる
+    )
+    merged_on, fired = await run_streaming_merge(
+        raw, use_unnaturalness_check=True, translator=on_translator
+    )
     for m in merged_on:
         print(f"  [{m['start']:.1f}-{m['end']:.1f}s] {m['transcript']}")
     print(f"セグメント数: {len(merged_on)}\n")
@@ -164,7 +233,10 @@ async def main(raw_path: Path) -> None:
     if fired:
         print(f"--- 不自然度チェックが閾値({UNNATURALNESS_THRESHOLD})以上で発火した箇所（{len(fired)}件） ---")
         for f in fired:
-            print(f"  score={f['score']:.2f} [{f['note']}] candidate: {f['candidate']!r}")
+            print(
+                f"  score={f['score']:.2f} reason={f['reason']} "
+                f"[{f['note']}] candidate: {f['candidate']!r}"
+            )
     else:
         print("--- 不自然度チェックは一度も閾値を超えませんでした（OFFと同じ結合結果） ---")
 
@@ -175,7 +247,10 @@ async def main(raw_path: Path) -> None:
     print("\n=== 翻訳して品質を比較 ===")
     domain = "technology"
     hyps_off = await translate_sequential(merged_off, domain)
-    hyps_on = await translate_sequential(merged_on, domain)
+    # ONは不自然度判定と同時にすでに翻訳済み（bilingual contextに使った訳文と
+    # 同一のものを品質評価にも使う。ここで独立に再翻訳すると、判定時に見せた
+    # 訳文と評価対象の訳文がずれてしまう）。
+    hyps_on = [m["mt_ja"] for m in merged_on]
 
     srcs_off = [m["transcript"] for m in merged_off]
     srcs_on = [m["transcript"] for m in merged_on]
