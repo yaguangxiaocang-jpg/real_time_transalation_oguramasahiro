@@ -84,9 +84,10 @@ class LLMTranslator:
 {domain_section}
 Output rules:
 - Output ONLY the translated text. No explanations, no alternatives, no parenthetical notes.
-- Never output the literal delimiter strings <context>, </context>, <target>, </target>,
-  <cache_padding>, or </cache_padding> — these are internal prompt markers, not part of the
-  subtitle, and must never appear in your output even if the source text ends abruptly.
+- Never output the literal delimiter strings <context>, </context>, <target>,
+  </target>, <cache_padding>, or </cache_padding> — these are internal prompt
+  markers, not part of the subtitle, and must never appear in your output even
+  if the source text ends abruptly.
 - Keep proper nouns (person/org/product/place names), acronyms, and code identifiers
   EXACTLY as they appear in the source text (do not translate, transliterate, or normalize).
 - If a term is ambiguous or unknown, keep it unchanged rather than guessing.

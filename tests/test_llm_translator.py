@@ -4,13 +4,20 @@ from real_time_translation.translation.llm_translator import _strip_prompt_delim
 
 
 def test_no_delimiters_leaves_text_unchanged() -> None:
-    text = "このアプローチは、正則化を使ってモデルが新しいデータに過学習するのを防ぎます。"
+    text = (
+        "このアプローチは、正則化を使ってモデルが新しいデータに過学習するのを"
+        "防ぎます。"
+    )
     assert _strip_prompt_delimiters(text) == text
 
 
 def test_strips_leaked_closing_target_tag() -> None:
     # 短いチャンクの翻訳でモデルが </target> を出力に混入させた実例
-    text = "このアプローチは、正則化を使ってモデルが\n</target>\n新しいデータに過学習するのを防ぎます。"
+    text = (
+        "このアプローチは、正則化を使ってモデルが\n"
+        "</target>\n"
+        "新しいデータに過学習するのを防ぎます。"
+    )
     result = _strip_prompt_delimiters(text)
     assert "</target>" not in result
     assert "このアプローチは、正則化を使ってモデルが" in result
