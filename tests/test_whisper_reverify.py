@@ -122,3 +122,28 @@ def test_confidence_guard_allows_high_confidence_replacement() -> None:
     )
     assert text == "The T5 model is great."
     assert fixed == ["T5"]
+
+
+def test_corrects_hyphenated_term_split_across_whisper_word_tokens() -> None:
+    # 2026-09-08発見: faster-whisperが"GPT-3,"を単語レベルタイムスタンプ上で
+    # "GPT"+"-3,"の2トークンに分割することがあり、空白区切りで結合すると
+    # "gpt -3"になって辞書の"GPT-3"と一致しなくなっていた（report.txtの
+    # 優先課題(2)残課題）。空白を除いた結合形でも一致を試し、一致すれば
+    # 辞書の正式表記（Whisperの生の分割表記ではなく）を使う。
+    whisper_text = "The GPT-3, model is great."
+    confidences = [
+        ("The", 0.99),
+        ("GPT", 0.9),
+        ("-3,", 0.9),
+        ("model", 0.99),
+        ("is", 0.99),
+        ("great.", 0.99),
+    ]
+    text, fixed = apply_term_corrections(
+        "The g p t three model is great.",
+        whisper_text,
+        ["GPT-3"],
+        whisper_word_confidences=confidences,
+    )
+    assert text == "The GPT-3 model is great."
+    assert fixed == ["GPT-3"]

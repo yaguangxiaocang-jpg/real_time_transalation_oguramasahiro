@@ -128,6 +128,34 @@ pinned: false
 
 ## 更新履歴
 
+### 2026/09/08 (続き)
+
+#### 変更内容
+
+**Whisper再検証: ハイフン分割トークン化バグの修正**（前日「未検証」に残していた
+「G p t three」→GPT-3が拾えない問題への対応、report.txtの優先課題(2)残課題）
+
+原因はfaster-whisperが`"GPT-3,"`を単語レベルタイムスタンプ上で`"GPT"`と`"-3,"`の
+2トークンに分割して返すことがあり、`whisper_reverify.py`の候補マッチング
+（`" ".join(whisper_norm[j1:j2])`）は空白区切りで結合するため`"gpt -3"`になって
+辞書の`"gpt-3"`と一致しなかった——信頼度チェック以前にトークン化の時点で候補
+自体が成立していなかった（min_confidenceの問題ではなかった）。空白を除いた
+結合形（`"gpt-3"`）でも一致を試すよう`apply_term_corrections()`を修正し、
+一致した場合はWhisperの生の分割表記ではなく辞書の正式表記
+（`TermDictionary`の元の大文字小文字）を置換文字列として使うようにした。
+回帰テスト1件追加（`tests/test_whisper_reverify.py`、計11件）。
+
+`clips/2d07bb74_clip3.mp4`の実音声で`reverify_terms()`を直接呼んで確認した結果、
+`"G p t three and the parm two architectures..."` → `"GPT-3 and the parm two
+architectures..."`と、想定通り補正が発火した。`evaluation/
+whisper_reverify_confidence_sweep.py`（分析用に同じマッチングロジックを
+複製していたスクリプト）にも同じフォールバックを追加し、production側の
+挙動と乖離しないようにした。
+
+実験記録: `experiments/20260908_whisper_reverify_confidence_sweep.json`。
+
+---
+
 ### 2026/09/07 18:00
 
 #### 変更内容
@@ -260,7 +288,8 @@ min_confidence=0.5版）、`experiments/results.csv`。
 
 #### 未検証
 
-- 「G p t three」→GPT-3のハイフン分割トークン化問題（上記）の修正。
+- 「G p t three」→GPT-3のハイフン分割トークン化問題（上記）は2026/09/08に修正
+  （下記「2026/09/08 (続き)」参照）。
 - 不自然度チェック・gemini-3.5-flash-lite辞書配線chrFの2件は上と同じ
   （未解決のまま）。
 

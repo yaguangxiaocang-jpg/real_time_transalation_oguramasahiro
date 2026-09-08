@@ -43,6 +43,16 @@ MOA→MOE（confidence 0.616、ガード1で常にブロックされるため閾
 誤補正パターン（MOA/MOE）を信頼度と無関係に独立して防いでいるため、
 閾値を下げてもこのパターンが再発するリスクは無い。この観測に基づき既定値を
 0.6→0.5に緩和した（0.5997との間に0.1のマージンを持たせる）。
+
+**2026-09-08のハイフン分割トークン化バグ修正**（同じくreport.txtの優先課題(2)
+残課題）: 正しい補正のうち「G p t three」→GPT-3だけは、min_confidenceの値に
+関わらず一度も発火しなかった。原因はfaster-whisperが`"GPT-3,"`を単語レベル
+タイムスタンプ上で`"GPT"`と`"-3,"`という2つの単語トークンに分割して返すことが
+あり、空白区切りで結合すると`"gpt -3"`になって辞書の`"gpt-3"`と一致しなかった
+ため。信頼度チェック以前にトークン化の時点で候補として成立していなかった
+（閾値の問題ではなかった）。空白を除いた結合形（`"gpt-3"`）でも一致を試すよう
+修正し、一致した場合はWhisperの生の分割表記ではなく辞書の正式表記
+（`"GPT-3"`）を置換文字列として使うようにした。
 """
 
 from __future__ import annotations
@@ -92,6 +102,11 @@ def apply_term_corrections(
         return text, []
 
     keep_terms_lower = {t.lower() for t in keep_terms}
+    # 小文字形から辞書の正式表記への逆引き（2026-09-08追加、ハイフン分割
+    # トークン化対策。同じ小文字形が複数あれば最初の1件を使う）。
+    keep_terms_canonical: dict[str, str] = {}
+    for t in keep_terms:
+        keep_terms_canonical.setdefault(t.lower(), t)
     orig_words = _WORD_RE.findall(text)
 
     if whisper_word_confidences is not None:
@@ -115,9 +130,21 @@ def apply_term_corrections(
     for tag, i1, i2, j1, j2 in matcher.get_opcodes():
         if tag not in ("replace", "insert"):
             continue
-        candidate_norm = " ".join(whisper_norm[j1:j2])
+        candidate_words = whisper_norm[j1:j2]
+        candidate_norm = " ".join(candidate_words)
+        replacement_text = " ".join(whisper_words[j1:j2])
         if candidate_norm not in keep_terms_lower:
-            continue
+            # faster-whisperがハイフン区切り複合語（例: "GPT-3,"）を
+            # "GPT" + "-3," のように複数の単語トークンへ分割して返すことがあり、
+            # 空白区切りで結合すると"gpt -3"のようになって辞書の"gpt-3"と
+            # 一致しなくなる（2026-09-08発見、report.txtの優先課題(2)残課題）。
+            # 空白を除いた結合形でも試し、一致すれば辞書の正式表記
+            # （whisperの生の分割表記ではなく）を置換文字列として使う。
+            candidate_compact = "".join(candidate_words)
+            if candidate_compact not in keep_terms_lower:
+                continue
+            candidate_norm = candidate_compact
+            replacement_text = keep_terms_canonical[candidate_compact]
         if candidate_norm in orig_norm[i1:i2]:
             continue  # 既に一致している
         # ガード1: 原文側が既に別の登録済み用語（例: MOA）なら、Whisper側の
@@ -130,7 +157,7 @@ def apply_term_corrections(
             span_confidences = confidences[j1:j2]
             if not span_confidences or min(span_confidences) < min_confidence:
                 continue
-        ops.append((i1, i2, " ".join(whisper_words[j1:j2])))
+        ops.append((i1, i2, replacement_text))
 
     if not ops:
         return text, []

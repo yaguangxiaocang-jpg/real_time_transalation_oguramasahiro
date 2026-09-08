@@ -90,9 +90,17 @@ def find_candidates(text: str, whisper_text: str, whisper_word_confidences, keep
     for tag, i1, i2, j1, j2 in matcher.get_opcodes():
         if tag not in ("replace", "insert"):
             continue
-        candidate_norm = " ".join(whisper_norm[j1:j2])
+        candidate_words = whisper_norm[j1:j2]
+        candidate_norm = " ".join(candidate_words)
         if candidate_norm not in keep_terms_lower:
-            continue
+            # whisper_reverify.pyの2026-09-08修正と同じフォールバック:
+            # faster-whisperがハイフン区切り複合語（"GPT-3,"→"GPT"+"-3,"）を
+            # 複数トークンに分割することがあり、空白結合だと一致しないため
+            # 空白なし結合でも試す。
+            candidate_compact = "".join(candidate_words)
+            if candidate_compact not in keep_terms_lower:
+                continue
+            candidate_norm = candidate_compact
         if candidate_norm in orig_norm[i1:i2]:
             continue
         original_span = " ".join(orig_norm[i1:i2])

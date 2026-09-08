@@ -125,3 +125,19 @@
 2026-09-07,gemini-2.5-flash,technology,,0.5354,"[benchmark=technology_moe_2d07bb74_clip3][whisper_reverify_ab_test] segments=11, 補正発生=2件 -> doc_chrf(document-level) OFF=0.5416 / ON=0.5354"
 2026-09-07,gemini-2.5-flash,technology,,0.6658,"[benchmark=technology_moe_2d07bb74_clip4][whisper_reverify_ab_test] segments=9, 補正発生=0件 -> doc_chrf(document-level) OFF=0.6689 / ON=0.6658"
 2026-09-07,gemini-2.5-flash,technology,,0.6266,"[benchmark=technology_moe_2d07bb74_clip5][whisper_reverify_ab_test] segments=9, 補正発生=0件 -> doc_chrf(document-level) OFF=0.614 / ON=0.6266"
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.0 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.3 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.4 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.5 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.55 -> 2件発火: t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.6 -> 1件発火: t five->t5(conf=0.8222)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.7 -> 1件発火: t five->t5(conf=0.8222)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.8 -> 1件発火: t five->t5(conf=0.8222)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.0 -> 3件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.3 -> 3件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.4 -> 3件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.5 -> 3件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.55 -> 3件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222); tifine->t5(conf=0.5997)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.6 -> 2件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.7 -> 2件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222)
+2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.8 -> 2件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222)
