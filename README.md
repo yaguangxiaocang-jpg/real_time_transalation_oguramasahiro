@@ -292,6 +292,18 @@ transcribe_file()`を直接呼ぶ動画字幕パス）には配線されてい�
 （`whisper_reverify_ab_test.py`のdocstring参照）、動画字幕パスには意図的に
 未配線のまま——今回の対象はキーワードブーストのみ。
 
+**Gradio動画字幕タブ（本番エントリーポイント、`gradio_demo.py`）にも同じ抜けを発見・修正**
+
+`gradio_demo.py`の`_video_transcribe()`（`process_video`が呼ぶ、Gradio UIの
+「動画に字幕を付ける」タブ用の文字起こし関数）も`add_subtitles.py`と全く同じ
+`transcribe_file()`直呼びのコードで、キーワードブーストが未配線だった。
+`add_subtitles.py`は実験用CLIだが、こちらは`launch.bat`で起動する実際の
+本番UIパスのため、影響範囲はこちらの方が大きい。`VIDEO_DICTIONARY_PATH`と
+同じ命名規則で`VIDEO_DEEPGRAM_KEYWORD_BOOST_ENABLED`/`_VALUE`を追加し、
+`_video_load_deepgram_keywords()`を新設して配線した。同じ
+`clips/2d07bb74_clip3.mp4`の10秒区間で実際にDeepgram APIを呼んで確認し、
+`add_subtitles.py`と同じ改善（"parm two"→"PaLM two"）を確認した。
+
 ---
 
 ### 2026/09/06 21:20

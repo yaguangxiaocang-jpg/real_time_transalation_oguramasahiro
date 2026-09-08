@@ -60,6 +60,15 @@ VIDEO_COMPLETENESS_CHECK_ENABLED = (
 VIDEO_COMPLETENESS_RATIO_THRESHOLD = float(
     os.environ.get("COMPLETENESS_RATIO_THRESHOLD", "0.5")
 )
+# Deepgramキーワードブースト（ASR誤認識自体を減らす根本対策）。pipeline.py
+# （マイク側）には配線済みだったが、動画字幕タブ（_video_transcribe()）には
+# 配線されていなかったため追加（2026-09-08、add_subtitles.pyと同じ修正）。
+VIDEO_DEEPGRAM_KEYWORD_BOOST_ENABLED = (
+    os.environ.get("DEEPGRAM_KEYWORD_BOOST_ENABLED", "true").lower() == "true"
+)
+VIDEO_DEEPGRAM_KEYWORD_BOOST_VALUE = float(
+    os.environ.get("DEEPGRAM_KEYWORD_BOOST_VALUE", "2.0")
+)
 
 # Language options: list of (display name, language code)
 LANGUAGE_OPTIONS: list[tuple[str, str]] = [
@@ -555,12 +564,33 @@ def _video_extract_audio(video_path: str, audio_path: str) -> None:
         raise RuntimeError(f"ffmpeg音声抽出エラー:\n{result.stderr[-500:]}")
 
 
+def _video_load_deepgram_keywords() -> list[str]:
+    """辞書の「そのまま使う」用語をDeepgramキーワードブースト形式に変換する。
+
+    `pipeline.py`（マイク側）・`add_subtitles.py`と同じ
+    `TermDictionary.as_asr_keywords()`を使う。辞書未設定・読み込み失敗時は
+    キーワードブーストなしで継続する。
+    """
+    if not VIDEO_DEEPGRAM_KEYWORD_BOOST_ENABLED or not VIDEO_DICTIONARY_PATH:
+        return []
+    from real_time_translation.translation.dictionary import TermDictionary
+
+    try:
+        dictionary = TermDictionary()
+        dictionary.load_csv(VIDEO_DICTIONARY_PATH)
+        return dictionary.as_asr_keywords(boost=VIDEO_DEEPGRAM_KEYWORD_BOOST_VALUE)
+    except OSError:
+        return []
+
+
 def _video_transcribe(audio_path: str, api_key: str, source_language: str = "en") -> list[dict]:
     from deepgram import DeepgramClient
 
     client = DeepgramClient(api_key=api_key)
     with open(audio_path, "rb") as f:
         audio_data = f.read()
+
+    deepgram_keywords = _video_load_deepgram_keywords()
 
     response = client.listen.v1.media.transcribe_file(
         request=audio_data,
@@ -570,6 +600,7 @@ def _video_transcribe(audio_path: str, api_key: str, source_language: str = "en"
         punctuate=True,
         utterances=True,
         utt_split=0.8,
+        keywords=deepgram_keywords or None,
     )
     utterances = getattr(response.results, "utterances", None) or []
     if not utterances:
