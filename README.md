@@ -128,6 +128,49 @@ pinned: false
 
 ## 更新履歴
 
+### 2026/09/09
+
+#### 変更内容
+
+**Deepgramキーワードブースト有効化後のDeepgram vs whisper再比較**（ユーザーからの
+「Deepgramの辞書機能を使ったらどうなるか」というコメントを受けての検証）
+
+report.txtの「Deepgram vs faster-whisperで既知誤認識9箇所中8箇所でfaster-whisperが
+正確」という結論は、Deepgramのキーワードブースト機能（`deepgram_keyword_boost_enabled`、
+2026-08-11導入）が実装される**前**に行われた比較だった。同じ`clips/2d07bb74_clip2.mp4`・
+`clip3.mp4`に対し、Deepgram(nova-2-general)を(a)ブースト無し=元の比較の再現、
+(b)本番と同じブーストON(`dictionary.csv`のkeep_as_is_terms、99件を全てboost=2.0で渡す)、
+およびfaster-whisper(small.en)の3者で再比較した(`evaluation/deepgram_keyword_boost_rematch.py`)。
+
+結果:
+- T5はclip2/clip3ともブーストONで初めて正しく認識された(無しでは両方TIFINE/TFI等に
+  誤認識。whisperも実はclip2ではTFIのまま失敗しており、ブーストONのDeepgramが
+  この箇所ではwhisperより優れた)。
+- PaLMもclip3でブーストONにより一部「Parm」から正しい表記に改善。
+- 一方で**重大な副作用**を確認した: boost対象の99語には今回の講義と無関係な
+  一般IT語(AWS, GCP, Kubernetes, Docker, Zoom, PR, BI, Git, Looker, ORM, SSL,
+  GAN, Adam等)も含まれ、これら全てを無差別に同時ブーストしたことで、本来無関係な
+  一般英単語が誤ってこれらの用語に置き換えられる新規誤認識が多数発生した
+  (例: `Moore's law`→`Moore's LLM`、`the power law`→`the PR law`、
+  `traditional chip advances`→`traditional PR advances`、`large language models`
+  →`large GPT models`、`is bidirectional`の直前に`AWS Git`が幻覚的に挿入、
+  `older models like t five`の`like`が`Looker`に置換、等)。
+- `memory wall`(`dictionary.csv`上は訳語ペアのため`keep_as_is_terms()`の対象外=
+  ブーストキーワードに含まれない対照項目)はブースト有無で変化なし(両方
+  `memory war`のまま、whisperのみ正解)——想定通りで、副作用が「ブーストされた語」
+  にのみ起きていることの裏付けになった。
+
+結論: 現状の実装(`dictionary.csv`の全keep_as_is語を無差別にブースト)は、狙った
+用語の一部修正には効くが、無関係語への新規誤認識という副作用が大きく、そのまま
+有効化を推奨できるレベルではない。次の一手は、講義・ドメインごとにブースト対象語を
+絞り込む(その回の講義で出現する可能性が高い語だけを渡す)仕組みの検討。whisperは
+今回もクリーンな書き起こしを保っており、副作用のリスクなしで一部誤認識
+(clip2のT5)以外は概ね正確だった。
+
+実験記録: `experiments/20260909_deepgram_keyword_boost_rematch.json`。
+
+---
+
 ### 2026/09/08 (続き)
 
 #### 変更内容

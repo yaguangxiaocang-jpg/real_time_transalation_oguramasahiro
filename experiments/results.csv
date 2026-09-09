@@ -141,3 +141,4 @@
 2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.6 -> 2件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222)
 2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.7 -> 2件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222)
 2026-09-08,small.en,technology,,,[whisper_reverify_confidence_sweep] min_confidence=0.8 -> 2件発火: g p t three->gpt-3(conf=0.8896); t five->t5(conf=0.8222)
+2026-09-09,deepgram-nova-2-general,technology_2d07bb74_clip2_clip3,,,"[deepgram_keyword_boost_rematch] report.txtのDeepgram vs whisper比較はboost実装前のテストだったため再検証。clip2/clip3でboost無し/ON/whisper(small.en)の3者比較: T5はboost ONで両clipとも初めて正解(無しでは誤認識、whisperもclip2では失敗)。PaLMもclip3で一部改善。一方でboost対象99語(講義と無関係な一般IT語含む)を無差別に渡したことで、無関係な英単語が誤ってboost語に置換される新規誤認識が多数発生(Moore's law->Moore's LLM等)。memory wall(boost対象外の対照項目)は変化なし。結論: 現状の全件無差別boostは推奨しない。ドメイン別に絞り込んだboost語リストが次の一手。"

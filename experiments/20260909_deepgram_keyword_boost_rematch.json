@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-09",
+  "model": "deepgram-nova-2-general",
+  "domain": "technology_2d07bb74_clip2_clip3",
+  "xcomet_score": null,
+  "chrf_score": null,
+  "notes": "report.txtの『Deepgram vs faster-whisperで既知誤認識9箇所中8箇所でfaster-whisperが正確』という結論は、Deepgramのキーワードブースト機能(deepgram_keyword_boost_enabled、2026-08-11導入)が実装される前の比較だった。同じclips/2d07bb74_clip2.mp4・clip3.mp4に対し、Deepgram(nova-2-general)を(a)ブースト無し=元の比較の再現、(b)本番と同じブーストON(dictionary.csvのkeep_as_is_terms、99件を全てboost=2.0で渡す)の2条件、およびfaster-whisper(small.en)で再比較した(evaluation/deepgram_keyword_boost_rematch.py)。結果: T5はclip2/clip3ともブーストONで初めて正しく認識された(無しでは両方TIFINE/TFI等に誤認識、whisperも実はclip2ではTFIのまま失敗)。PaLMもclip3でブーストONにより一部『Parm』から正しい表記に改善。一方で重大な副作用を確認: boost対象の99語は今回の講義と無関係な一般IT語(AWS, GCP, Kubernetes, Docker, Zoom, PR, BI, Git, Looker, ORM, SSL, GAN, Adam等)も含み、これら全てを同時にブーストしたことで、本来無関係な一般英単語が誤ってこれらの用語に置き換えられる新規誤認識が多数発生した(例: 'Moore's law'→'Moore's LLM', 'the power law'→'the PR law', 'traditional chip advances'→'traditional PR advances', 'large language models'→'large GPT models', 'is bidirectional'の直前に'AWS Git'が幻覚的に挿入、'older models like t five'の'like'が'Looker'に置換等)。memory wall(dictionary.csv上は訳語ペアのためkeep_as_is_terms対象外=ブーストキーワードに含まれない対照項目)はブースト有無で変化なし(両方memory warのまま、whisperのみ正解)、想定通り。結論: 現状の実装(dictionary.csv全件を無差別にブースト)は狙った用語の一部修正には効くが、無関係語の新規誤認識という副作用が大きく、単純に有効化するのは推奨しない。次の一手としては、講義/ドメインごとにブースト対象語を絞り込む(その回の講義に出現する可能性が高い語だけを渡す)仕組みが必要。whisperは今回もクリーンな書き起こしを保っており、副作用のリスクなしで一部誤認識(clip2のT5)以外は概ね正確だった。"
+}
