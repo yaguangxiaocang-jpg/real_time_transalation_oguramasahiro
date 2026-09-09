@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-09",
+  "video": "clips/2d07bb74_v2_clip3.mp4",
+  "note": "Deepgramの生発話(utterance分割そのまま、utterance結合の補正は適用していない状態)。model=nova-2-general, language=en, smart_format+punctuate+utterances=true, utt_split=0.8。add_subtitles.py の extract_audio()/transcribe_audio() で取得。",
+  "raw_utterances": [
+    {
+      "start": 0.24,
+      "end": 1.8984375,
+      "transcript": "Subset of experts,"
+    },
+    {
+      "start": 2.56,
+      "end": 6.2599998,
+      "transcript": "which effectively reduces the all to all communication overhead."
+    },
+    {
+      "start": 6.72,
+      "end": 12.165,
+      "transcript": "And this coarse grained routing also reduces the number of activated parameters per batch,"
+    },
+    {
+      "start": 12.725,
+      "end": 14.345,
+      "transcript": "leading to faster inference"
+    },
+    {
+      "start": 14.725,
+      "end": 16.825,
+      "transcript": "and more efficient serving configurations."
+    },
+    {
+      "start": 18.244999,
+      "end": 18.744999,
+      "transcript": "Additionally,"
+    },
+    {
+      "start": 19.525,
+      "end": 20.744999,
+      "transcript": "this approach enables"
+    },
+    {
+      "start": 21.205,
+      "end": 23.785,
+      "transcript": "expert prefetching through memory offloading,"
+    },
+    {
+      "start": 24.58,
+      "end": 25.08,
+      "transcript": "significantly"
+    },
+    {
+      "start": 25.380001,
+      "end": 27.720001,
+      "transcript": "increasing the total servable capacity"
+    },
+    {
+      "start": 28.1,
+      "end": 30.04,
+      "transcript": "on a fixed hardware topology."
+    },
+    {
+      "start": 34.739998,
+      "end": 37.694298,
+      "transcript": "And the MOA architecture fundamentally Tableau"
+    },
+    {
+      "start": 38.275,
+      "end": 40.455,
+      "transcript": "stronger serving performance by design,"
+    },
+    {
+      "start": 41.075,
+      "end": 41.575,
+      "transcript": "supporting"
+    },
+    {
+      "start": 41.955,
+      "end": 46.695,
+      "transcript": "a larger number of experts and leading to faster decoding and inference."
+    },
+    {
+      "start": 52.38,
+      "end": 53.120003,
+      "transcript": "To summarize,"
+    },
+    {
+      "start": 53.9,
+      "end": 63.52,
+      "transcript": "sustainable scaling of dense large language models is reaching an end. The mixture of expert approach is now critical to advancing large language model scaling."
+    },
+    {
+      "start": 64.205,
+      "end": 70.705,
+      "transcript": "We've shown how MOE enables 2 measure forward looking area, continual learning, and modularity."
+    },
+    {
+      "start": 71.325,
+      "end": 74.705,
+      "transcript": "Thank you for your time, and I'd be happy to take any questions."
+    }
+  ]
+}
