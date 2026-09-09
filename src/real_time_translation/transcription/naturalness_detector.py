@@ -39,6 +39,15 @@ README更新履歴参照）。単一のスコアだけを閾値判定に使う�
 離散カテゴリを併用することで、スコアの粒度の粗さを補い、モデル自身に
 「なぜそのスコアなのか」を一言で説明させることで根拠のない高スコアを
 減らす狙い。
+
+2026-09-09、根本原因である「スコアの粒度の粗さ」自体への対応として、
+`_SYSTEM_PROMPT`に0.0〜1.0を4段階のスコア帯（0.0-0.15/0.2-0.4/0.5-0.7/0.8-1.0）
+に紐づけた具体例つきのルーブリックを追加した。根拠となしにキャリブレーション
+無しでスコアを出させると、LLMは「なんとなく不自然」→0.8〜0.9付近、という
+無難な値に逃げがちだった（数値スケールの意味を明示していなかったため）。
+各帯に具体的な英語例文・条件を紐づけることで、証拠の強さとスコアを対応させる
+狙い。効果は`evaluation/naturalness_check_ab_test.py`で同一データに対する
+発火スコアの分布(0.80〜0.90への偏りが緩和されたか)を確認すること。
 """
 
 from __future__ import annotations
@@ -82,6 +91,23 @@ _SYSTEM_PROMPT = (
     "pronoun/reference, an obvious setup like a list or comparison that isn't "
     "finished, a trailing conjunction). Be fast and approximate; when unsure, "
     "prefer a LOW score (translating now is usually fine — only flag clear cases). "
+    "\n\n"
+    "Calibrate the score to the strength of the evidence — do not default to the "
+    "0.8-0.9 range just because something feels slightly off. Use the full scale: "
+    '- 0.0-0.15: reads complete and natural on its own '
+    '(e.g. "The system reached 98% accuracy.").\n'
+    "- 0.2-0.4: a weak or ambiguous cue that a reasonable subtitle would still not "
+    'wait for (e.g. ends with a complete clause plus a soft connective like "and '
+    'so," that could either continue or stand alone).\n'
+    "- 0.5-0.7: a concrete continuation cue is present but the fragment is still "
+    'parseable on its own (e.g. "and the second option is" with a list clearly '
+    "already under way).\n"
+    "- 0.8-1.0: clearly unusable alone (dangling clause with no verb, a pronoun "
+    "with no antecedent anywhere in <context>, mid-list with an explicit trailing "
+    "conjunction). Reserve this band for cases this unambiguous.\n"
+    "Most real subtitle chunks are actually complete — only clear, specific "
+    "evidence should push the score above 0.5. "
+    "\n\n"
     "Also pick the single best-matching reason code for your score: "
     '"complete" (it already reads fine on its own — use this even if you gave a '
     'nonzero score out of caution), "dangling_clause", "unresolved_reference", '

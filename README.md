@@ -128,6 +128,51 @@ pinned: false
 
 ## 更新履歴
 
+### 2026/09/09 (続き)
+
+#### 変更内容
+
+**naturalness_detectorのスコア粒度改善**（ユーザーからの「動的にチャンク長を
+変える処理を優先してほしい」というコメントを受けての対応。report.txtの
+「LLM自己採点が0.80〜0.90に偏り判定の粒度が粗い」問題への直接対応）
+
+`naturalness_detector._SYSTEM_PROMPT`に、0.0〜1.0を4段階のスコア帯
+(0.0-0.15 / 0.2-0.4 / 0.5-0.7 / 0.8-1.0)に具体例を紐づけたルーブリックとして
+追加した。根拠なしにスコアを出させると、LLMは「なんとなく不自然」→0.8〜0.9
+付近という無難な値に逃げがちだった(スケールの意味を明示していなかったため)。
+
+新設した`evaluation/naturalness_score_distribution.py`(全発話のスコアを
+ヒストグラム表示する、既存の`naturalness_check_ab_test.py`は閾値以上の発火
+ケースしかログしないため新規作成)で、同一データ
+(`experiments/segments/20260824_2d07bb74_v2_clip1_raw_unmerged.json`、
+26発話)を使いbefore/after比較した:
+
+- before(旧prompt): 発火14件、平均0.871・標準偏差0.059・範囲0.70-0.90。
+  0.1〜0.7の間が完全に空白という、二極化した分布だった。
+- after(新prompt): 発火16件、平均0.838・標準偏差0.117。0.6付近の「弱い証拠」
+  と0.8-0.9の「強い証拠(dangling_clause等)」が分離するようになった。
+
+ただし0.6-0.7帯には「文法的には完結している文」への新規の誤発火が2件確認され、
+report.txtが指摘していた「既に句点で終わった完結文の過剰結合」問題が形を変えて
+再発するリスクがあった。そのため`config.py`の`unnaturalness_threshold`既定値を
+**0.6→0.7**に引き上げ(`evaluation/naturalness_check_ab_test.py`の
+`UNNATURALNESS_THRESHOLD`も同期)、この誤発火帯を除外した。
+
+閾値0.7で既存の`naturalness_check_ab_test.py`を再実行した結果、発火14件は
+全て0.85以上・`reason != "complete"`の真の継続シグナルのみとなり、distribution
+測定で見えた2件の誤発火は実際のパイプライン経路(reason gateを含む)では
+再現しなかった。セグメント数は13(OFF)→11(ON)、LLM-as-judge品質スコアは
+0.9738(OFF)→1.0(ON)で、report.txtが指摘していた「OFF/ONとも0.98以上で
+天井効果」よりは明確な差が観測できた。テストスイート60/60パス(既存の回帰なし)。
+
+結論: スコアの粒度自体は改善したが、まだ1データセットのみの検証であり、
+`unnaturalness_check_enabled`のデフォルトON切り替えは時期尚早。次の一手は
+別の生発話データでの再現性確認。
+
+実験記録: `experiments/20260909_naturalness_check_rubric_calibration.json`。
+
+---
+
 ### 2026/09/09
 
 #### 変更内容

@@ -51,7 +51,7 @@ from real_time_translation.translation.llm_translator import LLMTranslator  # no
 
 from run_benchmark import GEMINI_MODEL, GOOGLE_API_KEY, score_with_llm_judge  # noqa: E402
 
-UNNATURALNESS_THRESHOLD = 0.6  # config.py unnaturalness_threshold の既定値と同じ
+UNNATURALNESS_THRESHOLD = 0.7  # config.py unnaturalness_threshold の既定値と同じ（2026-09-09に0.6から変更）
 UNNATURALNESS_CONTEXT_SIZE = 3  # config.py unnaturalness_context_size の既定値と同じ
 CONTEXT_WINDOW_SIZE = 5  # config.py context_window_size（翻訳側の文脈窓）の既定値と同じ
 

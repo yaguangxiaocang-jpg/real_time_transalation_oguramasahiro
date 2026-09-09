@@ -94,9 +94,14 @@ class Config:
     # 以上ならutterance結合を継続する（`transcription/naturalness_detector.py`）。
     # 未検証の新機能のためデフォルトはOFF。有効化する前に
     # `evaluation/run_benchmark.py` でbefore/after比較を行うこと。
+    # 2026-09-09: naturalness_detectorのプロンプトにスコア帯ルーブリックを追加
+    # した結果（`evaluation/naturalness_score_distribution.py`で実測）、閾値
+    # 直上の0.6-0.7帯に「文法的には完結している文」への誤発火が新たに複数件
+    # 現れる一方、真の継続シグナル（dangling_clause等）は0.8以上に分離される
+    # ようになった。閾値を0.6→0.7に上げることでこの誤発火帯を除外する。
     unnaturalness_check_enabled: bool = False
     unnaturalness_check_timeout: float = 0.6
-    unnaturalness_threshold: float = 0.6
+    unnaturalness_threshold: float = 0.7
     unnaturalness_check_model: str | None = None  # 空ならgemini_modelを流用
     unnaturalness_context_size: int = 3
 
@@ -249,7 +254,7 @@ class Config:
                 os.getenv("UNNATURALNESS_CHECK_TIMEOUT", "0.6")
             ),
             unnaturalness_threshold=float(
-                os.getenv("UNNATURALNESS_THRESHOLD", "0.6")
+                os.getenv("UNNATURALNESS_THRESHOLD", "0.7")
             ),
             unnaturalness_check_model=(
                 os.getenv("UNNATURALNESS_CHECK_MODEL", "").strip() or None
