@@ -10,7 +10,7 @@ import random
 import re
 import subprocess
 import tempfile
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime
 from typing import Any
 
@@ -242,34 +242,42 @@ async def start_session(
     source_code = _to_code(source_lang)
     target_code = _to_code(target_lang)
 
+    # .env が読める場合はそちらをベースにする（WHISPER_REVERIFY_ENABLED や
+    # DEEPGRAM_ENDPOINTING など、明示的に列挙していない全設定を引き継ぐため）。
+    # .env が無い/必須キー未設定の公開デモ環境（UIにAPIキーを直接入力する運用）
+    # では取得できないので、その場合のみデータクラスのデフォルト値にフォールバックする。
+    try:
+        env_config: Config | None = Config.from_env(require_zoom=False)
+    except ValueError:
+        env_config = None
+
     try:
         if deepgram_key.strip() and google_key.strip():
-            config = Config(
-                deepgram_api_key=deepgram_key.strip(),
-                llm_provider="gemini",
-                zoom_client_id="",
-                zoom_client_secret="",
-                google_api_key=google_key.strip(),
-                source_language=source_code,
-                target_language=target_code,
-                domain=domain,
+            overrides: dict[str, Any] = {
+                "deepgram_api_key": deepgram_key.strip(),
+                "llm_provider": "gemini",
+                "zoom_client_id": "",
+                "zoom_client_secret": "",
+                "google_api_key": google_key.strip(),
+                "source_language": source_code,
+                "target_language": target_code,
+                "domain": domain,
+            }
+            config = (
+                replace(env_config, **overrides)
+                if env_config is not None
+                else Config(**overrides)
             )
         else:
-            config = Config.from_env(require_zoom=False)
-            config = Config(
-                deepgram_api_key=config.deepgram_api_key,
-                llm_provider=config.llm_provider,
-                zoom_client_id=config.zoom_client_id,
-                zoom_client_secret=config.zoom_client_secret,
-                google_api_key=config.google_api_key,
-                openai_api_key=config.openai_api_key,
-                gemini_model=config.gemini_model,
-                openai_model=config.openai_model,
+            if env_config is None:
+                raise ValueError(
+                    "DEEPGRAM_API_KEY/GOOGLE_API_KEY is required "
+                    "(set them in .env or enter them above)"
+                )
+            config = replace(
+                env_config,
                 source_language=source_code,
                 target_language=target_code,
-                context_window_size=config.context_window_size,
-                translation_queue_size=config.translation_queue_size,
-                dictionary_path=config.dictionary_path,
                 domain=domain,
             )
     except Exception as exc:
