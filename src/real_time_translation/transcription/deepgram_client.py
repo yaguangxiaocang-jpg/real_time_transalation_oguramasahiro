@@ -4,7 +4,7 @@ import asyncio
 import contextlib
 import time
 from collections.abc import AsyncIterator, Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 from deepgram import AsyncDeepgramClient
@@ -20,6 +20,10 @@ class TranscriptionResult:
     confidence: float
     start_time: float
     end_time: float
+    # Deepgramの単語レベル信頼度（(単語, confidence)のリスト、`text`と同じ語順）。
+    # `whisper_reverify`のconfidence-weighted ROVER方式の補正判定
+    # （Whisper側とDeepgram側の信頼度を相対比較する）に使う。取得できない場合は空リスト。
+    word_confidences: list[tuple[str, float]] = field(default_factory=list)
 
     @property
     def is_low_confidence(self) -> bool:
@@ -247,12 +251,18 @@ class DeepgramTranscriber:
             if not transcript:
                 return
 
+            words = getattr(alternative, "words", None) or []
+            word_confidences = [
+                (w.punctuated_word or w.word, float(w.confidence)) for w in words
+            ]
+
             transcript_result = TranscriptionResult(
                 text=transcript,
                 is_final=is_final,
                 confidence=float(alternative.confidence),
                 start_time=float(result.start),
                 end_time=float(result.start + result.duration),
+                word_confidences=word_confidences,
             )
 
             if transcript_result.is_final:
@@ -288,6 +298,7 @@ class DeepgramTranscriber:
             confidence=pending.confidence,
             start_time=pending.start_time,
             end_time=end_time,
+            word_confidences=pending.word_confidences,
         )
         self._pending_result = None
         self._emit_result(final_result)

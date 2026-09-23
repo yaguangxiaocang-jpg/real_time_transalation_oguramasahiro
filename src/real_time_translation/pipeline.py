@@ -396,13 +396,22 @@ class TranslationPipeline:
             pass
 
     async def _reverify_text(
-        self, text: str, start_time: float, end_time: float
+        self,
+        text: str,
+        start_time: float,
+        end_time: float,
+        deepgram_word_confidences: list[tuple[str, float]] | None = None,
     ) -> str:
         """`text`（Deepgram確定文）をfaster-whisperで再検証し、既知用語の誤認識
         だけを補正する（`whisper_reverify_enabled`時のみ）。
 
         `incomplete_end_detection`/`unnaturalness_check`と同じ安全弁設計:
         タイムアウトまたはエラー時は元のテキストをそのまま返す。
+
+        Args:
+            deepgram_word_confidences: Deepgram側の単語レベル信頼度。
+                `whisper_reverify.apply_term_corrections`のconfidence-weighted
+                ROVER方式の相対比較に使う（渡さなければ絶対閾値にフォールバック）。
         """
         if self._audio_ring is None or not self._whisper_keep_terms:
             return text
@@ -421,6 +430,7 @@ class TranslationPipeline:
                     model_size=self._config.whisper_reverify_model_size,
                     language=self._config.source_language,
                     min_confidence=self._config.whisper_reverify_min_confidence,
+                    deepgram_word_confidences=deepgram_word_confidences,
                 ),
                 timeout=self._config.whisper_reverify_timeout,
             )
@@ -442,7 +452,10 @@ class TranslationPipeline:
         self, result: TranscriptionResult
     ) -> TranscriptionResult:
         corrected = await self._reverify_text(
-            result.text, result.start_time, result.end_time
+            result.text,
+            result.start_time,
+            result.end_time,
+            deepgram_word_confidences=result.word_confidences,
         )
         if corrected == result.text:
             return result
@@ -450,7 +463,10 @@ class TranslationPipeline:
 
     async def _reverify_merged(self, merged: MergedUtterance) -> MergedUtterance:
         corrected = await self._reverify_text(
-            merged.text, merged.start_time, merged.end_time
+            merged.text,
+            merged.start_time,
+            merged.end_time,
+            deepgram_word_confidences=merged.word_confidences,
         )
         if corrected == merged.text:
             return merged
@@ -466,6 +482,9 @@ class TranslationPipeline:
                 text = result.text.strip()
                 if not text:
                     continue
+                # `result`は後段（不自然度チェック有効時）で別型に上書きされうる
+                # ため、`feed()`に渡すDeepgram単語信頼度は先に確保しておく。
+                word_confidences = result.word_confidences
 
                 # Emit interim results to UI (without translation)
                 if not result.is_final:
@@ -555,6 +574,7 @@ class TranslationPipeline:
                     result.confidence,
                     is_incomplete_override=is_incomplete_override,
                     force_incomplete=force_incomplete,
+                    word_confidences=word_confidences,
                 )
                 if merged is None:
                     continue

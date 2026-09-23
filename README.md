@@ -128,6 +128,125 @@ pinned: false
 
 ## 更新履歴
 
+### 2026/09/23
+
+#### 変更内容
+
+**評価・検証プロセスに学術的な統計手法を導入（report.txtの優先課題(1)(2)の決着）**
+
+これまでの比較実験は「1回実行してスコアを目視で比較する」方式で、差が本物か
+偶然のばらつきかを判定する手段がなかった。関連する学術論文（Koehn 2004の
+ペアードブートストラップ有意性検定、WMT Metrics Shared Taskの指標信頼性研究、
+ASR信頼度スコアのPR曲線評価等）を調査し、2つの分析ツールを新規実装して
+既存データに適用した。
+
+**`evaluation/significance.py`**（Koehn (2004) "Statistical Significance
+Tests for Machine Translation Evaluation"のペアードブートストラップ
+リサンプリング法）: `model_comparison.py`の出力からモデル間のスコア差を
+取り出し、10,000回のリサンプリングで95%信頼区間・近似p値を計算する。
+
+`20260907_model_comparison.json`（gemini-2.5-flash vs gemini-3.5-flash-lite、
+辞書配線あり、全10ベンチマーク）に適用した結果:
+- chrFの差は統計的に有意（p≈0、95%信頼区間`[-0.072, -0.034]`でゼロを跨がない）
+- LLM-as-judgeの差は有意でない（p=0.40）
+
+これにより、report.txt（2026-09-07）で「reference_jaが人手レビュー未了のため
+断定は時期尚早」としていたflash-liteのchrF低下は、**chrF指標のノイズではなく
+実質的な品質低下**であると結論づけられる。
+
+**`evaluation/whisper_reverify_pr_curve.py`**（適合率-再現率(PR)曲線・
+最良F1点の算出）: `whisper_reverify_confidence_sweep.py`が記録した既知の
+正誤ラベル（TIFINE→T5等の正しい補正3件、MOA→MOE誤補正1件）を使い、
+`min_confidence`を変数として動かしたときのPR曲線を計算する。
+
+`20260912_whisper_reverify_confidence_sweep.json`に適用した結果、**どの単一
+閾値でも精度1.0と再現率1.0を同時に満たせない**ことが判明した（最良F1=0.857
+@閾値0.5997、precision=0.75）。原因はMOA→MOEの誤補正時の信頼度（0.6161）が
+T5への正しい補正の信頼度（0.5997）より高いこと。これは、report.txt
+（2026-09-07・2026-09-12）が残していた「`min_confidence`のチューニングが
+次の課題」という結論を修正するもので、**スカラー閾値のチューニングでは
+原理的に解決不可能**であり、既存の`ambiguous_original`ガード（用語ペア個別の
+ブロック）のような構造的な対処が引き続き必要と言える。
+
+実験記録: `experiments/20260923_significance_gemini-2.5-flash_vs_gemini-3.5-flash-lite_chrf_score_mean.json`、
+`experiments/20260923_significance_gemini-2.5-flash_vs_gemini-3.5-flash-lite_xcomet_score_mean.json`、
+`experiments/20260923_whisper_reverify_pr_curve.json`、`experiments/results.csv`
+（`[significance_test]`・`[whisper_reverify_pr_curve]`タグ）。
+
+---
+
+### 2026/09/21
+
+#### 変更内容
+
+**whisper_reverifyをconfidence-weighted ROVER方式に変更（絶対閾値min_confidenceの限界への対応）**
+
+これまでの`min_confidence`（既定0.5、`transcription/whisper_reverify.py`）は
+「TIFINE→T5・G p t three→GPT-3・MOA/MOE誤補正という3件の既知の実例に対して
+コイントスにならない値」を手探りでチューニングしたものだった
+（2026-09-07: 0.6→2026-09-12: 0.5、`whisper_reverify_confidence_sweep.py`参照）。
+faster-whisperの信頼度自体がCPU推論の非決定性で実行ごとにブレるため、この
+やり方は未知の誤認識パターンに対して頑健とは言えない、という指摘を受けて
+方式を見直した。
+
+ROVER（Recognizer Output Voting Error Reduction, NIST）の系譜にある
+confidence-weighted ASR system combination（"Automatic Quality Estimation
+for ASR System Combination", arXiv:1706.07238 等）に倣い、Whisper側の
+信頼度だけを絶対閾値と比較するのではなく、**Deepgram側の信頼度と相対比較**
+する経路を追加した。
+
+- `transcription/deepgram_client.py`: `TranscriptionResult`に
+  `word_confidences`（Deepgramの`words[].confidence`から取得した単語レベル
+  信頼度）を追加。従来は発話単位の`confidence`しか使っていなかった。
+- `transcription/utterance_merge.py`: `MergedUtterance`と
+  `StreamingUtteranceMerger.feed()`が`word_confidences`を結合順に連結して
+  引き継ぐよう拡張。
+- `transcription/whisper_reverify.py`: `apply_term_corrections`/
+  `reverify_terms`が`deepgram_word_confidences`を受け取れるようになった。
+- `pipeline.py`: `_reverify_text`/`_reverify_result`/`_reverify_merged`が
+  Deepgram側の単語信頼度を`whisper_reverify`まで受け渡すよう配線。
+
+**実装当初の設計と、実音声検証で見つかった退行**: 最初は「`replace`区間
+（原文側にも比較対象の単語がある差分）では絶対閾値の代わりに相対比較のみで
+判定する」設計にした。ユニットテストは全て通ったが、`whisper_reverify_
+confidence_sweep.py`を実データ（`technology_moe_2d07bb74_clip{1..5}`）向けに
+拡張した新スクリプト`evaluation/whisper_reverify_rover_confidence_check.py`
+（Deepgramのバッチ文字起こしで単語レベル信頼度を取得し、絶対閾値版とROVER版
+を同一音声で比較する）で検証したところ、既知の正しい補正TIFINE→T5が退行する
+ことが判明した。原因はDeepgramが誤認識「t five」に対して0.83という高い信頼度
+を報告した一方、Whisperの正しい認識「T5」は0.82とごくわずかに下回っていた
+こと。技術用語の誤認識は「間違っている側のシステムの方がむしろ自信満々」な
+ケースが珍しくなく、これは検索した論文の一つ"Driving ROVER with Segment-based
+ASR Quality Estimation"が指摘する「生の信頼度スコアの単純な比較は頑健では
+ない」という限界そのものだった。
+
+**修正した設計**: 相対比較を絶対閾値の**代わり**ではなく**追加の救済経路**に
+変更した。まず従来通り絶対閾値`min_confidence`で判定し、それを満たせば採用
+する（Deepgram側がどれだけ自信を持っていても、既存の正しい補正は失われない）。
+絶対閾値を満たさない場合のみ、`replace`区間かつDeepgram側信頼度が入手できる
+場合に限り「Whisper信頼度 > その区間のDeepgram信頼度」で追加救済を試みる
+（＝相対比較は基準を緩める方向にのみ働き、厳しくする方向には働かない）。
+`insert`区間（脱落語の補完）や信頼度リストが`text`とアラインしない場合は
+従来通り絶対閾値のみで判定する。
+
+新規ユニットテスト4件を追加（`tests/test_whisper_reverify.py`、上記の退行
+発見を踏まえて設計修正後の挙動に合わせて更新済み）:
+Deepgramの方が信頼度が低い場合は絶対閾値未満でも救済する／絶対閾値を満たして
+いればDeepgram側がより自信を持っていても採用を取り消さない／絶対閾値・相対
+比較の両方を満たさない場合は不採用のまま／信頼度リストの語数がズレている
+場合は絶対閾値にフォールバックする／脱落語の補完(insert)では相対比較を
+使わない、の5パターン。既存60件と合わせて全65件パス。
+
+**実音声での再検証結果**: `evaluation/whisper_reverify_rover_confidence_check.py`
+を`technology_moe_2d07bb74_clip{1..5}`（Deepgramバッチ再文字起こし＋
+faster-whisper再検証、計47セグメント）に対して実行し、修正後の設計で
+絶対閾値版・ROVER版とも同じ3件（GPT-3, T5×2）が発火し、差分ゼロを確認した
+（MOA/MOEはこの5クリップには含まれず、既存のガード1で常にブロックされる
+ため今回の変更の影響を受けない）。結果は`experiments/20260921_whisper_
+reverify_rover_confidence_check.json`と`results.csv`に記録済み。
+
+---
+
 ### 2026/09/09 (続き2)
 
 #### 変更内容

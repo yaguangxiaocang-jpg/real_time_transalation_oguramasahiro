@@ -53,6 +53,39 @@ MOA→MOE（confidence 0.616、ガード1で常にブロックされるため閾
 （閾値の問題ではなかった）。空白を除いた結合形（`"gpt-3"`）でも一致を試すよう
 修正し、一致した場合はWhisperの生の分割表記ではなく辞書の正式表記
 （`"GPT-3"`）を置換文字列として使うようにした。
+
+**2026-09-21の confidence-weighted ROVER 化**（絶対閾値min_confidenceの限界
+への対応）: これまでの`min_confidence`は「3件の既知の実例（TIFINE→T5,
+G p t three→GPT-3, MOA→MOE誤補正）に対してコイントスにならない値」を
+手動で探すチューニングだった（0.6→0.5、`whisper_reverify_confidence_sweep.py`
+参照）。faster-whisperの信頼度自体がCPU推論の非決定性でブレるため、
+この方式は未知のパターンに対して頑健とは言えない。ROVER（Recognizer Output
+Voting Error Reduction, NIST）の系譜にある confidence-weighted ASR
+combination（"Automatic Quality Estimation for ASR System Combination",
+arXiv:1706.07238 など）は、単一システムの絶対閾値ではなく複数システムの
+信頼度を相対比較して採否を決める。これに倣い、Deepgram側の単語レベル信頼度
+（`deepgram_word_confidences`、`DeepgramTranscriber`が新たに`words[].confidence`
+から取得）を導入した。
+
+ただし実装当初、`replace`区間（原文側にも比較対象の単語がある差分）を
+「絶対閾値の代わりに相対比較（Whisper信頼度 > Deepgram信頼度）のみで判定する」
+方式にしたところ、実音声（`technology_moe_2d07bb74_clip3`）での検証で既知の
+正しい補正TIFINE→T5が退行することが判明した。原因はDeepgramが「t five」という
+頻出語列に対して0.83という高い信頼度を報告する一方、Whisperの「T5」は0.82と
+わずかに下回っていたこと。**技術用語のASR誤認識は「間違っている側のシステムの
+方がむしろ自信満々」というケースが珍しくなく**、これは"Driving ROVER with
+Segment-based ASR Quality Estimation"が指摘する「生の信頼度スコアの単純な
+比較は頑健ではない」という限界そのものだった。
+
+この実測を踏まえ、相対比較は絶対閾値の**代わり**ではなく**追加の救済経路**
+として使う設計に修正した: まず従来通り絶対閾値`min_confidence`で判定し、
+それを満たせば採用する（相対比較でDeepgram側がどれだけ自信を持っていても、
+既存の正しい補正が失われることはない）。絶対閾値を満たさない場合のみ、
+`replace`区間かつDeepgram側信頼度が入手できる場合に限り、「Whisper信頼度 >
+その区間のDeepgram信頼度」の相対比較で追加救済を試みる（＝相対比較は基準を
+厳しくする方向にではなく、緩める方向にのみ働く）。`insert`区間（脱落語の
+補完）や、`deepgram_word_confidences`が渡されない・語数がずれて`text`と
+アラインしない場合は、絶対閾値のみで判定する（従来と同じ挙動）。
 """
 
 from __future__ import annotations
@@ -81,6 +114,7 @@ def apply_term_corrections(
     *,
     whisper_word_confidences: list[tuple[str, float]] | None = None,
     min_confidence: float = DEFAULT_MIN_CONFIDENCE,
+    deepgram_word_confidences: list[tuple[str, float]] | None = None,
 ) -> tuple[str, list[str]]:
     """`text`（Deepgram側）と`whisper_text`（Whisper側）を単語単位で比較し、
 
@@ -93,7 +127,17 @@ def apply_term_corrections(
             `whisper_text`をトークナイズした結果と一致している前提）。`None`なら
             信頼度チェックはスキップする（後方互換・テスト用）。
         min_confidence: `whisper_word_confidences`使用時、この値未満の単語を
-            含む置換候補は採用しない。
+            含む置換候補は原則採用しない絶対閾値（セーフティネット）。
+        deepgram_word_confidences: Deepgram側の(単語, confidence)のリスト
+            （`text`をトークナイズした結果と語数が一致している前提）。絶対閾値
+            `min_confidence`を満たさなかった`replace`区間（原文側にも比較対象
+            の単語がある差分）だけを対象に、「Whisper信頼度 > その区間の
+            Deepgram信頼度」の相対比較で追加救済する（confidence-weighted
+            ROVER方式）。絶対閾値を満たしている区間は、Deepgram側がどれだけ
+            自信を持っていても採用を取り消さない（2026-09-21の実音声検証で、
+            相対比較を絶対閾値の代わりに使うと既知の正しい補正TIFINE→T5が
+            退行することが判明したため。モジュールdocstring参照）。`None`
+            または語数が`text`と合わない場合はこの救済を行わない。
 
     Returns:
         (補正後テキスト, 実際に補正した用語のリスト)
@@ -118,6 +162,15 @@ def apply_term_corrections(
 
     if not orig_words or not whisper_words:
         return text, []
+
+    # Deepgram側の単語レベル信頼度が`text`と語数レベルでアラインしている場合のみ
+    # 相対比較に使う。ズレている場合（マージ処理の空白挿入など）は安全側に倒し、
+    # 絶対閾値へフォールバックする。
+    deepgram_confidences: list[float] | None = None
+    if deepgram_word_confidences is not None and len(deepgram_word_confidences) == len(
+        orig_words
+    ):
+        deepgram_confidences = [c for _, c in deepgram_word_confidences]
 
     orig_norm = [_normalize(w) for w in orig_words]
     whisper_norm = [_normalize(w) for w in whisper_words]
@@ -152,10 +205,32 @@ def apply_term_corrections(
         original_span = " ".join(orig_norm[i1:i2])
         if original_span in keep_terms_lower:
             continue
-        # ガード2: Whisper側の信頼度が低ければ採用しない。
+        # ガード2: Whisper側の信頼度で採否を決める。
         if confidences is not None:
             span_confidences = confidences[j1:j2]
-            if not span_confidences or min(span_confidences) < min_confidence:
+            if not span_confidences:
+                continue
+            whisper_conf = min(span_confidences)
+            passes_absolute = whisper_conf >= min_confidence
+            # `replace`区間（原文側にも比較対象の単語がある）でDeepgram側の
+            # 信頼度が入手できる場合、相対比較（confidence-weighted ROVER方式。
+            # arXiv:1706.07238等）を絶対閾値の「追加の採用経路」として使う。
+            # 2026-09-21の実音声検証で、相対比較を絶対閾値の**代わり**に使うと
+            # 既知の正しい補正（TIFINE→T5）を退行させることが判明した
+            # （原因: Deepgramが"t five"という一般語列に対して0.83という高い
+            # 信頼度を報告する一方、Whisperの"T5"は0.82とわずかに下回っており、
+            # 相対比較だけでは弾かれてしまう。技術用語のASR誤認識は「間違った側
+            # (Deepgram)がむしろ自信満々」というケースが珍しくないため、
+            # "Driving ROVER with Segment-based ASR Quality Estimation"が指摘する
+            # 通り生の信頼度スコアの相対比較だけでは頑健にならない）。
+            # そのため絶対閾値はセーフティネットとして残し、相対比較は絶対閾値
+            # 未満で不採用になったケースを追加で救済する用途にのみ使う
+            # （＝relative比較は基準を厳しくする方向にではなく、緩める方向にのみ働く）。
+            passes_relative = False
+            if not passes_absolute and deepgram_confidences is not None and tag == "replace":
+                deepgram_conf = min(deepgram_confidences[i1:i2])
+                passes_relative = whisper_conf > deepgram_conf
+            if not (passes_absolute or passes_relative):
                 continue
         ops.append((i1, i2, replacement_text))
 
@@ -179,11 +254,17 @@ def reverify_terms(
     model_size: str = "small.en",
     language: str = "en",
     min_confidence: float = DEFAULT_MIN_CONFIDENCE,
+    deepgram_word_confidences: list[tuple[str, float]] | None = None,
 ) -> tuple[str, list[str]]:
     """Deepgramの確定文をWhisperで再検証し、既知用語の誤認識のみ補正する。
 
     ブロッキング呼び出し（faster-whisperのCPU推論）なので、呼び出し側で
     `asyncio.to_thread` + `asyncio.wait_for` によるタイムアウト保護をかけること。
+
+    Args:
+        deepgram_word_confidences: Deepgram側の(単語, confidence)のリスト。
+            `apply_term_corrections`の同名引数を参照
+            （confidence-weighted ROVER方式の相対比較に使う）。
 
     Returns:
         (補正後テキスト, 補正した用語のリスト)
@@ -200,4 +281,5 @@ def reverify_terms(
         keep_terms,
         whisper_word_confidences=word_confidences,
         min_confidence=min_confidence,
+        deepgram_word_confidences=deepgram_word_confidences,
     )

@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -139,6 +139,10 @@ class MergedUtterance:
     start_time: float
     end_time: float
     confidence: float
+    # Deepgramの単語レベル信頼度（結合前の各utteranceのものを結合順に連結）。
+    # `pipeline.py`がwhisper_reverifyへ渡し、confidence-weighted ROVER方式の
+    # 補正判定に使う。取得できない場合は空リスト。
+    word_confidences: list[tuple[str, float]] = field(default_factory=list)
 
     @property
     def is_low_confidence(self) -> bool:
@@ -183,6 +187,7 @@ class StreamingUtteranceMerger:
         confidence: float,
         is_incomplete_override: bool | None = None,
         force_incomplete: bool = False,
+        word_confidences: list[tuple[str, float]] | None = None,
     ) -> MergedUtterance | None:
         """final文字起こし結果を1件投入する。
 
@@ -198,14 +203,21 @@ class StreamingUtteranceMerger:
                 （`naturalness_detector` による不自然度チェックが閾値を超えた
                 場合に使用。max_duration/max_wordsの上限は従来通り適用される
                 ため、無限に結合が伸び続けることはない）。
+            word_confidences: 今回投入した`text`に対応するDeepgramの単語レベル
+                信頼度。結合が続く限り、結合済みバッファの末尾に順に連結される。
         """
         text = text.strip()
         if not text:
             return None
+        word_confidences = word_confidences or []
 
         if self._buf is None:
             self._buf = MergedUtterance(
-                text=text, start_time=start_time, end_time=end_time, confidence=confidence
+                text=text,
+                start_time=start_time,
+                end_time=end_time,
+                confidence=confidence,
+                word_confidences=list(word_confidences),
             )
         else:
             self._buf = MergedUtterance(
@@ -213,6 +225,7 @@ class StreamingUtteranceMerger:
                 start_time=self._buf.start_time,
                 end_time=end_time,
                 confidence=min(self._buf.confidence, confidence),
+                word_confidences=self._buf.word_confidences + word_confidences,
             )
 
         duration = self._buf.end_time - self._buf.start_time
