@@ -1,0 +1,219 @@
+{
+  "date": "2026-09-24",
+  "model": "gemini-2.5-flash",
+  "domain": "technology",
+  "xcomet_score": 0.9297,
+  "chrf_score": 0.5983,
+  "notes": "[real_audio_e2e_check] clips=['clips/2d07bb74_clip1.mp4', 'clips/2d07bb74_clip2.mp4', 'clips/2d07bb74_clip3.mp4', 'clips/2d07bb74_clip4.mp4', 'clips/2d07bb74_clip5.mp4'] 実音声→Deepgram(nova-2-general,キーワードブーストあり)→結合→gemini-2.5-flash(辞書あり)。doc_chrF 実音声=0.5983 / 凍結テキスト=0.6435 (差=-0.0452)。reference_jaは人手レビュー未了(draft)。",
+  "summary": {
+    "audio_doc_chrf_mean": 0.5983,
+    "frozen_text_doc_chrf_mean": 0.6435,
+    "delta_doc_chrf_mean": -0.0452,
+    "audio_llm_judge_mean": 0.9297
+  },
+  "clips": [
+    {
+      "clip": "clips/2d07bb74_clip1.mp4",
+      "benchmark_id": "technology_moe_2d07bb74_clip1",
+      "audio_segments": 9,
+      "reference_segments": 9,
+      "audio_doc_chrf": 0.6971,
+      "frozen_text_doc_chrf": 0.6699,
+      "audio_llm_judge": 0.8556,
+      "audio_terminology_misses": [
+        "Pandas→Pandas"
+      ],
+      "frozen_terminology_misses": [],
+      "audio_source_en": "Face as it prioritize the new specific domain. Continuous learning techniques are necessary to ensure, the model successfully adapts to the new domain while retaining its original, valuable, generalist capabilities. And the core problem, AWS, of course, forgetting. If we train only on the new datasets, the performance on the original dataset ETL distribution will drop significantly. And the goal here is to build a general model that can adapt to new data while retaining knowledge of the old. And our solution is to use a distribution based MOE architecture to progressively add more experts for new data distributions and use regularization techniques to mitigate forgetting. And this approach uses both regularization to prevent the model from overfeeding new data and forgetting too far from the original weights. And then expansion, which allows the model to dynamically add new experts to handle the new data distribution Pandas 2 offer, you know, new model capacity to absorb the new knowledge. Specifically, WER",
+      "frozen_source_en": "Base as it prioritize the new specific domain. Continuous learning techniques are necessary to ensure, the model successfully adapts to the new domain while retaining its original, valuable, generalist capabilities. And the core problem, is, of course, forgetting. If we train only on the new datasets, the performance on the original dataset data distribution will drop significantly. And the goal here is to build a general model that can adapt to new data while retaining knowledge of the old. And our solution is to use a distribution based MOE architecture to progressively add more experts for new data distributions and use regularization techniques to mitigate forgetting. And this approach uses both regularization to prevent the model from overfeeding new data and drifting too far from the original weights. And then expansion, which allows the model to dynamically add new experts to handle the new data distribution and to offer, you know, new model capacity to absorb the new knowledge. Specifically, we",
+      "audio_mt_ja": [
+        "新しい特定のドメインを優先するためです。",
+        "モデルが新しいドメインにうまく適応し、元の貴重な汎用能力を保持することを確実にするには、継続学習技術が必要です。",
+        "そして、核となる問題は、AWS、もちろん、忘却です。",
+        "新しいデータセットのみで学習すると、元のデータセットのETL分布における性能は大幅に低下します。",
+        "ここでの目標は、古い知識を保持しながら、新しいデータに適応できる汎用モデルを構築することです。",
+        "私たちの解決策は、分布ベースのMOEアーキテクチャを使用し、新しいデータ分布に対して徐々にエキスパートを追加し、正則化技術を用いて忘却を軽減することです。",
+        "このアプローチは、正則化を用いて、モデルが新しいデータに過学習するのを防ぎ、元の重みから大きく逸脱して忘却しないようにします。",
+        "そして拡張により、モデルは新しいデータ分布に対応するため、新しいエキスパートを動的に追加できます。これにより、新しい知識を吸収するための新たなモデル容量が提供されます。",
+        "具体的には、WER"
+      ],
+      "frozen_mt_ja": [
+        "新しい特定のドメインを優先することを基本としています。",
+        "モデルが新しいドメインにうまく適応し、元の貴重な汎用能力を保持できるよう、継続学習技術が必要です。",
+        "そして、核となる問題は、もちろん、忘却です。",
+        "新しいデータセットのみで学習すると、元のデータセットのデータ分布における性能は大幅に低下します。",
+        "ここでの目標は、古い知識を保持しながら新しいデータに適応できる汎用モデルを構築することです。",
+        "私たちの解決策は、分布ベースのMOEアーキテクチャを使用して、新しいデータ分布に対して徐々にエキスパートを追加し、正則化技術を用いて忘却を軽減することです。",
+        "このアプローチは、正則化を用いて、新しいデータへの過学習と、元の重みからの逸脱の両方を防ぎます。",
+        "そして拡張機能です。これは、新しいデータ分布に対応するため、モデルが新しいエキスパートを動的に追加し、新たな知識を吸収するモデル容量を提供できるようにします。",
+        "具体的には、私たちは"
+      ],
+      "delta_doc_chrf": 0.0272
+    },
+    {
+      "clip": "clips/2d07bb74_clip2.mp4",
+      "benchmark_id": "technology_moe_2d07bb74_clip2",
+      "audio_segments": 9,
+      "reference_segments": 9,
+      "audio_doc_chrf": 0.6518,
+      "frozen_text_doc_chrf": 0.7177,
+      "audio_llm_judge": 0.9778,
+      "audio_terminology_misses": [
+        "WER→WER",
+        "Gemini→Gemini",
+        "temperature→温度パラメータ",
+        "Zoom→Zoom",
+        "AWS→AWS",
+        "SSL→SSL",
+        "ORM→ORM",
+        "SLA→SLA",
+        "Pandas→Pandas"
+      ],
+      "frozen_terminology_misses": [
+        "temperature→温度パラメータ"
+      ],
+      "audio_source_en": "By setting the historical context with Moore's SLA and the PR law. Then we will look at Google's large language models, like BERT and T5, before diving into the core of today's talk, scaling large language models with mixture of experts, or MOE. Finally, we will cover two important advancements built on MOE, continued learning and modularity. And we will conclude with a final summary and open the floor for questions. And this section gives us the background for why we are seeking new methods to scale. So Gordon Moore famously postulated that the number of transistors on a chip would double every two years. However, we are now reaching the physical limits of this SSL. Issues like the high temperature of transistors and the memory war, which limits memory bandwidth, Zoom we can no longer rely on traditional PR advances to fuel the exponential growth of large GPT models. Pandas, the scaling of deep learning MOE was ORM a long time governed by the predictable power AWS, As shown in Gemini papers from Baidu in 2017 and the PR paper from 2020, there WER",
+      "frozen_source_en": "By setting the historical context with Moore's law and the power law. Then we will look at Google's large language models, like BERT and TFI, before diving into the core of today's talk, scaling large language models with mixture of experts, or MOE. Finally, we will cover two important advancements built on MOE, continued learning and modularity. And we will conclude with a final summary and open the floor for questions. And this section gives us the background for why we are seeking new methods to scale. So Gordon Moore famously postulated that the number of transistors on a chip would double every two years. However, we are now reaching the physical limits of this law. Issues like the high temperature of transistors and the memory war, which limits memory bandwidth, mean we can no longer rely on traditional chip advances to fuel the exponential growth of large language models. And, the scaling of deep learning model was for a long time governed by the predictable power laws, As shown in seminal papers from Baidu in 2017 and the OpenAI paper from 2020, there was",
+      "audio_mt_ja": [
+        "ムーアの法則とべき乗則という歴史的背景を踏まえることで",
+        "次に、BERTやT5のようなGoogleの大規模言語モデルを見ていきます。その後、今日の講演の核心である、Mixture of Experts、MOEによる大規模言語モデルのスケーリングについて掘り下げます。",
+        "最後に、MOEに基づいて構築された2つの重要な進歩、継続学習とモジュール性について取り上げます。",
+        "最後にまとめを行い、質疑応答に移ります。",
+        "このセクションでは、新しいスケーリング手法を模索する背景を説明します。",
+        "ゴードン・ムーアは、チップ上のトランジスタの数が2年ごとに倍増すると提唱しました。",
+        "しかし、私たちは今、この法則の物理的な限界に達しつつあります。",
+        "トランジスタの高温や、メモリ帯域を制限するメモリウォールといった問題により、大規模GPTモデルの指数関数的成長を促進するために、従来の進歩に頼ることはもはやできません。深層学習MOEのスケーリングは、長い間、予測可能なべき乗則に支配されていました。",
+        "2017年のBaiduの論文や2020年のPR論文で示されているように、そこには"
+      ],
+      "frozen_mt_ja": [
+        "ムーアの法則とべき乗則で歴史的背景を設定することで",
+        "その後、BERTやT5のようなGoogleの大規模言語モデルについて見ていきます。そして、今日の講演の核心である、Mixture of Experts、略してMOEによる大規模言語モデルのスケーリングについて深く掘り下げます。",
+        "最後に、MOEを基盤とした2つの重要な進歩、継続学習とモジュール性について取り上げます。",
+        "最後にまとめを行い、質疑応答に移ります。",
+        "そして、このセクションでは、なぜ新しいスケーリング方法を模索しているのか、その背景を説明します。",
+        "ゴードン・ムーアは、チップ上のトランジスタの数が2年ごとに倍増すると提唱したことで知られています。",
+        "しかし、私たちは今、この法則の物理的な限界に達しつつあります。",
+        "トランジスタの高温化や、メモリ帯域を制限するメモリウォールといった問題により、大規模言語モデルの指数関数的な成長を、従来のチップの進歩に頼るだけではもはや支えきれません。",
+        "そして、深層学習モデルのスケーリングは、長い間、予測可能なべき乗則に従っていました。\n2017年のBaiduの重要な論文や2020年のOpenAIの論文で示されているように、そこには"
+      ],
+      "delta_doc_chrf": -0.0659
+    },
+    {
+      "clip": "clips/2d07bb74_clip3.mp4",
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "audio_segments": 11,
+      "reference_segments": 11,
+      "audio_doc_chrf": 0.5087,
+      "frozen_text_doc_chrf": 0.5855,
+      "audio_llm_judge": 0.9682,
+      "audio_terminology_misses": [
+        "WER→WER",
+        "AWS→AWS",
+        "Looker→Looker"
+      ],
+      "frozen_terminology_misses": [],
+      "audio_source_en": "GPT p t three and the PaLM two architectures, highlighting the different masking techniques used in their attention components. If we WER look at the differences, older models Looker T5 five were not as strong on generation and needed task specific fine tuning. Newer, decoder only models Looker GPT p three achieve strong generalization capability through in context learning. And the PR two, which uses prefix modeling, is a bit more expressive AWS it is bidirectional in in the attention layer. As we saw a massive jump in the size of dense models, T5 originally, reaches 11,000,000,000 parameters, and we call it one giant model at GPT, and GPT p PR three at PR adapters. And Looker, PR reached 500,000,000,000 parameters. But as dense model got bigger, the cost and the training time become unsustainable. This leads us to the question, what comes after the end of a dense model scaling? And the answer is mixture of experts or MOE. This is how we continue the exponential scaling trend. Looking back at the timeline,",
+      "frozen_source_en": "G p t three and the parm two architectures, highlighting the different masking techniques used in their attention components. If we we look at the differences, older models like t five were not as strong on generation and needed task specific fine tuning. Newer, decoder only models like g p three achieve strong generalization capability through in context learning. And the PARM two, which uses prefix modeling, is a bit more expressive as it is bidirectional in in the attention layer. As we saw a massive jump in the size of dense models, TIFINE originally, reaches 11,000,000,000 parameters, and we call it one giant model at Google, and g p g three at 175,000,000,000 parameters. And later, Parm reached 500,000,000,000 parameters. But as dense model got bigger, the cost and the training time become unsustainable. This leads us to the question, what comes after the end of a dense model scaling? And the answer is mixture of experts or MOE. This is how we continue the exponential scaling trend. Looking back at the timeline,",
+      "audio_mt_ja": [
+        "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使われている異なるマスキング技術を強調しています。",
+        "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+        "新しいデコーダオンリーモデル、例えばGPT-3などは、インコンテキスト学習により高い汎化能力を実現します。",
+        "そして、プレフィックスLMを使用するPaLM 2は、アテンション層で双方向であるため、表現力が少し高くなっています。",
+        "高密度モデルのサイズが大幅に増加し、T5は元々110億パラメータに達しました。私たちはそれをGPTにおける「一つの巨大なモデル」と呼び、GPT-3はPRアダプターを使用しています。",
+        "そして、PaLMは5000億パラメータに達しました。",
+        "しかし、高密度モデルが大きくなるにつれて、コストと学習時間が持続不可能になりました。",
+        "これにより、高密度モデルのスケーリングの終焉の先に何があるのか、という疑問が生まれます。",
+        "そして、その答えはMixture of Experts、またはMOEです。",
+        "このようにして、私たちは指数関数的なスケーリングの傾向を継続します。",
+        "タイムラインを振り返ると、"
+      ],
+      "frozen_mt_ja": [
+        "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われている異なるマスキング技術についてです。",
+        "違いを見ると、T5のような以前のモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+        "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて高い汎化能力を達成します。",
+        "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、少し表現力が高くなっています。",
+        "高密度モデルのサイズが大幅に増加したように、T5は元々110億パラメータに達し、Googleでは「1つの巨大なモデル」と呼んでいます。GPT-3は1750億パラメータです。",
+        "そしてその後、PaLMは5000億パラメータに達しました。",
+        "しかし、高密度モデルが巨大化するにつれて、コストと学習時間は持続不可能になりました。",
+        "これにより、高密度モデルのスケーリングの終焉の後に何が来るのか、という疑問が生じます。",
+        "そして、答えはMixture of Experts、またはMOEです。",
+        "このようにして、指数関数的なスケーリングの傾向を継続します。",
+        "タイムラインを振り返ると、"
+      ],
+      "delta_doc_chrf": -0.0768
+    },
+    {
+      "clip": "clips/2d07bb74_clip4.mp4",
+      "benchmark_id": "technology_moe_2d07bb74_clip4",
+      "audio_segments": 9,
+      "reference_segments": 9,
+      "audio_doc_chrf": 0.5327,
+      "frozen_text_doc_chrf": 0.5871,
+      "audio_llm_judge": 0.9067,
+      "audio_terminology_misses": [
+        "PR→PR"
+      ],
+      "frozen_terminology_misses": [],
+      "audio_source_en": "This only prevents GPT, but also ensures that private data trained on one adapter is not leaked to the public modules. And in this way, we can continuously train 2 modules to handle coding task or turn another module into, you know, ChatGPT conversational agents, etcetera. Alternatively, we can even turn, like, a module into, you know, chess experts benefit of MOE are numerous. There are fewer activated parameters per query, easier for development, and the ability for, different teams to develop adapters independently. It also provides a very strong compartmentalization and PR guarantees. And in general, we create a mixture of adapters in a traditional MOE setting. So instead of creating mixture of experts in general forms, we can create a mixture of domain experts, while each domain consists SLA few of experts. And WER CoT apply block level mask to activate or deactivate a entire MOE layer Pandas treat a entire layer as domain experts. Alternatively, we can implement of of adapters using a layer wise domain",
+      "frozen_source_en": "This only prevents forgetting, but also ensures that private data trained on one adapter is not leaked to the public modules. And in this way, we can continuously train adapted modules to handle coding task or turn another module into, you know, chatbot conversational agents, etcetera. Alternatively, we can even turn, like, a module into, you know, chess experts. The benefit of MOA are numerous. There are fewer activated parameters per query, easier for development, and the ability for, different teams to develop adapters independently. It also provides a very strong compartmentalization and privacy guarantees. And in general, we create a mixture of adapters in a traditional MOE setting. So instead of creating mixture of experts in general forms, we can create a mixture of domain experts, while each domain consists a few of experts. And we can apply block level mask to activate or deactivate a entire MOE layer and treat a entire layer as domain experts. Alternatively, we can implement mixture of adapters using a layer wise domain",
+      "audio_mt_ja": [
+        "これはGPTによる問題を防止するだけでなく、あるアダプターで学習されたプライベートデータが公開モジュールに漏洩しないことも保証します。",
+        "このようにして、2つのモジュールを継続的に学習させることができます。コーディングタスクを処理させたり、別のモジュールをChatGPTのような会話エージェントなどに変えたり。あるいは、モジュールをチェスのエキスパートに変えることも可能です。",
+        "MOEの利点は多数あります。",
+        "クエリごとの活性化パラメータが少なく、開発が容易で、異なるチームがアダプターを独立して開発できます。",
+        "強力な区分化とプライバシー保護の保証も提供します。",
+        "一般的に、従来のMOE設定でMixture of Adaptersを作成します。",
+        "したがって、一般的な形式でMixture of Expertsを作成する代わりに、ドメインエキスパートのMixtureを作成できます。各ドメインはSLAの少数のエキスパートで構成されます。",
+        "そして WER CoT は、ブロックレベルマスクを適用してMOEレイヤー全体を活性化または非活性化し、Pandas はレイヤー全体をドメインエキスパートとして扱います。",
+        "あるいは、レイヤーごとのドメインを使用してMixture of Adaptersを実装できます。"
+      ],
+      "frozen_mt_ja": [
+        "これは忘却を防ぐだけでなく、あるアダプターで学習されたプライベートデータが公開モジュールに漏洩しないようにします。",
+        "このようにして、適応型モジュールを継続的に学習させ、コーディングタスクを処理させたり、別のモジュールをチャットボットの会話エージェントにしたりできます。あるいは、モジュールをチェスのエキスパートにすることも可能です。",
+        "MOAの利点は数多くあります。",
+        "クエリあたりの活性化パラメータが少ないこと、開発が容易であること、そして異なるチームがアダプターを独立して開発できることなどが挙げられます。",
+        "また、厳格な分離とプライバシー保護も実現します。",
+        "そして一般的に、従来のMOE設定でMixture of Adaptersを作成します。",
+        "一般的なMixture of Expertsを作成する代わりに、各ドメインが少数のエキスパートから成るドメインエキスパートのMixtureを作成できます。",
+        "そして、ブロックレベルマスクを適用して、MOEレイヤー全体を活性化または非活性化し、レイヤー全体をドメインエキスパートとして扱うことができます。",
+        "あるいは、レイヤー単位のドメインを使用してMixture of Adaptersを実装できます。"
+      ],
+      "delta_doc_chrf": -0.0544
+    },
+    {
+      "clip": "clips/2d07bb74_clip5.mp4",
+      "benchmark_id": "technology_moe_2d07bb74_clip5",
+      "audio_segments": 8,
+      "reference_segments": 9,
+      "audio_doc_chrf": 0.6012,
+      "frozen_text_doc_chrf": 0.6573,
+      "audio_llm_judge": 0.94,
+      "audio_terminology_misses": [],
+      "frozen_terminology_misses": [],
+      "audio_source_en": "The MOA with a frozen backbone learning with the targeted data owning was found to be as efficient or even more FLOPS efficient than a baseline MOE trained on the mixture of the data. And at the 3,000,000,000 parameter scale, the MOA, GPT, PR to be highly efficient. Specifically, a technique called MOA tail patching Hugging only domain data improved our MMLU score by approximately 30 PR, showing both efficiency and SSL significant quality gain. And, to generalize this MOA into a PR setting, we've explored the mixture of domain experts IAM. And this involves experts on sharding the data and the shared parameters in the attention mechanism. And the performance benefits Claude faster inference, reduced communication, smaller activated parameters per query, and the ability to fit many more experts. And the MOE, leverage metadata containing a domain ID to map a sequence of tokens to a domain mask. And this mask forces, tokens to be routed to a small subset of experts, which effectively reduces the all to all communication overhead. And this coarse grained routing also reduces the number of",
+      "frozen_source_en": "The MOA with a frozen backbone training with the targeted data owning was found to be as efficient or even more FLOPS efficient than a baseline MOE trained on the mixture of the data. And at the 3,000,000,000 parameter scale, the MOA, again, approved to be highly efficient. Specifically, a technique called MOA tail patching using only domain data improved our MMLU score by approximately 30 points, showing both efficiency and the significant quality gain. And, to generalize this MOA into a pretraining setting, we've explored the mixture of domain experts idea. And this involves experts on sharding the data and the shared parameters in the attention mechanism. And the performance benefits including faster inference, reduced communication, smaller activated parameters per query, and the ability to fit many more experts. And the model, leverage metadata containing a domain ID to map a sequence of tokens to a domain mask. And this mask forces, tokens to be routed to a small subset of experts, which effectively reduces the all to all communication overhead. And this coarse grained routing also reduces the number of",
+      "audio_mt_ja": [
+        "バックボーンを固定し、ターゲットデータで学習するMOAは、混合データで学習されたベースラインのMOEよりも、FLOPS効率が同等かそれ以上であることが分かりました。",
+        "そして30億パラメータ規模では、MOA、GPT、PRが高い効率性を示すことが分かりました。",
+        "具体的には、MOAテールパッチングと呼ばれる手法で、ドメインデータのみを使用することで、MMLUスコアが約30 PR向上し、効率性とSSLの顕著な品質向上の両方を示しました。",
+        "そして、このMOAをPR設定に一般化するため、ドメインエキスパートの混合IAMを探求しました。これは、データをシャーディングするエキスパートと、アテンション機構における共有パラメータを含みます。",
+        "そして、パフォーマンスの利点としては、Claude、より速い推論、通信量の削減、クエリあたりのアクティブ化されるパラメータの縮小、そしてより多くのエキスパートを適合させる能力が挙げられます。",
+        "そしてMOEは、ドメインIDを含むメタデータを活用し、トークンシーケンスをドメインマスクにマッピングします。",
+        "そしてこのマスクは、トークンをエキスパートの小さなサブセットにルーティングすることを強制し、これによりオールツーオール通信のオーバーヘッドを効果的に削減します。",
+        "そして、この粗粒度ルーティングは、〜の数も削減します。"
+      ],
+      "frozen_mt_ja": [
+        "フリーズされたバックボーンを持つMOAをターゲットデータで学習させた場合、混合データで学習させたベースラインのMOEと同等かそれ以上にFLOPS効率が良いことが分かりました。",
+        "そして、30億パラメータ規模では、MOAは再び高い効率性を示すことが証明されました。",
+        "具体的には、ドメインデータのみを使用したMOAテールパッチングと呼ばれる手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上を両立していることが示されました。",
+        "そして、このMOAを事前学習のセッティングに一般化するため、ドメインエキスパートの混合というアイデアを探求しました。",
+        "これには、データのシャーディングに関するエキスパートと、アテンション機構における共有パラメータが含まれます。",
+        "そして、パフォーマンス上の利点としては、推論の高速化、通信量の削減、クエリあたりの有効化パラメータの縮小、そしてより多くのエキスパートを適合させる能力があります。",
+        "そしてモデルは、ドメインIDを含むメタデータを活用し、トークンのシーケンスをドメインマスクにマッピングします。",
+        "このマスクにより、トークンはエキスパートの小さなサブセットにルーティングされ、オールツーオール通信のオーバーヘッドを効果的に削減します。",
+        "この粗粒度ルーティングは、〜の数も減らします。"
+      ],
+      "delta_doc_chrf": -0.0561
+    }
+  ]
+}

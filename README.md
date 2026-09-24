@@ -128,6 +128,52 @@ pinned: false
 
 ## 更新履歴
 
+### 2026/09/24
+
+#### 変更内容
+
+**実音声からのエンドツーエンド精度確認（ASR→結合→翻訳）**
+
+これまでのベンチマーク（`run_benchmark.py`）は2026-07-11時点のDeepgram出力を
+凍結した`raw_utterances`を入力にしており、翻訳部分しか測れていなかった。
+新規スクリプト`evaluation/real_audio_e2e_check.py`で、`clips/2d07bb74_clip{1..5}.mp4`
+の実音声を現在の本番設定（`add_subtitles.py`の`extract_audio`/`transcribe_audio`）で
+文字起こしし直し、同じ結合・翻訳（gemini-2.5-flash・辞書あり）を通して
+`reference_ja`と文書単位chrF（doc_chrF）で比較した。同一実行内で凍結テキスト
+入力も翻訳して対照にしている。
+
+| 条件 | doc_chrF（5クリップ平均） | LLM-judge |
+|---|---|---|
+| 実音声・キーワードブーストあり（**現在の既定**） | 0.598 | 0.930 |
+| 実音声・キーワードブーストなし | 0.628 | 0.989 |
+| 凍結テキスト（参考、2回の実行） | 0.644 / 0.655 | – |
+
+**判明した問題: Deepgramキーワードブースト（既定ON）が実音声で大量の幻覚置換を起こしている。**
+ブーストON/OFFの書き起こし差分は5クリップで計52箇所あり、正しい補正は
+TFI/TIFINE→T5・parm→PaLMなど数件のみで、残りは一般語が辞書中の無関係な用語に
+置換されるもの（'was'→'WER'、'and'→'Pandas'、'is'→'AWS'、'mean'→'Zoom'、
+'175,000,000,000 parameters'→'PR adapters'、'Google'→'GPT'等）だった。
+これは2026-09-09（`deepgram_keyword_boost_rematch`）で「単純に有効化するのは
+推奨しない」と結論していた副作用そのものだが、`DEEPGRAM_KEYWORD_BOOST_ENABLED`
+（`add_subtitles.py`）と`deepgram_keyword_boost_enabled`（`config.py`、マイク経路）は
+いずれも既定`true`のままになっている。ブーストONはOFFに比べて4/5クリップで
+doc_chrFが低下した（平均-0.030）。
+
+注意: 凍結テキストの同一入力でも実行間でクリップ単位doc_chrFが最大±0.06ブレる
+ため、クリップ単位の差は参考程度。reference_jaは人手レビュー未了（draft）。
+
+実験記録: `experiments/20260924_real_audio_e2e_check.json`、
+`experiments/20260924_real_audio_e2e_check_no_keyword_boost.json`、
+`experiments/results.csv`（`[real_audio_e2e_check]`タグ）。
+
+#### 未検証
+- キーワードブーストの既定をOFFにするか、講義ごとにブースト対象語を絞り込むか
+  （2026-09-09の提案）の判断
+- ブーストOFF時に失われるT5/PaLMの認識は、whisper_reverify（マイク経路）で
+  どこまで補えるか
+
+---
+
 ### 2026/09/23
 
 #### 変更内容
