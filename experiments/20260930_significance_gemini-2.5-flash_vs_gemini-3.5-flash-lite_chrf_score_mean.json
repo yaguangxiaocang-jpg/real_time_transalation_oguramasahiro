@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-30",
+  "method": "paired bootstrap resampling (Koehn 2004)",
+  "model_a": "gemini-2.5-flash",
+  "model_b": "gemini-3.5-flash-lite",
+  "metric": "chrf_score_mean",
+  "benchmark_ids": [
+    "economics_federal_funds_rate",
+    "technology_fragment_2d07bb74_v2_clip1_scaling_intro",
+    "technology_fragment_gpt3_generalization",
+    "technology_fragment_moe_definition",
+    "technology_fragment_t5_finetuning",
+    "technology_moe_2d07bb74_clip1",
+    "technology_moe_2d07bb74_clip2",
+    "technology_moe_2d07bb74_clip3",
+    "technology_moe_2d07bb74_clip4",
+    "technology_moe_2d07bb74_clip5"
+  ],
+  "result": {
+    "observed_diff": -0.0581,
+    "ci95_diff": [
+      -0.089,
+      -0.0362
+    ],
+    "p_value_approx": 0.0,
+    "win_prob_b_gt_a": 0.0,
+    "n_resamples": 10000,
+    "n_units": 10,
+    "mean_a": 0.6629,
+    "mean_b": 0.6048
+  }
+}

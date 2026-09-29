@@ -27,7 +27,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 sys.path.insert(0, str(Path(__file__).parent))
 
 from neural_metrics import score_neural_batch  # noqa: E402
-from run_benchmark import merge_raw_utterances  # noqa: E402
+from run_benchmark import merge_raw_utterances, score_against_reference  # noqa: E402
 
 REPO_ROOT = Path(__file__).parent.parent
 BENCHMARKS_DIR = REPO_ROOT / "evaluation" / "benchmarks"
@@ -59,6 +59,21 @@ def main(path: Path) -> None:
         aggs[ai]["runs"][ri].update(
             {k: sc[k] for k in ("comet_score", "cometkiwi_score", "comet_segments", "cometkiwi_segments")}
         )
+    # chrF も現在の参照訳で計算し直す（保存済みの chrf_score は実行時点の参照訳に
+    # 対する値なので、参照訳を更新した後は比較に使えない）。model_comparison と
+    # 同じ document-level chrF。実行時点の値は *_at_run として残す。
+    for agg in aggs:
+        refs = benchmarks[agg["benchmark_id"]]["reference_ja"]
+        for run in agg["runs"]:
+            run["chrf_score_at_run"] = run.get("chrf_score")
+            run["chrf_score"] = score_against_reference(
+                [" ".join(run["hyps"])], [" ".join(refs)]
+            )
+        chrfs = [r["chrf_score"] for r in agg["runs"]]
+        agg["chrf_score_mean_at_run"] = agg.get("chrf_score_mean")
+        agg["chrf_score_mean"] = round(statistics.mean(chrfs), 4)
+        agg["chrf_score_range"] = [min(chrfs), max(chrfs)]
+
     for agg in aggs:
         for key in ("comet_score", "cometkiwi_score"):
             vals = [r[key] for r in agg["runs"] if r.get(key) is not None]
@@ -81,7 +96,7 @@ def main(path: Path) -> None:
         for agg in aggs:
             notes = (
                 f"[benchmark={agg['benchmark_id']}][rescore_neural][source={path.name}] "
-                f"保存済み訳文(n={len(agg['runs'])})を再採点。"
+                f"保存済み訳文(n={len(agg['runs'])})を現在の参照訳でchrF・COMET再採点。"
                 f"reference_status={agg['reference_status']}"
             )
             w.writerow(

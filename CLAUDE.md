@@ -129,6 +129,14 @@ context_window_size・utterance結合パラメータ・プロンプトなど）�
 
 ### ベンチマークの正解訳（reference_ja）について
 
+2026-09-29 時点で `evaluation/benchmarks/` の10件はすべて `reference_status:
+"human_reviewed"`（人手レビュー済み。確定時の方針は各ファイルの `reference_note`、
+元の草案は `reference_ja_draft`）。参照訳を変更したら、保存済みの訳文を
+`python evaluation/rescore_neural.py experiments/<...>_model_comparison.json` で
+chrF・COMET ともに再採点すること（`chrf_score_mean` は実行時点の参照訳に対する値のため）。
+新しいベンチマークを追加するときの正解訳は、まず訳語を `dictionary.csv` に合わせ、
+同じ英文が既存ベンチマークにあれば訳を揃えること。
+
 `reference_status: "draft_needs_human_review"` のベンチマークは、まだ人手
 レビューが済んでいない草案。スコアの絶対値ではなく、同じベンチマークに対する
 実行間の相対的な変化（改善/悪化）の参考としてのみ使うこと。本格的に運用する

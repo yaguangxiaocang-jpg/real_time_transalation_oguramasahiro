@@ -1,7 +1,7 @@
 {
   "benchmark_id": "technology_fragment_moe_definition",
   "domain": "technology",
-  "description": "チャンク長トレードオフ検証のため2026-08-20に新規取得。2d07bb74_v2_clip1.mp4をDeepgramで再文字起こしし（merge適用前の生発話）、文中で分断された実例の中から2発話結合のケースを抽出した。reference_ja はclaude-sonnet-5が英文から独立に作成した訳（人手レビュー未了）。",
+  "description": "チャンク長トレードオフ検証のため2026-08-20に新規取得。2d07bb74_v2_clip1.mp4をDeepgramで再文字起こしし（merge適用前の生発話）、文中で分断された実例の中から2発話結合のケースを抽出した。reference_ja はclaude-sonnet-5が英文から独立に作成した訳（2026-09-29に人手レビュー済み）。",
   "raw_utterances": [
     {"start": 77.5, "end": 79.8, "transcript": "And the answer is mixture of experts"},
     {"start": 80.4, "end": 81.2, "transcript": "or MOE."}
@@ -9,7 +9,10 @@
   "reference_ja": [
     "その答えが、Mixture of Experts、すなわちMOEです。"
   ],
-  "reference_status": "draft_needs_human_review",
-  "reference_note": "claude-sonnet-5が2026-08-20に、英語原文から独立に作成した訳。専門家レビュー前のため、本格運用前に人手で確認すること。",
+  "reference_ja_draft": [
+    "その答えが、Mixture of Experts、すなわちMOEです。"
+  ],
+  "reference_status": "human_reviewed",
+  "reference_note": "claude-sonnet-5が2026-08-20に、英語原文から独立に作成した訳。専門家レビュー前のため、本格運用前に人手で確認すること。 / 2026-09-29: 人手レビュー済み（claude.aiのレビュー台帳で全セグメントを確認・確定）。確定時の全体方針: ①用語辞書(dictionary.csv)と食い違う訳語は辞書に合わせる ②文の途中で切れたセグメントは原文にある範囲だけ訳す(欠落部は「〜」) ③同じ英文が複数ベンチマークにある場合は訳を統一する。方針の適用による変更はレビュー者の承認済み。元の草案はreference_ja_draftに保存。",
   "expected_merged_count": 1
 }
