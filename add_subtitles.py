@@ -92,7 +92,7 @@ SEGMENTS_DIR = Path(__file__).parent / "experiments" / "segments"
 async def compute_scores(translated: list[dict]) -> tuple[float | None, float | None]:
     """自動評価スコアを計算する。
 
-    xcomet_score: Gemini LLM-as-judge（0〜1）
+    llm_judge: Gemini LLM-as-judge（0〜1）
     chrf_score:   逆翻訳（日→英）後に sacrebleu chrF で計算（0〜1）
     """
     from google import genai
@@ -102,7 +102,7 @@ async def compute_scores(translated: list[dict]) -> tuple[float | None, float | 
     srcs = [s["original"] for s in sample]
     mts = [s["japanese"] for s in sample]
 
-    # --- xcomet_score: LLM-as-judge ---
+    # --- llm_judge: LLM-as-judge ---
     print("自動評価（LLM判定）を計算中...")
     judge_prompt = (
         "あなたはプロの翻訳評価者です。以下の英日翻訳ペアをそれぞれ評価し、"
@@ -115,7 +115,7 @@ async def compute_scores(translated: list[dict]) -> tuple[float | None, float | 
         model=GEMINI_MODEL,
         contents=judge_prompt,
     )
-    xcomet_score: float | None = None
+    llm_judge: float | None = None
     scores = []
     import re
     for line in (judge_resp.text or "").split("\n"):
@@ -126,8 +126,8 @@ async def compute_scores(translated: list[dict]) -> tuple[float | None, float | 
             except ValueError:
                 pass
     if scores:
-        xcomet_score = round(sum(scores) / len(scores), 4)
-        print(f"  xcomet_score (LLM judge): {xcomet_score}")
+        llm_judge = round(sum(scores) / len(scores), 4)
+        print(f"  llm_judge (LLM judge): {llm_judge}")
 
     # --- chrf_score: 逆翻訳 + sacrebleu ---
     print("自動評価（逆翻訳 chrF）を計算中...")
@@ -158,13 +158,13 @@ async def compute_scores(translated: list[dict]) -> tuple[float | None, float | 
         chrf_score = round(raw / 100, 4)
         print(f"  chrf_score (back-translation): {chrf_score}")
 
-    return xcomet_score, chrf_score
+    return llm_judge, chrf_score
 
 
 def save_experiment_record(
     translated: list[dict],
     video_path: Path,
-    xcomet_score: float | None = None,
+    llm_judge: float | None = None,
     chrf_score: float | None = None,
     notes: str = "",
     report: dict | None = None,
@@ -200,7 +200,7 @@ def save_experiment_record(
         "date": date.today().strftime("%Y-%m-%d"),
         "model": GEMINI_MODEL,
         "domain": TRANSLATION_DOMAIN,
-        "xcomet_score": xcomet_score,
+        "llm_judge": llm_judge,
         "chrf_score": chrf_score,
         "notes": auto_notes,
     }
@@ -214,12 +214,12 @@ def save_experiment_record(
     with open(csv_path, "a", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         if write_header:
-            writer.writerow(["date", "model", "domain", "xcomet_score", "chrf_score", "notes"])
+            writer.writerow(["date", "model", "domain", "llm_judge", "chrf_score", "notes"])
         writer.writerow([
             record["date"],
             record["model"],
             record["domain"],
-            "" if xcomet_score is None else xcomet_score,
+            "" if llm_judge is None else llm_judge,
             "" if chrf_score is None else chrf_score,
             record["notes"],
         ])
@@ -664,9 +664,9 @@ async def main(video_path: str) -> None:
         print(f"SRTファイル（英日併記）: {srt_path}")
 
         # 6. 自動評価スコアを計算して実験記録を保存
-        xcomet_score, chrf_score = await compute_scores(translated)
+        llm_judge, chrf_score = await compute_scores(translated)
         save_experiment_record(
-            translated, video_path, xcomet_score, chrf_score, report=report
+            translated, video_path, llm_judge, chrf_score, report=report
         )
 
     finally:

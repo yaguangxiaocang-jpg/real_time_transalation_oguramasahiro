@@ -193,7 +193,7 @@ def save_result(model_a: str, model_b: str, metric: str, result: dict, benchmark
     with open(csv_path, "a", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         if write_header:
-            writer.writerow(["date", "model", "domain", "xcomet_score", "chrf_score", "notes"])
+            writer.writerow(["date", "model", "domain", "llm_judge", "chrf_score", "notes"])
         notes = (
             f"[significance_test][paired bootstrap, Koehn 2004, n_units={result['n_units']}, "
             f"n_resamples={result['n_resamples']}] {model_a}(mean={result['mean_a']}) vs "
@@ -219,7 +219,7 @@ def main() -> None:
     parser.add_argument(
         "--metric",
         default="chrf_score_mean",
-        choices=["chrf_score_mean", "xcomet_score_mean"],
+        choices=["chrf_score_mean", "llm_judge_mean", "comet_score_mean", "cometkiwi_score_mean"],
         help="比較する指標（既定: chrf_score_mean）",
     )
     parser.add_argument("--n-resamples", type=int, default=DEFAULT_N_RESAMPLES)

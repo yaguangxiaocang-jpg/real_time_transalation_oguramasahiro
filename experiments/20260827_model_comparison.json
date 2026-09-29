@@ -8,7 +8,7 @@
       "elapsed_seconds": 3.37,
       "avg_seconds_per_segment": 3.37,
       "chrf_score": 0.4313,
-      "xcomet_score": 0.98,
+      "llm_judge": 0.98,
       "hyps": [
         "これはアメリカの最短金利です。フェデラルファンド金利と呼ばれています。"
       ],
@@ -22,7 +22,7 @@
       "elapsed_seconds": 1.01,
       "avg_seconds_per_segment": 1.01,
       "chrf_score": 0.6131,
-      "xcomet_score": 1.0,
+      "llm_judge": 1.0,
       "hyps": [
         "これは米国における最も短期の金利です。フェデラルファンド金利と呼ばれています。"
       ],
@@ -36,7 +36,7 @@
       "elapsed_seconds": 1.51,
       "avg_seconds_per_segment": 1.51,
       "chrf_score": 0.5131,
-      "xcomet_score": 0.99,
+      "llm_judge": 0.99,
       "hyps": [
         "これは米国で最も短期の金利であり、フェデラルファンド金利と呼ばれています。"
       ],
@@ -50,7 +50,7 @@
       "elapsed_seconds": 9.4,
       "avg_seconds_per_segment": 9.4,
       "chrf_score": 0.2466,
-      "xcomet_score": 1.0,
+      "llm_judge": 1.0,
       "hyps": [
         "これが The United States で最も期間の短い金利で、federal funds rate と呼ばれています。"
       ],
@@ -64,7 +64,7 @@
       "elapsed_seconds": 12.69,
       "avg_seconds_per_segment": 1.15,
       "chrf_score": 0.4845,
-      "xcomet_score": 1.0,
+      "llm_judge": 1.0,
       "hyps": [
         "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使われている異なるマスキング技術に焦点を当てます。",
         "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
@@ -88,7 +88,7 @@
       "elapsed_seconds": 9.62,
       "avg_seconds_per_segment": 0.87,
       "chrf_score": 0.5496,
-      "xcomet_score": 0.9955,
+      "llm_judge": 0.9955,
       "hyps": [
         "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使用されている異なるマスキング技術を中心に解説します。",
         "違いを見てみると、T5のような古いモデルは生成能力があまり高くなく、タスク固有のファインチューニングが必要でした。",
@@ -112,7 +112,7 @@
       "elapsed_seconds": 15.28,
       "avg_seconds_per_segment": 1.39,
       "chrf_score": 0.5335,
-      "xcomet_score": 0.9927,
+      "llm_judge": 0.9927,
       "hyps": [
         "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われている多様なマスキング手法に焦点を当てます。",
         "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
@@ -136,7 +136,7 @@
       "elapsed_seconds": 70.86,
       "avg_seconds_per_segment": 6.44,
       "chrf_score": 0.4438,
-      "xcomet_score": 0.9909,
+      "llm_judge": 0.9909,
       "hyps": [
         "GPT-3とPaLM 2のアーキテクチャを取り上げ、attentionコンポーネントで使用されるmasking手法の違いに焦点を当てます。",
         "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",

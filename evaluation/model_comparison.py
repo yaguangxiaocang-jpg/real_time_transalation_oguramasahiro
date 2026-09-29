@@ -112,7 +112,7 @@ async def run_candidate(benchmark: dict, model: str, thinking_budget: int) -> di
         "elapsed_seconds": round(elapsed, 2),
         "avg_seconds_per_segment": round(elapsed / len(merged), 2),
         "chrf_score": chrf,
-        "xcomet_score": judge,
+        "llm_judge": judge,
         "hyps": hyps,
     }
 
@@ -142,7 +142,7 @@ async def run_benchmark_across_models(benchmark_path: Path) -> list[dict]:
             continue
 
         chrf_scores = [r["chrf_score"] for r in runs]
-        judge_scores = [r["xcomet_score"] for r in runs if r["xcomet_score"] is not None]
+        judge_scores = [r["llm_judge"] for r in runs if r["llm_judge"] is not None]
         avg_seconds = [r["avg_seconds_per_segment"] for r in runs]
 
         agg = {
@@ -156,8 +156,8 @@ async def run_benchmark_across_models(benchmark_path: Path) -> list[dict]:
             "avg_seconds_per_segment_range": [round(min(avg_seconds), 2), round(max(avg_seconds), 2)],
             "chrf_score_mean": round(statistics.mean(chrf_scores), 4),
             "chrf_score_range": [round(min(chrf_scores), 4), round(max(chrf_scores), 4)],
-            "xcomet_score_mean": round(statistics.mean(judge_scores), 4) if judge_scores else None,
-            "xcomet_score_range": (
+            "llm_judge_mean": round(statistics.mean(judge_scores), 4) if judge_scores else None,
+            "llm_judge_range": (
                 [round(min(judge_scores), 4), round(max(judge_scores), 4)] if judge_scores else None
             ),
             "runs": runs,
@@ -167,7 +167,7 @@ async def run_benchmark_across_models(benchmark_path: Path) -> list[dict]:
             f"  {model:<24} tb={thinking_budget:>3} | "
             f"avg={agg['avg_seconds_per_segment_mean']:>5.2f}s/seg {agg['avg_seconds_per_segment_range']} | "
             f"chrF={agg['chrf_score_mean']} {agg['chrf_score_range']} | "
-            f"judge={agg['xcomet_score_mean']} | n={agg['repeats']} | {note}"
+            f"judge={agg['llm_judge_mean']} | n={agg['repeats']} | {note}"
         )
     return results
 
@@ -192,7 +192,7 @@ def save_results(all_results: list[dict]) -> None:
         writer = csv.writer(f)
         if write_header:
             writer.writerow(
-                ["date", "model", "domain", "xcomet_score", "chrf_score", "notes"]
+                ["date", "model", "domain", "llm_judge", "chrf_score", "notes"]
             )
         for r in all_results:
             if "error" in r:
@@ -210,7 +210,7 @@ def save_results(all_results: list[dict]) -> None:
                 f"avg={r['avg_seconds_per_segment_mean']}s/segment "
                 f"(range={r['avg_seconds_per_segment_range']}, segments={r['segment_count']}), "
                 f"chrF={r['chrf_score_mean']} (range={r['chrf_score_range']}), "
-                f"judge={r['xcomet_score_mean']} (range={r['xcomet_score_range']}), "
+                f"judge={r['llm_judge_mean']} (range={r['llm_judge_range']}), "
                 f"{r['note']}"
             )
             writer.writerow(
@@ -218,7 +218,7 @@ def save_results(all_results: list[dict]) -> None:
                     date.today().strftime("%Y-%m-%d"),
                     r["model"],
                     "",
-                    r["xcomet_score_mean"],
+                    r["llm_judge_mean"],
                     r["chrf_score_mean"],
                     notes,
                 ]
@@ -239,10 +239,15 @@ async def main() -> None:
         print(
             f"{r['benchmark_id']:<45} {r['model']:<24} tb={r['thinking_budget']:>3} | "
             f"avg={r['avg_seconds_per_segment_mean']:>5.2f}s/seg | "
-            f"chrF={r['chrf_score_mean']} | judge={r['xcomet_score_mean']}"
+            f"chrF={r['chrf_score_mean']} | judge={r['llm_judge_mean']}"
         )
 
+    # COMET-22 / CometKiwi-22 は全実行をまとめて1回のモデル読み込みで採点する
+    # （rescore_neural.py と同じ処理。保存済みJSONの後からの再採点にも使える）。
+    from rescore_neural import main as rescore
+
     save_results(all_results)
+    rescore(EXPERIMENTS_DIR / f"{date.today():%Y%m%d}_model_comparison.json")
 
 
 if __name__ == "__main__":

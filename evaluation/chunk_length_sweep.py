@@ -135,7 +135,7 @@ def save_sweep_results(benchmark_id: str, points: list[dict]) -> None:
         writer = csv.writer(f)
         if write_header:
             writer.writerow(
-                ["date", "model", "domain", "xcomet_score", "chrf_score", "notes"]
+                ["date", "model", "domain", "llm_judge", "chrf_score", "notes"]
             )
         for p in points:
             notes = (

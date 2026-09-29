@@ -158,7 +158,7 @@ def save(results: list[dict], keyword_boost: bool) -> None:
         "date": today.isoformat(),
         "model": GEMINI_MODEL,
         "domain": "technology",
-        "xcomet_score": summary["audio_llm_judge_mean"],
+        "llm_judge": summary["audio_llm_judge_mean"],
         "chrf_score": summary["audio_doc_chrf_mean"],
         "notes": notes,
         "keyword_boost": keyword_boost,
@@ -171,7 +171,7 @@ def save(results: list[dict], keyword_boost: bool) -> None:
     with open(EXPERIMENTS_DIR / "results.csv", "a", encoding="utf-8-sig", newline="") as f:
         csv.writer(f).writerow(
             [record["date"], GEMINI_MODEL, "technology",
-             record["xcomet_score"] if record["xcomet_score"] is not None else "",
+             record["llm_judge"] if record["llm_judge"] is not None else "",
              record["chrf_score"], notes]
         )
     print(f"\n結果を保存: {json_path}")

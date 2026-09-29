@@ -18,8 +18,8 @@
         0.5198,
         0.5198
       ],
-      "xcomet_score_mean": 0.98,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.98,
+      "llm_judge_range": [
         0.98,
         0.98
       ],
@@ -31,7 +31,7 @@
           "elapsed_seconds": 3.53,
           "avg_seconds_per_segment": 3.53,
           "chrf_score": 0.5198,
-          "xcomet_score": 0.98,
+          "llm_judge": 0.98,
           "hyps": [
             "これはアメリカの短期金利で、フェデラルファンド金利と呼ばれています。"
           ]
@@ -43,7 +43,7 @@
           "elapsed_seconds": 1.47,
           "avg_seconds_per_segment": 1.47,
           "chrf_score": 0.5198,
-          "xcomet_score": 0.98,
+          "llm_judge": 0.98,
           "hyps": [
             "これはアメリカの短期金利で、フェデラルファンド金利と呼ばれています。"
           ]
@@ -67,8 +67,8 @@
         0.2868,
         0.5643
       ],
-      "xcomet_score_mean": 0.98,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.98,
+      "llm_judge_range": [
         0.98,
         0.98
       ],
@@ -80,7 +80,7 @@
           "elapsed_seconds": 1.0,
           "avg_seconds_per_segment": 1.0,
           "chrf_score": 0.2868,
-          "xcomet_score": 0.98,
+          "llm_judge": 0.98,
           "hyps": [
             "米国の最も短期の金利、いわゆるフェデラルファンド金利です。"
           ]
@@ -92,7 +92,7 @@
           "elapsed_seconds": 1.19,
           "avg_seconds_per_segment": 1.19,
           "chrf_score": 0.5643,
-          "xcomet_score": 0.98,
+          "llm_judge": 0.98,
           "hyps": [
             "これが米国における最短の金利です。フェデラルファンド金利と呼ばれています。"
           ]
@@ -116,8 +116,8 @@
         0.6119,
         0.6167
       ],
-      "xcomet_score_mean": 0.9946,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9946,
+      "llm_judge_range": [
         0.9891,
         1.0
       ],
@@ -129,7 +129,7 @@
           "elapsed_seconds": 15.26,
           "avg_seconds_per_segment": 1.39,
           "chrf_score": 0.6167,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われている異なるマスキング技術についてです。",
             "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
@@ -151,7 +151,7 @@
           "elapsed_seconds": 14.23,
           "avg_seconds_per_segment": 1.29,
           "chrf_score": 0.6119,
-          "xcomet_score": 0.9891,
+          "llm_judge": 0.9891,
           "hyps": [
             "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われている異なるマスキング技術についてです。",
             "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
@@ -185,8 +185,8 @@
         0.5672,
         0.5731
       ],
-      "xcomet_score_mean": 0.9887,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9887,
+      "llm_judge_range": [
         0.9773,
         1.0
       ],
@@ -198,7 +198,7 @@
           "elapsed_seconds": 10.92,
           "avg_seconds_per_segment": 0.99,
           "chrf_score": 0.5672,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "GPT-3とPaLM 2のアーキテクチャについて、そのアテンションコンポーネントで使用されている異なるマスキング技術に焦点を当てて説明します。",
             "違いを見ていくと、T5のような古いモデルは生成能力があまり高くなく、タスク特異的なファインチューニングが必要でした。",
@@ -220,7 +220,7 @@
           "elapsed_seconds": 9.56,
           "avg_seconds_per_segment": 0.87,
           "chrf_score": 0.5731,
-          "xcomet_score": 0.9773,
+          "llm_judge": 0.9773,
           "hyps": [
             "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使用される異なるマスキング技術に焦点を当てて説明します。",
             "違いを見てみると、T5のような古いモデルは生成能力があまり高くなく、タスク固有のファインチューニングが必要でした。",
@@ -254,8 +254,8 @@
         0.6304,
         0.6304
       ],
-      "xcomet_score_mean": 1.0,
-      "xcomet_score_range": [
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
         1.0,
         1.0
       ],
@@ -267,7 +267,7 @@
           "elapsed_seconds": 1.38,
           "avg_seconds_per_segment": 1.38,
           "chrf_score": 0.6304,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を達成しました。"
           ]
@@ -279,7 +279,7 @@
           "elapsed_seconds": 1.36,
           "avg_seconds_per_segment": 1.36,
           "chrf_score": 0.6304,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を達成しました。"
           ]
@@ -303,8 +303,8 @@
         0.4971,
         0.5204
       ],
-      "xcomet_score_mean": 1.0,
-      "xcomet_score_range": [
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
         1.0,
         1.0
       ],
@@ -316,7 +316,7 @@
           "elapsed_seconds": 0.98,
           "avg_seconds_per_segment": 0.98,
           "chrf_score": 0.4971,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "近年のGPT-3のようなデコーダオンリーモデルは、インコンテキスト学習を通じて高い汎化性能を実現しました。"
           ]
@@ -328,7 +328,7 @@
           "elapsed_seconds": 1.18,
           "avg_seconds_per_segment": 1.18,
           "chrf_score": 0.5204,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "より新しいデコーダオンリーモデルであるGPT-3は、インコンテキスト学習を通じて高い汎化能力を実現しました。"
           ]
@@ -352,8 +352,8 @@
         0.6736,
         0.6736
       ],
-      "xcomet_score_mean": 0.995,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.995,
+      "llm_judge_range": [
         0.99,
         1.0
       ],
@@ -365,7 +365,7 @@
           "elapsed_seconds": 1.36,
           "avg_seconds_per_segment": 1.36,
           "chrf_score": 0.6736,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "その答えがMixture of Experts、略してMOEです。"
           ]
@@ -377,7 +377,7 @@
           "elapsed_seconds": 1.21,
           "avg_seconds_per_segment": 1.21,
           "chrf_score": 0.6736,
-          "xcomet_score": 0.99,
+          "llm_judge": 0.99,
           "hyps": [
             "その答えがMixture of Experts、略してMOEです。"
           ]
@@ -401,8 +401,8 @@
         0.617,
         0.6621
       ],
-      "xcomet_score_mean": 1.0,
-      "xcomet_score_range": [
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
         1.0,
         1.0
       ],
@@ -414,7 +414,7 @@
           "elapsed_seconds": 1.07,
           "avg_seconds_per_segment": 1.07,
           "chrf_score": 0.6621,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "そしてその答えは、Mixture of Experts、またはMOEです。"
           ]
@@ -426,7 +426,7 @@
           "elapsed_seconds": 1.02,
           "avg_seconds_per_segment": 1.02,
           "chrf_score": 0.617,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "その答えは Mixture of Experts または MOE です。"
           ]
@@ -450,8 +450,8 @@
         0.7228,
         0.7228
       ],
-      "xcomet_score_mean": 0.99,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.99,
+      "llm_judge_range": [
         0.98,
         1.0
       ],
@@ -463,7 +463,7 @@
           "elapsed_seconds": 1.42,
           "avg_seconds_per_segment": 1.42,
           "chrf_score": 0.7228,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
           ]
@@ -475,7 +475,7 @@
           "elapsed_seconds": 1.32,
           "avg_seconds_per_segment": 1.32,
           "chrf_score": 0.7228,
-          "xcomet_score": 0.98,
+          "llm_judge": 0.98,
           "hyps": [
             "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
           ]
@@ -499,8 +499,8 @@
         0.6474,
         0.7228
       ],
-      "xcomet_score_mean": 0.985,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.985,
+      "llm_judge_range": [
         0.98,
         0.99
       ],
@@ -512,7 +512,7 @@
           "elapsed_seconds": 1.32,
           "avg_seconds_per_segment": 1.32,
           "chrf_score": 0.6474,
-          "xcomet_score": 0.99,
+          "llm_judge": 0.99,
           "hyps": [
             "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
           ]
@@ -524,7 +524,7 @@
           "elapsed_seconds": 1.14,
           "avg_seconds_per_segment": 1.14,
           "chrf_score": 0.7228,
-          "xcomet_score": 0.98,
+          "llm_judge": 0.98,
           "hyps": [
             "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
           ]
@@ -548,8 +548,8 @@
         0.6576,
         0.6638
       ],
-      "xcomet_score_mean": 0.9527,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9527,
+      "llm_judge_range": [
         0.9444,
         0.9611
       ],
@@ -561,7 +561,7 @@
           "elapsed_seconds": 12.06,
           "avg_seconds_per_segment": 1.34,
           "chrf_score": 0.6576,
-          "xcomet_score": 0.9611,
+          "llm_judge": 0.9611,
           "hyps": [
             "新しい特定のドメインを優先するためです。",
             "モデルが新しいドメインにうまく適応しつつ、元の貴重な汎用能力を保持するために、継続学習技術が必要です。",
@@ -581,7 +581,7 @@
           "elapsed_seconds": 11.45,
           "avg_seconds_per_segment": 1.27,
           "chrf_score": 0.6638,
-          "xcomet_score": 0.9444,
+          "llm_judge": 0.9444,
           "hyps": [
             "新しい特定のドメインを優先するためです。",
             "モデルが元の貴重な汎用機能を保持しつつ、新しいドメインにうまく適応できるように、継続学習の技術が必要です。",
@@ -613,8 +613,8 @@
         0.6155,
         0.6379
       ],
-      "xcomet_score_mean": 0.9761,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9761,
+      "llm_judge_range": [
         0.9689,
         0.9833
       ],
@@ -626,7 +626,7 @@
           "elapsed_seconds": 8.01,
           "avg_seconds_per_segment": 0.89,
           "chrf_score": 0.6379,
-          "xcomet_score": 0.9833,
+          "llm_judge": 0.9833,
           "hyps": [
             "Baseは新しい特定のドメインを優先するためです。",
             "継続学習技術は、モデルが元の価値ある汎用的な能力を維持しつつ、新しいドメインに確実に適応するために必要です。",
@@ -646,7 +646,7 @@
           "elapsed_seconds": 8.12,
           "avg_seconds_per_segment": 0.9,
           "chrf_score": 0.6155,
-          "xcomet_score": 0.9689,
+          "llm_judge": 0.9689,
           "hyps": [
             "ベースモデルは、新しい特異的ドメインを優先するためです。",
             "継続学習のテクニックは、モデルが新しいドメインに適応しつつ、元の貴重な汎用能力を保持するために不可欠です。",
@@ -678,8 +678,8 @@
         0.696,
         0.7092
       ],
-      "xcomet_score_mean": 0.9889,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9889,
+      "llm_judge_range": [
         0.9778,
         1.0
       ],
@@ -691,7 +691,7 @@
           "elapsed_seconds": 11.33,
           "avg_seconds_per_segment": 1.26,
           "chrf_score": 0.7092,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "ムーアの法則とべき乗則で歴史的背景を設定することで",
             "次に、BERTやT5のようなGoogleの大規模言語モデルを見てから、今日の講演の核心である、Mixture of Experts、略してMOEによる大規模言語モデルのスケーリングについて掘り下げていきます。",
@@ -711,7 +711,7 @@
           "elapsed_seconds": 11.57,
           "avg_seconds_per_segment": 1.29,
           "chrf_score": 0.696,
-          "xcomet_score": 0.9778,
+          "llm_judge": 0.9778,
           "hyps": [
             "ムーアの法則とべき乗則で歴史的背景を設定することで",
             "次に、BERTやT5のようなGoogleの大規模言語モデルを見てから、今日の講演の核心であるMixture of Experts、略してMOEによる大規模言語モデルのスケーリングについて掘り下げていきます。",
@@ -743,8 +743,8 @@
         0.6152,
         0.6715
       ],
-      "xcomet_score_mean": 0.9322,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9322,
+      "llm_judge_range": [
         0.92,
         0.9444
       ],
@@ -756,7 +756,7 @@
           "elapsed_seconds": 8.01,
           "avg_seconds_per_segment": 0.89,
           "chrf_score": 0.6715,
-          "xcomet_score": 0.92,
+          "llm_judge": 0.92,
           "hyps": [
             "ムーアの法則とべき乗則によって歴史的背景を設定することで、",
             "続いて、本日の本題に入る前に、BERTやT5といったGoogleの大規模言語モデルについて見ていきます。本題では、MOE（Mixture of Experts）を用いた大規模言語モデルのスケーリングについて解説します。",
@@ -776,7 +776,7 @@
           "elapsed_seconds": 7.91,
           "avg_seconds_per_segment": 0.88,
           "chrf_score": 0.6152,
-          "xcomet_score": 0.9444,
+          "llm_judge": 0.9444,
           "hyps": [
             "ムーアの法則とべき乗則の歴史的コンテキストを設定することで、",
             "続いてGoogleの大規模言語モデルであるBERTやT5などを見たあと、本日の本題であるMixture of Experts（MOE）による大規模言語モデルのスケーリングについて解説します。",
@@ -808,8 +808,8 @@
         0.5527,
         0.5639
       ],
-      "xcomet_score_mean": 0.9964,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9964,
+      "llm_judge_range": [
         0.9955,
         0.9973
       ],
@@ -821,7 +821,7 @@
           "elapsed_seconds": 14.57,
           "avg_seconds_per_segment": 1.32,
           "chrf_score": 0.5639,
-          "xcomet_score": 0.9955,
+          "llm_judge": 0.9955,
           "hyps": [
             "GPT-3とPaLM 2のアーキテクチャ、そしてそれらのアテンションコンポーネントで使われている異なるマスキング技術についてです。",
             "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
@@ -843,7 +843,7 @@
           "elapsed_seconds": 14.74,
           "avg_seconds_per_segment": 1.34,
           "chrf_score": 0.5527,
-          "xcomet_score": 0.9973,
+          "llm_judge": 0.9973,
           "hyps": [
             "GPT-3とPaLM 2のアーキテクチャ、そしてそれらのアテンションコンポーネントで使われている異なるマスキング技術についてです。",
             "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
@@ -877,8 +877,8 @@
         0.5328,
         0.5406
       ],
-      "xcomet_score_mean": 1.0,
-      "xcomet_score_range": [
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
         1.0,
         1.0
       ],
@@ -890,7 +890,7 @@
           "elapsed_seconds": 10.36,
           "avg_seconds_per_segment": 0.94,
           "chrf_score": 0.5406,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使用される異なるマスキング技術に焦点を当てて説明します。",
             "違いを見ると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
@@ -912,7 +912,7 @@
           "elapsed_seconds": 10.14,
           "avg_seconds_per_segment": 0.92,
           "chrf_score": 0.5328,
-          "xcomet_score": 1.0,
+          "llm_judge": 1.0,
           "hyps": [
             "GPT-3とPaLM 2のアーキテクチャについて、アテンションコンポーネントで使用されている異なるマスキング技術に焦点を当てて説明します。",
             "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
@@ -946,8 +946,8 @@
         0.6179,
         0.6295
       ],
-      "xcomet_score_mean": 0.9816,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9816,
+      "llm_judge_range": [
         0.9811,
         0.9822
       ],
@@ -959,7 +959,7 @@
           "elapsed_seconds": 12.8,
           "avg_seconds_per_segment": 1.42,
           "chrf_score": 0.6295,
-          "xcomet_score": 0.9811,
+          "llm_judge": 0.9811,
           "hyps": [
             "これは忘却を防ぐだけでなく、あるアダプターで学習されたプライベートデータが公開モジュールに漏洩しないようにします。",
             "このようにして、コーディングタスクを処理したり、別のモジュールをチャットボットの会話エージェントにしたりと、適応型モジュールを継続的に学習させることができます。あるいは、モジュールをチェスのエキスパートにすることも可能です。",
@@ -979,7 +979,7 @@
           "elapsed_seconds": 13.64,
           "avg_seconds_per_segment": 1.52,
           "chrf_score": 0.6179,
-          "xcomet_score": 0.9822,
+          "llm_judge": 0.9822,
           "hyps": [
             "これは忘却を防ぐだけでなく、あるアダプターで学習されたプライベートデータが公開モジュールに漏洩しないようにします。",
             "このようにして、コーディングタスクを処理するアダプテッドモジュールを継続的にトレーニングしたり、別のモジュールをチャットボットの会話エージェントなどに変えたりできます。あるいは、モジュールをチェスのエキスパートに変えることさえ可能です。",
@@ -1011,8 +1011,8 @@
         0.5616,
         0.5968
       ],
-      "xcomet_score_mean": 0.9861,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9861,
+      "llm_judge_range": [
         0.9833,
         0.9889
       ],
@@ -1024,7 +1024,7 @@
           "elapsed_seconds": 8.74,
           "avg_seconds_per_segment": 0.97,
           "chrf_score": 0.5968,
-          "xcomet_score": 0.9833,
+          "llm_judge": 0.9833,
           "hyps": [
             "これは忘却を防ぐだけでなく、1つのアダプターで学習したプライベートデータが公開モジュールに漏洩しないことも保証します。",
             "このようにして、コーディングタスクを処理するように適応モジュールを継続的にトレーニングしたり、別のモジュールをチャットボットの会話エージェントなどに変えたりすることができます。あるいは、モジュールをチェスの専門家のように変えることさえ可能です。",
@@ -1044,7 +1044,7 @@
           "elapsed_seconds": 8.62,
           "avg_seconds_per_segment": 0.96,
           "chrf_score": 0.5616,
-          "xcomet_score": 0.9889,
+          "llm_judge": 0.9889,
           "hyps": [
             "これは forgetting を防ぐだけでなく、1つのアダプターで訓練されたプライベートデータが公開モジュールに漏洩しないことも保証します。",
             "このようにして、適応させたモジュールを継続的に訓練し、コーディングタスクを処理させたり、別のモジュールをチャットボットのエージェントなどに変換したりすることができます。あるいは、モジュールをチェスの専門家のようにすることも可能です。",
@@ -1076,8 +1076,8 @@
         0.6757,
         0.6757
       ],
-      "xcomet_score_mean": 0.9794,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9794,
+      "llm_judge_range": [
         0.9644,
         0.9944
       ],
@@ -1089,7 +1089,7 @@
           "elapsed_seconds": 12.74,
           "avg_seconds_per_segment": 1.42,
           "chrf_score": 0.6757,
-          "xcomet_score": 0.9944,
+          "llm_judge": 0.9944,
           "hyps": [
             "フローズンバックボーンを持つMOAをターゲットデータで学習させた場合、ベースラインのMOEを混合データで学習させた場合と同等か、それ以上のFLOPS効率が得られることがわかりました。",
             "そして30億パラメータ規模では、MOAは再び高い効率性を示すことが証明されました。",
@@ -1109,7 +1109,7 @@
           "elapsed_seconds": 11.67,
           "avg_seconds_per_segment": 1.3,
           "chrf_score": 0.6757,
-          "xcomet_score": 0.9644,
+          "llm_judge": 0.9644,
           "hyps": [
             "フローズンバックボーンを持つMOAをターゲットデータで学習させた場合、ベースラインのMOEを混合データで学習させた場合と同等か、それ以上のFLOPS効率が得られることがわかりました。",
             "そして30億パラメータ規模では、MOAは再び高い効率性を示すことが証明されました。",
@@ -1141,8 +1141,8 @@
         0.6524,
         0.6593
       ],
-      "xcomet_score_mean": 0.9894,
-      "xcomet_score_range": [
+      "llm_judge_mean": 0.9894,
+      "llm_judge_range": [
         0.9844,
         0.9944
       ],
@@ -1154,7 +1154,7 @@
           "elapsed_seconds": 8.13,
           "avg_seconds_per_segment": 0.9,
           "chrf_score": 0.6593,
-          "xcomet_score": 0.9944,
+          "llm_judge": 0.9944,
           "hyps": [
             "MOAのバックボーンを固定し、ターゲットデータを所有してトレーニングする方法は、データの混合でトレーニングされたベースラインのMOEと同等か、それ以上にFLOPS効率が高いことが分かりました。",
             "そして、30億パラメータのスケールでも、MOAは再び非常に効率的であることが証明されました。",
@@ -1174,7 +1174,7 @@
           "elapsed_seconds": 8.86,
           "avg_seconds_per_segment": 0.98,
           "chrf_score": 0.6524,
-          "xcomet_score": 0.9844,
+          "llm_judge": 0.9844,
           "hyps": [
             "バックボーンを固定したMOAをターゲットデータで学習させると、混合データで学習させたベースラインのMOEと同等か、それ以上にFLOPS効率が良いことがわかりました。",
             "そして30億パラメータのスケールでも、MOAは非常に効率的であることが改めて証明されました。",

@@ -3,7 +3,7 @@
   "method": "paired bootstrap resampling (Koehn 2004)",
   "model_a": "gemini-2.5-flash",
   "model_b": "gemini-3.5-flash-lite",
-  "metric": "xcomet_score_mean",
+  "metric": "llm_judge_mean",
   "benchmark_ids": [
     "economics_federal_funds_rate",
     "technology_fragment_2d07bb74_v2_clip1_scaling_intro",

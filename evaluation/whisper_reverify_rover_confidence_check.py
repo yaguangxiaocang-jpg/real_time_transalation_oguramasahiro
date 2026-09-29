@@ -250,7 +250,7 @@ def save_results(rows: list[dict]) -> None:
     with open(csv_path, "a", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         if write_header:
-            writer.writerow(["date", "model", "domain", "xcomet_score", "chrf_score", "notes"])
+            writer.writerow(["date", "model", "domain", "llm_judge", "chrf_score", "notes"])
         for r in fired_rows:
             notes = (
                 f"[whisper_reverify_rover_confidence_check][{r['clip_id']}] "

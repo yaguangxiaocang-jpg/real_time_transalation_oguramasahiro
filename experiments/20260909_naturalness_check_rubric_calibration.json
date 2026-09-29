@@ -2,7 +2,7 @@
   "date": "2026-09-09",
   "model": "gemini-2.5-flash",
   "domain": "technology_2d07bb74_v2_clip1_raw_unmerged",
-  "xcomet_score": null,
+  "llm_judge": null,
   "chrf_score": null,
   "notes": "report.txtで指摘されていた『naturalness_detectorのLLM自己採点が0.80〜0.90に偏り粒度が粗い』問題への対応。_SYSTEM_PROMPTに0.0-0.15/0.2-0.4/0.5-0.7/0.8-1.0の4段階スコア帯を具体例つきルーブリックとして追加した。同一データ(experiments/segments/20260824_2d07bb74_v2_clip1_raw_unmerged.json、26発話)で新設のevaluation/naturalness_score_distribution.pyを使いbefore/after比較: before(旧prompt)は発火14件が平均0.871・標準偏差0.059・範囲0.70-0.90という完全な二極化(0.1-0.7の間が空白)。after(新prompt)は発火16件・平均0.838・標準偏差0.117で、0.6付近に弱い証拠のケース、0.8-0.9に強い証拠(dangling_clause等)のケースという分離が生まれた。ただし0.6-0.7帯には『文法的には完結している文』への新規の誤発火が2件確認されたため(前回from report.txtの『既に句点で終わった完結文の過剰結合』問題の再発リスク)、config.pyのunnaturalness_threshold既定値を0.6→0.7に引き上げ、この誤発火帯を除外した(evaluation/naturalness_check_ab_test.pyのUNNATURALNESS_THRESHOLDも同期)。閾値0.7で既存のnaturalness_check_ab_test.pyを再実行した結果、発火14件は全て0.85以上・reason!=completeの真の継続シグナルのみとなり、以前distribution測定で見えた誤発火2件は実際のパイプライン経路(reason gate込み)では発生しなかった。セグメント数13(OFF)->11(ON)、LLM-as-judge品質スコアは0.9738(OFF)->1.0(ON)で、report.txtが指摘していた『OFF/ONとも0.98以上で天井効果』よりは明確な差が観測できた。テストスイート60/60パス。結論: スコアの粒度自体は改善したが、まだunnaturalness_check_enabledのデフォルトONへの切り替えは1データセットのみの検証であり時期尚早。次の一手は別ベンチマーク(他の生発話データ)での再現性確認。"
 }

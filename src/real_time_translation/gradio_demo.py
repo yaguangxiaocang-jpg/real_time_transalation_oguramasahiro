@@ -778,7 +778,7 @@ def _video_burn_subtitles(video_path: str, srt_path: str, output_path: str) -> N
 
 
 async def _compute_scores(translated: list[dict], google_key: str) -> tuple[float | None, float | None]:
-    """xCOMET（LLM-as-judge）と chrF（逆翻訳）スコアを計算する。"""
+    """LLM判定（LLM-as-judge）と chrF（逆翻訳）スコアを計算する。"""
     import re
     from google import genai
 
@@ -787,7 +787,7 @@ async def _compute_scores(translated: list[dict], google_key: str) -> tuple[floa
     srcs = [s["original"] for s in sample]
     mts = [s["japanese"] for s in sample]
 
-    # xcomet_score: LLM-as-judge
+    # llm_judge: LLM-as-judge
     judge_prompt = (
         "あなたはプロの翻訳評価者です。以下の英日翻訳ペアをそれぞれ評価し、"
         "翻訳品質を0.00〜1.00のスコアで採点してください。"
@@ -795,7 +795,7 @@ async def _compute_scores(translated: list[dict], google_key: str) -> tuple[floa
         + "\n".join(f"{i+1}. EN: {s}\n   JA: {m}" for i, (s, m) in enumerate(zip(srcs, mts)))
     )
     judge_resp = await _gemini_generate_with_retry(client, "gemini-2.5-flash", judge_prompt)
-    xcomet_score: float | None = None
+    llm_judge: float | None = None
     scores = []
     for line in (judge_resp.text or "").split("\n"):
         m = re.match(r"\d+\.\s*([\d.]+)", line.strip())
@@ -805,7 +805,7 @@ async def _compute_scores(translated: list[dict], google_key: str) -> tuple[floa
             except ValueError:
                 pass
     if scores:
-        xcomet_score = round(sum(scores) / len(scores), 4)
+        llm_judge = round(sum(scores) / len(scores), 4)
 
     # chrf_score: 逆翻訳 + sacrebleu
     back_prompt = (
@@ -830,7 +830,7 @@ async def _compute_scores(translated: list[dict], google_key: str) -> tuple[floa
         raw = chrf.corpus_score(back_texts, [srcs]).score  # 0〜100
         chrf_score = round(raw / 100, 4)
 
-    return xcomet_score, chrf_score
+    return llm_judge, chrf_score
 
 
 async def process_video(
@@ -973,13 +973,13 @@ async def process_video(
         if evaluate_scores:
             gr_progress(0.95, desc="スコア評価中...")
             yield step("📊 翻訳スコアを評価中（LLM-as-judge + 逆翻訳 chrF）..."), srt_path, output_path, ""
-            xcomet, chrf = await _compute_scores(translated, google_key)
-            xcomet_str = f"{xcomet:.4f}" if xcomet is not None else "計算失敗"
+            judge, chrf = await _compute_scores(translated, google_key)
+            judge_str = f"{judge:.4f}" if judge is not None else "計算失敗"
             chrf_str = f"{chrf:.4f}" if chrf is not None else "計算失敗"
             score_text = (
-                f"xCOMET（LLM判定）: {xcomet_str}\n"
-                f"chrF（逆翻訳）:     {chrf_str}\n\n"
-                f"xCOMET は意味的な正確さ（0〜1、高いほど良い）\n"
+                f"LLM判定:        {judge_str}\n"
+                f"chrF（逆翻訳）: {chrf_str}\n\n"
+                f"LLM判定は Gemini が採点した意味的な正確さ（0〜1、高いほど良い）\n"
                 f"chrF は文字n-gram一致率（英日間では0.4〜0.5が目安）"
             )
             gr_progress(0.99, desc="スコア評価完了")
@@ -1076,7 +1076,7 @@ def build_demo() -> gr.Blocks:
                 )
                 gr.Markdown("📊 **翻訳スコアを評価する場合はチェック**（Gemini LLM-as-judge + 逆翻訳 chrF。追加で1〜2分かかります）")
                 evaluate_scores_checkbox = gr.Checkbox(
-                    label="スコアを評価する（xCOMET + chrF）",
+                    label="スコアを評価する（LLM判定 + chrF）",
                     value=False,
                 )
                 video_run_btn = gr.Button("🎬 字幕を生成する", variant="primary")

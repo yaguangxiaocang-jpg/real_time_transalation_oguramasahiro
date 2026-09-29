@@ -2,7 +2,7 @@
   "date": "2026-09-24",
   "model": "gemini-2.5-flash",
   "domain": "technology",
-  "xcomet_score": 0.9297,
+  "llm_judge": 0.9297,
   "chrf_score": 0.5983,
   "notes": "[real_audio_e2e_check] clips=['clips/2d07bb74_clip1.mp4', 'clips/2d07bb74_clip2.mp4', 'clips/2d07bb74_clip3.mp4', 'clips/2d07bb74_clip4.mp4', 'clips/2d07bb74_clip5.mp4'] 実音声→Deepgram(nova-2-general,キーワードブーストあり)→結合→gemini-2.5-flash(辞書あり)。doc_chrF 実音声=0.5983 / 凍結テキスト=0.6435 (差=-0.0452)。reference_jaは人手レビュー未了(draft)。",
   "summary": {

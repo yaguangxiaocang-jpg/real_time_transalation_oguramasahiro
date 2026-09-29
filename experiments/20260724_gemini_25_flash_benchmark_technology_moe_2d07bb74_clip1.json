@@ -3,7 +3,7 @@
   "model": "gemini-2.5-flash",
   "domain": "technology",
   "benchmark_id": "technology_moe_2d07bb74_clip1",
-  "xcomet_score": 0.9822,
+  "llm_judge": 0.9822,
   "chrf_score": 0.6574,
   "notes": "[benchmark=technology_moe_2d07bb74_clip1] 固定データセット（9セグメント）に対するreference-based chrF評価 + LLM-as-judge xCOMETスコア。thinking_budget=1024, context_window_size=5。",
   "segments": [

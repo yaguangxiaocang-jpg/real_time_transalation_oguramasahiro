@@ -28,8 +28,10 @@
   "date": "2026-03-05",
   "model": "gemini-flash-2.5",
   "domain": "particle_physics",
-  "xcomet_score": 0.87,
+  "llm_judge": 0.97,
   "chrf_score": 0.71,
+  "comet_score": 0.86,
+  "cometkiwi_score": 0.82,
   "notes": "CKM matrixの訳が不安定。旧モデルのほうが安定していた"
 }
 ```
@@ -41,24 +43,34 @@
 | `date` | 実験日（YYYY-MM-DD） |
 | `model` | 使用した翻訳モデル名 |
 | `domain` | 翻訳ドメイン（例: particle_physics, general） |
-| `xcomet_score` | 自動評価スコア（0〜1、高いほど良い）※任意 |
-| `chrf_score` | 自動評価スコア（0〜1、高いほど良い）※任意 |
+| `llm_judge` | Gemini による LLM-as-judge スコア（0〜1）※任意。0.98〜1.0 に張り付きやすく差の検出力が低い |
+| `chrf_score` | 文字 n-gram 一致の chrF（0〜1、高いほど良い）※任意 |
+| `comet_score` | COMET-22（wmt22-comet-da、参照訳あり、0〜1）※任意 |
+| `cometkiwi_score` | CometKiwi-22（wmt22-cometkiwi-da、参照訳なし QE、0〜1）※任意 |
 | `notes` | 観察メモ・問題点・改善案など |
+
+> **注意（2026-09-29 改名）:** `llm_judge` は以前 `xcomet_score` という名前だったが、
+> 中身は最初から本物の xCOMET ではなく Gemini の LLM 判定だった。過去の JSON・CSV も
+> 一括で `llm_judge` に改名済み（notes 本文中の「xCOMET」表記は当時の記録のまま）。
+> 本物の学習済み指標は `evaluation/neural_metrics.py`（COMET-22 / CometKiwi-22）で計算する。
+> `unbabel-comet` は Python 3.13 に入らないため、Python 3.12 の使い捨て uv 環境で
+> subprocess 実行している。CometKiwi は HuggingFace の gated モデルなので、
+> ライセンス同意と `HF_TOKEN` 設定が済むまでは空欄になる。
 
 ---
 
 ## results.csv フォーマット
 
 ```csv
-date,model,domain,xcomet_score,chrf_score,notes
-2026-03-05,gemini-flash-2.5,particle_physics,0.87,0.71,CKM matrixの訳が不安定
+date,model,domain,llm_judge,chrf_score,notes,comet_score,cometkiwi_score
+2026-03-05,gemini-flash-2.5,particle_physics,0.97,0.71,CKM matrixの訳が不安定,0.86,0.82
 ```
 
 ---
 
 ## 自動評価を使わない場合
 
-`xcomet_score` と `chrf_score` は省略可。代わりに `notes` に記述式の評価を詳しく記録すること。
+`llm_judge`・`chrf_score`・`comet_score`・`cometkiwi_score` は省略可（`comet_score` と `cometkiwi_score` は後方互換のため notes の後ろの列。6列だけの行も有効）。代わりに `notes` に記述式の評価を詳しく記録すること。
 
 例：
 ```json
@@ -66,7 +78,7 @@ date,model,domain,xcomet_score,chrf_score,notes
   "date": "2026-03-05",
   "model": "gemini-flash-2.5",
   "domain": "particle_physics",
-  "xcomet_score": null,
+  "llm_judge": null,
   "chrf_score": null,
   "notes": "専門用語の一貫性が高い。ただし受動態の処理が不自然な箇所あり。前モデルより全体的に自然。"
 }

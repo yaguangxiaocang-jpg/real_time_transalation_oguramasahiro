@@ -207,7 +207,7 @@ def save_results(all_candidates, sweep_results, segment_count_by_clip) -> None:
     with open(csv_path, "a", encoding="utf-8-sig", newline="") as f:
         writer = csv.writer(f)
         if write_header:
-            writer.writerow(["date", "model", "domain", "xcomet_score", "chrf_score", "notes"])
+            writer.writerow(["date", "model", "domain", "llm_judge", "chrf_score", "notes"])
         for r in sweep_results:
             fired_desc = "; ".join(
                 f"{c['original_span']}->{c['candidate']}(conf={c['min_span_confidence']})"

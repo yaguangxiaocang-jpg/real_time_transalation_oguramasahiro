@@ -232,7 +232,7 @@ def save_results(results: list[dict]) -> None:
         writer = csv.writer(f)
         if write_header:
             writer.writerow(
-                ["date", "model", "domain", "xcomet_score", "chrf_score", "notes"]
+                ["date", "model", "domain", "llm_judge", "chrf_score", "notes"]
             )
         for r in results:
             notes = (

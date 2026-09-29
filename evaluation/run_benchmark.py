@@ -13,6 +13,8 @@ utterance結合パラメータなど）の効果を、他の変数（今回は�
   （translation/llm_translator.py）をそのまま使う。
 - 評価は逆翻訳ではなく、ベンチマークに同梱された人手レビュー済み正解訳
   （reference_ja）に対する chrF（reference-based）で行う。
+- 2026-09-29: 学習済み指標 COMET-22（参照訳あり）と CometKiwi-22（参照訳なしQE）を
+  追加（`neural_metrics.py`）。`--no-neural-metrics` で省略できる。
 
 使い方:
     python evaluation/run_benchmark.py evaluation/benchmarks/economics_federal_funds_rate.json
@@ -179,7 +181,7 @@ async def score_with_llm_judge(srcs: list[str], hyps: list[str]) -> float | None
     if not scores:
         return None
     score = round(sum(scores) / len(scores), 4)
-    print(f"  xcomet_score (LLM judge): {score}")
+    print(f"  llm_judge (LLM judge): {score}")
     return score
 
 
@@ -188,16 +190,22 @@ def save_result(
     domain: str,
     hyps: list[str],
     refs: list[str],
-    xcomet_score: float | None,
+    llm_judge: float | None,
     chrf_score: float,
     thinking_budget: int,
     context_window_size: int,
     dictionary_path: Path | None = None,
     model: str | None = None,
+    neural: dict | None = None,
 ) -> None:
     EXPERIMENTS_DIR.mkdir(exist_ok=True)
 
     used_model = model or GEMINI_MODEL
+    if neural is None:
+        neural = {
+            "comet_score": None, "cometkiwi_score": None,
+            "comet_segments": None, "cometkiwi_segments": None, "errors": {},
+        }
     today = date.today().strftime("%Y%m%d")
     model_slug = used_model.replace("-", "_").replace(".", "")
     json_path = (
@@ -209,7 +217,7 @@ def save_result(
     )
     notes = (
         f"[benchmark={benchmark_id}] 固定データセット（{len(refs)}セグメント）に対する"
-        f"reference-based chrF評価 + LLM-as-judge xCOMETスコア。"
+        f"reference-based chrF・COMET-22・CometKiwi-22 + LLM-as-judge。"
         f"thinking_budget={thinking_budget}, "
         f"context_window_size={context_window_size}, "
         f"{dict_note}。"
@@ -220,13 +228,26 @@ def save_result(
         "model": used_model,
         "domain": domain,
         "benchmark_id": benchmark_id,
-        "xcomet_score": xcomet_score,
+        "llm_judge": llm_judge,
         "chrf_score": chrf_score,
+        "comet_score": neural["comet_score"],
+        "cometkiwi_score": neural["cometkiwi_score"],
         "notes": notes,
         "segments": [
-            {"reference_ja": r, "mt_ja": h} for r, h in zip(refs, hyps)
+            {
+                "reference_ja": r,
+                "mt_ja": h,
+                "comet": None if neural["comet_segments"] is None else neural["comet_segments"][i],
+                "cometkiwi": (
+                    None if neural["cometkiwi_segments"] is None
+                    else neural["cometkiwi_segments"][i]
+                ),
+            }
+            for i, (r, h) in enumerate(zip(refs, hyps))
         ],
     }
+    if neural["errors"]:
+        record["neural_metric_errors"] = neural["errors"]
 
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(record, f, ensure_ascii=False, indent=2)
@@ -238,16 +259,19 @@ def save_result(
         writer = csv.writer(f)
         if write_header:
             writer.writerow(
-                ["date", "model", "domain", "xcomet_score", "chrf_score", "notes"]
+                ["date", "model", "domain", "llm_judge", "chrf_score", "notes",
+                 "comet_score", "cometkiwi_score"]
             )
         writer.writerow(
             [
                 record["date"],
                 record["model"],
                 record["domain"],
-                "" if xcomet_score is None else xcomet_score,
+                "" if llm_judge is None else llm_judge,
                 chrf_score,
                 notes,
+                "" if record["comet_score"] is None else record["comet_score"],
+                "" if record["cometkiwi_score"] is None else record["cometkiwi_score"],
             ]
         )
     print(f"results.csv を更新: {csv_path}")
@@ -259,6 +283,7 @@ async def main(
     context_window_size: int,
     dictionary_path: Path | None = None,
     model: str | None = None,
+    neural_metrics: bool = True,
 ) -> None:
     benchmark = load_benchmark(benchmark_path)
     print(
@@ -297,19 +322,26 @@ async def main(
         print(f"  MT  : {hyp}")
 
     srcs = [seg["transcript"] for seg in merged]
-    xcomet_score = await score_with_llm_judge(srcs, hyps)
+    llm_judge = await score_with_llm_judge(srcs, hyps)
+    neural = None
+    if neural_metrics:
+        from neural_metrics import score_neural
+
+        print("COMET-22 / CometKiwi-22 を計算中（初回はモデルのダウンロードで数分かかる）...")
+        neural = score_neural(srcs, hyps, refs)
 
     save_result(
         benchmark["benchmark_id"],
         benchmark["domain"],
         hyps,
         refs,
-        xcomet_score,
+        llm_judge,
         chrf_score,
         thinking_budget,
         context_window_size,
         dictionary_path=dictionary_path,
         model=model,
+        neural=neural,
     )
 
 
@@ -348,6 +380,11 @@ if __name__ == "__main__":
         default=None,
         help="使用するGeminiモデル名（既定: gemini-2.5-flash）。モデル比較用。",
     )
+    parser.add_argument(
+        "--no-neural-metrics",
+        action="store_true",
+        help="COMET-22 / CometKiwi-22 の計算を省略する（CPUで1ベンチマーク数十秒かかるため）",
+    )
     args = parser.parse_args()
 
     if not args.benchmark.exists():
@@ -364,5 +401,6 @@ if __name__ == "__main__":
             args.context_window_size,
             dictionary_path=args.dictionary_path,
             model=args.model,
+            neural_metrics=not args.no_neural_metrics,
         )
     )
