@@ -34,7 +34,9 @@ class Config:
     # 専門用語誤認識調査を受けて追加）。dictionary_pathの「そのまま使う」用語
     # （source_term == target_term）を自動的にDeepgramへ渡す
     # （`translation.dictionary.TermDictionary.as_asr_keywords()`）。
-    deepgram_keyword_boost_enabled: bool = True
+    # 2026-09-24: 実音声検証で無関係語への幻覚置換が多発し翻訳精度が下がった
+    # ため既定をOFFに変更（evaluation/real_audio_e2e_check.py）。
+    deepgram_keyword_boost_enabled: bool = False
     deepgram_keyword_boost_value: float = 2.0
     zoom_webhook_path: str = "/webhook"
 
@@ -188,7 +190,7 @@ class Config:
             ),
             deepgram_vad_events=_get_optional_bool_env("DEEPGRAM_VAD_EVENTS"),
             deepgram_keyword_boost_enabled=_get_bool_env(
-                "DEEPGRAM_KEYWORD_BOOST_ENABLED", True
+                "DEEPGRAM_KEYWORD_BOOST_ENABLED", False
             ),
             deepgram_keyword_boost_value=float(
                 os.getenv("DEEPGRAM_KEYWORD_BOOST_VALUE", "2.0")

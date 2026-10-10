@@ -59,8 +59,11 @@ DICTIONARY_PATH = os.environ.get("DICTIONARY_PATH") or None
 # （マイク側）には配線済みだったが、動画字幕パス（transcribe_audio()）には
 # 配線されていなかったため追加（2026-09-08）。辞書の「そのまま使う」用語
 # （source_term == target_term）を自動的にDeepgramへ渡す。
+# 2026-09-24: 実音声検証（evaluation/real_audio_e2e_check.py）で、辞書全件を
+# 無差別にブーストすると一般語が無関係な用語に置換される幻覚が多発し
+# 翻訳精度が下がったため既定をOFFに変更。有効化は環境変数で明示すること。
 DEEPGRAM_KEYWORD_BOOST_ENABLED = (
-    os.environ.get("DEEPGRAM_KEYWORD_BOOST_ENABLED", "true").lower() == "true"
+    os.environ.get("DEEPGRAM_KEYWORD_BOOST_ENABLED", "false").lower() == "true"
 )
 DEEPGRAM_KEYWORD_BOOST_VALUE = float(os.environ.get("DEEPGRAM_KEYWORD_BOOST_VALUE", "2.0"))
 # utterance分断検出のLLM分類器（失敗時は正規表現へ自動フォールバック）

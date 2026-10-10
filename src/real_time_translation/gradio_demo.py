@@ -63,8 +63,9 @@ VIDEO_COMPLETENESS_RATIO_THRESHOLD = float(
 # Deepgramキーワードブースト（ASR誤認識自体を減らす根本対策）。pipeline.py
 # （マイク側）には配線済みだったが、動画字幕タブ（_video_transcribe()）には
 # 配線されていなかったため追加（2026-09-08、add_subtitles.pyと同じ修正）。
+# 2026-09-24: add_subtitles.pyと同じ理由で既定をOFFに変更。
 VIDEO_DEEPGRAM_KEYWORD_BOOST_ENABLED = (
-    os.environ.get("DEEPGRAM_KEYWORD_BOOST_ENABLED", "true").lower() == "true"
+    os.environ.get("DEEPGRAM_KEYWORD_BOOST_ENABLED", "false").lower() == "true"
 )
 VIDEO_DEEPGRAM_KEYWORD_BOOST_VALUE = float(
     os.environ.get("DEEPGRAM_KEYWORD_BOOST_VALUE", "2.0")
