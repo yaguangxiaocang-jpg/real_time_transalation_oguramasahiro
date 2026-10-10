@@ -9,6 +9,7 @@ import os
 import random
 import re
 import subprocess
+import sys
 import tempfile
 from dataclasses import dataclass, field, replace
 from datetime import datetime
@@ -162,6 +163,15 @@ def _usage_line(pipeline: TranslationPipeline) -> str:
     return line
 
 
+# launcher.py は pythonw.exe（コンソールなし）で動くため、ffmpeg などのコンソール
+# プログラムを起動すると Windows が新しいコンソールウィンドウを開く。それを閉じると
+# ffmpeg に CTRL_CLOSE_EVENT が届き "received signal 15" で中断される。
+# ウィンドウを作らず、stdin も切り離して起動する。
+_SUBPROCESS_KW: dict[str, Any] = {"stdin": subprocess.DEVNULL}
+if sys.platform == "win32":
+    _SUBPROCESS_KW["creationflags"] = subprocess.CREATE_NO_WINDOW
+
+
 def _convert_file_to_pcm(file_path: str) -> bytes:
     """Convert any audio file to 16kHz mono PCM using ffmpeg."""
     import os
@@ -178,7 +188,7 @@ def _convert_file_to_pcm(file_path: str) -> bytes:
         "-acodec", "pcm_s16le",
         "pipe:1",
     ]
-    result = subprocess.run(cmd, capture_output=True, check=False)
+    result = subprocess.run(cmd, capture_output=True, check=False, **_SUBPROCESS_KW)
     if result.returncode != 0:
         raise RuntimeError(f"ffmpeg error: {result.stderr.decode()}")
     return result.stdout
@@ -565,9 +575,10 @@ def export_as_txt(state: DemoSession | None) -> str | None:
 
 def _video_extract_audio(video_path: str, audio_path: str) -> None:
     result = subprocess.run(
-        ["ffmpeg", "-y", "-i", video_path, "-vn", "-ar", "16000", "-ac", "1", "-f", "wav", audio_path],
+        ["ffmpeg", "-nostdin", "-y", "-i", video_path, "-vn", "-ar", "16000", "-ac", "1", "-f", "wav", audio_path],
         capture_output=True,
         text=True,
+        **_SUBPROCESS_KW,
     )
     if result.returncode != 0:
         raise RuntimeError(f"ffmpeg音声抽出エラー:\n{result.stderr[-500:]}")
@@ -750,7 +761,7 @@ def _pick_cjk_font() -> str:
             try:
                 out = _sp.run(
                     ["fc-list", f":family={font}"],
-                    capture_output=True, text=True,
+                    capture_output=True, text=True, **_SUBPROCESS_KW,
                 )
                 if out.stdout.strip():
                     return font
@@ -766,15 +777,21 @@ def _video_burn_subtitles(video_path: str, srt_path: str, output_path: str) -> N
     font_name = _pick_cjk_font()
     result = subprocess.run(
         [
-            "ffmpeg", "-y", "-i", video_path, "-vf",
+            "ffmpeg", "-nostdin", "-y", "-i", video_path, "-vf",
             f"subtitles='{srt_escaped}':charenc=UTF-8:force_style='FontName={font_name},FontSize=20,"
             "PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=2,Alignment=2'",
             "-c:a", "copy", output_path,
         ],
         capture_output=True,
         text=True,
+        **_SUBPROCESS_KW,
     )
     if result.returncode != 0:
+        if "received signal" in result.stderr:
+            raise RuntimeError(
+                "字幕焼き込みエラー: ffmpeg が外部から終了されました"
+                "（ffmpeg のウィンドウを閉じた、またはアプリを終了した可能性があります）"
+            )
         raise RuntimeError(f"字幕焼き込みエラー:\n{result.stderr[-500:]}")
 
 
