@@ -16,6 +16,12 @@ Deepgram出力、キーワードブースト導入前）を入力にしており
     python evaluation/real_audio_e2e_check.py
     python evaluation/real_audio_e2e_check.py --clips 1 3
     python evaluation/real_audio_e2e_check.py --no-keyword-boost  # ブースト無しの対照条件
+    python evaluation/real_audio_e2e_check.py --no-keyword-boost --whisper-reverify
+
+`--whisper-reverify`は結合後の各セグメントに対し、同じ音声区間をfaster-whisperで
+再文字起こしして`apply_term_corrections`（絶対閾値のみ。Deepgram単語信頼度は
+取得していないためROVER救済経路は使わない）で用語補正してから翻訳する。
+マイク経路の`WHISPER_REVERIFY_ENABLED=true`相当の効果を、動画と同じ結合長で近似する。
 """
 
 from __future__ import annotations
@@ -89,7 +95,42 @@ async def translate_all(segments: list[dict], domain: str) -> tuple[list[str], l
     return hyps, [f"{m.source_term}→{m.target_term}" for m in misses]
 
 
-async def run_clip(n: int) -> dict:
+def reverify_segments(video: Path, merged: list[dict]) -> list[dict]:
+    """各セグメントをfaster-whisperで再検証し、補正後のセグメントを返す。"""
+    from real_time_translation.transcription.whisper_client import (
+        transcribe_pcm_with_whisper,
+    )
+    from real_time_translation.transcription.whisper_reverify import (
+        DEFAULT_MIN_CONFIDENCE,
+        apply_term_corrections,
+    )
+    from real_time_translation.translation.dictionary import TermDictionary
+    from whisper_reverify_ab_test import WHISPER_MODEL_SIZE, extract_pcm_slice
+
+    dictionary = TermDictionary()
+    dictionary.load_csv(DICTIONARY_PATH)
+    keep_terms = dictionary.keep_as_is_terms()
+
+    out = []
+    for seg in merged:
+        pcm = extract_pcm_slice(video, seg["start"], seg["end"])
+        whisper_text, confidences = transcribe_pcm_with_whisper(
+            pcm, model_size=WHISPER_MODEL_SIZE, language="en"
+        )
+        text, fixed = apply_term_corrections(
+            seg["transcript"],
+            whisper_text,
+            keep_terms,
+            whisper_word_confidences=confidences,
+            min_confidence=DEFAULT_MIN_CONFIDENCE,
+        )
+        if fixed:
+            print(f"  whisper_reverify: {fixed} {seg['transcript']!r} -> {text!r}")
+        out.append({**seg, "transcript": text, "reverify_fixed": fixed})
+    return out
+
+
+async def run_clip(n: int, whisper_reverify: bool) -> dict:
     bench_path = BENCHMARKS_DIR / f"technology_moe_2d07bb74_clip{n}.json"
     video = ROOT / "clips" / f"2d07bb74_clip{n}.mp4"
     benchmark = load_benchmark(bench_path)
@@ -101,6 +142,8 @@ async def run_clip(n: int) -> dict:
         extract_audio(str(video), wav)
         fresh_raw = transcribe_audio(wav)
     audio_merged = merge_incomplete_utterances(fresh_raw)
+    if whisper_reverify:
+        audio_merged = reverify_segments(video, audio_merged)
     frozen_merged = merge_raw_utterances(benchmark)
 
     audio_hyps, audio_misses = await translate_all(audio_merged, domain)
@@ -119,6 +162,7 @@ async def run_clip(n: int) -> dict:
         "frozen_text_doc_chrf": doc_chrf(frozen_hyps, refs),
         "audio_llm_judge": audio_judge,
         "audio_terminology_misses": audio_misses,
+        "reverify_fixed": [f for s in audio_merged for f in s.get("reverify_fixed", [])],
         "frozen_terminology_misses": frozen_misses,
         "audio_source_en": " ".join(s["transcript"] for s in audio_merged),
         "frozen_source_en": " ".join(s["transcript"] for s in frozen_merged),
@@ -137,7 +181,7 @@ async def run_clip(n: int) -> dict:
     return result
 
 
-def save(results: list[dict], keyword_boost: bool) -> None:
+def save(results: list[dict], keyword_boost: bool, whisper_reverify: bool) -> None:
     today = date.today()
     mean = lambda k: round(sum(r[k] for r in results) / len(results), 4)  # noqa: E731
     judges = [r["audio_llm_judge"] for r in results if r["audio_llm_judge"] is not None]
@@ -149,7 +193,8 @@ def save(results: list[dict], keyword_boost: bool) -> None:
     }
     notes = (
         f"[real_audio_e2e_check] clips={[r['clip'] for r in results]} 実音声→Deepgram"
-        f"(nova-2-general,キーワードブースト{'あり' if keyword_boost else 'なし'})→結合→{GEMINI_MODEL}(辞書あり)。"
+        f"(nova-2-general,キーワードブースト{'あり' if keyword_boost else 'なし'})→結合→"
+        f"{'whisper_reverify→' if whisper_reverify else ''}{GEMINI_MODEL}(辞書あり)。"
         f"doc_chrF 実音声={summary['audio_doc_chrf_mean']} / 凍結テキスト="
         f"{summary['frozen_text_doc_chrf_mean']} (差={summary['delta_doc_chrf_mean']:+})。"
         "reference_jaは人手レビュー未了(draft)。"
@@ -162,10 +207,13 @@ def save(results: list[dict], keyword_boost: bool) -> None:
         "chrf_score": summary["audio_doc_chrf_mean"],
         "notes": notes,
         "keyword_boost": keyword_boost,
+        "whisper_reverify": whisper_reverify,
         "summary": summary,
         "clips": results,
     }
-    suffix = "" if keyword_boost else "_no_keyword_boost"
+    suffix = ("" if keyword_boost else "_no_keyword_boost") + (
+        "_whisper_reverify" if whisper_reverify else ""
+    )
     json_path = EXPERIMENTS_DIR / f"{today:%Y%m%d}_real_audio_e2e_check{suffix}.json"
     json_path.write_text(json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8")
     with open(EXPERIMENTS_DIR / "results.csv", "a", encoding="utf-8-sig", newline="") as f:
@@ -178,10 +226,10 @@ def save(results: list[dict], keyword_boost: bool) -> None:
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
 
-async def main(clips: list[int], keyword_boost: bool) -> None:
+async def main(clips: list[int], keyword_boost: bool, whisper_reverify: bool) -> None:
     add_subtitles.DEEPGRAM_KEYWORD_BOOST_ENABLED = keyword_boost
-    results = [await run_clip(n) for n in clips]
-    save(results, keyword_boost)
+    results = [await run_clip(n, whisper_reverify) for n in clips]
+    save(results, keyword_boost, whisper_reverify)
 
 
 if __name__ == "__main__":
@@ -192,5 +240,16 @@ if __name__ == "__main__":
         action="store_true",
         help="Deepgramキーワードブーストを無効化して文字起こしする（対照条件）",
     )
+    parser.add_argument(
+        "--whisper-reverify",
+        action="store_true",
+        help="翻訳前にfaster-whisperで用語補正する（マイク経路のWHISPER_REVERIFY_ENABLED相当）",
+    )
     args = parser.parse_args()
-    asyncio.run(main(args.clips, keyword_boost=not args.no_keyword_boost))
+    asyncio.run(
+        main(
+            args.clips,
+            keyword_boost=not args.no_keyword_boost,
+            whisper_reverify=args.whisper_reverify,
+        )
+    )
