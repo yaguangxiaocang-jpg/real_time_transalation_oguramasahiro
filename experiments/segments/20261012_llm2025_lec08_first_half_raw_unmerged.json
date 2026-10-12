@@ -1,0 +1,5977 @@
+{
+  "date": "2026-10-12",
+  "video": "clips/llm2025_lec08_first_half.mp4",
+  "note": "Deepgramの生発話(utterance分割そのまま、utterance結合の補正は適用していない状態)。model=nova-2-general, language=en, smart_format+punctuate+utterances=true, utt_split=0.8。add_subtitles.py の extract_audio()/transcribe_audio() で取得。",
+  "raw_utterances": [
+    {
+      "start": 430.34,
+      "end": 430.84,
+      "transcript": "Hi."
+    },
+    {
+      "start": 434.41998,
+      "end": 439.56,
+      "transcript": "Hi. Hi. Hi. Hi. Hi. Hi. Can you please start your presentation from now on? Yeah. No problem."
+    },
+    {
+      "start": 440.34,
+      "end": 441.96,
+      "transcript": "Let me share my screen."
+    },
+    {
+      "start": 442.41998,
+      "end": 442.91998,
+      "transcript": "K."
+    },
+    {
+      "start": 447.755,
+      "end": 449.135,
+      "transcript": "K. Please go ahead."
+    },
+    {
+      "start": 450.715,
+      "end": 452.415,
+      "transcript": "K. Can you see my screen?"
+    },
+    {
+      "start": 453.035,
+      "end": 453.535,
+      "transcript": "Yes."
+    },
+    {
+      "start": 454.155,
+      "end": 455.45502,
+      "transcript": "Okay. Very good."
+    },
+    {
+      "start": 456.66998,
+      "end": 457.16998,
+      "transcript": "Yeah."
+    },
+    {
+      "start": 457.87,
+      "end": 465.97,
+      "transcript": "Hello, everyone. Yeah. My name is Joshheng Guo, and, currently, I'm a senior research scientist in Google Research Australia."
+    },
+    {
+      "start": 466.59,
+      "end": 468.21,
+      "transcript": "And, also, thanks for"
+    },
+    {
+      "start": 469.035,
+      "end": 471.45502,
+      "transcript": "Marshall Labs' invitation. I'm very happy"
+    },
+    {
+      "start": 471.99503,
+      "end": 473.21503,
+      "transcript": "to discuss with"
+    },
+    {
+      "start": 473.67502,
+      "end": 476.73502,
+      "transcript": "you guys, and thanks for coming this talk."
+    },
+    {
+      "start": 477.355,
+      "end": 478.095,
+      "transcript": "And hopefully"
+    },
+    {
+      "start": 478.39502,
+      "end": 483.45502,
+      "transcript": "we could, you could have learned something from my talk, and also we could"
+    },
+    {
+      "start": 484.08,
+      "end": 487.54,
+      "transcript": "discuss together for some... Have have"
+    },
+    {
+      "start": 488.24,
+      "end": 489.62,
+      "transcript": "some fruitful discussions."
+    },
+    {
+      "start": 490.48,
+      "end": 495.38,
+      "transcript": "Here, my talk's title is about an overview of large language model"
+    },
+    {
+      "start": 495.91998,
+      "end": 496.41998,
+      "transcript": "efficiency."
+    },
+    {
+      "start": 498.095,
+      "end": 500.595,
+      "transcript": "Let me just first introduce myself."
+    },
+    {
+      "start": 501.375,
+      "end": 502.83502,
+      "transcript": "Yeah. I graduated..."
+    },
+    {
+      "start": 503.295,
+      "end": 504.515,
+      "transcript": "Got my undergraduate"
+    },
+    {
+      "start": 504.89502,
+      "end": 507.315,
+      "transcript": "degree from... In 2018,"
+    },
+    {
+      "start": 507.535,
+      "end": 508.27502,
+      "transcript": "but my..."
+    },
+    {
+      "start": 508.73502,
+      "end": 510.435,
+      "transcript": "I started my research"
+    },
+    {
+      "start": 510.815,
+      "end": 512.995,
+      "transcript": "career from 2017."
+    },
+    {
+      "start": 513.35004,
+      "end": 513.85004,
+      "transcript": "And,"
+    },
+    {
+      "start": 514.47003,
+      "end": 517.45,
+      "transcript": "at that time, I do some works like for... Like,"
+    },
+    {
+      "start": 517.99,
+      "end": 518.81,
+      "transcript": "you use"
+    },
+    {
+      "start": 519.11005,
+      "end": 522.09,
+      "transcript": "reinforcement learning to train language model."
+    },
+    {
+      "start": 522.63,
+      "end": 524.17004,
+      "transcript": "Maybe this is several"
+    },
+    {
+      "start": 524.87,
+      "end": 528.73004,
+      "transcript": "first paper to use RL to enhance language model"
+    },
+    {
+      "start": 529.045,
+      "end": 529.545,
+      "transcript": "coherency."
+    },
+    {
+      "start": 530.72504,
+      "end": 533.065,
+      "transcript": "At that time, we just do that using"
+    },
+    {
+      "start": 533.765,
+      "end": 537.045,
+      "transcript": "generative adversarial network framework to use,"
+    },
+    {
+      "start": 537.765,
+      "end": 538.825,
+      "transcript": "RL to use"
+    },
+    {
+      "start": 539.84503,
+      "end": 540.425,
+      "transcript": "a discriminator"
+    },
+    {
+      "start": 540.72504,
+      "end": 543.145,
+      "transcript": "signal to improve the language model."
+    },
+    {
+      "start": 543.66,
+      "end": 546.8,
+      "transcript": "And then I started my PhD career."
+    },
+    {
+      "start": 547.18,
+      "end": 550.48,
+      "transcript": "My research thesis is about... Mainly about classification"
+    },
+    {
+      "start": 550.86,
+      "end": 552.0,
+      "transcript": "and reinforcement"
+    },
+    {
+      "start": 552.46,
+      "end": 553.36,
+      "transcript": "learning generalization."
+    },
+    {
+      "start": 554.54,
+      "end": 556.32,
+      "transcript": "We hope that we could generalize"
+    },
+    {
+      "start": 557.365,
+      "end": 560.825,
+      "transcript": "training model from training data set to some real world cases."
+    },
+    {
+      "start": 562.085,
+      "end": 563.465,
+      "transcript": "And then I"
+    },
+    {
+      "start": 564.085,
+      "end": 565.22504,
+      "transcript": "do some internship"
+    },
+    {
+      "start": 565.685,
+      "end": 566.585,
+      "transcript": "in Salesforce,"
+    },
+    {
+      "start": 566.965,
+      "end": 571.145,
+      "transcript": "started my research about multimodal language model. You know,"
+    },
+    {
+      "start": 572.085,
+      "end": 572.905,
+      "transcript": "our world"
+    },
+    {
+      "start": 573.33997,
+      "end": 574.08,
+      "transcript": "is, like,"
+    },
+    {
+      "start": 574.77997,
+      "end": 579.6,
+      "transcript": "in... Multimodal in nature. So, like, our human could have ears"
+    },
+    {
+      "start": 580.14,
+      "end": 580.96,
+      "transcript": "and eyes"
+    },
+    {
+      "start": 581.33997,
+      "end": 583.36,
+      "transcript": "and... To to say and"
+    },
+    {
+      "start": 583.98,
+      "end": 584.72,
+      "transcript": "to to"
+    },
+    {
+      "start": 585.18,
+      "end": 587.52,
+      "transcript": "to say and also hear what it says."
+    },
+    {
+      "start": 588.195,
+      "end": 591.09503,
+      "transcript": "So multimodal language model actually is very important."
+    },
+    {
+      "start": 591.555,
+      "end": 592.935,
+      "transcript": "And then I come to"
+    },
+    {
+      "start": 593.395,
+      "end": 598.695,
+      "transcript": "University Tokyo to be as a postdoc researcher just like in, MaslowLab."
+    },
+    {
+      "start": 599.23505,
+      "end": 599.895,
+      "transcript": "My research"
+    },
+    {
+      "start": 601.92,
+      "end": 603.7,
+      "transcript": "say, instances are less in AI agents."
+    },
+    {
+      "start": 604.08,
+      "end": 611.06,
+      "transcript": "Maybe some of you also know my work like a suspension agent to use a language model to play poker."
+    },
+    {
+      "start": 612.32,
+      "end": 615.7,
+      "transcript": "And also I did some research on three d defusions"
+    },
+    {
+      "start": 617.005,
+      "end": 622.625,
+      "transcript": "such as how could we convert one two d image to a three d"
+    },
+    {
+      "start": 623.325,
+      "end": 629.025,
+      "transcript": "three d assets that will be helpful for for anime and also games."
+    },
+    {
+      "start": 629.98,
+      "end": 631.68,
+      "transcript": "And then in 2024,"
+    },
+    {
+      "start": 632.38,
+      "end": 634.08,
+      "transcript": "I went I went to Google"
+    },
+    {
+      "start": 634.46,
+      "end": 637.92,
+      "transcript": "to do something in language model architecture design work,"
+    },
+    {
+      "start": 638.38,
+      "end": 644.16003,
+      "transcript": "mainly contributed to Gemini and Jemma. And as Kojima san introduced, I already,"
+    },
+    {
+      "start": 645.135,
+      "end": 649.075,
+      "transcript": "like, contributed some model changes in Gemini three and,"
+    },
+    {
+      "start": 649.935,
+      "end": 652.03503,
+      "transcript": "Gemma three, Gemma four stuffs."
+    },
+    {
+      "start": 653.775,
+      "end": 655.23505,
+      "transcript": "Okay. That's my introduction."
+    },
+    {
+      "start": 656.015,
+      "end": 658.67505,
+      "transcript": "And, also, I would like to introduce my,"
+    },
+    {
+      "start": 660.77,
+      "end": 661.27,
+      "transcript": "my,"
+    },
+    {
+      "start": 662.45,
+      "end": 666.63,
+      "transcript": "research institution, Google Research Australia. Google Research Australia,"
+    },
+    {
+      "start": 667.73,
+      "end": 670.87,
+      "transcript": "we built this research hub in 2024,"
+    },
+    {
+      "start": 671.17,
+      "end": 672.63,
+      "transcript": "and we have three teams."
+    },
+    {
+      "start": 673.385,
+      "end": 675.645,
+      "transcript": "Like hearing aid. We will improve"
+    },
+    {
+      "start": 676.825,
+      "end": 677.405,
+      "transcript": "the hearing"
+    },
+    {
+      "start": 677.785,
+      "end": 678.525,
+      "transcript": "aid ability"
+    },
+    {
+      "start": 679.225,
+      "end": 684.84503,
+      "transcript": "in Google's PixelBot so that older generation could hear by wearing our Google's"
+    },
+    {
+      "start": 685.66,
+      "end": 686.16,
+      "transcript": "PixelBot"
+    },
+    {
+      "start": 686.7,
+      "end": 687.74,
+      "transcript": "just just like,"
+    },
+    {
+      "start": 688.94,
+      "end": 689.44,
+      "transcript": "Apple's."
+    },
+    {
+      "start": 690.3,
+      "end": 691.92,
+      "transcript": "And also we do multilingual"
+    },
+    {
+      "start": 692.3,
+      "end": 693.92,
+      "transcript": "in language models"
+    },
+    {
+      "start": 694.3,
+      "end": 694.8,
+      "transcript": "because..."
+    },
+    {
+      "start": 695.26,
+      "end": 698.16,
+      "transcript": "And we do some some... We we will enhance"
+    },
+    {
+      "start": 699.075,
+      "end": 701.495,
+      "transcript": "Southeastern Asia language in Gemini."
+    },
+    {
+      "start": 701.875,
+      "end": 705.495,
+      "transcript": "And also we have one... Another team like efficiency in ARM."
+    },
+    {
+      "start": 706.35504,
+      "end": 709.335,
+      "transcript": "That's what I'm... That's the team what I mean."
+    },
+    {
+      "start": 711.155,
+      "end": 716.56,
+      "transcript": "You know why it's very important? It's because, like, you know, Google has many products,"
+    },
+    {
+      "start": 717.34,
+      "end": 717.84,
+      "transcript": "Gemini"
+    },
+    {
+      "start": 718.46,
+      "end": 721.36,
+      "transcript": "and Search and YouTube and Calendars"
+    },
+    {
+      "start": 721.74,
+      "end": 723.44,
+      "transcript": "and Chrome and Workspace."
+    },
+    {
+      "start": 724.22003,
+      "end": 727.84,
+      "transcript": "And if we deploy a language model in all its"
+    },
+    {
+      "start": 728.185,
+      "end": 730.445,
+      "transcript": "products, it will be very, very expensive."
+    },
+    {
+      "start": 730.825,
+      "end": 735.72504,
+      "transcript": "We will use up all our our TPUs. So how to enhance the efficiency in"
+    },
+    {
+      "start": 736.185,
+      "end": 739.16504,
+      "transcript": "these products is very, very important for us."
+    },
+    {
+      "start": 739.86505,
+      "end": 744.11,
+      "transcript": "And we're doing pretty well. We just have, we just start"
+    },
+    {
+      "start": 744.73,
+      "end": 749.15,
+      "transcript": "our research app for one year. We already have many things landed in Google,"
+    },
+    {
+      "start": 749.69,
+      "end": 750.19,
+      "transcript": "like,"
+    },
+    {
+      "start": 750.73,
+      "end": 754.91,
+      "transcript": "AI mode, the next next generation searching system, and also Gemini,"
+    },
+    {
+      "start": 755.21,
+      "end": 755.95,
+      "transcript": "our most"
+    },
+    {
+      "start": 756.57,
+      "end": 757.39,
+      "transcript": "most important"
+    },
+    {
+      "start": 758.01,
+      "end": 759.07,
+      "transcript": "project in Google."
+    },
+    {
+      "start": 759.90497,
+      "end": 762.40497,
+      "transcript": "And, also, as you know, it's mostly"
+    },
+    {
+      "start": 762.94495,
+      "end": 765.125,
+      "transcript": "advanced AI around the world."
+    },
+    {
+      "start": 766.865,
+      "end": 773.52496,
+      "transcript": "And, here is the... Today's agenda. Firstly, I will introduce what's the language model and also"
+    },
+    {
+      "start": 774.05,
+      "end": 776.23,
+      "transcript": "how's the language model influence."
+    },
+    {
+      "start": 776.93,
+      "end": 779.35,
+      "transcript": "Like, where I will introduce some metrics"
+    },
+    {
+      "start": 780.37,
+      "end": 783.02997,
+      "transcript": "and how it works, and also I will introduce"
+    },
+    {
+      "start": 783.41,
+      "end": 785.35,
+      "transcript": "how... What's a general"
+    },
+    {
+      "start": 786.545,
+      "end": 790.165,
+      "transcript": "introduction about language model efficiency from model"
+    },
+    {
+      "start": 790.545,
+      "end": 792.565,
+      "transcript": "perspective, algorithm perspective,"
+    },
+    {
+      "start": 793.105,
+      "end": 794.245,
+      "transcript": "system perspective."
+    },
+    {
+      "start": 795.265,
+      "end": 796.165,
+      "transcript": "And because"
+    },
+    {
+      "start": 797.825,
+      "end": 799.445,
+      "transcript": "our our limitation, our"
+    },
+    {
+      "start": 800.12,
+      "end": 803.58,
+      "transcript": "authority, our Google, I cannot speak everything"
+    },
+    {
+      "start": 804.04,
+      "end": 807.74,
+      "transcript": "in very detail. So this talk is just a very superficial"
+    },
+    {
+      "start": 808.51996,
+      "end": 811.89996,
+      "transcript": "introduction, but I hope... I still hope we can learn something."
+    },
+    {
+      "start": 814.51495,
+      "end": 815.57495,
+      "transcript": "After this talk,"
+    },
+    {
+      "start": 815.95496,
+      "end": 824.855,
+      "transcript": "I hope, like, if you are a junior student, I hope you could know the basic concepts and what we really care about language model efficiency."
+    },
+    {
+      "start": 825.39,
+      "end": 832.37,
+      "transcript": "And if you are a researcher, I hope you could know the bigger picture of this area, and I hope I hope"
+    },
+    {
+      "start": 832.75,
+      "end": 833.41003,
+      "transcript": "this could,"
+    },
+    {
+      "start": 834.35004,
+      "end": 836.77,
+      "transcript": "inspire you to make a ground... Groundbreaking"
+    },
+    {
+      "start": 837.55005,
+      "end": 838.05005,
+      "transcript": "contributions"
+    },
+    {
+      "start": 838.43005,
+      "end": 840.21,
+      "transcript": "in this area in the future."
+    },
+    {
+      "start": 841.27496,
+      "end": 843.695,
+      "transcript": "And, if you are an entrepreneur,"
+    },
+    {
+      "start": 844.39496,
+      "end": 848.89496,
+      "transcript": "you want to have a start up by yourself, I hope you could know the general ideas,"
+    },
+    {
+      "start": 849.995,
+      "end": 851.615,
+      "transcript": "how to train and deploy"
+    },
+    {
+      "start": 852.635,
+      "end": 853.135,
+      "transcript": "your"
+    },
+    {
+      "start": 853.77,
+      "end": 854.83,
+      "transcript": "products based"
+    },
+    {
+      "start": 855.29004,
+      "end": 856.91003,
+      "transcript": "on language model efficiently."
+    },
+    {
+      "start": 859.45,
+      "end": 863.07,
+      "transcript": "Okay. Here, let me first introduce, what's a transformer,"
+    },
+    {
+      "start": 864.33,
+      "end": 867.47003,
+      "transcript": "because you already go through all Master Labs"
+    },
+    {
+      "start": 868.575,
+      "end": 877.395,
+      "transcript": "course, so I think you already know what's what's the basic idea of Transformer. I just revisited it. In Transformer, we just, like,"
+    },
+    {
+      "start": 878.175,
+      "end": 880.23,
+      "transcript": "have... Normally, we just have a small"
+    },
+    {
+      "start": 880.70996,
+      "end": 883.20996,
+      "transcript": "three components, like, based on the..."
+    },
+    {
+      "start": 883.67,
+      "end": 884.88995,
+      "transcript": "We will give you"
+    },
+    {
+      "start": 885.35,
+      "end": 889.13,
+      "transcript": "a sequence and we will have token errors, split the sequence"
+    },
+    {
+      "start": 889.58997,
+      "end": 894.81,
+      "transcript": "to subaward by subaward, and then we will have and then we will have an embedding table"
+    },
+    {
+      "start": 896.215,
+      "end": 899.275,
+      "transcript": "to convert this subawards to some embeddings."
+    },
+    {
+      "start": 899.975,
+      "end": 902.715,
+      "transcript": "And after the embeddings, we will do"
+    },
+    {
+      "start": 903.255,
+      "end": 904.075,
+      "transcript": "self attention."
+    },
+    {
+      "start": 904.455,
+      "end": 904.955,
+      "transcript": "What's"
+    },
+    {
+      "start": 905.335,
+      "end": 910.635,
+      "transcript": "the self attention meaning? Self attention will model the dependency between different words."
+    },
+    {
+      "start": 911.0,
+      "end": 914.62,
+      "transcript": "Like, for this one, it's like a Japanese food, it's delicious."
+    },
+    {
+      "start": 915.08,
+      "end": 915.98,
+      "transcript": "When we say..."
+    },
+    {
+      "start": 916.6,
+      "end": 919.58,
+      "transcript": "When we want to generate the next token like a delicious,"
+    },
+    {
+      "start": 920.04,
+      "end": 923.33997,
+      "transcript": "we will we will model the dependence like Japanese"
+    },
+    {
+      "start": 923.64,
+      "end": 931.54504,
+      "transcript": "and food. Okay. And we know based on a lot of our training datasets, we already know next token is delicious."
+    },
+    {
+      "start": 933.04504,
+      "end": 944.22,
+      "transcript": "And also after this, we will have... Go through the FFN layer. FFN layer is like... We will... We normally regard it like a static memory. It's like it will"
+    },
+    {
+      "start": 944.6,
+      "end": 946.62,
+      "transcript": "store many memory... Much memory,"
+    },
+    {
+      "start": 947.48,
+      "end": 949.66,
+      "transcript": "world of knowledge in this"
+    },
+    {
+      "start": 950.19995,
+      "end": 950.69995,
+      "transcript": "FFN"
+    },
+    {
+      "start": 951.915,
+      "end": 957.935,
+      "transcript": "layer. Normally, f f m layer is just, like a nonlinear transformation. It's like a two layers"
+    },
+    {
+      "start": 958.39496,
+      "end": 960.33496,
+      "transcript": "MLP. One is the upper projection"
+    },
+    {
+      "start": 961.355,
+      "end": 962.65497,
+      "transcript": "and then down projection"
+    },
+    {
+      "start": 963.195,
+      "end": 963.695,
+      "transcript": "from..."
+    },
+    {
+      "start": 964.58997,
+      "end": 966.69,
+      "transcript": "To to to mapping"
+    },
+    {
+      "start": 967.06995,
+      "end": 968.52997,
+      "transcript": "the words to a demodel"
+    },
+    {
+      "start": 968.99,
+      "end": 971.56995,
+      "transcript": "size vector. And by stacking,"
+    },
+    {
+      "start": 972.19,
+      "end": 973.17,
+      "transcript": "plot our"
+    },
+    {
+      "start": 973.70996,
+      "end": 980.53503,
+      "transcript": "decoder blocks in transformer, we could have an output layer to decide which one... Which is the next token."
+    },
+    {
+      "start": 982.35504,
+      "end": 993.94,
+      "transcript": "And the good thing for transformer thing is, like, every block is the same so we could stack it again and again make it transform very big. And to make it very big, we could train the transformer"
+    },
+    {
+      "start": 995.28,
+      "end": 996.74005,
+      "transcript": "on a very, very large,"
+    },
+    {
+      "start": 998.96,
+      "end": 1000.58,
+      "transcript": "Internet scale corpus."
+    },
+    {
+      "start": 1001.84,
+      "end": 1002.34,
+      "transcript": "And"
+    },
+    {
+      "start": 1002.72003,
+      "end": 1003.62,
+      "transcript": "after training"
+    },
+    {
+      "start": 1004.295,
+      "end": 1004.955,
+      "transcript": "on it,"
+    },
+    {
+      "start": 1005.975,
+      "end": 1008.395,
+      "transcript": "this is the process, we call it pre training."
+    },
+    {
+      "start": 1008.855,
+      "end": 1011.915,
+      "transcript": "And after training it, we will have a learning model,"
+    },
+    {
+      "start": 1012.295,
+      "end": 1013.515,
+      "transcript": "like a GPT-three,"
+    },
+    {
+      "start": 1015.095,
+      "end": 1016.315,
+      "transcript": "it already knows,"
+    },
+    {
+      "start": 1016.89,
+      "end": 1024.03,
+      "transcript": "it stores a lot of world knowledge into the learning model. So but the thing is like, even if"
+    },
+    {
+      "start": 1024.73,
+      "end": 1028.51,
+      "transcript": "it knows, GP3 knows a lot of world knowledge,"
+    },
+    {
+      "start": 1029.005,
+      "end": 1033.5851,
+      "transcript": "You don't know how to answer human's questions. So normally we just do future"
+    },
+    {
+      "start": 1034.2051,
+      "end": 1034.7051,
+      "transcript": "promoting"
+    },
+    {
+      "start": 1035.3251,
+      "end": 1036.625,
+      "transcript": "to let GPT-three"
+    },
+    {
+      "start": 1036.925,
+      "end": 1037.8251,
+      "transcript": "answer some questions."
+    },
+    {
+      "start": 1038.6051,
+      "end": 1046.73,
+      "transcript": "So to alleviate it, we will do SFT. SFT is like giving a question, giving an answer, and we just fine tune"
+    },
+    {
+      "start": 1047.03,
+      "end": 1048.25,
+      "transcript": "the pretrained model"
+    },
+    {
+      "start": 1048.63,
+      "end": 1052.97,
+      "transcript": "in the SFT... In this SFT dataset. It will"
+    },
+    {
+      "start": 1053.83,
+      "end": 1060.25,
+      "transcript": "learn how to how to answer... How to do instruction following and how to answer human questions."
+    },
+    {
+      "start": 1061.405,
+      "end": 1064.945,
+      "transcript": "However, in this stage, in this stage, because"
+    },
+    {
+      "start": 1065.405,
+      "end": 1070.065,
+      "transcript": "it's just like language model, it's just like learning the format"
+    },
+    {
+      "start": 1070.525,
+      "end": 1075.345,
+      "transcript": "the human read beforehand and it's just just like, it can just mimic the"
+    },
+    {
+      "start": 1075.77,
+      "end": 1076.27,
+      "transcript": "one..."
+    },
+    {
+      "start": 1076.73,
+      "end": 1079.39,
+      "transcript": "It's just like a student and just mimics"
+    },
+    {
+      "start": 1080.17,
+      "end": 1084.27,
+      "transcript": "the... What the teacher tells him to do. He cannot really understand"
+    },
+    {
+      "start": 1085.61,
+      "end": 1086.27,
+      "transcript": "the questions."
+    },
+    {
+      "start": 1086.5701,
+      "end": 1087.0701,
+      "transcript": "So"
+    },
+    {
+      "start": 1087.7749,
+      "end": 1089.1549,
+      "transcript": "based on this, we will"
+    },
+    {
+      "start": 1089.5349,
+      "end": 1091.3949,
+      "transcript": "do the third stage. It's like"
+    },
+    {
+      "start": 1091.695,
+      "end": 1092.9149,
+      "transcript": "IO, fine tuning."
+    },
+    {
+      "start": 1093.855,
+      "end": 1094.6749,
+      "transcript": "You... The..."
+    },
+    {
+      "start": 1095.1349,
+      "end": 1100.995,
+      "transcript": "With IO, we will have a reward, and the language model will generate itself the answer, and"
+    },
+    {
+      "start": 1101.5299,
+      "end": 1107.07,
+      "transcript": "and we will have reward. Reward is like, maybe it's a human labeling, that's IHF."
+    },
+    {
+      "start": 1107.45,
+      "end": 1110.83,
+      "transcript": "And also maybe recently, we will have a verified"
+    },
+    {
+      "start": 1111.13,
+      "end": 1113.87,
+      "transcript": "robot reward in math and coding"
+    },
+    {
+      "start": 1114.4099,
+      "end": 1116.75,
+      "transcript": "to... With this reward, it will"
+    },
+    {
+      "start": 1117.6549,
+      "end": 1131.1749,
+      "transcript": "get out the launching model to correct itself's answer. It's like, okay. Well, you have a new question, and you can generate your own answer, and I will tell you it's right or not... Or wrong, and then you will generate a game so that you know how to,"
+    },
+    {
+      "start": 1132.13,
+      "end": 1134.8501,
+      "transcript": "how to really understand these queries and,"
+    },
+    {
+      "start": 1135.3301,
+      "end": 1136.8701,
+      "transcript": "how to correct your answers."
+    },
+    {
+      "start": 1138.3701,
+      "end": 1140.55,
+      "transcript": "So with this three stage..."
+    },
+    {
+      "start": 1148.425,
+      "end": 1150.125,
+      "transcript": "Okay. No problem. No problem."
+    },
+    {
+      "start": 1151.545,
+      "end": 1152.8451,
+      "transcript": "Let me do it."
+    },
+    {
+      "start": 1156.5851,
+      "end": 1159.245,
+      "transcript": "Ah, okay. Okay. It's good. Thank you."
+    },
+    {
+      "start": 1159.9601,
+      "end": 1160.4601,
+      "transcript": "Okay."
+    },
+    {
+      "start": 1161.0,
+      "end": 1161.5,
+      "transcript": "And,"
+    },
+    {
+      "start": 1162.04,
+      "end": 1162.8601,
+      "transcript": "with this,"
+    },
+    {
+      "start": 1163.88,
+      "end": 1164.78,
+      "transcript": "this process,"
+    },
+    {
+      "start": 1165.24,
+      "end": 1171.9801,
+      "transcript": "the language model already know how to... It's like a multitask generator. It already knows how to do translation,"
+    },
+    {
+      "start": 1172.3601,
+      "end": 1175.5,
+      "transcript": "how to do coding, how to do semantic parsing"
+    },
+    {
+      "start": 1175.905,
+      "end": 1176.405,
+      "transcript": "together."
+    },
+    {
+      "start": 1177.505,
+      "end": 1182.405,
+      "transcript": "And the the next question is, like, how to train this language model given your,"
+    },
+    {
+      "start": 1183.1849,
+      "end": 1184.245,
+      "transcript": "limited budgets."
+    },
+    {
+      "start": 1184.545,
+      "end": 1201.34,
+      "transcript": "So this is the scaling law, and, I will just briefly how scaling law works here. And then I think Yanshi will introduce the Skinner law further. The big idea is, like, given you many, many computes, how do you decide the data size size,"
+    },
+    {
+      "start": 1202.52,
+      "end": 1204.86,
+      "transcript": "and also computer model size?"
+    },
+    {
+      "start": 1205.225,
+      "end": 1205.725,
+      "transcript": "And"
+    },
+    {
+      "start": 1206.985,
+      "end": 1211.405,
+      "transcript": "in 2020, I think, a Chinchilla paper from DeepMind, it reveals"
+    },
+    {
+      "start": 1212.105,
+      "end": 1214.125,
+      "transcript": "that if you will increase"
+    },
+    {
+      "start": 1214.505,
+      "end": 1218.685,
+      "transcript": "10 times compute budget and then your comp... Your model"
+    },
+    {
+      "start": 1219.76,
+      "end": 1228.8999,
+      "transcript": "and your model size and parameter size will increase, like, five five point three times. And then the data should just increase"
+    },
+    {
+      "start": 1229.44,
+      "end": 1231.0399,
+      "transcript": "by 1.8"
+    },
+    {
+      "start": 1231.0399,
+      "end": 1235.365,
+      "transcript": "times. And then you could train your best model given given the limited"
+    },
+    {
+      "start": 1235.8251,
+      "end": 1240.885,
+      "transcript": "computer budget. That's how scaling law works. It's very important because we know currently"
+    },
+    {
+      "start": 1241.425,
+      "end": 1248.8999,
+      "transcript": "the model is very very large and you want to do a whole flow pre training, this will be very, very, very expensive."
+    },
+    {
+      "start": 1249.2,
+      "end": 1251.62,
+      "transcript": "So given this budget, you want to"
+    },
+    {
+      "start": 1252.7999,
+      "end": 1254.1,
+      "transcript": "train the best model."
+    },
+    {
+      "start": 1254.48,
+      "end": 1254.98,
+      "transcript": "This"
+    },
+    {
+      "start": 1255.36,
+      "end": 1257.7,
+      "transcript": "scaling law tells you how to do it."
+    },
+    {
+      "start": 1260.0549,
+      "end": 1263.355,
+      "transcript": "And again, with this with this scaling law and"
+    },
+    {
+      "start": 1263.895,
+      "end": 1264.395,
+      "transcript": "pretraining"
+    },
+    {
+      "start": 1264.855,
+      "end": 1268.155,
+      "transcript": "SFT and RHF, we could say ALM"
+    },
+    {
+      "start": 1268.775,
+      "end": 1269.275,
+      "transcript": "ability,"
+    },
+    {
+      "start": 1270.81,
+      "end": 1271.55,
+      "transcript": "make progress"
+    },
+    {
+      "start": 1272.01,
+      "end": 1275.31,
+      "transcript": "very, very quickly. We could say, like, GPQA"
+    },
+    {
+      "start": 1275.6901,
+      "end": 1276.17,
+      "transcript": "is like,"
+    },
+    {
+      "start": 1277.2101,
+      "end": 1279.15,
+      "transcript": "it's like a master level"
+    },
+    {
+      "start": 1279.53,
+      "end": 1282.1901,
+      "transcript": "question... Sturm question answer problems."
+    },
+    {
+      "start": 1282.73,
+      "end": 1285.7101,
+      "transcript": "It's already kinda achieved, like, a 90%"
+    },
+    {
+      "start": 1287.535,
+      "end": 1288.915,
+      "transcript": "put put, 90% accuracy."
+    },
+    {
+      "start": 1290.7351,
+      "end": 1293.155,
+      "transcript": "Okay. So with this kind of strong"
+    },
+    {
+      "start": 1293.535,
+      "end": 1294.035,
+      "transcript": "ALM,"
+    },
+    {
+      "start": 1294.7351,
+      "end": 1296.415,
+      "transcript": "in 2023,"
+    },
+    {
+      "start": 1296.415,
+      "end": 1298.8351,
+      "transcript": "I did a suspension agent in MarsauLab."
+    },
+    {
+      "start": 1299.37,
+      "end": 1301.95,
+      "transcript": "This is about... Could we do..."
+    },
+    {
+      "start": 1302.4099,
+      "end": 1310.59,
+      "transcript": "With just... We we just have one strong ALM. We do... Don't do any further training. We can just prompt ALM to do some"
+    },
+    {
+      "start": 1310.97,
+      "end": 1311.7899,
+      "transcript": "new new"
+    },
+    {
+      "start": 1312.97,
+      "end": 1314.585,
+      "transcript": "tasks, like agent task."
+    },
+    {
+      "start": 1314.9049,
+      "end": 1316.9249,
+      "transcript": "In this paper, I just prompt"
+    },
+    {
+      "start": 1317.865,
+      "end": 1318.445,
+      "transcript": "the AMGPT"
+    },
+    {
+      "start": 1319.065,
+      "end": 1323.1649,
+      "transcript": "four to do poker. It's an imperfect information game."
+    },
+    {
+      "start": 1323.865,
+      "end": 1328.7749,
+      "transcript": "And in our our paper, we just like like like like like, to"
+    },
+    {
+      "start": 1330.06,
+      "end": 1331.4401,
+      "transcript": "do planning and"
+    },
+    {
+      "start": 1332.4601,
+      "end": 1339.6,
+      "transcript": "also self evaluate if this action is good or not. And we surprisingly find that without any further training,"
+    },
+    {
+      "start": 1340.14,
+      "end": 1344.9601,
+      "transcript": "the prompt based g t four already could achieve comparable performance"
+    },
+    {
+      "start": 1347.375,
+      "end": 1347.875,
+      "transcript": "with"
+    },
+    {
+      "start": 1348.255,
+      "end": 1349.955,
+      "transcript": "traditional IL trained"
+    },
+    {
+      "start": 1350.335,
+      "end": 1350.835,
+      "transcript": "methods."
+    },
+    {
+      "start": 1352.255,
+      "end": 1356.0349,
+      "transcript": "So it's good it's good, but there are some disadvantages."
+    },
+    {
+      "start": 1356.735,
+      "end": 1359.315,
+      "transcript": "The first one is, like, it's very very expensive."
+    },
+    {
+      "start": 1359.76,
+      "end": 1361.2,
+      "transcript": "And in 2023,"
+    },
+    {
+      "start": 1361.2,
+      "end": 1368.4199,
+      "transcript": "at that time, it's, like, $1 per round hour game. The second one is, like, the output speed is very, very slow."
+    },
+    {
+      "start": 1368.72,
+      "end": 1370.9,
+      "transcript": "We... Normally, when we play poker,"
+    },
+    {
+      "start": 1371.44,
+      "end": 1372.26,
+      "transcript": "we need to"
+    },
+    {
+      "start": 1373.205,
+      "end": 1376.4249,
+      "transcript": "wait for one or two minutes for each action."
+    },
+    {
+      "start": 1377.445,
+      "end": 1380.985,
+      "transcript": "The third one is like, only at that time, only 24 could"
+    },
+    {
+      "start": 1381.365,
+      "end": 1382.505,
+      "transcript": "achieve good performance."
+    },
+    {
+      "start": 1384.325,
+      "end": 1384.825,
+      "transcript": "Okay,"
+    },
+    {
+      "start": 1385.125,
+      "end": 1388.1849,
+      "transcript": "so that's that's what happened in 2023."
+    },
+    {
+      "start": 1388.9501,
+      "end": 1392.7301,
+      "transcript": "I say what happened now. Here is the figure. The x axis"
+    },
+    {
+      "start": 1393.1101,
+      "end": 1394.49,
+      "transcript": "is the output speed."
+    },
+    {
+      "start": 1394.79,
+      "end": 1402.41,
+      "transcript": "The y axis is the artificial intelligence index. It's the average performance of many different benchmarks."
+    },
+    {
+      "start": 1403.0449,
+      "end": 1404.9049,
+      "transcript": "And we could say from"
+    },
+    {
+      "start": 1405.2849,
+      "end": 1409.225,
+      "transcript": "twenty twenty four May to twenty twenty five March,"
+    },
+    {
+      "start": 1410.1649,
+      "end": 1414.1849,
+      "transcript": "we could say the intelligence score doubled in Gemini,"
+    },
+    {
+      "start": 1414.565,
+      "end": 1415.065,
+      "transcript": "but"
+    },
+    {
+      "start": 1415.445,
+      "end": 1416.505,
+      "transcript": "output speed"
+    },
+    {
+      "start": 1416.885,
+      "end": 1417.385,
+      "transcript": "tripled."
+    },
+    {
+      "start": 1418.7201,
+      "end": 1420.8201,
+      "transcript": "And also we could say this one"
+    },
+    {
+      "start": 1421.2001,
+      "end": 1421.86,
+      "transcript": "is like,"
+    },
+    {
+      "start": 1423.52,
+      "end": 1427.3,
+      "transcript": "x axis is the price per million tokens is the price,"
+    },
+    {
+      "start": 1427.8401,
+      "end": 1428.98,
+      "transcript": "the y axis"
+    },
+    {
+      "start": 1429.28,
+      "end": 1431.62,
+      "transcript": "is the performance in ALM arena."
+    },
+    {
+      "start": 1432.615,
+      "end": 1433.975,
+      "transcript": "We could say,"
+    },
+    {
+      "start": 1434.615,
+      "end": 1435.115,
+      "transcript": "Gemini"
+    },
+    {
+      "start": 1435.495,
+      "end": 1437.2749,
+      "transcript": "also have many breakthroughs."
+    },
+    {
+      "start": 1437.6549,
+      "end": 1438.875,
+      "transcript": "Gemini is always"
+    },
+    {
+      "start": 1439.575,
+      "end": 1440.075,
+      "transcript": "chips..."
+    },
+    {
+      "start": 1440.9349,
+      "end": 1442.7949,
+      "transcript": "Given the same chips..."
+    },
+    {
+      "start": 1443.095,
+      "end": 1444.1549,
+      "transcript": "Same price,"
+    },
+    {
+      "start": 1444.64,
+      "end": 1446.9801,
+      "transcript": "GML always achieves the best performance."
+    },
+    {
+      "start": 1447.6001,
+      "end": 1450.8201,
+      "transcript": "So let's say within this one year, what happened"
+    },
+    {
+      "start": 1451.28,
+      "end": 1453.54,
+      "transcript": "in our learning model area? So"
+    },
+    {
+      "start": 1456.9601,
+      "end": 1460.5,
+      "transcript": "so this is why we care about the learning model efficiency."
+    },
+    {
+      "start": 1460.985,
+      "end": 1461.885,
+      "transcript": "Here is"
+    },
+    {
+      "start": 1462.505,
+      "end": 1465.485,
+      "transcript": "a matrix about the language model inference efficiency."
+    },
+    {
+      "start": 1466.105,
+      "end": 1469.245,
+      "transcript": "We have two metrics to measure the efficiency"
+    },
+    {
+      "start": 1469.705,
+      "end": 1471.805,
+      "transcript": "problem. The first one is latency."
+    },
+    {
+      "start": 1472.185,
+      "end": 1475.005,
+      "transcript": "Latency is like, okay, we will measure"
+    },
+    {
+      "start": 1475.94,
+      "end": 1477.96,
+      "transcript": "how much time we should wait"
+    },
+    {
+      "start": 1478.26,
+      "end": 1479.3999,
+      "transcript": "for the tokens."
+    },
+    {
+      "start": 1479.7,
+      "end": 1490.76,
+      "transcript": "That's what a user cares about, right. When you... Just like when you use Gemini, you don't want to wait so much time to wait for your tokens generation, right? The second one is throughput."
+    },
+    {
+      "start": 1491.495,
+      "end": 1493.435,
+      "transcript": "Throughput is like measure"
+    },
+    {
+      "start": 1493.8151,
+      "end": 1494.875,
+      "transcript": "how many requests"
+    },
+    {
+      "start": 1495.735,
+      "end": 1496.955,
+      "transcript": "we could handle"
+    },
+    {
+      "start": 1498.055,
+      "end": 1501.275,
+      "transcript": "given the limited time, such as given"
+    },
+    {
+      "start": 1501.735,
+      "end": 1503.355,
+      "transcript": "one second, how many"
+    },
+    {
+      "start": 1504.055,
+      "end": 1505.435,
+      "transcript": "user queries could"
+    },
+    {
+      "start": 1506.0701,
+      "end": 1507.37,
+      "transcript": "Google can handle."
+    },
+    {
+      "start": 1507.91,
+      "end": 1509.53,
+      "transcript": "So that's what companies"
+    },
+    {
+      "start": 1510.15,
+      "end": 1514.65,
+      "transcript": "care about. It's like, given the limited time, if we process"
+    },
+    {
+      "start": 1515.43,
+      "end": 1521.37,
+      "transcript": "as much as many as user queries, and we could make more money, right? So"
+    },
+    {
+      "start": 1522.845,
+      "end": 1532.705,
+      "transcript": "normally, we... When we solve the ALM, we... What we want is, like, we want a lower latency and a high... Lower latency so the user would be happy"
+    },
+    {
+      "start": 1533.485,
+      "end": 1534.9451,
+      "transcript": "and also higher throughput."
+    },
+    {
+      "start": 1535.485,
+      "end": 1539.5701,
+      "transcript": "The company will be happy because we could process more users,"
+    },
+    {
+      "start": 1540.99,
+      "end": 1547.73,
+      "transcript": "and we don't want to add any quality jobs because if we train one language model, it will be very, very, very expensive."
+    },
+    {
+      "start": 1548.03,
+      "end": 1552.015,
+      "transcript": "So if we have any college job, that's a waste of money,"
+    },
+    {
+      "start": 1552.555,
+      "end": 1553.055,
+      "transcript": "right?"
+    },
+    {
+      "start": 1554.795,
+      "end": 1557.6951,
+      "transcript": "So next one, I will tell you"
+    },
+    {
+      "start": 1558.0751,
+      "end": 1560.895,
+      "transcript": "what happened during the language model inference."
+    },
+    {
+      "start": 1562.85,
+      "end": 1567.03,
+      "transcript": "Normally during the language model inference, we will have these four processes."
+    },
+    {
+      "start": 1567.49,
+      "end": 1576.79,
+      "transcript": "The first one is, like, load data from memory to processing units and then we will load model weights from memory to processing units and to compute."
+    },
+    {
+      "start": 1577.195,
+      "end": 1577.855,
+      "transcript": "And then"
+    },
+    {
+      "start": 1578.5549,
+      "end": 1585.535,
+      "transcript": "and then if we... So we're a very, very large scale model and we will have a combination cost among different,"
+    },
+    {
+      "start": 1586.475,
+      "end": 1586.975,
+      "transcript": "devices."
+    },
+    {
+      "start": 1587.995,
+      "end": 1588.815,
+      "transcript": "Here is"
+    },
+    {
+      "start": 1589.195,
+      "end": 1589.855,
+      "transcript": "a illustration"
+    },
+    {
+      "start": 1590.155,
+      "end": 1593.74,
+      "transcript": "about that. Here is a illustration based on TPUs,"
+    },
+    {
+      "start": 1594.12,
+      "end": 1599.4199,
+      "transcript": "and I could translate it to you to you in GPU language. First one is HBM."
+    },
+    {
+      "start": 1599.88,
+      "end": 1604.94,
+      "transcript": "HBM is a memory in GPU. It's like a... Such as, 80 gigabytes for"
+    },
+    {
+      "start": 1605.295,
+      "end": 1606.755,
+      "transcript": "for one... A 100,"
+    },
+    {
+      "start": 1607.055,
+      "end": 1610.435,
+      "transcript": "96 gigabytes in h 100, something like that."
+    },
+    {
+      "start": 1610.8151,
+      "end": 1614.115,
+      "transcript": "And the way memory is which is a cache in GPU."
+    },
+    {
+      "start": 1614.895,
+      "end": 1620.21,
+      "transcript": "So we could say, normally, when we do language model inference, we will falsely"
+    },
+    {
+      "start": 1621.15,
+      "end": 1622.21,
+      "transcript": "move HBM,"
+    },
+    {
+      "start": 1622.91,
+      "end": 1628.53,
+      "transcript": "move the model weights and also data from HBM to VMM, and VMM"
+    },
+    {
+      "start": 1628.91,
+      "end": 1636.185,
+      "transcript": "will move these things to processing units and they will do computes, do computes and then return back to the memory."
+    },
+    {
+      "start": 1637.445,
+      "end": 1641.865,
+      "transcript": "So this is exactly what happened in language model inference."
+    },
+    {
+      "start": 1643.285,
+      "end": 1644.745,
+      "transcript": "So there are some bottlenecks,"
+    },
+    {
+      "start": 1645.045,
+      "end": 1652.32,
+      "transcript": "like, in this stage. So first one is a load, like, loaded data from HBM to, like, processing units."
+    },
+    {
+      "start": 1652.62,
+      "end": 1653.52,
+      "transcript": "We will say,"
+    },
+    {
+      "start": 1654.22,
+      "end": 1662.875,
+      "transcript": "the bottleneck is a memory bandwidth, right? The memory bandwidth, which will decide how much data we could move them,"
+    },
+    {
+      "start": 1664.0549,
+      "end": 1664.5549,
+      "transcript": "from"
+    },
+    {
+      "start": 1665.495,
+      "end": 1672.315,
+      "transcript": "memory to processing units, given the one second, something like that. And the second one is that perform computes."
+    },
+    {
+      "start": 1673.7799,
+      "end": 1675.0801,
+      "transcript": "When we do,"
+    },
+    {
+      "start": 1675.5801,
+      "end": 1682.44,
+      "transcript": "when we do perform computes in the processing units, and we will bottleneck by FLOPs. FLOPs will decide"
+    },
+    {
+      "start": 1682.74,
+      "end": 1683.3999,
+      "transcript": "how many"
+    },
+    {
+      "start": 1684.34,
+      "end": 1684.84,
+      "transcript": "operators"
+    },
+    {
+      "start": 1685.22,
+      "end": 1687.24,
+      "transcript": "we could deal with per second."
+    },
+    {
+      "start": 1688.155,
+      "end": 1693.295,
+      "transcript": "And also when we do some do some compute, it will also consume energy."
+    },
+    {
+      "start": 1693.755,
+      "end": 1694.255,
+      "transcript": "So"
+    },
+    {
+      "start": 1694.875,
+      "end": 1697.295,
+      "transcript": "if we do... We have a cloud server,"
+    },
+    {
+      "start": 1697.995,
+      "end": 1702.495,
+      "transcript": "we have no worries. But for on device, it's very expensive, such as in Pixel..."
+    },
+    {
+      "start": 1703.39,
+      "end": 1704.05,
+      "transcript": "Such as"
+    },
+    {
+      "start": 1705.0701,
+      "end": 1707.65,
+      "transcript": "in Apple Intelligence and also Pixel"
+    },
+    {
+      "start": 1708.3501,
+      "end": 1710.29,
+      "transcript": "Pixel phones, we will have our"
+    },
+    {
+      "start": 1710.8301,
+      "end": 1719.255,
+      "transcript": "own edge device language models for each processing. It will take some energy. So it's very... It's also the bottleneck for on device language model."
+    },
+    {
+      "start": 1720.055,
+      "end": 1728.475,
+      "transcript": "The first one, like, if we are deploying very, very large scale model like DeepSeq, right, it's our... It's like a 600,000,000,000"
+    },
+    {
+      "start": 1728.775,
+      "end": 1729.755,
+      "transcript": "language model,"
+    },
+    {
+      "start": 1732.06,
+      "end": 1736.56,
+      "transcript": "Either way, we cannot solve it in single device. So we would solve it in"
+    },
+    {
+      "start": 1737.02,
+      "end": 1738.88,
+      "transcript": "many, many, many, many devices."
+    },
+    {
+      "start": 1739.42,
+      "end": 1740.9601,
+      "transcript": "So either way,"
+    },
+    {
+      "start": 1741.5,
+      "end": 1743.2001,
+      "transcript": "how to do communication."
+    },
+    {
+      "start": 1743.8201,
+      "end": 1744.3201,
+      "transcript": "So"
+    },
+    {
+      "start": 1745.035,
+      "end": 1748.575,
+      "transcript": "either way, bottleneck by hardware memory. Hardware memory"
+    },
+    {
+      "start": 1749.115,
+      "end": 1755.375,
+      "transcript": "will decide how many devices you need to solve this language model. And then it's a com... Communication"
+    },
+    {
+      "start": 1755.915,
+      "end": 1756.415,
+      "transcript": "bandwidth,"
+    },
+    {
+      "start": 1757.5399,
+      "end": 1758.22,
+      "transcript": "which decides,"
+    },
+    {
+      "start": 1758.6599,
+      "end": 1759.4,
+      "transcript": "which decides,"
+    },
+    {
+      "start": 1760.1,
+      "end": 1766.0399,
+      "transcript": "like, how many how many data you could communicate given the limited time. So this is"
+    },
+    {
+      "start": 1766.74,
+      "end": 1770.9199,
+      "transcript": "a bottleneck when we really want to solve one language model."
+    },
+    {
+      "start": 1774.4651,
+      "end": 1777.845,
+      "transcript": "And during language model solving, no, so"
+    },
+    {
+      "start": 1778.305,
+      "end": 1781.685,
+      "transcript": "in language model, we will have many different stages"
+    },
+    {
+      "start": 1782.145,
+      "end": 1782.645,
+      "transcript": "like,"
+    },
+    {
+      "start": 1783.185,
+      "end": 1783.685,
+      "transcript": "in"
+    },
+    {
+      "start": 1785.29,
+      "end": 1788.35,
+      "transcript": "we will call it structured as in pre fill, if,"
+    },
+    {
+      "start": 1790.25,
+      "end": 1791.39,
+      "transcript": "okay, so if"
+    },
+    {
+      "start": 1791.85,
+      "end": 1798.91,
+      "transcript": "we, if our language model survey block byte computes, normally we call it a computer bound. And also"
+    },
+    {
+      "start": 1800.505,
+      "end": 1802.845,
+      "transcript": "in language pre fill and training,"
+    },
+    {
+      "start": 1803.625,
+      "end": 1805.005,
+      "transcript": "in pre fill, it's like"
+    },
+    {
+      "start": 1805.385,
+      "end": 1810.365,
+      "transcript": "you input your prompts. You already give all of your prompts and language, we"
+    },
+    {
+      "start": 1810.745,
+      "end": 1813.085,
+      "transcript": "will do pre fill, we will use all prompts"
+    },
+    {
+      "start": 1813.98,
+      "end": 1822.88,
+      "transcript": "as an input to language model and calculate the kv catch for it. And also during the training, also all tokens are already given. We will just"
+    },
+    {
+      "start": 1823.26,
+      "end": 1825.04,
+      "transcript": "process all tokens together."
+    },
+    {
+      "start": 1826.505,
+      "end": 1827.7251,
+      "transcript": "So when we do this,"
+    },
+    {
+      "start": 1828.985,
+      "end": 1846.2,
+      "transcript": "the metrics computation will be batch size times sequence length. Sequence length will be maybe 32 ks in training, pre fill. It maybe depends on your performance length. And, anyway, it's larger than one. And then... So the metrics will be batch size times,"
+    },
+    {
+      "start": 1846.82,
+      "end": 1849.16,
+      "transcript": "section length and also times your,"
+    },
+    {
+      "start": 1850.02,
+      "end": 1851.4,
+      "transcript": "model model dimension."
+    },
+    {
+      "start": 1852.58,
+      "end": 1860.555,
+      "transcript": "So we we could know it's... It'll be... This this this metrics would be very, very large. So it will makes, like,"
+    },
+    {
+      "start": 1862.135,
+      "end": 1865.5951,
+      "transcript": "it will makes, like, processing units too hard to process"
+    },
+    {
+      "start": 1865.9751,
+      "end": 1870.04,
+      "transcript": "all of these metrics computation. So it will be blocked by computes."
+    },
+    {
+      "start": 1871.3,
+      "end": 1872.8401,
+      "transcript": "However, when we do decoding,"
+    },
+    {
+      "start": 1873.78,
+      "end": 1881.88,
+      "transcript": "when we do decoding, because we will generate a token one by one, so metrics operations will be batch size times"
+    },
+    {
+      "start": 1882.915,
+      "end": 1889.175,
+      "transcript": "sequence length, and the sequence length is only one, and times the model dimension is one. And then because"
+    },
+    {
+      "start": 1890.275,
+      "end": 1894.295,
+      "transcript": "the sequence is one, so the compute is very, very cheap."
+    },
+    {
+      "start": 1894.675,
+      "end": 1896.055,
+      "transcript": "So at this time"
+    },
+    {
+      "start": 1896.9299,
+      "end": 1903.11,
+      "transcript": "at this time, the block is not compute, it's memory bandwidth. The most of the time"
+    },
+    {
+      "start": 1903.8099,
+      "end": 1908.95,
+      "transcript": "the most time during the survey will be like moving weights from your"
+    },
+    {
+      "start": 1909.425,
+      "end": 1914.405,
+      "transcript": "memory to processing units. So in this stage, we will call it memory bound."
+    },
+    {
+      "start": 1919.425,
+      "end": 1921.685,
+      "transcript": "Okay, so currently we know"
+    },
+    {
+      "start": 1922.0801,
+      "end": 1925.2201,
+      "transcript": "what we care about the language model efficiency, that's"
+    },
+    {
+      "start": 1925.68,
+      "end": 1930.1001,
+      "transcript": "like, latency and throughput. And we know for different language model,"
+    },
+    {
+      "start": 1931.36,
+      "end": 1932.18,
+      "transcript": "sewing stage,"
+    },
+    {
+      "start": 1932.56,
+      "end": 1937.3,
+      "transcript": "we will block by what, like in pre fill and the training, we will block by computes."
+    },
+    {
+      "start": 1937.655,
+      "end": 1938.155,
+      "transcript": "And"
+    },
+    {
+      "start": 1938.935,
+      "end": 1944.235,
+      "transcript": "in decoding time, we will generate token one by one, so we are blocked by memory bound,"
+    },
+    {
+      "start": 1945.175,
+      "end": 1946.3151,
+      "transcript": "by memory bandwidth."
+    },
+    {
+      "start": 1946.855,
+      "end": 1949.355,
+      "transcript": "So next, next, I will introduce"
+    },
+    {
+      "start": 1949.85,
+      "end": 1952.11,
+      "transcript": "how we improve language model efficiency"
+    },
+    {
+      "start": 1952.49,
+      "end": 1953.63,
+      "transcript": "from model perspective."
+    },
+    {
+      "start": 1955.37,
+      "end": 1958.51,
+      "transcript": "And the first one is just, like, very simple,"
+    },
+    {
+      "start": 1958.89,
+      "end": 1960.03,
+      "transcript": "like, model distillation."
+    },
+    {
+      "start": 1960.8099,
+      "end": 1961.47,
+      "transcript": "It's like"
+    },
+    {
+      "start": 1961.77,
+      "end": 1965.23,
+      "transcript": "we know that a larger model, we will have a very"
+    },
+    {
+      "start": 1965.705,
+      "end": 1971.965,
+      "transcript": "bad, we will have better quality than smaller model, but we cannot really solve larger model."
+    },
+    {
+      "start": 1972.585,
+      "end": 1977.725,
+      "transcript": "So in this time, we could maybe do model distillation. We will use a larger model"
+    },
+    {
+      "start": 1978.025,
+      "end": 1980.205,
+      "transcript": "to label the training dataset"
+    },
+    {
+      "start": 1980.585,
+      "end": 1984.52,
+      "transcript": "and then the the training dataset label will become the soft logits."
+    },
+    {
+      "start": 1985.38,
+      "end": 1989.08,
+      "transcript": "We could use this soft logits to further train our"
+    },
+    {
+      "start": 1989.38,
+      "end": 1993.24,
+      "transcript": "small model and then we could improve our small model's"
+    },
+    {
+      "start": 1994.395,
+      "end": 1997.055,
+      "transcript": "quality and then we could solve our small model."
+    },
+    {
+      "start": 1998.235,
+      "end": 2001.9349,
+      "transcript": "So in this stage, because our small model have our..."
+    },
+    {
+      "start": 2002.315,
+      "end": 2004.015,
+      "transcript": "Have less less,"
+    },
+    {
+      "start": 2005.035,
+      "end": 2005.535,
+      "transcript": "parameters,"
+    },
+    {
+      "start": 2006.395,
+      "end": 2008.575,
+      "transcript": "so it will definitely alleviate"
+    },
+    {
+      "start": 2009.61,
+      "end": 2013.95,
+      "transcript": "compute bound because the metrics operation, metrics size will be reduced."
+    },
+    {
+      "start": 2014.33,
+      "end": 2017.71,
+      "transcript": "And also because we have less parameters, so when we move"
+    },
+    {
+      "start": 2018.25,
+      "end": 2019.55,
+      "transcript": "the model weights from,"
+    },
+    {
+      "start": 2020.33,
+      "end": 2021.87,
+      "transcript": "from memory to"
+    },
+    {
+      "start": 2022.41,
+      "end": 2023.07,
+      "transcript": "to computes,"
+    },
+    {
+      "start": 2023.485,
+      "end": 2025.905,
+      "transcript": "will move less. So it also alleviates"
+    },
+    {
+      "start": 2027.005,
+      "end": 2032.225,
+      "transcript": "memory bound. So and then it will improve both latency and throughput."
+    },
+    {
+      "start": 2032.765,
+      "end": 2034.305,
+      "transcript": "But the cost"
+    },
+    {
+      "start": 2034.6849,
+      "end": 2044.28,
+      "transcript": "to do model distillation is like pay the additional training cost. And maybe because we're so small model, so maybe it has some small quality drop."
+    },
+    {
+      "start": 2046.1799,
+      "end": 2049.48,
+      "transcript": "And this is the first one. The second one is like sparsity"
+    },
+    {
+      "start": 2049.86,
+      "end": 2056.2249,
+      "transcript": "language model. If you really count the number of parameter size in transformer, you will find"
+    },
+    {
+      "start": 2057.005,
+      "end": 2058.065,
+      "transcript": "that f f layers,"
+    },
+    {
+      "start": 2058.445,
+      "end": 2061.9849,
+      "transcript": "normally it will take about 60%"
+    },
+    {
+      "start": 2062.365,
+      "end": 2065.6,
+      "transcript": "parameter size and attention only takes 30, about"
+    },
+    {
+      "start": 2066.22,
+      "end": 2067.04,
+      "transcript": "30"
+    },
+    {
+      "start": 2067.82,
+      "end": 2068.9602,
+      "transcript": "parameter size."
+    },
+    {
+      "start": 2069.58,
+      "end": 2070.08,
+      "transcript": "So"
+    },
+    {
+      "start": 2071.1802,
+      "end": 2072.08,
+      "transcript": "this large"
+    },
+    {
+      "start": 2072.86,
+      "end": 2076.9602,
+      "transcript": "amount of our feedforward layers gives us a lot of"
+    },
+    {
+      "start": 2077.955,
+      "end": 2079.735,
+      "transcript": "potential to optimize it."
+    },
+    {
+      "start": 2081.555,
+      "end": 2083.975,
+      "transcript": "So, yeah, here is just one MLP"
+    },
+    {
+      "start": 2084.515,
+      "end": 2085.015,
+      "transcript": "realization."
+    },
+    {
+      "start": 2085.635,
+      "end": 2088.615,
+      "transcript": "So we could do some sparsity in FFL layers."
+    },
+    {
+      "start": 2089.475,
+      "end": 2092.775,
+      "transcript": "We have two kinds of sparsity. One is a sparse weights."
+    },
+    {
+      "start": 2094.0,
+      "end": 2095.3801,
+      "transcript": "We have a very large, large"
+    },
+    {
+      "start": 2097.12,
+      "end": 2103.1401,
+      "transcript": "weights matrix. Maybe we could remove some weights from it, just leave some weights as zero."
+    },
+    {
+      "start": 2103.76,
+      "end": 2107.22,
+      "transcript": "We call it sparse weights. And also we could leave some"
+    },
+    {
+      "start": 2107.68,
+      "end": 2108.18,
+      "transcript": "outputs,"
+    },
+    {
+      "start": 2109.325,
+      "end": 2110.385,
+      "transcript": "these mop outputs,"
+    },
+    {
+      "start": 2110.685,
+      "end": 2111.665,
+      "transcript": "leave some elements"
+    },
+    {
+      "start": 2111.965,
+      "end": 2114.5452,
+      "transcript": "as zero, we call it sparse activation."
+    },
+    {
+      "start": 2115.8052,
+      "end": 2119.905,
+      "transcript": "Specifically, maybe you could say some other names for sparse weights, it's like,"
+    },
+    {
+      "start": 2120.365,
+      "end": 2121.185,
+      "transcript": "weight pruning."
+    },
+    {
+      "start": 2122.48,
+      "end": 2125.3801,
+      "transcript": "Okay. If we do weight pruning, we"
+    },
+    {
+      "start": 2125.6802,
+      "end": 2127.06,
+      "transcript": "make some weights,"
+    },
+    {
+      "start": 2127.76,
+      "end": 2130.4202,
+      "transcript": "our FFN layers, as zero because..."
+    },
+    {
+      "start": 2131.4402,
+      "end": 2134.98,
+      "transcript": "As zero, it will, like, because we have less"
+    },
+    {
+      "start": 2136.045,
+      "end": 2142.4648,
+      "transcript": "parameters and also less computes, it will alleviate both memory bound and compute bound and improve."
+    },
+    {
+      "start": 2142.765,
+      "end": 2148.4648,
+      "transcript": "And both... Because it's a static pruning, it will improve both latency and throughput."
+    },
+    {
+      "start": 2150.31,
+      "end": 2150.81,
+      "transcript": "However,"
+    },
+    {
+      "start": 2151.1902,
+      "end": 2164.01,
+      "transcript": "the thing is that it's not simple as you think like that. The first one is, like, because you remove some remove some weights, maybe you will have some small kernel drop. The second thing is that remove"
+    },
+    {
+      "start": 2164.575,
+      "end": 2171.795,
+      "transcript": "remove weights not guarantee you could have efficiency gain because when you remove weights, you need to"
+    },
+    {
+      "start": 2172.175,
+      "end": 2172.835,
+      "transcript": "you need"
+    },
+    {
+      "start": 2173.855,
+      "end": 2175.155,
+      "transcript": "to record the information,"
+    },
+    {
+      "start": 2175.535,
+      "end": 2176.435,
+      "transcript": "which locations,"
+    },
+    {
+      "start": 2177.455,
+      "end": 2179.795,
+      "transcript": "which weights, the location of which weights"
+    },
+    {
+      "start": 2180.44,
+      "end": 2181.6602,
+      "transcript": "are removed."
+    },
+    {
+      "start": 2182.28,
+      "end": 2186.3801,
+      "transcript": "Some of the locations are, some weights in some locations are not removed."
+    },
+    {
+      "start": 2187.6401,
+      "end": 2190.7,
+      "transcript": "So you need to record such kind of information."
+    },
+    {
+      "start": 2191.24,
+      "end": 2200.275,
+      "transcript": "But if you record such kind of information, you will store more weights in your local device. And also you need to move this information"
+    },
+    {
+      "start": 2201.615,
+      "end": 2203.315,
+      "transcript": "into memory. So"
+    },
+    {
+      "start": 2203.615,
+      "end": 2204.115,
+      "transcript": "actually,"
+    },
+    {
+      "start": 2204.9749,
+      "end": 2213.65,
+      "transcript": "if you cannot deal with it very well, it has no efficiency gain. So if you want to use rich programming to have some,"
+    },
+    {
+      "start": 2214.67,
+      "end": 2216.6099,
+      "transcript": "language model efficiency, it requires"
+    },
+    {
+      "start": 2217.15,
+      "end": 2220.13,
+      "transcript": "hardware and system system code design."
+    },
+    {
+      "start": 2222.19,
+      "end": 2223.49,
+      "transcript": "That's what many"
+    },
+    {
+      "start": 2224.005,
+      "end": 2225.545,
+      "transcript": "startups are doing, such"
+    },
+    {
+      "start": 2225.845,
+      "end": 2228.1848,
+      "transcript": "as the Celebrities. They do it very well."
+    },
+    {
+      "start": 2231.285,
+      "end": 2234.6648,
+      "transcript": "The second thing for sparsity in FFN is, like,"
+    },
+    {
+      "start": 2235.125,
+      "end": 2236.265,
+      "transcript": "activation sparsity."
+    },
+    {
+      "start": 2236.6448,
+      "end": 2237.7048,
+      "transcript": "In... In..."
+    },
+    {
+      "start": 2238.2449,
+      "end": 2239.385,
+      "transcript": "Normally in"
+    },
+    {
+      "start": 2240.36,
+      "end": 2241.5,
+      "transcript": "transformer in FFN,"
+    },
+    {
+      "start": 2241.8,
+      "end": 2245.1802,
+      "transcript": "we will use this kind of our this kind of"
+    },
+    {
+      "start": 2246.04,
+      "end": 2248.7,
+      "transcript": "our architecture. We call it gated FFN."
+    },
+    {
+      "start": 2249.0,
+      "end": 2254.46,
+      "transcript": "We will have MLP one, MLP two, and MLP three. And when we realize"
+    },
+    {
+      "start": 2255.675,
+      "end": 2256.255,
+      "transcript": "the MLP1's"
+    },
+    {
+      "start": 2256.715,
+      "end": 2258.975,
+      "transcript": "outputs in TFile model, it's"
+    },
+    {
+      "start": 2259.515,
+      "end": 2261.375,
+      "transcript": "a paper in 2021,"
+    },
+    {
+      "start": 2261.595,
+      "end": 2262.895,
+      "transcript": "you will find out"
+    },
+    {
+      "start": 2264.475,
+      "end": 2264.975,
+      "transcript": "mostly"
+    },
+    {
+      "start": 2265.435,
+      "end": 2266.815,
+      "transcript": "only 1%"
+    },
+    {
+      "start": 2267.79,
+      "end": 2268.29,
+      "transcript": "outputs"
+    },
+    {
+      "start": 2268.59,
+      "end": 2269.09,
+      "transcript": "of"
+    },
+    {
+      "start": 2269.3901,
+      "end": 2269.8901,
+      "transcript": "f1's"
+    },
+    {
+      "start": 2270.51,
+      "end": 2271.01,
+      "transcript": "gates,"
+    },
+    {
+      "start": 2271.79,
+      "end": 2272.29,
+      "transcript": "outputs,"
+    },
+    {
+      "start": 2273.1501,
+      "end": 2274.21,
+      "transcript": "is non zero."
+    },
+    {
+      "start": 2274.51,
+      "end": 2277.6501,
+      "transcript": "Most of the outputs of it are zero,"
+    },
+    {
+      "start": 2278.59,
+      "end": 2279.73,
+      "transcript": "which means that"
+    },
+    {
+      "start": 2280.11,
+      "end": 2281.33,
+      "transcript": "most of our computes"
+    },
+    {
+      "start": 2281.795,
+      "end": 2282.295,
+      "transcript": "spend"
+    },
+    {
+      "start": 2282.595,
+      "end": 2285.335,
+      "transcript": "on FF1 and FF2 and FF3"
+    },
+    {
+      "start": 2285.715,
+      "end": 2286.455,
+      "transcript": "are useless"
+    },
+    {
+      "start": 2286.915,
+      "end": 2287.415,
+      "transcript": "because"
+    },
+    {
+      "start": 2287.955,
+      "end": 2291.015,
+      "transcript": "one layer's output is like only 1%"
+    },
+    {
+      "start": 2291.155,
+      "end": 2291.895,
+      "transcript": "are nonzero."
+    },
+    {
+      "start": 2294.13,
+      "end": 2296.3098,
+      "transcript": "So which means that this gives"
+    },
+    {
+      "start": 2296.7698,
+      "end": 2298.23,
+      "transcript": "us a greater opportunity"
+    },
+    {
+      "start": 2298.93,
+      "end": 2299.67,
+      "transcript": "to make"
+    },
+    {
+      "start": 2301.0898,
+      "end": 2301.5898,
+      "transcript": "many"
+    },
+    {
+      "start": 2301.9697,
+      "end": 2302.4697,
+      "transcript": "of"
+    },
+    {
+      "start": 2302.8499,
+      "end": 2306.8699,
+      "transcript": "our outputs, our FF1, as zero. And based on this,"
+    },
+    {
+      "start": 2308.875,
+      "end": 2309.695,
+      "transcript": "this index,"
+    },
+    {
+      "start": 2309.995,
+      "end": 2313.2952,
+      "transcript": "we could only fetch FFN2 weights and FFN3"
+    },
+    {
+      "start": 2313.675,
+      "end": 2317.5352,
+      "transcript": "weights from memory, a part of it from memory to"
+    },
+    {
+      "start": 2317.995,
+      "end": 2321.81,
+      "transcript": "processing units, such as this is fm2, fm3"
+    },
+    {
+      "start": 2322.83,
+      "end": 2325.09,
+      "transcript": "weights and we know which"
+    },
+    {
+      "start": 2326.35,
+      "end": 2327.81,
+      "transcript": "neuron in ff1"
+    },
+    {
+      "start": 2328.11,
+      "end": 2331.33,
+      "transcript": "is non zero and we just put these weights"
+    },
+    {
+      "start": 2332.2449,
+      "end": 2334.345,
+      "transcript": "to processing units instead"
+    },
+    {
+      "start": 2335.045,
+      "end": 2335.7048,
+      "transcript": "of wholeweights"
+    },
+    {
+      "start": 2336.005,
+      "end": 2336.505,
+      "transcript": "function."
+    },
+    {
+      "start": 2336.9648,
+      "end": 2337.4648,
+      "transcript": "So"
+    },
+    {
+      "start": 2338.085,
+      "end": 2346.9048,
+      "transcript": "because we move less weights from memory to processing units, so it will alleviate the memory bound and definitely improve latency."
+    },
+    {
+      "start": 2349.28,
+      "end": 2351.8599,
+      "transcript": "However, it's also just theoretically."
+    },
+    {
+      "start": 2353.8398,
+      "end": 2365.2751,
+      "transcript": "Because when GPU and or TPU move weights from memory to processing units, it will not move weights one by one. It's move with group by group."
+    },
+    {
+      "start": 2366.8552,
+      "end": 2370.475,
+      "transcript": "So so sometimes you need... So because sometimes"
+    },
+    {
+      "start": 2371.0151,
+      "end": 2373.0352,
+      "transcript": "your non zero model is very random."
+    },
+    {
+      "start": 2373.495,
+      "end": 2373.995,
+      "transcript": "So"
+    },
+    {
+      "start": 2375.1802,
+      "end": 2377.28,
+      "transcript": "because you remove move weights"
+    },
+    {
+      "start": 2377.6602,
+      "end": 2380.6401,
+      "transcript": "group by group, you still will move many"
+    },
+    {
+      "start": 2381.26,
+      "end": 2382.6401,
+      "transcript": "zero weights to"
+    },
+    {
+      "start": 2383.26,
+      "end": 2384.4001,
+      "transcript": "processing units."
+    },
+    {
+      "start": 2384.7002,
+      "end": 2387.84,
+      "transcript": "So to alleviate this, it will require..."
+    },
+    {
+      "start": 2388.1401,
+      "end": 2389.04,
+      "transcript": "Also require"
+    },
+    {
+      "start": 2389.585,
+      "end": 2392.165,
+      "transcript": "hardware and a system code design on it."
+    },
+    {
+      "start": 2393.5051,
+      "end": 2394.565,
+      "transcript": "And, in"
+    },
+    {
+      "start": 2395.5051,
+      "end": 2400.885,
+      "transcript": "Google, we have done it very well. We released our JMS lesson last year. It's"
+    },
+    {
+      "start": 2401.425,
+      "end": 2402.085,
+      "transcript": "a first"
+    },
+    {
+      "start": 2402.385,
+      "end": 2404.58,
+      "transcript": "four b model. Could achieve"
+    },
+    {
+      "start": 2404.8801,
+      "end": 2405.86,
+      "transcript": "once over"
+    },
+    {
+      "start": 2406.8,
+      "end": 2407.78,
+      "transcript": "13,000"
+    },
+    {
+      "start": 2407.9202,
+      "end": 2409.3801,
+      "transcript": "ALM arena score."
+    },
+    {
+      "start": 2409.9202,
+      "end": 2415.4602,
+      "transcript": "And it's also the world's first product level language model with unstructured..."
+    },
+    {
+      "start": 2415.84,
+      "end": 2417.62,
+      "transcript": "Unstructured activation sparsity."
+    },
+    {
+      "start": 2418.825,
+      "end": 2419.565,
+      "transcript": "In JMSLn,"
+    },
+    {
+      "start": 2420.265,
+      "end": 2423.085,
+      "transcript": "for the 10 layers are with 95 sparsity,"
+    },
+    {
+      "start": 2423.4648,
+      "end": 2424.605,
+      "transcript": "which means that"
+    },
+    {
+      "start": 2424.905,
+      "end": 2426.125,
+      "transcript": "only 5%,"
+    },
+    {
+      "start": 2427.625,
+      "end": 2430.365,
+      "transcript": "rates in FFN layers are turned to computes."
+    },
+    {
+      "start": 2432.11,
+      "end": 2435.73,
+      "transcript": "So we could have many efficiency gains, and also"
+    },
+    {
+      "start": 2437.55,
+      "end": 2438.83,
+      "transcript": "and also this,"
+    },
+    {
+      "start": 2439.3901,
+      "end": 2440.45,
+      "transcript": "this JMSL"
+    },
+    {
+      "start": 2441.07,
+      "end": 2443.41,
+      "transcript": "is already open sourced in"
+    },
+    {
+      "start": 2444.005,
+      "end": 2446.825,
+      "transcript": "Hugging Face. And we do a lot of efficiency"
+    },
+    {
+      "start": 2447.445,
+      "end": 2448.585,
+      "transcript": "and and"
+    },
+    {
+      "start": 2449.045,
+      "end": 2449.545,
+      "transcript": "quality"
+    },
+    {
+      "start": 2450.005,
+      "end": 2450.825,
+      "transcript": "trade off."
+    },
+    {
+      "start": 2451.125,
+      "end": 2451.865,
+      "transcript": "And also,"
+    },
+    {
+      "start": 2452.325,
+      "end": 2457.945,
+      "transcript": "if you have Pixel 10, you will use some AI functions in Pixel 10. Actually,"
+    },
+    {
+      "start": 2458.325,
+      "end": 2463.99,
+      "transcript": "when you use these things, you are calling Jamastree N in Pixel 10. And also the Jamastree"
+    },
+    {
+      "start": 2464.45,
+      "end": 2467.35,
+      "transcript": "N pixel washing will be better than our,"
+    },
+    {
+      "start": 2468.21,
+      "end": 2469.43,
+      "transcript": "open source washing."
+    },
+    {
+      "start": 2471.25,
+      "end": 2475.03,
+      "transcript": "And also if we mention activation sparsity, we have to mention"
+    },
+    {
+      "start": 2476.105,
+      "end": 2480.2852,
+      "transcript": "MOE. We know MOE mixture of exports is very important for our,"
+    },
+    {
+      "start": 2481.945,
+      "end": 2483.725,
+      "transcript": "LOM. And also I think,"
+    },
+    {
+      "start": 2485.225,
+      "end": 2486.5251,
+      "transcript": "I think through the"
+    },
+    {
+      "start": 2486.905,
+      "end": 2491.5,
+      "transcript": "previous lectures, you already know how MOE works. And also, Yanshi will introduce"
+    },
+    {
+      "start": 2491.96,
+      "end": 2495.18,
+      "transcript": "it again. So I just introduced it very quickly."
+    },
+    {
+      "start": 2495.48,
+      "end": 2506.035,
+      "transcript": "It's like in MLE, we will go... For for each token, we'll go to a zoutter, and then for... After the zoutter, we'll choose which FFN to attend the tool computes. And"
+    },
+    {
+      "start": 2506.575,
+      "end": 2509.075,
+      "transcript": "then we will do the combine"
+    },
+    {
+      "start": 2509.535,
+      "end": 2513.715,
+      "transcript": "function again to get the outputs from different FFNs together"
+    },
+    {
+      "start": 2514.095,
+      "end": 2515.235,
+      "transcript": "so that we can..."
+    },
+    {
+      "start": 2515.775,
+      "end": 2518.115,
+      "transcript": "Because we don't activate all FFNs"
+    },
+    {
+      "start": 2518.47,
+      "end": 2521.8499,
+      "transcript": "in the ALM, so we could save some computes."
+    },
+    {
+      "start": 2523.67,
+      "end": 2524.17,
+      "transcript": "Actually,"
+    },
+    {
+      "start": 2524.47,
+      "end": 2534.695,
+      "transcript": "MOE is just one special version of activation sparsity. We could say like in activation sparsity, each export is just one row... One column, our"
+    },
+    {
+      "start": 2535.475,
+      "end": 2536.935,
+      "transcript": "our FFN2 and FFN3"
+    },
+    {
+      "start": 2537.235,
+      "end": 2538.375,
+      "transcript": "weights. But"
+    },
+    {
+      "start": 2539.3152,
+      "end": 2539.975,
+      "transcript": "in MOE,"
+    },
+    {
+      "start": 2540.355,
+      "end": 2543.175,
+      "transcript": "each export is is just like one FFN."
+    },
+    {
+      "start": 2543.635,
+      "end": 2544.135,
+      "transcript": "So"
+    },
+    {
+      "start": 2545.1,
+      "end": 2545.6,
+      "transcript": "so"
+    },
+    {
+      "start": 2546.3,
+      "end": 2547.44,
+      "transcript": "so actually the"
+    },
+    {
+      "start": 2547.74,
+      "end": 2548.24,
+      "transcript": "MACHEREALEXPORT"
+    },
+    {
+      "start": 2548.94,
+      "end": 2551.84,
+      "transcript": "is just like a special version of activation sparsity."
+    },
+    {
+      "start": 2552.1401,
+      "end": 2554.08,
+      "transcript": "You can see many different,"
+    },
+    {
+      "start": 2554.94,
+      "end": 2556.48,
+      "transcript": "many similar designs."
+    },
+    {
+      "start": 2558.535,
+      "end": 2560.875,
+      "transcript": "And, okay, that's about the sparsity"
+    },
+    {
+      "start": 2561.175,
+      "end": 2562.2349,
+      "transcript": "for FFN"
+    },
+    {
+      "start": 2563.335,
+      "end": 2563.835,
+      "transcript": "because"
+    },
+    {
+      "start": 2564.535,
+      "end": 2567.675,
+      "transcript": "FFN layers always have 60%"
+    },
+    {
+      "start": 2567.895,
+      "end": 2569.415,
+      "transcript": "parameters. So we could say,"
+    },
+    {
+      "start": 2570.135,
+      "end": 2572.795,
+      "transcript": "by doing by doing sparsity, we could say we'll"
+    },
+    {
+      "start": 2573.6301,
+      "end": 2575.57,
+      "transcript": "get a lot of efficiency gain."
+    },
+    {
+      "start": 2575.87,
+      "end": 2577.49,
+      "transcript": "Okay, next one is a quantization."
+    },
+    {
+      "start": 2578.59,
+      "end": 2582.93,
+      "transcript": "Normally, when we train one language model, we normally will train it in,"
+    },
+    {
+      "start": 2584.27,
+      "end": 2585.97,
+      "transcript": "use 32 bits"
+    },
+    {
+      "start": 2586.425,
+      "end": 2588.525,
+      "transcript": "of 16 bits to denote"
+    },
+    {
+      "start": 2588.905,
+      "end": 2589.725,
+      "transcript": "one language,"
+    },
+    {
+      "start": 2590.185,
+      "end": 2590.765,
+      "transcript": "to denote"
+    },
+    {
+      "start": 2591.465,
+      "end": 2593.725,
+      "transcript": "the parameter in one language model."
+    },
+    {
+      "start": 2594.105,
+      "end": 2602.9,
+      "transcript": "But actually when we've done these things, you will find that we do not need so many bits to represent the language language model parameters."
+    },
+    {
+      "start": 2603.3599,
+      "end": 2603.8599,
+      "transcript": "So"
+    },
+    {
+      "start": 2604.7998,
+      "end": 2609.5398,
+      "transcript": "we will reduce it from 16 or 32 bits to bits to"
+    },
+    {
+      "start": 2609.8398,
+      "end": 2610.5798,
+      "transcript": "eight bits."
+    },
+    {
+      "start": 2611.68,
+      "end": 2612.42,
+      "transcript": "And then"
+    },
+    {
+      "start": 2612.7998,
+      "end": 2613.2998,
+      "transcript": "because"
+    },
+    {
+      "start": 2613.7852,
+      "end": 2615.485,
+      "transcript": "because the bit... Bit's number,"
+    },
+    {
+      "start": 2616.425,
+      "end": 2625.0051,
+      "transcript": "reduced, so we could make our launching model size smaller. Because size smaller, so we could have less metric... Less"
+    },
+    {
+      "start": 2626.3599,
+      "end": 2636.06,
+      "transcript": "metrics to do computes and also move less size... Parameter size from memory to to processing units. And then you could have... Alleviate"
+    },
+    {
+      "start": 2636.68,
+      "end": 2641.58,
+      "transcript": "both memory bound and computer bound and improve both latency and throughput."
+    },
+    {
+      "start": 2643.2952,
+      "end": 2647.235,
+      "transcript": "Here is one example. You could directly search ARM quantization."
+    },
+    {
+      "start": 2647.855,
+      "end": 2650.835,
+      "transcript": "You could find out, okay, if we do"
+    },
+    {
+      "start": 2651.135,
+      "end": 2652.5151,
+      "transcript": "make a LAMA two model"
+    },
+    {
+      "start": 2652.895,
+      "end": 2653.395,
+      "transcript": "from"
+    },
+    {
+      "start": 2653.7751,
+      "end": 2659.27,
+      "transcript": "maybe, like, 32 bits to eight bits and or four four bits, we could"
+    },
+    {
+      "start": 2660.05,
+      "end": 2661.75,
+      "transcript": "we could get our efficiency..."
+    },
+    {
+      "start": 2662.05,
+      "end": 2663.19,
+      "transcript": "We could get our"
+    },
+    {
+      "start": 2663.57,
+      "end": 2665.83,
+      "transcript": "super tokens per second doubled."
+    },
+    {
+      "start": 2667.01,
+      "end": 2667.99,
+      "transcript": "That's how quantization"
+    },
+    {
+      "start": 2668.69,
+      "end": 2672.71,
+      "transcript": "gets efficiency again. And also because you could search"
+    },
+    {
+      "start": 2673.465,
+      "end": 2677.5652,
+      "transcript": "many, many different kernelization methods, you could say it all normally"
+    },
+    {
+      "start": 2678.5852,
+      "end": 2680.605,
+      "transcript": "doesn't hurt the quality a lot."
+    },
+    {
+      "start": 2684.665,
+      "end": 2685.385,
+      "transcript": "Here is,"
+    },
+    {
+      "start": 2686.0251,
+      "end": 2686.5251,
+      "transcript": "some"
+    },
+    {
+      "start": 2686.8252,
+      "end": 2687.3252,
+      "transcript": "introduction"
+    },
+    {
+      "start": 2688.105,
+      "end": 2688.605,
+      "transcript": "about"
+    },
+    {
+      "start": 2689.18,
+      "end": 2695.68,
+      "transcript": "to improve the, language model efficiency from model perspective. There are some others, just like sparse attention"
+    },
+    {
+      "start": 2696.3,
+      "end": 2705.275,
+      "transcript": "and kvCatch compression and low rank things. Because our time limitation, I cannot explain them together, but I think you could associate it by yourself."
+    },
+    {
+      "start": 2706.935,
+      "end": 2711.275,
+      "transcript": "And the next section is about the language model efficiency algorithm perspective."
+    },
+    {
+      "start": 2713.175,
+      "end": 2716.4749,
+      "transcript": "The first one I want to mention is, like, speculative decoding."
+    },
+    {
+      "start": 2717.24,
+      "end": 2718.94,
+      "transcript": "It's like a token level"
+    },
+    {
+      "start": 2720.44,
+      "end": 2722.8599,
+      "transcript": "algorithm to enhance the language model efficiency."
+    },
+    {
+      "start": 2723.7998,
+      "end": 2728.0598,
+      "transcript": "Here we have a sentence. It's like, thank you very much for the"
+    },
+    {
+      "start": 2729.095,
+      "end": 2730.475,
+      "transcript": "unexpected 100,000,000"
+    },
+    {
+      "start": 2730.7751,
+      "end": 2735.675,
+      "transcript": "salary package for Google and OpenAI researchers because, you know, the... Recently,"
+    },
+    {
+      "start": 2735.975,
+      "end": 2736.475,
+      "transcript": "Meta"
+    },
+    {
+      "start": 2736.855,
+      "end": 2740.635,
+      "transcript": "gave a very high salary package for some of Google and OpenAI"
+    },
+    {
+      "start": 2741.2551,
+      "end": 2741.7551,
+      "transcript": "researchers."
+    },
+    {
+      "start": 2742.2952,
+      "end": 2742.7952,
+      "transcript": "And,"
+    },
+    {
+      "start": 2743.175,
+      "end": 2753.8098,
+      "transcript": "yeah. And also because can we use this sentence? We could say, when you have this input, sank, you already know the next token will be you very much"
+    },
+    {
+      "start": 2754.3499,
+      "end": 2754.8499,
+      "transcript": "because"
+    },
+    {
+      "start": 2755.71,
+      "end": 2757.47,
+      "transcript": "it's very popular, right? And,"
+    },
+    {
+      "start": 2758.1099,
+      "end": 2758.6099,
+      "transcript": "so"
+    },
+    {
+      "start": 2759.275,
+      "end": 2762.335,
+      "transcript": "normally we do not think too much to output"
+    },
+    {
+      "start": 2762.715,
+      "end": 2763.935,
+      "transcript": "u very much,"
+    },
+    {
+      "start": 2765.035,
+      "end": 2766.975,
+      "transcript": "given the sink as a context."
+    },
+    {
+      "start": 2768.155,
+      "end": 2774.335,
+      "transcript": "So we call this token maybe like, easy token. It could directly could predict by n gram"
+    },
+    {
+      "start": 2774.7998,
+      "end": 2775.2998,
+      "transcript": "algorithm."
+    },
+    {
+      "start": 2776.5598,
+      "end": 2778.0999,
+      "transcript": "And for these red"
+    },
+    {
+      "start": 2778.72,
+      "end": 2781.94,
+      "transcript": "tokens in red color, such as 100,000,000"
+    },
+    {
+      "start": 2782.0,
+      "end": 2782.9,
+      "transcript": "salary package,"
+    },
+    {
+      "start": 2783.44,
+      "end": 2791.265,
+      "transcript": "we need to think, we need to give them more context and need to search some nodes to know how could"
+    },
+    {
+      "start": 2791.645,
+      "end": 2794.4648,
+      "transcript": "I predict the next token is 100,000,000."
+    },
+    {
+      "start": 2794.765,
+      "end": 2802.785,
+      "transcript": "So this hard tokens, such kind of such tokens, hard tokens, require context and reasoning to generate. We call it hard tokens."
+    },
+    {
+      "start": 2804.2,
+      "end": 2804.7,
+      "transcript": "And"
+    },
+    {
+      "start": 2805.32,
+      "end": 2811.02,
+      "transcript": "so could we have one method to use less computes to generate easy tokens and"
+    },
+    {
+      "start": 2811.72,
+      "end": 2814.06,
+      "transcript": "more computes to generate hard tokens?"
+    },
+    {
+      "start": 2815.1602,
+      "end": 2819.075,
+      "transcript": "So that's the intuition for speculative decoding."
+    },
+    {
+      "start": 2819.535,
+      "end": 2821.395,
+      "transcript": "How it will do"
+    },
+    {
+      "start": 2821.695,
+      "end": 2824.5151,
+      "transcript": "for it? It's like we will have a draftr."
+    },
+    {
+      "start": 2825.615,
+      "end": 2829.475,
+      "transcript": "Draftr is a very, very small model and you, for each"
+    },
+    {
+      "start": 2830.6199,
+      "end": 2832.4,
+      "transcript": "context, it will generate"
+    },
+    {
+      "start": 2833.98,
+      "end": 2834.7998,
+      "transcript": "many candidates,"
+    },
+    {
+      "start": 2836.38,
+      "end": 2837.5198,
+      "transcript": "token by token."
+    },
+    {
+      "start": 2839.5,
+      "end": 2840.64,
+      "transcript": "But instead of,"
+    },
+    {
+      "start": 2840.94,
+      "end": 2841.44,
+      "transcript": "and"
+    },
+    {
+      "start": 2842.14,
+      "end": 2844.48,
+      "transcript": "such as we could generate four tokens"
+    },
+    {
+      "start": 2845.835,
+      "end": 2850.335,
+      "transcript": "by software models and we could use these four tokens as inputs"
+    },
+    {
+      "start": 2850.9548,
+      "end": 2851.6948,
+      "transcript": "for the"
+    },
+    {
+      "start": 2852.2349,
+      "end": 2861.54,
+      "transcript": "primary primary model, our larger model. In this way, the primary model won't just generate tokens one by one. It will verify"
+    },
+    {
+      "start": 2862.96,
+      "end": 2864.02,
+      "transcript": "these four tokens"
+    },
+    {
+      "start": 2864.56,
+      "end": 2865.22,
+      "transcript": "in parallel"
+    },
+    {
+      "start": 2866.1602,
+      "end": 2867.06,
+      "transcript": "in this way,"
+    },
+    {
+      "start": 2867.9202,
+      "end": 2871.06,
+      "transcript": "in this way, and then we will have an algorithm to justify"
+    },
+    {
+      "start": 2871.4402,
+      "end": 2874.26,
+      "transcript": "if these four tokens are good or not."
+    },
+    {
+      "start": 2874.845,
+      "end": 2880.2249,
+      "transcript": "If these four tokens are all good, which means that we could just use one"
+    },
+    {
+      "start": 2881.565,
+      "end": 2882.4648,
+      "transcript": "fraud process"
+    },
+    {
+      "start": 2883.085,
+      "end": 2884.865,
+      "transcript": "to verify four tokens"
+    },
+    {
+      "start": 2885.2449,
+      "end": 2885.7449,
+      "transcript": "together."
+    },
+    {
+      "start": 2886.9248,
+      "end": 2888.385,
+      "transcript": "So which means that"
+    },
+    {
+      "start": 2890.56,
+      "end": 2897.4602,
+      "transcript": "we primarily do not generate tokens one by one. It will use the same amount of time to generate the four tokens"
+    },
+    {
+      "start": 2898.56,
+      "end": 2899.2202,
+      "transcript": "at once."
+    },
+    {
+      "start": 2900.32,
+      "end": 2900.82,
+      "transcript": "So,"
+    },
+    {
+      "start": 2902.08,
+      "end": 2902.58,
+      "transcript": "because,"
+    },
+    {
+      "start": 2902.9602,
+      "end": 2903.4602,
+      "transcript": "so,"
+    },
+    {
+      "start": 2903.9949,
+      "end": 2912.015,
+      "transcript": "so because there are some EA tokens, for EA tokens, the structural model could generate very efficiently and we could directly verify them"
+    },
+    {
+      "start": 2912.555,
+      "end": 2914.255,
+      "transcript": "and generate them in parallel."
+    },
+    {
+      "start": 2914.795,
+      "end": 2915.615,
+      "transcript": "And so"
+    },
+    {
+      "start": 2916.075,
+      "end": 2925.2,
+      "transcript": "for simple tokens, maybe we could directly generate the four tokens together. But for hard tokens, the draft model cannot generate very accurately"
+    },
+    {
+      "start": 2925.82,
+      "end": 2926.48,
+      "transcript": "and then"
+    },
+    {
+      "start": 2927.58,
+      "end": 2930.24,
+      "transcript": "by the primary model will"
+    },
+    {
+      "start": 2930.815,
+      "end": 2931.635,
+      "transcript": "reject it"
+    },
+    {
+      "start": 2931.935,
+      "end": 2935.635,
+      "transcript": "and reject the token generated by Rafter and then regenerate"
+    },
+    {
+      "start": 2935.935,
+      "end": 2936.435,
+      "transcript": "by,"
+    },
+    {
+      "start": 2936.735,
+      "end": 2937.235,
+      "transcript": "by"
+    },
+    {
+      "start": 2937.615,
+      "end": 2939.875,
+      "transcript": "by... Primary model by itself."
+    },
+    {
+      "start": 2941.135,
+      "end": 2943.395,
+      "transcript": "But, normally, it's no virus because"
+    },
+    {
+      "start": 2944.11,
+      "end": 2944.85,
+      "transcript": "based on"
+    },
+    {
+      "start": 2945.31,
+      "end": 2947.6501,
+      "transcript": "our... Normally when we speak something,"
+    },
+    {
+      "start": 2948.03,
+      "end": 2949.1702,
+      "transcript": "many of our tokens"
+    },
+    {
+      "start": 2949.4702,
+      "end": 2951.57,
+      "transcript": "are simple tokens. So"
+    },
+    {
+      "start": 2951.87,
+      "end": 2955.25,
+      "transcript": "based on this, we could... Based on this speculative decoding"
+    },
+    {
+      "start": 2955.87,
+      "end": 2957.25,
+      "transcript": "methods, we could..."
+    },
+    {
+      "start": 2957.55,
+      "end": 2959.33,
+      "transcript": "Where we could generate"
+    },
+    {
+      "start": 2960.805,
+      "end": 2967.385,
+      "transcript": "tokens in parallel instead of generating tokens one by one. So we could have improved the latency stuff."
+    },
+    {
+      "start": 2968.7249,
+      "end": 2969.865,
+      "transcript": "And this method,"
+    },
+    {
+      "start": 2970.965,
+      "end": 2971.705,
+      "transcript": "this method"
+    },
+    {
+      "start": 2972.325,
+      "end": 2975.385,
+      "transcript": "is proposed by Google in 2021"
+    },
+    {
+      "start": 2975.54,
+      "end": 2981.08,
+      "transcript": "and here we could say in the original paper, we could say it normally brings up"
+    },
+    {
+      "start": 2982.18,
+      "end": 2983.96,
+      "transcript": "three times and two times,"
+    },
+    {
+      "start": 2985.78,
+      "end": 2987.64,
+      "transcript": "efficiency gain when you"
+    },
+    {
+      "start": 2988.055,
+      "end": 2990.235,
+      "transcript": "when you do language model efficient..."
+    },
+    {
+      "start": 2991.0151,
+      "end": 2991.5151,
+      "transcript": "Inference."
+    },
+    {
+      "start": 2992.615,
+      "end": 2995.835,
+      "transcript": "And, it's designed for latency improvement."
+    },
+    {
+      "start": 2996.215,
+      "end": 2997.275,
+      "transcript": "But for throughput,"
+    },
+    {
+      "start": 2998.135,
+      "end": 3005.71,
+      "transcript": "if you want to use speculative decoding to improve throughput, it will decide it will decide by your speculative"
+    },
+    {
+      "start": 3006.41,
+      "end": 3009.15,
+      "transcript": "decoding configs. And I recommend you"
+    },
+    {
+      "start": 3009.61,
+      "end": 3011.6301,
+      "transcript": "to read more blocks online."
+    },
+    {
+      "start": 3014.7952,
+      "end": 3016.3352,
+      "transcript": "And the second one,"
+    },
+    {
+      "start": 3016.7952,
+      "end": 3021.7751,
+      "transcript": "the speculative coding will have efficiency again because because, like, we will have some"
+    },
+    {
+      "start": 3022.235,
+      "end": 3024.0151,
+      "transcript": "token level difficulty."
+    },
+    {
+      "start": 3024.5552,
+      "end": 3030.99,
+      "transcript": "But in second level, we will have some, we will have some simple questions and also hard questions."
+    },
+    {
+      "start": 3031.3699,
+      "end": 3036.0898,
+      "transcript": "So we could train... In section level, maybe we could train the router, like,"
+    },
+    {
+      "start": 3037.45,
+      "end": 3038.1099,
+      "transcript": "to predict..."
+    },
+    {
+      "start": 3038.41,
+      "end": 3039.63,
+      "transcript": "To decide which,"
+    },
+    {
+      "start": 3040.7952,
+      "end": 3047.855,
+      "transcript": "some queries for small models to generate and some some hard questions for bigger model to generate, such as"
+    },
+    {
+      "start": 3048.155,
+      "end": 3051.855,
+      "transcript": "the the... This one... This question, which city is the capital of"
+    },
+    {
+      "start": 3052.35,
+      "end": 3059.25,
+      "transcript": "Japan? It's a very simple question. Everyone... I think everyone knows that the answer is Tokyo. It's it's very"
+    },
+    {
+      "start": 3059.7102,
+      "end": 3062.53,
+      "transcript": "easy for small language model to generate it."
+    },
+    {
+      "start": 3063.2302,
+      "end": 3065.01,
+      "transcript": "And for some hard questions,"
+    },
+    {
+      "start": 3066.125,
+      "end": 3068.145,
+      "transcript": "such as some problems in,"
+    },
+    {
+      "start": 3068.6848,
+      "end": 3070.305,
+      "transcript": "International Mathematical Olympic,"
+    },
+    {
+      "start": 3071.165,
+      "end": 3077.565,
+      "transcript": "we will use a large model to generate it. And the answer will be very, very long. By this kind of,"
+    },
+    {
+      "start": 3078.045,
+      "end": 3079.105,
+      "transcript": "scatter... Cascading,"
+    },
+    {
+      "start": 3079.405,
+      "end": 3080.305,
+      "transcript": "water stuffs,"
+    },
+    {
+      "start": 3081.19,
+      "end": 3089.45,
+      "transcript": "we could save a lot of computes for large models. And and because we use small model to generate, so we could improve"
+    },
+    {
+      "start": 3089.75,
+      "end": 3091.77,
+      "transcript": "the throughputs and the latency"
+    },
+    {
+      "start": 3092.3901,
+      "end": 3092.8901,
+      "transcript": "together."
+    },
+    {
+      "start": 3096.095,
+      "end": 3098.435,
+      "transcript": "Okay. This is some generation"
+    },
+    {
+      "start": 3099.375,
+      "end": 3102.115,
+      "transcript": "algorithm to improve the Longitudinal efficiency."
+    },
+    {
+      "start": 3102.655,
+      "end": 3106.835,
+      "transcript": "The third perspective is like... Third part is like system perspective."
+    },
+    {
+      "start": 3110.96,
+      "end": 3112.1,
+      "transcript": "When we do"
+    },
+    {
+      "start": 3112.56,
+      "end": 3113.46,
+      "transcript": "model generation,"
+    },
+    {
+      "start": 3115.44,
+      "end": 3117.7,
+      "transcript": "we... If we want... Normally"
+    },
+    {
+      "start": 3118.8,
+      "end": 3119.46,
+      "transcript": "the h..."
+    },
+    {
+      "start": 3120.4,
+      "end": 3121.78,
+      "transcript": "The memory in"
+    },
+    {
+      "start": 3122.295,
+      "end": 3124.2349,
+      "transcript": "GPU will save parameters"
+    },
+    {
+      "start": 3125.095,
+      "end": 3126.635,
+      "transcript": "and also kv cache."
+    },
+    {
+      "start": 3127.095,
+      "end": 3128.315,
+      "transcript": "So... But normally,"
+    },
+    {
+      "start": 3128.855,
+      "end": 3133.595,
+      "transcript": "because our problems are very long, sometimes the kv cache will have"
+    },
+    {
+      "start": 3133.9749,
+      "end": 3135.275,
+      "transcript": "over 30%."
+    },
+    {
+      "start": 3136.31,
+      "end": 3137.53,
+      "transcript": "So 30%,"
+    },
+    {
+      "start": 3139.03,
+      "end": 3140.73,
+      "transcript": "storage in there. But..."
+    },
+    {
+      "start": 3141.11,
+      "end": 3145.45,
+      "transcript": "And then, you know, we cannot increase our Inference batch size."
+    },
+    {
+      "start": 3145.75,
+      "end": 3147.3699,
+      "transcript": "If we want to improve the..."
+    },
+    {
+      "start": 3147.67,
+      "end": 3155.265,
+      "transcript": "Handle more users at the same time, actually, we want to increase the inference batch size, right? So because our kv cache"
+    },
+    {
+      "start": 3155.9648,
+      "end": 3157.665,
+      "transcript": "occupy a lot, so we cannot"
+    },
+    {
+      "start": 3158.125,
+      "end": 3161.4248,
+      "transcript": "increase the batch size a lot. So it will impact the throughput."
+    },
+    {
+      "start": 3162.62,
+      "end": 3168.8801,
+      "transcript": "The reason for it is like because for different questions, we don't know how many,"
+    },
+    {
+      "start": 3169.5,
+      "end": 3172.08,
+      "transcript": "how how long the answer will be."
+    },
+    {
+      "start": 3172.86,
+      "end": 3175.28,
+      "transcript": "In the previous version, the system"
+    },
+    {
+      "start": 3175.58,
+      "end": 3176.48,
+      "transcript": "will directly"
+    },
+    {
+      "start": 3176.78,
+      "end": 3177.28,
+      "transcript": "arrange"
+    },
+    {
+      "start": 3178.4048,
+      "end": 3179.065,
+      "transcript": "the memory"
+    },
+    {
+      "start": 3179.365,
+      "end": 3179.865,
+      "transcript": "for"
+    },
+    {
+      "start": 3180.6448,
+      "end": 3181.3848,
+      "transcript": "2,000"
+    },
+    {
+      "start": 3181.605,
+      "end": 3183.305,
+      "transcript": "tokens for each prompt."
+    },
+    {
+      "start": 3184.1648,
+      "end": 3186.7449,
+      "transcript": "Maybe, in this way, maybe some hard questions"
+    },
+    {
+      "start": 3187.2048,
+      "end": 3188.025,
+      "transcript": "will occupy"
+    },
+    {
+      "start": 3188.325,
+      "end": 3190.1848,
+      "transcript": "all these 2,000"
+    },
+    {
+      "start": 3190.4048,
+      "end": 3195.75,
+      "transcript": "tokens' memory. But for some easy questions, you cannot use so much so much"
+    },
+    {
+      "start": 3196.85,
+      "end": 3198.8699,
+      "transcript": "memory space. So the"
+    },
+    {
+      "start": 3199.41,
+      "end": 3203.03,
+      "transcript": "reserved 2,000 tokens' memory will be wasted."
+    },
+    {
+      "start": 3205.185,
+      "end": 3205.925,
+      "transcript": "And then,"
+    },
+    {
+      "start": 3206.3052,
+      "end": 3208.645,
+      "transcript": "so we need, so there's one method"
+    },
+    {
+      "start": 3209.0251,
+      "end": 3212.645,
+      "transcript": "to say here, like here is one statistics"
+    },
+    {
+      "start": 3213.105,
+      "end": 3213.605,
+      "transcript": "from"
+    },
+    {
+      "start": 3213.985,
+      "end": 3216.48,
+      "transcript": "online. You could say if we do this,"
+    },
+    {
+      "start": 3217.3599,
+      "end": 3218.66,
+      "transcript": "maybe only 20"
+    },
+    {
+      "start": 3219.04,
+      "end": 3220.42,
+      "transcript": "or 40%"
+    },
+    {
+      "start": 3220.8,
+      "end": 3226.74,
+      "transcript": "of our kv cache memory is used to store the actual kv cache. Most of them are wasted."
+    },
+    {
+      "start": 3227.84,
+      "end": 3228.34,
+      "transcript": "But"
+    },
+    {
+      "start": 3229.305,
+      "end": 3237.325,
+      "transcript": "But even if it's wasted, we cannot use it. We cannot use it to increase batch size. So it's actually, we have a high zoom to improve our throughput."
+    },
+    {
+      "start": 3237.785,
+      "end": 3239.805,
+      "transcript": "So here is a method we call"
+    },
+    {
+      "start": 3240.9202,
+      "end": 3241.98,
+      "transcript": "like page attention."
+    },
+    {
+      "start": 3242.36,
+      "end": 3243.5,
+      "transcript": "In page attention,"
+    },
+    {
+      "start": 3243.8,
+      "end": 3244.4602,
+      "transcript": "we will"
+    },
+    {
+      "start": 3245.48,
+      "end": 3245.98,
+      "transcript": "directly"
+    },
+    {
+      "start": 3246.36,
+      "end": 3248.3801,
+      "transcript": "split the kv cache"
+    },
+    {
+      "start": 3248.6802,
+      "end": 3251.58,
+      "transcript": "into different blocks. And for different"
+    },
+    {
+      "start": 3251.9602,
+      "end": 3253.5,
+      "transcript": "prompts, we will map"
+    },
+    {
+      "start": 3253.8801,
+      "end": 3256.54,
+      "transcript": "the kv cache into a"
+    },
+    {
+      "start": 3257.375,
+      "end": 3260.115,
+      "transcript": "dictionary and to decide which block,"
+    },
+    {
+      "start": 3260.895,
+      "end": 3261.635,
+      "transcript": "belong to"
+    },
+    {
+      "start": 3261.935,
+      "end": 3262.435,
+      "transcript": "which"
+    },
+    {
+      "start": 3263.135,
+      "end": 3268.675,
+      "transcript": "prompts. Because block size is very small and we just store very small dictionary"
+    },
+    {
+      "start": 3269.055,
+      "end": 3269.555,
+      "transcript": "to"
+    },
+    {
+      "start": 3269.935,
+      "end": 3271.2349,
+      "transcript": "decide to"
+    },
+    {
+      "start": 3272.5,
+      "end": 3273.56,
+      "transcript": "to store information"
+    },
+    {
+      "start": 3273.9402,
+      "end": 3277.8,
+      "transcript": "if this block belong to the first query, if this block"
+    },
+    {
+      "start": 3278.1,
+      "end": 3282.2002,
+      "transcript": "belong to the second query, something like that, we can use a query cache efficiently."
+    },
+    {
+      "start": 3282.82,
+      "end": 3283.32,
+      "transcript": "Actually,"
+    },
+    {
+      "start": 3284.1,
+      "end": 3285.32,
+      "transcript": "if you know the"
+    },
+    {
+      "start": 3285.675,
+      "end": 3288.335,
+      "transcript": "operating system well, you will know this"
+    },
+    {
+      "start": 3288.715,
+      "end": 3297.215,
+      "transcript": "is a same same similar method like a paged memory in operating system, which has transformed this kind of method into language model serving."
+    },
+    {
+      "start": 3297.57,
+      "end": 3298.31,
+      "transcript": "We could"
+    },
+    {
+      "start": 3298.6902,
+      "end": 3300.23,
+      "transcript": "say in... With page attention,"
+    },
+    {
+      "start": 3300.61,
+      "end": 3301.27,
+      "transcript": "we could"
+    },
+    {
+      "start": 3302.45,
+      "end": 3304.55,
+      "transcript": "use all reserved kvCatch"
+    },
+    {
+      "start": 3305.81,
+      "end": 3306.31,
+      "transcript": "storage"
+    },
+    {
+      "start": 3306.61,
+      "end": 3312.975,
+      "transcript": "for the for the language model survey. And then because all of them are used all of them are"
+    },
+    {
+      "start": 3313.935,
+      "end": 3314.5952,
+      "transcript": "used effectively"
+    },
+    {
+      "start": 3315.5352,
+      "end": 3324.355,
+      "transcript": "and which means that we could increase our batch size again and then we could... Because we increased our batch size, we could handle more user"
+    },
+    {
+      "start": 3324.655,
+      "end": 3326.195,
+      "transcript": "requests and then we could"
+    },
+    {
+      "start": 3326.85,
+      "end": 3328.87,
+      "transcript": "improve our throughput."
+    },
+    {
+      "start": 3330.6902,
+      "end": 3332.9502,
+      "transcript": "There, you could say, is a very simple"
+    },
+    {
+      "start": 3333.49,
+      "end": 3334.55,
+      "transcript": "system implementation"
+    },
+    {
+      "start": 3334.9302,
+      "end": 3335.6702,
+      "transcript": "and also,"
+    },
+    {
+      "start": 3337.49,
+      "end": 3349.215,
+      "transcript": "and also there are some methods like optimized kernels and model parallel, something like that. And also if you are interested in it, you could say DeepSake's open source framework."
+    },
+    {
+      "start": 3351.195,
+      "end": 3352.0151,
+      "transcript": "And also,"
+    },
+    {
+      "start": 3352.475,
+      "end": 3352.975,
+      "transcript": "normally,"
+    },
+    {
+      "start": 3353.355,
+      "end": 3355.5352,
+      "transcript": "I... Yeah. Here is just one"
+    },
+    {
+      "start": 3355.97,
+      "end": 3356.47,
+      "transcript": "superficial"
+    },
+    {
+      "start": 3357.17,
+      "end": 3358.63,
+      "transcript": "way about how to"
+    },
+    {
+      "start": 3358.93,
+      "end": 3360.95,
+      "transcript": "enhance our Longitude Model efficiency."
+    },
+    {
+      "start": 3361.5698,
+      "end": 3363.27,
+      "transcript": "And here is an open discussion."
+    },
+    {
+      "start": 3363.8098,
+      "end": 3364.3098,
+      "transcript": "Maybe"
+    },
+    {
+      "start": 3365.01,
+      "end": 3367.3499,
+      "transcript": "it's my perspective, like, actually,"
+    },
+    {
+      "start": 3367.65,
+      "end": 3369.75,
+      "transcript": "I think that efficiency is one"
+    },
+    {
+      "start": 3370.515,
+      "end": 3372.4548,
+      "transcript": "important metric to measure"
+    },
+    {
+      "start": 3372.755,
+      "end": 3373.4949,
+      "transcript": "the intelligence."
+    },
+    {
+      "start": 3373.9548,
+      "end": 3375.9749,
+      "transcript": "Let's think about one thing, like,"
+    },
+    {
+      "start": 3376.755,
+      "end": 3377.255,
+      "transcript": "given"
+    },
+    {
+      "start": 3378.4348,
+      "end": 3380.4548,
+      "transcript": "one, given one guy very difficult,"
+    },
+    {
+      "start": 3381.555,
+      "end": 3384.375,
+      "transcript": "it's too good to solve. If this guy has"
+    },
+    {
+      "start": 3385.0,
+      "end": 3386.1401,
+      "transcript": "lived an unlimited"
+    },
+    {
+      "start": 3386.9202,
+      "end": 3389.02,
+      "transcript": "life, it can solve the,"
+    },
+    {
+      "start": 3390.6802,
+      "end": 3399.26,
+      "transcript": "it can try to solve Sudoku again and again and again. Finally, maybe one hundred years later, you can definitely can solve the Sudoku."
+    },
+    {
+      "start": 3399.695,
+      "end": 3402.435,
+      "transcript": "But if you gave suku to some"
+    },
+    {
+      "start": 3403.055,
+      "end": 3403.875,
+      "transcript": "smart people,"
+    },
+    {
+      "start": 3404.735,
+      "end": 3408.435,
+      "transcript": "maybe just one try or two tries, it can solve this suku"
+    },
+    {
+      "start": 3410.255,
+      "end": 3410.9949,
+      "transcript": "very efficiently."
+    },
+    {
+      "start": 3412.01,
+      "end": 3413.39,
+      "transcript": "So normally, we will"
+    },
+    {
+      "start": 3414.0898,
+      "end": 3414.5898,
+      "transcript": "regard"
+    },
+    {
+      "start": 3415.13,
+      "end": 3421.23,
+      "transcript": "some guys who could solve this sucral only one time or two times. We will regard this guy very smart."
+    },
+    {
+      "start": 3421.8499,
+      "end": 3423.63,
+      "transcript": "You could expand this example"
+    },
+    {
+      "start": 3423.93,
+      "end": 3425.95,
+      "transcript": "in many examples, in many scenarios,"
+    },
+    {
+      "start": 3426.3298,
+      "end": 3427.0698,
+      "transcript": "just like"
+    },
+    {
+      "start": 3427.685,
+      "end": 3428.665,
+      "transcript": "if one guy,"
+    },
+    {
+      "start": 3429.285,
+      "end": 3432.025,
+      "transcript": "if people have unlimited life, it can"
+    },
+    {
+      "start": 3432.885,
+      "end": 3434.425,
+      "transcript": "finally, it can learn"
+    },
+    {
+      "start": 3435.045,
+      "end": 3435.785,
+      "transcript": "all the"
+    },
+    {
+      "start": 3436.085,
+      "end": 3436.985,
+      "transcript": "world knowledge."
+    },
+    {
+      "start": 3437.445,
+      "end": 3442.74,
+      "transcript": "But given the limited time, how much knowledge it can learn will decide,"
+    },
+    {
+      "start": 3444.0798,
+      "end": 3448.02,
+      "transcript": "will use one metric to measure how smart these people is."
+    },
+    {
+      "start": 3450.24,
+      "end": 3450.68,
+      "transcript": "And,"
+    },
+    {
+      "start": 3451.1199,
+      "end": 3457.585,
+      "transcript": "and also there are some open questions. The first one is, like, is transformers the best architecture for both quality"
+    },
+    {
+      "start": 3458.925,
+      "end": 3461.425,
+      "transcript": "and efficient and efficient serving?"
+    },
+    {
+      "start": 3462.2852,
+      "end": 3467.105,
+      "transcript": "We know there are also many other works like mixture of depth and also linear attention."
+    },
+    {
+      "start": 3467.645,
+      "end": 3468.145,
+      "transcript": "Will"
+    },
+    {
+      "start": 3468.52,
+      "end": 3471.1,
+      "transcript": "with... Will that be one replacement"
+    },
+    {
+      "start": 3471.4802,
+      "end": 3472.3801,
+      "transcript": "for transformer?"
+    },
+    {
+      "start": 3473.08,
+      "end": 3475.6602,
+      "transcript": "The second one is, like, elastic inference."
+    },
+    {
+      "start": 3476.4402,
+      "end": 3477.58,
+      "transcript": "Flutter has speculative"
+    },
+    {
+      "start": 3477.8801,
+      "end": 3485.555,
+      "transcript": "decoding where, you know, for some simple tokens, we could use less computes. For some hard tokens, we could use some more computes."
+    },
+    {
+      "start": 3485.935,
+      "end": 3486.755,
+      "transcript": "Here, maybe"
+    },
+    {
+      "start": 3487.455,
+      "end": 3492.195,
+      "transcript": "maybe we could do it in the in the model level, such as the metaformer."
+    },
+    {
+      "start": 3492.815,
+      "end": 3494.435,
+      "transcript": "Metaformer is like you..."
+    },
+    {
+      "start": 3495.135,
+      "end": 3502.1401,
+      "transcript": "Metaformer is like, we have a different large size of our FF and layers. For some simple tokens, we will just use"
+    },
+    {
+      "start": 3502.6802,
+      "end": 3503.1802,
+      "transcript": "half"
+    },
+    {
+      "start": 3503.72,
+      "end": 3507.24,
+      "transcript": "half FFN layers to compute it. For some,"
+    },
+    {
+      "start": 3507.72,
+      "end": 3511.4202,
+      "transcript": "for some hard tokens, we will use FFN layers to compute it."
+    },
+    {
+      "start": 3512.855,
+      "end": 3513.355,
+      "transcript": "And"
+    },
+    {
+      "start": 3513.9749,
+      "end": 3520.075,
+      "transcript": "the third third question is, like, are the current hardware and chips the best for LMM inference?"
+    },
+    {
+      "start": 3521.4949,
+      "end": 3523.755,
+      "transcript": "We know some great companies"
+    },
+    {
+      "start": 3524.91,
+      "end": 3528.53,
+      "transcript": "for language model solving, such as GloCo and Celebres."
+    },
+    {
+      "start": 3528.99,
+      "end": 3535.17,
+      "transcript": "Celebres focuses on the F5 and sparsity, and GloCo focuses on pipeline. And also we know"
+    },
+    {
+      "start": 3535.5498,
+      "end": 3536.29,
+      "transcript": "it's already"
+    },
+    {
+      "start": 3537.71,
+      "end": 3538.93,
+      "transcript": "acquired by NVIDIA."
+    },
+    {
+      "start": 3540.485,
+      "end": 3541.945,
+      "transcript": "The first question is like,"
+    },
+    {
+      "start": 3542.325,
+      "end": 3544.185,
+      "transcript": "for on device model, it's"
+    },
+    {
+      "start": 3544.805,
+      "end": 3546.345,
+      "transcript": "energy bound. But"
+    },
+    {
+      "start": 3546.885,
+      "end": 3548.345,
+      "transcript": "do we have some methods"
+    },
+    {
+      "start": 3548.645,
+      "end": 3552.665,
+      "transcript": "to optimize long term model solving for energy saving?"
+    },
+    {
+      "start": 3554.55,
+      "end": 3558.4102,
+      "transcript": "And also some questions about system level and also diffusion model,"
+    },
+    {
+      "start": 3558.79,
+      "end": 3560.33,
+      "transcript": "different from autodigression"
+    },
+    {
+      "start": 3560.7102,
+      "end": 3568.1702,
+      "transcript": "model, language model. Diffusion model is like a process of tokens, generate tokens all together parallel and with diffusion steps."
+    },
+    {
+      "start": 3569.515,
+      "end": 3571.775,
+      "transcript": "So... And then, which means that our generation"
+    },
+    {
+      "start": 3572.395,
+      "end": 3577.295,
+      "transcript": "sequence will be very long. So the generation in diffusion model will"
+    },
+    {
+      "start": 3577.675,
+      "end": 3580.815,
+      "transcript": "become computer bound from memory bound because the metrics"
+    },
+    {
+      "start": 3581.115,
+      "end": 3582.895,
+      "transcript": "computation will be very large."
+    },
+    {
+      "start": 3583.5999,
+      "end": 3586.3398,
+      "transcript": "So do we have some methods to alleviate it?"
+    },
+    {
+      "start": 3587.28,
+      "end": 3589.7,
+      "transcript": "So maybe some research could be done there."
+    },
+    {
+      "start": 3591.92,
+      "end": 3594.18,
+      "transcript": "Okay. And this is all my"
+    },
+    {
+      "start": 3594.8,
+      "end": 3595.3,
+      "transcript": "talk."
+    },
+    {
+      "start": 3596.1548,
+      "end": 3596.6548,
+      "transcript": "So"
+    },
+    {
+      "start": 3597.035,
+      "end": 3599.6948,
+      "transcript": "hopefully it helps you. And also..."
+    },
+    {
+      "start": 3601.035,
+      "end": 3601.515,
+      "transcript": "And,"
+    },
+    {
+      "start": 3602.075,
+      "end": 3609.855,
+      "transcript": "if you are interested in this area, feel free to connect me. And also if you have... Please feel free to ask me questions."
+    },
+    {
+      "start": 3614.45,
+      "end": 3616.23,
+      "transcript": "Thank you very much for your"
+    },
+    {
+      "start": 3616.53,
+      "end": 3617.03,
+      "transcript": "very"
+    },
+    {
+      "start": 3617.33,
+      "end": 3619.51,
+      "transcript": "passionate and fruitful lecture."
+    },
+    {
+      "start": 3620.13,
+      "end": 3620.79,
+      "transcript": "I think,"
+    },
+    {
+      "start": 3621.25,
+      "end": 3622.47,
+      "transcript": "audience is..."
+    },
+    {
+      "start": 3623.01,
+      "end": 3624.63,
+      "transcript": "Learns a lot from your lecture."
+    },
+    {
+      "start": 3625.5352,
+      "end": 3626.0352,
+      "transcript": "And,"
+    },
+    {
+      "start": 3627.0552,
+      "end": 3628.115,
+      "transcript": "let me share,"
+    },
+    {
+      "start": 3629.2952,
+      "end": 3630.195,
+      "transcript": "yeah, we have"
+    },
+    {
+      "start": 3631.135,
+      "end": 3631.635,
+      "transcript": "got,"
+    },
+    {
+      "start": 3632.415,
+      "end": 3633.235,
+      "transcript": "many questions."
+    },
+    {
+      "start": 3634.2551,
+      "end": 3635.715,
+      "transcript": "And let me share"
+    },
+    {
+      "start": 3636.3352,
+      "end": 3637.0752,
+      "transcript": "the screen."
+    },
+    {
+      "start": 3642.6702,
+      "end": 3643.1702,
+      "transcript": "Okay."
+    },
+    {
+      "start": 3644.35,
+      "end": 3649.49,
+      "transcript": "Yeah. We got many questions. And, as far as I look at, all of them,"
+    },
+    {
+      "start": 3650.03,
+      "end": 3651.9702,
+      "transcript": "some questions are sensitive"
+    },
+    {
+      "start": 3652.6702,
+      "end": 3654.61,
+      "transcript": "questions for your organization, like,"
+    },
+    {
+      "start": 3655.585,
+      "end": 3657.125,
+      "transcript": "regarding Gemini or Gemini."
+    },
+    {
+      "start": 3657.665,
+      "end": 3658.165,
+      "transcript": "So,"
+    },
+    {
+      "start": 3659.585,
+      "end": 3660.405,
+      "transcript": "you you can,"
+    },
+    {
+      "start": 3661.345,
+      "end": 3665.205,
+      "transcript": "answer some of the questions if you like, and you you don't have to,"
+    },
+    {
+      "start": 3665.585,
+      "end": 3666.085,
+      "transcript": "ask..."
+    },
+    {
+      "start": 3666.385,
+      "end": 3667.605,
+      "transcript": "Answer all of them."
+    },
+    {
+      "start": 3669.69,
+      "end": 3670.19,
+      "transcript": "So,"
+    },
+    {
+      "start": 3671.05,
+      "end": 3672.75,
+      "transcript": "the first question is about,"
+    },
+    {
+      "start": 3674.65,
+      "end": 3677.23,
+      "transcript": "the sparsity. When sparsity weight is"
+    },
+    {
+      "start": 3677.61,
+      "end": 3682.43,
+      "transcript": "detected, can't we try... Relearn the model with fewer parameters weights?"
+    },
+    {
+      "start": 3686.805,
+      "end": 3690.5051,
+      "transcript": "Yeah. Could could you share the screen? Maybe. Ah, yeah. Yes."
+    },
+    {
+      "start": 3690.885,
+      "end": 3691.385,
+      "transcript": "Yeah."
+    },
+    {
+      "start": 3692.085,
+      "end": 3696.0251,
+      "transcript": "I have already shared the screen. So I... You you cannot see"
+    },
+    {
+      "start": 3696.405,
+      "end": 3697.145,
+      "transcript": "see it."
+    },
+    {
+      "start": 3697.845,
+      "end": 3699.385,
+      "transcript": "Yeah. I cannot see it. Sorry."
+    },
+    {
+      "start": 3700.29,
+      "end": 3700.79,
+      "transcript": "Okay."
+    },
+    {
+      "start": 3701.33,
+      "end": 3702.31,
+      "transcript": "I I will"
+    },
+    {
+      "start": 3702.9302,
+      "end": 3704.79,
+      "transcript": "try the screen sharing."
+    },
+    {
+      "start": 3705.73,
+      "end": 3706.95,
+      "transcript": "Maybe if you,"
+    },
+    {
+      "start": 3707.81,
+      "end": 3711.4302,
+      "transcript": "once you stop your screen sharing, you can see my screen."
+    },
+    {
+      "start": 3712.065,
+      "end": 3712.565,
+      "transcript": "Okay."
+    },
+    {
+      "start": 3719.025,
+      "end": 3720.4849,
+      "transcript": "Yeah. This is one"
+    },
+    {
+      "start": 3720.945,
+      "end": 3722.085,
+      "transcript": "good question."
+    },
+    {
+      "start": 3722.385,
+      "end": 3724.085,
+      "transcript": "Yeah. Actually, that's what"
+    },
+    {
+      "start": 3725.105,
+      "end": 3726.645,
+      "transcript": "what some some,"
+    },
+    {
+      "start": 3728.46,
+      "end": 3728.96,
+      "transcript": "what,"
+    },
+    {
+      "start": 3729.98,
+      "end": 3732.4,
+      "transcript": "actually, the the thing I can answer"
+    },
+    {
+      "start": 3733.02,
+      "end": 3738.8,
+      "transcript": "from two perspectives. The first one is, like, you need to pay additional training cost for it. And we know"
+    },
+    {
+      "start": 3739.18,
+      "end": 3739.68,
+      "transcript": "train"
+    },
+    {
+      "start": 3740.2148,
+      "end": 3745.115,
+      "transcript": "one language model is very, very expensive if you want to retrain it, which means that it's..."
+    },
+    {
+      "start": 3746.375,
+      "end": 3748.4749,
+      "transcript": "You will double your training cost."
+    },
+    {
+      "start": 3749.4949,
+      "end": 3751.835,
+      "transcript": "And the second thing, like, even if"
+    },
+    {
+      "start": 3752.6602,
+      "end": 3755.6401,
+      "transcript": "you... Because, like, when you... When your"
+    },
+    {
+      "start": 3756.02,
+      "end": 3757.48,
+      "transcript": "metrics is sparse,"
+    },
+    {
+      "start": 3758.1,
+      "end": 3764.6,
+      "transcript": "but the GPU and the GPU are really good at dealing with things together with a"
+    },
+    {
+      "start": 3765.145,
+      "end": 3766.125,
+      "transcript": "static pattern."
+    },
+    {
+      "start": 3766.5852,
+      "end": 3769.8052,
+      "transcript": "But your sparsity may be unstructured. It's very random."
+    },
+    {
+      "start": 3770.5051,
+      "end": 3772.125,
+      "transcript": "So so you're still,"
+    },
+    {
+      "start": 3772.745,
+      "end": 3773.245,
+      "transcript": "so"
+    },
+    {
+      "start": 3774.0251,
+      "end": 3774.7651,
+      "transcript": "for dealing"
+    },
+    {
+      "start": 3775.145,
+      "end": 3776.8452,
+      "transcript": "with such kind of random"
+    },
+    {
+      "start": 3777.385,
+      "end": 3777.885,
+      "transcript": "sparsity"
+    },
+    {
+      "start": 3778.76,
+      "end": 3782.46,
+      "transcript": "metrics, you will need... Still need the specific"
+    },
+    {
+      "start": 3782.76,
+      "end": 3786.54,
+      "transcript": "system design and even chip design for this kind of thing."
+    },
+    {
+      "start": 3788.3599,
+      "end": 3790.22,
+      "transcript": "Mhmm. Okay. So that's why Celebrities"
+    },
+    {
+      "start": 3790.52,
+      "end": 3793.18,
+      "transcript": "do it very well. They have their own chips."
+    },
+    {
+      "start": 3793.865,
+      "end": 3794.605,
+      "transcript": "I see."
+    },
+    {
+      "start": 3796.025,
+      "end": 3796.525,
+      "transcript": "Cerberus."
+    },
+    {
+      "start": 3797.145,
+      "end": 3798.765,
+      "transcript": "That's great. And we need,"
+    },
+    {
+      "start": 3799.625,
+      "end": 3803.2449,
+      "transcript": "the improvement of... For both software and hardware."
+    },
+    {
+      "start": 3803.9448,
+      "end": 3807.1648,
+      "transcript": "Yeah. Yeah. I see. Ah, okay. Thank you."
+    },
+    {
+      "start": 3807.62,
+      "end": 3809.8801,
+      "transcript": "And the second question is,"
+    },
+    {
+      "start": 3810.26,
+      "end": 3814.04,
+      "transcript": "I think JEMAS Japan is is amazing. Do you have any"
+    },
+    {
+      "start": 3814.34,
+      "end": 3816.12,
+      "transcript": "secrets or advice for handling"
+    },
+    {
+      "start": 3816.6602,
+      "end": 3817.1602,
+      "transcript": "multilingualization"
+    },
+    {
+      "start": 3817.78,
+      "end": 3822.575,
+      "transcript": "if if if if you see Yeah. Actually, I think... Yeah. That's Google's Google's advantages."
+    },
+    {
+      "start": 3822.955,
+      "end": 3825.135,
+      "transcript": "Right? We have a lot of talents,"
+    },
+    {
+      "start": 3825.835,
+      "end": 3828.175,
+      "transcript": "and, we have many talents from"
+    },
+    {
+      "start": 3829.195,
+      "end": 3829.695,
+      "transcript": "Japan."
+    },
+    {
+      "start": 3830.155,
+      "end": 3831.695,
+      "transcript": "So they are doing very"
+    },
+    {
+      "start": 3832.315,
+      "end": 3833.055,
+      "transcript": "hard work,"
+    },
+    {
+      "start": 3833.9302,
+      "end": 3835.4702,
+      "transcript": "propose different methods"
+    },
+    {
+      "start": 3836.8901,
+      "end": 3837.6301,
+      "transcript": "to enhance"
+    },
+    {
+      "start": 3838.7302,
+      "end": 3841.4702,
+      "transcript": "Japanese Japanese ability in JEMMA and Gemini."
+    },
+    {
+      "start": 3842.09,
+      "end": 3842.59,
+      "transcript": "So"
+    },
+    {
+      "start": 3842.8901,
+      "end": 3844.99,
+      "transcript": "I think that's what I can say. That's"
+    },
+    {
+      "start": 3845.29,
+      "end": 3847.79,
+      "transcript": "Google's advantage of other companies."
+    },
+    {
+      "start": 3848.57,
+      "end": 3849.07,
+      "transcript": "Yeah."
+    },
+    {
+      "start": 3849.7449,
+      "end": 3850.2449,
+      "transcript": "Yes."
+    },
+    {
+      "start": 3850.545,
+      "end": 3853.285,
+      "transcript": "It's a very secret source for the,"
+    },
+    {
+      "start": 3854.145,
+      "end": 3854.645,
+      "transcript": "advantages."
+    },
+    {
+      "start": 3856.545,
+      "end": 3857.045,
+      "transcript": "K."
+    },
+    {
+      "start": 3857.505,
+      "end": 3864.93,
+      "transcript": "Thank you. And the next question is, what was the most exciting moment during gymnast development? Please tell us an impressive"
+    },
+    {
+      "start": 3866.53,
+      "end": 3867.99,
+      "transcript": "story. If you have a question."
+    },
+    {
+      "start": 3869.25,
+      "end": 3872.0698,
+      "transcript": "Yeah, actually I think there are many impressive"
+    },
+    {
+      "start": 3872.45,
+      "end": 3872.95,
+      "transcript": "stories."
+    },
+    {
+      "start": 3873.49,
+      "end": 3873.99,
+      "transcript": "From"
+    },
+    {
+      "start": 3874.45,
+      "end": 3876.71,
+      "transcript": "my perspective, like Google has"
+    },
+    {
+      "start": 3877.905,
+      "end": 3878.565,
+      "transcript": "many many"
+    },
+    {
+      "start": 3879.0251,
+      "end": 3879.5251,
+      "transcript": "talents"
+    },
+    {
+      "start": 3880.705,
+      "end": 3881.205,
+      "transcript": "inside."
+    },
+    {
+      "start": 3881.585,
+      "end": 3882.325,
+      "transcript": "And also,"
+    },
+    {
+      "start": 3882.705,
+      "end": 3883.205,
+      "transcript": "normally,"
+    },
+    {
+      "start": 3885.2651,
+      "end": 3886.0051,
+      "transcript": "some... Sometimes"
+    },
+    {
+      "start": 3886.7852,
+      "end": 3888.325,
+      "transcript": "our method will..."
+    },
+    {
+      "start": 3888.7852,
+      "end": 3894.9,
+      "transcript": "Currently, we cannot publish paper, but we do see a lot of amazing progress in Gemini."
+    },
+    {
+      "start": 3895.2798,
+      "end": 3899.6199,
+      "transcript": "I think when you say some groundbreaking things and also when you say"
+    },
+    {
+      "start": 3899.92,
+      "end": 3900.42,
+      "transcript": "many"
+    },
+    {
+      "start": 3902.16,
+      "end": 3902.66,
+      "transcript": "different"
+    },
+    {
+      "start": 3903.68,
+      "end": 3904.18,
+      "transcript": "methods"
+    },
+    {
+      "start": 3904.48,
+      "end": 3906.0198,
+      "transcript": "could work and also"
+    },
+    {
+      "start": 3906.855,
+      "end": 3907.675,
+      "transcript": "untie your"
+    },
+    {
+      "start": 3908.295,
+      "end": 3908.795,
+      "transcript": "intuition."
+    },
+    {
+      "start": 3909.095,
+      "end": 3912.955,
+      "transcript": "Some methods untie your intuition but also work. That would be amazing."
+    },
+    {
+      "start": 3913.415,
+      "end": 3914.715,
+      "transcript": "Yeah. And also,"
+    },
+    {
+      "start": 3915.175,
+      "end": 3915.675,
+      "transcript": "yeah,"
+    },
+    {
+      "start": 3916.135,
+      "end": 3916.795,
+      "transcript": "I think"
+    },
+    {
+      "start": 3917.415,
+      "end": 3917.915,
+      "transcript": "from"
+    },
+    {
+      "start": 3918.615,
+      "end": 3924.25,
+      "transcript": "my perspective is, like, as a researcher, I think to say many different works, to say many"
+    },
+    {
+      "start": 3924.79,
+      "end": 3928.73,
+      "transcript": "different kind of talents to discuss these methods,"
+    },
+    {
+      "start": 3929.19,
+      "end": 3935.1301,
+      "transcript": "it's, it's very, very amazing. Yeah. Okay. Okay. Thank you very much for answering a very sensitive question."
+    },
+    {
+      "start": 3936.295,
+      "end": 3943.195,
+      "transcript": "And the next question is, what strategy do you think holds the most promise for a low hallucination"
+    },
+    {
+      "start": 3943.575,
+      "end": 3945.675,
+      "transcript": "LLM? Any specific fine tuning"
+    },
+    {
+      "start": 3946.055,
+      "end": 3947.995,
+      "transcript": "algorithm or paradigms you recommend,"
+    },
+    {
+      "start": 3948.615,
+      "end": 3950.395,
+      "transcript": "such as training or SLM?"
+    },
+    {
+      "start": 3952.3499,
+      "end": 3952.79,
+      "transcript": "Yeah."
+    },
+    {
+      "start": 3953.23,
+      "end": 3963.97,
+      "transcript": "I I think it's a very good question for hallucination in ALM. I think it's an open question. In Google, we do a lot, such as having simple simple QA. It's a"
+    },
+    {
+      "start": 3966.705,
+      "end": 3967.925,
+      "transcript": "benchmark to evaluate"
+    },
+    {
+      "start": 3968.3052,
+      "end": 3976.485,
+      "transcript": "how how how how much the language model hallucinate. In Google, we do it very real and we use many different"
+    },
+    {
+      "start": 3977.2651,
+      "end": 3977.7651,
+      "transcript": "methods."
+    },
+    {
+      "start": 3978.0652,
+      "end": 3980.485,
+      "transcript": "The thing is, like, you need to carefully"
+    },
+    {
+      "start": 3981.42,
+      "end": 3985.68,
+      "transcript": "think about how how good your language model is. Some... You need"
+    },
+    {
+      "start": 3985.98,
+      "end": 3986.64,
+      "transcript": "to analyze"
+    },
+    {
+      "start": 3987.0999,
+      "end": 3988.72,
+      "transcript": "the language model hallucination."
+    },
+    {
+      "start": 3989.3398,
+      "end": 3989.8398,
+      "transcript": "Like,"
+    },
+    {
+      "start": 3990.46,
+      "end": 3991.68,
+      "transcript": "maybe sometimes because"
+    },
+    {
+      "start": 3992.2998,
+      "end": 3993.3599,
+      "transcript": "you fine tune"
+    },
+    {
+      "start": 3993.74,
+      "end": 3994.88,
+      "transcript": "the... This language model,"
+    },
+    {
+      "start": 3995.925,
+      "end": 3999.625,
+      "transcript": "This language model has no knowledge about your dataset,"
+    },
+    {
+      "start": 4000.0051,
+      "end": 4003.945,
+      "transcript": "but you want to let it to learn how to zoom in the dataset."
+    },
+    {
+      "start": 4004.405,
+      "end": 4005.145,
+      "transcript": "What can"
+    },
+    {
+      "start": 4005.445,
+      "end": 4006.985,
+      "transcript": "it do? It can just"
+    },
+    {
+      "start": 4007.5251,
+      "end": 4008.0251,
+      "transcript": "hallucinate"
+    },
+    {
+      "start": 4010.085,
+      "end": 4010.825,
+      "transcript": "some process."
+    },
+    {
+      "start": 4011.5798,
+      "end": 4017.8398,
+      "transcript": "So just like, you feel our people, we don't know some area, but we must answer this question."
+    },
+    {
+      "start": 4019.42,
+      "end": 4020.16,
+      "transcript": "And we"
+    },
+    {
+      "start": 4021.0999,
+      "end": 4023.92,
+      "transcript": "we will just hallucinate to answer questions. Right?"
+    },
+    {
+      "start": 4026.295,
+      "end": 4026.795,
+      "transcript": "So"
+    },
+    {
+      "start": 4027.095,
+      "end": 4036.475,
+      "transcript": "so this is a complicated method but one perspective is, like, just do the right thing for your Longines Model. If you think that it's not compatible"
+    },
+    {
+      "start": 4037.415,
+      "end": 4043.46,
+      "transcript": "to answer the question, maybe you should think about how to enhance the usability. Mhmm. Yeah."
+    },
+    {
+      "start": 4046.5598,
+      "end": 4046.96,
+      "transcript": "And,"
+    },
+    {
+      "start": 4047.44,
+      "end": 4048.26,
+      "transcript": "next question,"
+    },
+    {
+      "start": 4048.7998,
+      "end": 4050.5,
+      "transcript": "where is the next,"
+    },
+    {
+      "start": 4051.2798,
+      "end": 4053.38,
+      "transcript": "battleground for LN efficiency?"
+    },
+    {
+      "start": 4053.7449,
+      "end": 4054.885,
+      "transcript": "Quantization, sparsity,"
+    },
+    {
+      "start": 4055.185,
+      "end": 4057.125,
+      "transcript": "installation, speculative decoding,"
+    },
+    {
+      "start": 4057.585,
+      "end": 4058.805,
+      "transcript": "kv cache or"
+    },
+    {
+      "start": 4059.185,
+      "end": 4060.4849,
+      "transcript": "solving, and why."
+    },
+    {
+      "start": 4061.105,
+      "end": 4066.065,
+      "transcript": "I I Yeah. I think... Yeah. Yeah. It's battleground and me... Means, I I suppose"
+    },
+    {
+      "start": 4068.99,
+      "end": 4070.53,
+      "transcript": "hot topic. Hot topic."
+    },
+    {
+      "start": 4071.1501,
+      "end": 4075.73,
+      "transcript": "Yeah. I think, yeah. It's a very good question. Actually,"
+    },
+    {
+      "start": 4078.03,
+      "end": 4084.575,
+      "transcript": "I think MOE is already sparsity, right? MOE is just one kind of activation sparsity. Also, and also distillation"
+    },
+    {
+      "start": 4085.195,
+      "end": 4086.2551,
+      "transcript": "is very important."
+    },
+    {
+      "start": 4088.5552,
+      "end": 4089.215,
+      "transcript": "I think,"
+    },
+    {
+      "start": 4089.7551,
+      "end": 4092.2551,
+      "transcript": "actually, I think for all of you mentioned,"
+    },
+    {
+      "start": 4093.995,
+      "end": 4095.935,
+      "transcript": "these concepts are very, very"
+    },
+    {
+      "start": 4096.395,
+      "end": 4096.895,
+      "transcript": "important."
+    },
+    {
+      "start": 4098.92,
+      "end": 4100.06,
+      "transcript": "Such as for quantization,"
+    },
+    {
+      "start": 4101.0,
+      "end": 4105.7397,
+      "transcript": "before we just do, like, element wise quantization currently, we have vector quantization."
+    },
+    {
+      "start": 4106.52,
+      "end": 4111.42,
+      "transcript": "It's a new new thing. Right? We still need to do it further. And for sparsity"
+    },
+    {
+      "start": 4111.8,
+      "end": 4113.58,
+      "transcript": "and MOE and also"
+    },
+    {
+      "start": 4115.295,
+      "end": 4120.515,
+      "transcript": "there are still a lot of research paper about this kind of area. I think all these"
+    },
+    {
+      "start": 4120.895,
+      "end": 4122.675,
+      "transcript": "things will be very important."
+    },
+    {
+      "start": 4123.055,
+      "end": 4125.155,
+      "transcript": "Even for kv... Also for kvcatch."
+    },
+    {
+      "start": 4125.935,
+      "end": 4135.47,
+      "transcript": "Because the kvcatch will decide how much... How large is the batch size. It will impact the throughput and also IO training throughput"
+    },
+    {
+      "start": 4136.41,
+      "end": 4144.83,
+      "transcript": "for serving and it will be very, very important too. It's like you could say with VNN model our generated tokens are very, very long."
+    },
+    {
+      "start": 4146.5947,
+      "end": 4147.5747,
+      "transcript": "So so so,"
+    },
+    {
+      "start": 4148.435,
+      "end": 4149.4946,
+      "transcript": "yeah, so..."
+    },
+    {
+      "start": 4150.195,
+      "end": 4154.5347,
+      "transcript": "And our area will be coming from maybe training to inference."
+    },
+    {
+      "start": 4155.475,
+      "end": 4155.975,
+      "transcript": "So"
+    },
+    {
+      "start": 4156.9946,
+      "end": 4160.775,
+      "transcript": "how to solve the language model efficiently is also very, very important."
+    },
+    {
+      "start": 4161.1504,
+      "end": 4165.95,
+      "transcript": "Yeah. I see. All the technology combined is practical. Yeah. Yeah. It's,"
+    },
+    {
+      "start": 4166.83,
+      "end": 4167.5703,
+      "transcript": "as a system."
+    },
+    {
+      "start": 4168.5103,
+      "end": 4169.0103,
+      "transcript": "Advantages"
+    },
+    {
+      "start": 4169.39,
+      "end": 4175.73,
+      "transcript": "is not come from one area. It's come from many, many different areas. I see. I see. Yeah. Yeah."
+    },
+    {
+      "start": 4176.275,
+      "end": 4178.375,
+      "transcript": "Very many efforts from many"
+    },
+    {
+      "start": 4179.0747,
+      "end": 4180.6147,
+      "transcript": "researchers and developers."
+    },
+    {
+      "start": 4181.0747,
+      "end": 4181.5747,
+      "transcript": "Okay."
+    },
+    {
+      "start": 4182.915,
+      "end": 4183.315,
+      "transcript": "And,"
+    },
+    {
+      "start": 4183.875,
+      "end": 4186.0547,
+      "transcript": "okay. This is already done. And,"
+    },
+    {
+      "start": 4187.5547,
+      "end": 4191.12,
+      "transcript": "this session is past the MOE. Which technology is the most important in boxes?"
+    },
+    {
+      "start": 4191.68,
+      "end": 4193.38,
+      "transcript": "Okay. This question is,"
+    },
+    {
+      "start": 4194.68,
+      "end": 4199.8604,
+      "transcript": "related with the previous one, so I can... I think I can speak a bit."
+    },
+    {
+      "start": 4201.12,
+      "end": 4201.62,
+      "transcript": "And"
+    },
+    {
+      "start": 4202.0,
+      "end": 4208.1846,
+      "transcript": "in fully local edge AI system, what do you consider the most critical latency bottleneck today,"
+    },
+    {
+      "start": 4208.8047,
+      "end": 4211.7046,
+      "transcript": "model size, memory bandwidth, or scheduling?"
+    },
+    {
+      "start": 4212.565,
+      "end": 4214.425,
+      "transcript": "I think it's very systematic."
+    },
+    {
+      "start": 4214.885,
+      "end": 4215.545,
+      "transcript": "It's like,"
+    },
+    {
+      "start": 4216.7246,
+      "end": 4217.7046,
+      "transcript": "because in"
+    },
+    {
+      "start": 4218.98,
+      "end": 4219.8804,
+      "transcript": "each device,"
+    },
+    {
+      "start": 4220.3403,
+      "end": 4221.4004,
+      "transcript": "we have a limited"
+    },
+    {
+      "start": 4222.02,
+      "end": 4225.4004,
+      "transcript": "battery. Right? So we cannot use very large"
+    },
+    {
+      "start": 4226.02,
+      "end": 4226.52,
+      "transcript": "chip."
+    },
+    {
+      "start": 4227.3804,
+      "end": 4232.8403,
+      "transcript": "Because we cannot use a very large chip, we cannot so... We cannot use a very large"
+    },
+    {
+      "start": 4233.5254,
+      "end": 4234.0254,
+      "transcript": "language"
+    },
+    {
+      "start": 4234.4053,
+      "end": 4238.105,
+      "transcript": "models. So I think the battery stuffs will be very important"
+    },
+    {
+      "start": 4238.4053,
+      "end": 4239.065,
+      "transcript": "for it."
+    },
+    {
+      "start": 4240.165,
+      "end": 4240.665,
+      "transcript": "I"
+    },
+    {
+      "start": 4241.845,
+      "end": 4245.125,
+      "transcript": "see. Okay. Thank you. So I I think it's related with,"
+    },
+    {
+      "start": 4246.165,
+      "end": 4247.205,
+      "transcript": "Gemma three and"
+    },
+    {
+      "start": 4248.4297,
+      "end": 4248.9297,
+      "transcript": "and..."
+    },
+    {
+      "start": 4249.55,
+      "end": 4251.25,
+      "transcript": "K. Thank you very much."
+    },
+    {
+      "start": 4252.19,
+      "end": 4252.69,
+      "transcript": "And,"
+    },
+    {
+      "start": 4256.03,
+      "end": 4257.8896,
+      "transcript": "next question might be,"
+    },
+    {
+      "start": 4260.605,
+      "end": 4265.425,
+      "transcript": "in the long context era, which direction will k v cash bottleneck"
+    },
+    {
+      "start": 4265.805,
+      "end": 4266.305,
+      "transcript": "mitigation"
+    },
+    {
+      "start": 4266.925,
+      "end": 4267.905,
+      "transcript": "mainly take?"
+    },
+    {
+      "start": 4269.005,
+      "end": 4269.505,
+      "transcript": "Compression,"
+    },
+    {
+      "start": 4269.805,
+      "end": 4271.745,
+      "transcript": "sharing, or recomputation?"
+    },
+    {
+      "start": 4272.72,
+      "end": 4275.62,
+      "transcript": "I think it's a very narrow technological"
+    },
+    {
+      "start": 4276.16,
+      "end": 4276.66,
+      "transcript": "question."
+    },
+    {
+      "start": 4278.8804,
+      "end": 4280.56,
+      "transcript": "Yeah. I think both,"
+    },
+    {
+      "start": 4281.2,
+      "end": 4281.8604,
+      "transcript": "I think"
+    },
+    {
+      "start": 4283.12,
+      "end": 4285.3003,
+      "transcript": "compression and sharing are both important."
+    },
+    {
+      "start": 4285.855,
+      "end": 4292.275,
+      "transcript": "And for the computation, normally we want to skip it because if you recompute it in long context,"
+    },
+    {
+      "start": 4293.695,
+      "end": 4297.155,
+      "transcript": "the metrics will be very large, right, in long context."
+    },
+    {
+      "start": 4297.96,
+      "end": 4298.46,
+      "transcript": "So,"
+    },
+    {
+      "start": 4298.92,
+      "end": 4301.5,
+      "transcript": "normally, conversion and sharing are very important."
+    },
+    {
+      "start": 4301.96,
+      "end": 4302.46,
+      "transcript": "Yeah."
+    },
+    {
+      "start": 4303.1597,
+      "end": 4304.6196,
+      "transcript": "K. Thank you."
+    },
+    {
+      "start": 4306.04,
+      "end": 4306.54,
+      "transcript": "Okay."
+    },
+    {
+      "start": 4307.2397,
+      "end": 4308.6997,
+      "transcript": "There there are lots of questions"
+    },
+    {
+      "start": 4309.1597,
+      "end": 4309.96,
+      "transcript": "still, but,"
+    },
+    {
+      "start": 4310.5996,
+      "end": 4313.685,
+      "transcript": "we want you to ask. We want you to answer,"
+    },
+    {
+      "start": 4314.785,
+      "end": 4316.645,
+      "transcript": "Yeah. Let's just review. Three"
+    },
+    {
+      "start": 4317.185,
+      "end": 4317.685,
+      "transcript": "questions."
+    },
+    {
+      "start": 4318.225,
+      "end": 4318.725,
+      "transcript": "Okay."
+    },
+    {
+      "start": 4319.825,
+      "end": 4320.565,
+      "transcript": "Are TPUs,"
+    },
+    {
+      "start": 4321.745,
+      "end": 4329.03,
+      "transcript": "superior to GPUs for training LMS? If so, please explain the specific areas in which they excel."
+    },
+    {
+      "start": 4329.4897,
+      "end": 4330.3896,
+      "transcript": "Yeah. I think"
+    },
+    {
+      "start": 4330.69,
+      "end": 4335.03,
+      "transcript": "this is very tricky. Right? You could, I think you could"
+    },
+    {
+      "start": 4335.4897,
+      "end": 4336.8696,
+      "transcript": "say the parameters,"
+    },
+    {
+      "start": 4338.285,
+      "end": 4344.8647,
+      "transcript": "say the some... Say the specifications in... Online to compare TPU and GPUs. There are so many"
+    },
+    {
+      "start": 4345.8047,
+      "end": 4348.705,
+      "transcript": "introduction for this. And for Google, I think,"
+    },
+    {
+      "start": 4349.885,
+      "end": 4350.945,
+      "transcript": "we have very"
+    },
+    {
+      "start": 4351.245,
+      "end": 4351.745,
+      "transcript": "great"
+    },
+    {
+      "start": 4352.79,
+      "end": 4353.29,
+      "transcript": "systems."
+    },
+    {
+      "start": 4355.67,
+      "end": 4360.81,
+      "transcript": "So your TPU, we could do full stack design. So it's like a full stack design,"
+    },
+    {
+      "start": 4361.59,
+      "end": 4365.37,
+      "transcript": "make us very good. Yeah. Okay. Thank you."
+    },
+    {
+      "start": 4366.5454,
+      "end": 4367.0454,
+      "transcript": "And,"
+    },
+    {
+      "start": 4367.9053,
+      "end": 4375.5254,
+      "transcript": "okay. Last two questions. I want to train LLMs, but I have limited resources and use a collab lab."
+    },
+    {
+      "start": 4375.9854,
+      "end": 4381.0454,
+      "transcript": "Are there good ways to work with small models? I am overwhelmed by setup errors."
+    },
+    {
+      "start": 4382.37,
+      "end": 4388.0703,
+      "transcript": "Oh, yeah. I think maybe you could try to use some web coding stuff, like, anti gravity"
+    },
+    {
+      "start": 4389.65,
+      "end": 4397.1104,
+      "transcript": "released by Google. I think, currently, web coding is very good at to dealing with different development issues. I think,"
+    },
+    {
+      "start": 4398.085,
+      "end": 4398.985,
+      "transcript": "in the future,"
+    },
+    {
+      "start": 4399.525,
+      "end": 4403.3853,
+      "transcript": "we need to rely on agents to let it close for us."
+    },
+    {
+      "start": 4403.9253,
+      "end": 4404.4253,
+      "transcript": "And"
+    },
+    {
+      "start": 4405.525,
+      "end": 4406.265,
+      "transcript": "for resources,"
+    },
+    {
+      "start": 4407.445,
+      "end": 4412.585,
+      "transcript": "I think Google, before Google will provide some free TPUs. I'm not sure if"
+    },
+    {
+      "start": 4412.95,
+      "end": 4413.69,
+      "transcript": "they provide"
+    },
+    {
+      "start": 4414.55,
+      "end": 4415.69,
+      "transcript": "it on... Still or not."
+    },
+    {
+      "start": 4417.0303,
+      "end": 4418.57,
+      "transcript": "Yeah. But maybe"
+    },
+    {
+      "start": 4418.87,
+      "end": 4424.33,
+      "transcript": "maybe you you can join some institution to train some models. Yeah. Mhmm. Okay."
+    },
+    {
+      "start": 4425.5103,
+      "end": 4426.17,
+      "transcript": "I see."
+    },
+    {
+      "start": 4426.87,
+      "end": 4427.37,
+      "transcript": "K."
+    },
+    {
+      "start": 4428.185,
+      "end": 4432.205,
+      "transcript": "And how does Google analyze the data from questions? I I think it's"
+    },
+    {
+      "start": 4432.5854,
+      "end": 4438.685,
+      "transcript": "too sensitive for the last question. So Yeah. I don't know yet because I'm not in data team. Okay."
+    },
+    {
+      "start": 4439.5454,
+      "end": 4447.56,
+      "transcript": "Okay. Let let me skip it. It's kind of a personal question, but I want to ask you what made you be interested in Ele?"
+    },
+    {
+      "start": 4448.9,
+      "end": 4451.7197,
+      "transcript": "Yeah. I think I think everyone will be interested."
+    },
+    {
+      "start": 4452.02,
+      "end": 4454.52,
+      "transcript": "Yeah. Oh, no. So sorry. Not not not not like that."
+    },
+    {
+      "start": 4455.2197,
+      "end": 4459.125,
+      "transcript": "Yeah. It's like, for me, it's like I think I..."
+    },
+    {
+      "start": 4459.5054,
+      "end": 4460.0054,
+      "transcript": "The..."
+    },
+    {
+      "start": 4460.5454,
+      "end": 4465.285,
+      "transcript": "I... The AI... I was in AIRA for many years. So"
+    },
+    {
+      "start": 4465.745,
+      "end": 4467.765,
+      "transcript": "when I say this kind of groundbreaking"
+    },
+    {
+      "start": 4469.1304,
+      "end": 4470.73,
+      "transcript": "techniques, very interesting because,"
+    },
+    {
+      "start": 4471.45,
+      "end": 4474.35,
+      "transcript": "when we did the research before, we need to specifically"
+    },
+    {
+      "start": 4475.85,
+      "end": 4478.5903,
+      "transcript": "design different techniques for different questions."
+    },
+    {
+      "start": 4479.77,
+      "end": 4484.35,
+      "transcript": "But in ARM, it's, one model could solve all things. I think"
+    },
+    {
+      "start": 4484.815,
+      "end": 4491.315,
+      "transcript": "when we say this, we will be very exciting and say how good it will be. Yeah. And,"
+    },
+    {
+      "start": 4492.255,
+      "end": 4494.1147,
+      "transcript": "obviously, it's very strong now."
+    },
+    {
+      "start": 4495.6147,
+      "end": 4496.1147,
+      "transcript": "Okay."
+    },
+    {
+      "start": 4497.66,
+      "end": 4502.7197,
+      "transcript": "Okay. Thank you very much, for asking many questions. We still have lots of questions,"
+    },
+    {
+      "start": 4503.1,
+      "end": 4506.8,
+      "transcript": "but, let me, finish, this Q and A time session."
+    },
+    {
+      "start": 4507.26,
+      "end": 4515.755,
+      "transcript": "Okay. Thank you, everyone, and, hopefully we could see you again. Thank you. Okay. Thank you very much for, accepting our lecture and the guest lecture, and,"
+    },
+    {
+      "start": 4516.295,
+      "end": 4517.355,
+      "transcript": "have a good sleep."
+    },
+    {
+      "start": 4518.135,
+      "end": 4520.235,
+      "transcript": "Yeah. Thank you. Bye. Okay. Thank you."
+    }
+  ]
+}

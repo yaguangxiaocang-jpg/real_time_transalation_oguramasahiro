@@ -1,0 +1,197 @@
+{
+  "benchmark_id": "technology_lec08a_qa_sparsity",
+  "domain": "technology",
+  "description": "LLM2025応用編 第8回前半（Google Research Australia、LLM効率化の招待講演）より: 質疑応答（スパース性と再学習、画面共有のやりとりを含む会話調）。3669.7〜3769.8秒、未結合のDeepgram発話31件（experiments/segments/20261012_llm2025_lec08_first_half_raw_unmerged.jsonから抽出）。2026-10-12追加、同日人手レビュー済み。",
+  "raw_utterances": [
+    {
+      "start": 3669.69,
+      "end": 3670.19,
+      "transcript": "So,"
+    },
+    {
+      "start": 3671.05,
+      "end": 3672.75,
+      "transcript": "the first question is about,"
+    },
+    {
+      "start": 3674.65,
+      "end": 3677.23,
+      "transcript": "the sparsity. When sparsity weight is"
+    },
+    {
+      "start": 3677.61,
+      "end": 3682.43,
+      "transcript": "detected, can't we try... Relearn the model with fewer parameters weights?"
+    },
+    {
+      "start": 3686.805,
+      "end": 3690.5051,
+      "transcript": "Yeah. Could could you share the screen? Maybe. Ah, yeah. Yes."
+    },
+    {
+      "start": 3690.885,
+      "end": 3691.385,
+      "transcript": "Yeah."
+    },
+    {
+      "start": 3692.085,
+      "end": 3696.0251,
+      "transcript": "I have already shared the screen. So I... You you cannot see"
+    },
+    {
+      "start": 3696.405,
+      "end": 3697.145,
+      "transcript": "see it."
+    },
+    {
+      "start": 3697.845,
+      "end": 3699.385,
+      "transcript": "Yeah. I cannot see it. Sorry."
+    },
+    {
+      "start": 3700.29,
+      "end": 3700.79,
+      "transcript": "Okay."
+    },
+    {
+      "start": 3701.33,
+      "end": 3702.31,
+      "transcript": "I I will"
+    },
+    {
+      "start": 3702.9302,
+      "end": 3704.79,
+      "transcript": "try the screen sharing."
+    },
+    {
+      "start": 3705.73,
+      "end": 3706.95,
+      "transcript": "Maybe if you,"
+    },
+    {
+      "start": 3707.81,
+      "end": 3711.4302,
+      "transcript": "once you stop your screen sharing, you can see my screen."
+    },
+    {
+      "start": 3712.065,
+      "end": 3712.565,
+      "transcript": "Okay."
+    },
+    {
+      "start": 3719.025,
+      "end": 3720.4849,
+      "transcript": "Yeah. This is one"
+    },
+    {
+      "start": 3720.945,
+      "end": 3722.085,
+      "transcript": "good question."
+    },
+    {
+      "start": 3722.385,
+      "end": 3724.085,
+      "transcript": "Yeah. Actually, that's what"
+    },
+    {
+      "start": 3725.105,
+      "end": 3726.645,
+      "transcript": "what some some,"
+    },
+    {
+      "start": 3728.46,
+      "end": 3728.96,
+      "transcript": "what,"
+    },
+    {
+      "start": 3729.98,
+      "end": 3732.4,
+      "transcript": "actually, the the thing I can answer"
+    },
+    {
+      "start": 3733.02,
+      "end": 3738.8,
+      "transcript": "from two perspectives. The first one is, like, you need to pay additional training cost for it. And we know"
+    },
+    {
+      "start": 3739.18,
+      "end": 3739.68,
+      "transcript": "train"
+    },
+    {
+      "start": 3740.2148,
+      "end": 3745.115,
+      "transcript": "one language model is very, very expensive if you want to retrain it, which means that it's..."
+    },
+    {
+      "start": 3746.375,
+      "end": 3748.4749,
+      "transcript": "You will double your training cost."
+    },
+    {
+      "start": 3749.4949,
+      "end": 3751.835,
+      "transcript": "And the second thing, like, even if"
+    },
+    {
+      "start": 3752.6602,
+      "end": 3755.6401,
+      "transcript": "you... Because, like, when you... When your"
+    },
+    {
+      "start": 3756.02,
+      "end": 3757.48,
+      "transcript": "metrics is sparse,"
+    },
+    {
+      "start": 3758.1,
+      "end": 3764.6,
+      "transcript": "but the GPU and the GPU are really good at dealing with things together with a"
+    },
+    {
+      "start": 3765.145,
+      "end": 3766.125,
+      "transcript": "static pattern."
+    },
+    {
+      "start": 3766.5852,
+      "end": 3769.8052,
+      "transcript": "But your sparsity may be unstructured. It's very random."
+    }
+  ],
+  "reference_ja": [
+    "では、最初の質問はスパース性についてです。スパースな重みが検出された場合、より少ないパラメータの重みでモデルを学習し直すことはできないのでしょうか。",
+    "はい。画面を共有していただけますか。もしかして。あ、はい。はい。",
+    "はい。",
+    "もう画面は共有しています。なので…見えていないんですね。",
+    "はい、見えていません。すみません。",
+    "分かりました。",
+    "画面共有をやってみます。",
+    "画面共有を止めていただければ、私の画面が見えるかもしれません。",
+    "はい。",
+    "はい。これは良い質問ですね。",
+    "はい。実は、これには2つの観点からお答えできます。1つ目は、そのための追加の学習コストを払う必要があるということです。言語モデルを1つ学習させるのは非常にコストがかかるので、再学習するとなると〜",
+    "学習コストが2倍になってしまいます。",
+    "2つ目は、行列がスパースであっても、GPUは静的なパターンでまとめて処理するのが得意だということです。",
+    "しかし、スパース性は非構造的で、非常にランダムかもしれません。"
+  ],
+  "reference_ja_draft": [
+    "では、最初の質問はスパース性についてです。スパースな重みが検出された場合、より少ないパラメータの重みでモデルを学習し直すことはできないのでしょうか。",
+    "はい。画面を共有していただけますか。もしかして。あ、はい。はい。",
+    "はい。",
+    "もう画面は共有しています。なので…見えていないんですね。",
+    "はい、見えていません。すみません。",
+    "分かりました。",
+    "画面共有をやってみます。",
+    "画面共有を止めていただければ、私の画面が見えるかもしれません。",
+    "はい。",
+    "はい。これは良い質問ですね。",
+    "はい。実は、これには2つの観点からお答えできます。1つ目は、そのための追加の学習コストを払う必要があるということです。言語モデルを1つ学習させるのは非常にコストがかかるので、再学習するとなると〜",
+    "学習コストが2倍になってしまいます。",
+    "2つ目は、行列がスパースであっても、GPUは静的なパターンでまとめて処理するのが得意だということです。",
+    "しかし、スパース性は非構造的で、非常にランダムかもしれません。"
+  ],
+  "reference_status": "human_reviewed",
+  "reference_note": "claude-opus-5-5が2026-10-12に、英語原文から独立に作成した訳（過去実行のmt_jaは参照していない）。方針: ①訳語はdictionary.csvに合わせる ②文の途中で切れたセグメントは原文にある範囲だけ訳す(欠落部は「〜」) ③明らかなASR誤認識は意図された意味で訳す(kv catch→KVキャッシュ, metrics→行列, survey→サービング, sank→Thank 等)。人手レビュー前のため、スコアは相対比較の参考にとどめること。 / 2026-10-12: 人手レビュー済み（claude.aiのレビューページで全セグメントを確認・確定）。全セグメント草案どおり確定。元の草案はreference_ja_draftに保存。",
+  "expected_merged_count": 14
+}

@@ -1,0 +1,167 @@
+{
+  "benchmark_id": "technology_lec08a_transformer_basics",
+  "domain": "technology",
+  "description": "LLM2025応用編 第8回前半（Google Research Australia、LLM効率化の招待講演）より: トランスフォーマーの基礎（自己注意機構・FFN層・事前学習）。904.5〜1008.4秒、未結合のDeepgram発話27件（experiments/segments/20261012_llm2025_lec08_first_half_raw_unmerged.jsonから抽出）。2026-10-12追加、同日人手レビュー済み。",
+  "raw_utterances": [
+    {
+      "start": 904.455,
+      "end": 904.955,
+      "transcript": "What's"
+    },
+    {
+      "start": 905.335,
+      "end": 910.635,
+      "transcript": "the self attention meaning? Self attention will model the dependency between different words."
+    },
+    {
+      "start": 911.0,
+      "end": 914.62,
+      "transcript": "Like, for this one, it's like a Japanese food, it's delicious."
+    },
+    {
+      "start": 915.08,
+      "end": 915.98,
+      "transcript": "When we say..."
+    },
+    {
+      "start": 916.6,
+      "end": 919.58,
+      "transcript": "When we want to generate the next token like a delicious,"
+    },
+    {
+      "start": 920.04,
+      "end": 923.33997,
+      "transcript": "we will we will model the dependence like Japanese"
+    },
+    {
+      "start": 923.64,
+      "end": 931.54504,
+      "transcript": "and food. Okay. And we know based on a lot of our training datasets, we already know next token is delicious."
+    },
+    {
+      "start": 933.04504,
+      "end": 944.22,
+      "transcript": "And also after this, we will have... Go through the FFN layer. FFN layer is like... We will... We normally regard it like a static memory. It's like it will"
+    },
+    {
+      "start": 944.6,
+      "end": 946.62,
+      "transcript": "store many memory... Much memory,"
+    },
+    {
+      "start": 947.48,
+      "end": 949.66,
+      "transcript": "world of knowledge in this"
+    },
+    {
+      "start": 950.19995,
+      "end": 950.69995,
+      "transcript": "FFN"
+    },
+    {
+      "start": 951.915,
+      "end": 957.935,
+      "transcript": "layer. Normally, f f m layer is just, like a nonlinear transformation. It's like a two layers"
+    },
+    {
+      "start": 958.39496,
+      "end": 960.33496,
+      "transcript": "MLP. One is the upper projection"
+    },
+    {
+      "start": 961.355,
+      "end": 962.65497,
+      "transcript": "and then down projection"
+    },
+    {
+      "start": 963.195,
+      "end": 963.695,
+      "transcript": "from..."
+    },
+    {
+      "start": 964.58997,
+      "end": 966.69,
+      "transcript": "To to to mapping"
+    },
+    {
+      "start": 967.06995,
+      "end": 968.52997,
+      "transcript": "the words to a demodel"
+    },
+    {
+      "start": 968.99,
+      "end": 971.56995,
+      "transcript": "size vector. And by stacking,"
+    },
+    {
+      "start": 972.19,
+      "end": 973.17,
+      "transcript": "plot our"
+    },
+    {
+      "start": 973.70996,
+      "end": 980.53503,
+      "transcript": "decoder blocks in transformer, we could have an output layer to decide which one... Which is the next token."
+    },
+    {
+      "start": 982.35504,
+      "end": 993.94,
+      "transcript": "And the good thing for transformer thing is, like, every block is the same so we could stack it again and again make it transform very big. And to make it very big, we could train the transformer"
+    },
+    {
+      "start": 995.28,
+      "end": 996.74005,
+      "transcript": "on a very, very large,"
+    },
+    {
+      "start": 998.96,
+      "end": 1000.58,
+      "transcript": "Internet scale corpus."
+    },
+    {
+      "start": 1001.84,
+      "end": 1002.34,
+      "transcript": "And"
+    },
+    {
+      "start": 1002.72003,
+      "end": 1003.62,
+      "transcript": "after training"
+    },
+    {
+      "start": 1004.295,
+      "end": 1004.955,
+      "transcript": "on it,"
+    },
+    {
+      "start": 1005.975,
+      "end": 1008.395,
+      "transcript": "this is the process, we call it pre training."
+    }
+  ],
+  "reference_ja": [
+    "自己注意機構とは何でしょうか。自己注意機構とは、異なる単語の依存関係をモデル化することです。",
+    "たとえばこの例では、「日本の食べ物はおいしい」という文です。",
+    "たとえば…",
+    "次のトークンとして「おいしい」を生成したいとき、「日本の」や「食べ物」との依存関係をモデル化します。そして大量の学習データから、次のトークンが「おいしい」であることがすでに分かっているわけです。",
+    "さらにその後、FFN層を通ります。FFN層は、一般に静的なメモリのようなものとみなされています。多くの記憶、つまり世界知識をこのFFN層に蓄えているのです。通常、FFN層は単なる非線形変換で、2層の〜",
+    "MLPです。1つはアッププロジェクション、もう1つはダウンプロジェクションで…",
+    "単語をd_model次元のベクトルに写像します。そして、トランスフォーマーのデコーダブロックをすべて積み重ねることで、出力層で次のトークンがどれかを決定できます。",
+    "トランスフォーマーの良い点は、すべてのブロックが同じ構造なので、何度も積み重ねてモデルを非常に大きくできることです。そして非常に大きくするために、インターネット規模の非常に大規模なコーパスでトランスフォーマーを学習させることができます。",
+    "このように学習させる過程を、事前学習と呼びます。"
+  ],
+  "reference_ja_draft": [
+    "自己注意機構とは何でしょうか。自己注意機構は、異なる単語間の依存関係をモデル化します。",
+    "たとえばこの例では、「日本の食べ物はおいしい」という文です。",
+    "たとえば…",
+    "次のトークンとして「おいしい」を生成したいとき、「日本の」や「食べ物」との依存関係をモデル化します。そして大量の学習データから、次のトークンが「おいしい」であることがすでに分かっているわけです。",
+    "さらにその後、FFN層を通ります。FFN層は、一般に静的なメモリのようなものとみなされています。多くの記憶、つまり世界知識をこのFFN層に蓄えているのです。通常、FFN層は単なる非線形変換で、2層の〜",
+    "MLPです。1つはアッププロジェクション、もう1つはダウンプロジェクションで…",
+    "単語をd_model次元のベクトルに写像します。そして、トランスフォーマーのデコーダブロックをすべて積み重ねることで、出力層で次のトークンがどれかを決定できます。",
+    "トランスフォーマーの良い点は、すべてのブロックが同じ構造なので、何度も積み重ねてモデルを非常に大きくできることです。そして非常に大きくするために、インターネット規模の非常に大規模なコーパスでトランスフォーマーを学習させることができます。",
+    "このように学習させる過程を、事前学習と呼びます。"
+  ],
+  "reference_status": "human_reviewed",
+  "reference_note": "claude-opus-5-5が2026-10-12に、英語原文から独立に作成した訳（過去実行のmt_jaは参照していない）。方針: ①訳語はdictionary.csvに合わせる ②文の途中で切れたセグメントは原文にある範囲だけ訳す(欠落部は「〜」) ③明らかなASR誤認識は意図された意味で訳す(kv catch→KVキャッシュ, metrics→行列, survey→サービング, sank→Thank 等)。人手レビュー前のため、スコアは相対比較の参考にとどめること。 / 2026-10-12: 人手レビュー済み（claude.aiのレビューページで全セグメントを確認・確定）。#1のみレビュー者のメモに従い「自己注意機構とは、異なる単語の依存関係をモデル化することです。」に修正、他はすべて草案どおり確定。元の草案はreference_ja_draftに保存。",
+  "expected_merged_count": 9
+}

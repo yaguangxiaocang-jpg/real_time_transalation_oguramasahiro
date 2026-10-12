@@ -1,0 +1,186 @@
+{
+  "benchmark_id": "technology_lec08a_speculative_decoding",
+  "domain": "technology",
+  "description": "LLM2025応用編 第8回前半（Google Research Australia、LLM効率化の招待講演）より: 投機的デコーディングの直観（簡単なトークンと難しいトークン）。2706.9〜2819.1秒、未結合のDeepgram発話30件（experiments/segments/20261012_llm2025_lec08_first_half_raw_unmerged.jsonから抽出）。2026-10-12追加、同日人手レビュー済み。",
+  "raw_utterances": [
+    {
+      "start": 2706.935,
+      "end": 2711.275,
+      "transcript": "And the next section is about the language model efficiency algorithm perspective."
+    },
+    {
+      "start": 2713.175,
+      "end": 2716.4749,
+      "transcript": "The first one I want to mention is, like, speculative decoding."
+    },
+    {
+      "start": 2717.24,
+      "end": 2718.94,
+      "transcript": "It's like a token level"
+    },
+    {
+      "start": 2720.44,
+      "end": 2722.8599,
+      "transcript": "algorithm to enhance the language model efficiency."
+    },
+    {
+      "start": 2723.7998,
+      "end": 2728.0598,
+      "transcript": "Here we have a sentence. It's like, thank you very much for the"
+    },
+    {
+      "start": 2729.095,
+      "end": 2730.475,
+      "transcript": "unexpected 100,000,000"
+    },
+    {
+      "start": 2730.7751,
+      "end": 2735.675,
+      "transcript": "salary package for Google and OpenAI researchers because, you know, the... Recently,"
+    },
+    {
+      "start": 2735.975,
+      "end": 2736.475,
+      "transcript": "Meta"
+    },
+    {
+      "start": 2736.855,
+      "end": 2740.635,
+      "transcript": "gave a very high salary package for some of Google and OpenAI"
+    },
+    {
+      "start": 2741.2551,
+      "end": 2741.7551,
+      "transcript": "researchers."
+    },
+    {
+      "start": 2742.2952,
+      "end": 2742.7952,
+      "transcript": "And,"
+    },
+    {
+      "start": 2743.175,
+      "end": 2753.8098,
+      "transcript": "yeah. And also because can we use this sentence? We could say, when you have this input, sank, you already know the next token will be you very much"
+    },
+    {
+      "start": 2754.3499,
+      "end": 2754.8499,
+      "transcript": "because"
+    },
+    {
+      "start": 2755.71,
+      "end": 2757.47,
+      "transcript": "it's very popular, right? And,"
+    },
+    {
+      "start": 2758.1099,
+      "end": 2758.6099,
+      "transcript": "so"
+    },
+    {
+      "start": 2759.275,
+      "end": 2762.335,
+      "transcript": "normally we do not think too much to output"
+    },
+    {
+      "start": 2762.715,
+      "end": 2763.935,
+      "transcript": "u very much,"
+    },
+    {
+      "start": 2765.035,
+      "end": 2766.975,
+      "transcript": "given the sink as a context."
+    },
+    {
+      "start": 2768.155,
+      "end": 2774.335,
+      "transcript": "So we call this token maybe like, easy token. It could directly could predict by n gram"
+    },
+    {
+      "start": 2774.7998,
+      "end": 2775.2998,
+      "transcript": "algorithm."
+    },
+    {
+      "start": 2776.5598,
+      "end": 2778.0999,
+      "transcript": "And for these red"
+    },
+    {
+      "start": 2778.72,
+      "end": 2781.94,
+      "transcript": "tokens in red color, such as 100,000,000"
+    },
+    {
+      "start": 2782.0,
+      "end": 2782.9,
+      "transcript": "salary package,"
+    },
+    {
+      "start": 2783.44,
+      "end": 2791.265,
+      "transcript": "we need to think, we need to give them more context and need to search some nodes to know how could"
+    },
+    {
+      "start": 2791.645,
+      "end": 2794.4648,
+      "transcript": "I predict the next token is 100,000,000."
+    },
+    {
+      "start": 2794.765,
+      "end": 2802.785,
+      "transcript": "So this hard tokens, such kind of such tokens, hard tokens, require context and reasoning to generate. We call it hard tokens."
+    },
+    {
+      "start": 2804.2,
+      "end": 2804.7,
+      "transcript": "And"
+    },
+    {
+      "start": 2805.32,
+      "end": 2811.02,
+      "transcript": "so could we have one method to use less computes to generate easy tokens and"
+    },
+    {
+      "start": 2811.72,
+      "end": 2814.06,
+      "transcript": "more computes to generate hard tokens?"
+    },
+    {
+      "start": 2815.1602,
+      "end": 2819.075,
+      "transcript": "So that's the intuition for speculative decoding."
+    }
+  ],
+  "reference_ja": [
+    "次のセクションは、アルゴリズムの観点から見た言語モデルの効率化についてです。",
+    "最初に紹介したいのは、投機的デコーディングです。",
+    "これは、トークンレベルで言語モデルの効率を高めるアルゴリズムです。",
+    "ここに「予想外の1億ドルの報酬パッケージをありがとうございます」という、GoogleやOpenAIの研究者に向けた文があります。というのも、最近MetaがGoogleやOpenAIの一部の研究者に非常に高額な報酬パッケージを提示したからです。",
+    "この文を使って考えてみましょう。「Thank」という入力があれば、次のトークンが「you very much」であることはすでに分かりますよね。非常によく使われる表現だからです。ですから通常、あまり考えずに〜",
+    "「Thank」を文脈として「you very much」を出力します。",
+    "こうしたトークンを、いわば簡単なトークンと呼びます。n-gramアルゴリズムで直接予測できます。",
+    "一方、赤色で示したトークン、たとえば「1億ドルの報酬パッケージ」については、よく考える必要があります。より多くの文脈を与え、情報を探索して、次のトークンが「1億」だと予測する方法を知る必要があります。",
+    "このような難しいトークンは、生成するのに文脈と推論が必要です。これを難しいトークンと呼びます。",
+    "では、簡単なトークンは少ない計算量で、難しいトークンはより多くの計算量で生成する方法はないでしょうか。",
+    "それが投機的デコーディングの発想です。"
+  ],
+  "reference_ja_draft": [
+    "次のセクションは、アルゴリズムの観点から見た言語モデルの効率化についてです。",
+    "最初に紹介したいのは、投機的デコーディングです。",
+    "これは、トークンレベルで言語モデルの効率を高めるアルゴリズムです。",
+    "ここに「予想外の1億ドルの報酬パッケージをありがとうございます」という、GoogleやOpenAIの研究者に向けた文があります。というのも、最近MetaがGoogleやOpenAIの一部の研究者に非常に高額な報酬パッケージを提示したからです。",
+    "この文を使って考えてみましょう。「Thank」という入力があれば、次のトークンが「you very much」であることはすでに分かりますよね。非常によく使われる表現だからです。ですから通常、あまり考えずに〜",
+    "「Thank」を文脈として「you very much」を出力します。",
+    "こうしたトークンを、いわば簡単なトークンと呼びます。n-gramアルゴリズムで直接予測できます。",
+    "一方、赤色で示したトークン、たとえば「1億ドルの報酬パッケージ」については、よく考える必要があります。より多くの文脈を与え、情報を探索して、次のトークンが「1億」だと予測する方法を知る必要があります。",
+    "このような難しいトークンは、生成するのに文脈と推論が必要です。これを難しいトークンと呼びます。",
+    "では、簡単なトークンは少ない計算量で、難しいトークンはより多くの計算量で生成する方法はないでしょうか。",
+    "それが投機的デコーディングの発想です。"
+  ],
+  "reference_status": "human_reviewed",
+  "reference_note": "claude-opus-5-5が2026-10-12に、英語原文から独立に作成した訳（過去実行のmt_jaは参照していない）。方針: ①訳語はdictionary.csvに合わせる ②文の途中で切れたセグメントは原文にある範囲だけ訳す(欠落部は「〜」) ③明らかなASR誤認識は意図された意味で訳す(kv catch→KVキャッシュ, metrics→行列, survey→サービング, sank→Thank 等)。人手レビュー前のため、スコアは相対比較の参考にとどめること。 / 2026-10-12: 人手レビュー済み（claude.aiのレビューページで全セグメントを確認・確定）。全セグメント草案どおり確定。元の草案はreference_ja_draftに保存。",
+  "expected_merged_count": 11
+}

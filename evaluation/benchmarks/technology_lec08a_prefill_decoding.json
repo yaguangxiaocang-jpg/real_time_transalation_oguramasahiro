@@ -1,0 +1,133 @@
+{
+  "benchmark_id": "technology_lec08a_prefill_decoding",
+  "domain": "technology",
+  "description": "LLM2025応用編 第8回前半（Google Research Australia、LLM効率化の招待講演）より: 推論の段階（プリフィルとデコード、計算律速とメモリバウンド）。1800.5〜1914.4秒、未結合のDeepgram発話21件（experiments/segments/20261012_llm2025_lec08_first_half_raw_unmerged.jsonから抽出）。2026-10-12追加、同日人手レビュー済み。",
+  "raw_utterances": [
+    {
+      "start": 1800.505,
+      "end": 1802.845,
+      "transcript": "in language pre fill and training,"
+    },
+    {
+      "start": 1803.625,
+      "end": 1805.005,
+      "transcript": "in pre fill, it's like"
+    },
+    {
+      "start": 1805.385,
+      "end": 1810.365,
+      "transcript": "you input your prompts. You already give all of your prompts and language, we"
+    },
+    {
+      "start": 1810.745,
+      "end": 1813.085,
+      "transcript": "will do pre fill, we will use all prompts"
+    },
+    {
+      "start": 1813.98,
+      "end": 1822.88,
+      "transcript": "as an input to language model and calculate the kv catch for it. And also during the training, also all tokens are already given. We will just"
+    },
+    {
+      "start": 1823.26,
+      "end": 1825.04,
+      "transcript": "process all tokens together."
+    },
+    {
+      "start": 1826.505,
+      "end": 1827.7251,
+      "transcript": "So when we do this,"
+    },
+    {
+      "start": 1828.985,
+      "end": 1846.2,
+      "transcript": "the metrics computation will be batch size times sequence length. Sequence length will be maybe 32 ks in training, pre fill. It maybe depends on your performance length. And, anyway, it's larger than one. And then... So the metrics will be batch size times,"
+    },
+    {
+      "start": 1846.82,
+      "end": 1849.16,
+      "transcript": "section length and also times your,"
+    },
+    {
+      "start": 1850.02,
+      "end": 1851.4,
+      "transcript": "model model dimension."
+    },
+    {
+      "start": 1852.58,
+      "end": 1860.555,
+      "transcript": "So we we could know it's... It'll be... This this this metrics would be very, very large. So it will makes, like,"
+    },
+    {
+      "start": 1862.135,
+      "end": 1865.5951,
+      "transcript": "it will makes, like, processing units too hard to process"
+    },
+    {
+      "start": 1865.9751,
+      "end": 1870.04,
+      "transcript": "all of these metrics computation. So it will be blocked by computes."
+    },
+    {
+      "start": 1871.3,
+      "end": 1872.8401,
+      "transcript": "However, when we do decoding,"
+    },
+    {
+      "start": 1873.78,
+      "end": 1881.88,
+      "transcript": "when we do decoding, because we will generate a token one by one, so metrics operations will be batch size times"
+    },
+    {
+      "start": 1882.915,
+      "end": 1889.175,
+      "transcript": "sequence length, and the sequence length is only one, and times the model dimension is one. And then because"
+    },
+    {
+      "start": 1890.275,
+      "end": 1894.295,
+      "transcript": "the sequence is one, so the compute is very, very cheap."
+    },
+    {
+      "start": 1894.675,
+      "end": 1896.055,
+      "transcript": "So at this time"
+    },
+    {
+      "start": 1896.9299,
+      "end": 1903.11,
+      "transcript": "at this time, the block is not compute, it's memory bandwidth. The most of the time"
+    },
+    {
+      "start": 1903.8099,
+      "end": 1908.95,
+      "transcript": "the most time during the survey will be like moving weights from your"
+    },
+    {
+      "start": 1909.425,
+      "end": 1914.405,
+      "transcript": "memory to processing units. So in this stage, we will call it memory bound."
+    }
+  ],
+  "reference_ja": [
+    "言語モデルのプリフィルと学習についてです。プリフィルとは、プロンプトを入力する段階です。プロンプトをすべて与えた状態で、言語モデルはプリフィルを行い、すべてのプロンプトを入力として受け取ってKVキャッシュを計算します。また学習時にも、すべてのトークンがあらかじめ与えられています。〜",
+    "すべてのトークンをまとめて処理するだけです。",
+    "このとき、行列演算はバッチサイズ×シーケンス長になります。シーケンス長は、学習やプリフィルでは32Kほどになることもあり、プロンプトの長さによって変わります。いずれにせよ1より大きくなります。そして、行列はバッチサイズ×シーケンス長×〜",
+    "モデル次元になります。",
+    "つまり、この行列は非常に大きくなることが分かります。そのため、処理ユニットがこれらすべての行列計算をこなすのが難しくなり、計算がボトルネックになります。",
+    "一方、デコード時には、トークンを1つずつ生成するため、行列演算はバッチサイズ×シーケンス長×モデル次元ですが、シーケンス長はわずか1です。シーケンス長が1なので、計算コストは非常に小さくなります。",
+    "そのためこの段階では、ボトルネックは計算ではなくメモリ帯域幅です。サービング中の時間の大半は、メモリから処理ユニットへ重みを移動することに費やされます。そのため、この段階をメモリバウンドと呼びます。"
+  ],
+  "reference_ja_draft": [
+    "言語モデルのプリフィルと学習についてです。プリフィルとは、プロンプトを入力する段階です。プロンプトをすべて与えた状態で、言語モデルはプリフィルを行い、すべてのプロンプトを入力として受け取ってKVキャッシュを計算します。また学習時にも、すべてのトークンがあらかじめ与えられています。〜",
+    "すべてのトークンをまとめて処理するだけです。",
+    "このとき、行列演算はバッチサイズ×シーケンス長になります。シーケンス長は、学習やプリフィルでは32Kほどになることもあり、プロンプトの長さによって変わります。いずれにせよ1より大きくなります。そして、行列はバッチサイズ×シーケンス長×〜",
+    "モデル次元になります。",
+    "つまり、この行列は非常に大きくなることが分かります。そのため、処理ユニットがこれらすべての行列計算をこなすのが難しくなり、計算がボトルネックになります。",
+    "一方、デコード時には、トークンを1つずつ生成するため、行列演算はバッチサイズ×シーケンス長×モデル次元ですが、シーケンス長はわずか1です。シーケンス長が1なので、計算コストは非常に小さくなります。",
+    "そのためこの段階では、ボトルネックは計算ではなくメモリ帯域幅です。サービング中の時間の大半は、メモリから処理ユニットへ重みを移動することに費やされます。そのため、この段階をメモリバウンドと呼びます。"
+  ],
+  "reference_status": "human_reviewed",
+  "reference_note": "claude-opus-5-5が2026-10-12に、英語原文から独立に作成した訳（過去実行のmt_jaは参照していない）。方針: ①訳語はdictionary.csvに合わせる ②文の途中で切れたセグメントは原文にある範囲だけ訳す(欠落部は「〜」) ③明らかなASR誤認識は意図された意味で訳す(kv catch→KVキャッシュ, metrics→行列, survey→サービング, sank→Thank 等)。人手レビュー前のため、スコアは相対比較の参考にとどめること。 / 2026-10-12: 人手レビュー済み（claude.aiのレビューページで全セグメントを確認・確定）。全セグメント草案どおり確定。元の草案はreference_ja_draftに保存。",
+  "expected_merged_count": 7
+}
