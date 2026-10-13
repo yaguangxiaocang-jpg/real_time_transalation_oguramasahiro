@@ -1,0 +1,2597 @@
+{
+  "date": "2026-10-13",
+  "results": [
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 3.16,
+      "avg_seconds_per_segment_range": [
+        1.62,
+        4.7
+      ],
+      "chrf_score_mean": 0.4786,
+      "chrf_score_range": [
+        0.444,
+        0.5131
+      ],
+      "llm_judge_mean": 0.965,
+      "llm_judge_range": [
+        0.95,
+        0.98
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 4.7,
+          "avg_seconds_per_segment": 4.7,
+          "chrf_score": 0.444,
+          "llm_judge": 0.98,
+          "hyps": [
+            "これは米国で最も短期の金利であり、フェデラル・ファンド金利と呼ばれています。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.62,
+          "avg_seconds_per_segment": 1.62,
+          "chrf_score": 0.5131,
+          "llm_judge": 0.95,
+          "hyps": [
+            "これは米国で最も短期の金利であり、フェデラルファンド金利と呼ばれています。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.29,
+      "avg_seconds_per_segment_range": [
+        2.12,
+        2.45
+      ],
+      "chrf_score_mean": 0.4926,
+      "chrf_score_range": [
+        0.4721,
+        0.5131
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.45,
+          "avg_seconds_per_segment": 2.45,
+          "chrf_score": 0.4721,
+          "llm_judge": 1.0,
+          "hyps": [
+            "これが米国で最も短期の金利であり、フェデラルファンド金利と呼ばれています。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.12,
+          "avg_seconds_per_segment": 2.12,
+          "chrf_score": 0.5131,
+          "llm_judge": 1.0,
+          "hyps": [
+            "これは米国で最も短期の金利であり、フェデラルファンド金利と呼ばれています。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "economics_federal_funds_rate",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.08,
+      "avg_seconds_per_segment_range": [
+        1.82,
+        2.33
+      ],
+      "chrf_score_mean": 0.4721,
+      "chrf_score_range": [
+        0.4721,
+        0.4721
+      ],
+      "llm_judge_mean": 0.99,
+      "llm_judge_range": [
+        0.98,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.82,
+          "avg_seconds_per_segment": 1.82,
+          "chrf_score": 0.4721,
+          "llm_judge": 0.98,
+          "hyps": [
+            "これが米国で最も短期の金利であり、フェデラルファンド金利と呼ばれています。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.33,
+          "avg_seconds_per_segment": 2.33,
+          "chrf_score": 0.4721,
+          "llm_judge": 1.0,
+          "hyps": [
+            "これが米国で最も短期の金利であり、フェデラルファンド金利と呼ばれています。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_2d07bb74_v2_clip1_scaling_intro",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 1.48,
+      "avg_seconds_per_segment_range": [
+        1.46,
+        1.5
+      ],
+      "chrf_score_mean": 0.613,
+      "chrf_score_range": [
+        0.609,
+        0.617
+      ],
+      "llm_judge_mean": 0.9913,
+      "llm_judge_range": [
+        0.9827,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 16.49,
+          "avg_seconds_per_segment": 1.5,
+          "chrf_score": 0.609,
+          "llm_judge": 0.9827,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャについて、それぞれのアテンションコンポーネントで使用されている異なるマスキング手法を強調しながら説明します。",
+            "違いを見ると、T5のような過去のモデルは生成機能があまり強くなく、タスク固有のファインチューニングが必要でした。",
+            "一方、GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって高い汎化能力を実現しました。",
+            "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層が双方向であるため、表現力がやや高くなっています。",
+            "高密度モデルのサイズは大幅に跳ね上がり、当初110億パラメータだったT5はGoogleで1つの巨大モデルと呼ばれ、1750億パラメータのGPT-3が登場しました。",
+            "その後、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大型化するにつれ、コストと学習時間が持続不可能になりました。",
+            "これによって、高密度モデルのスケーリングの先には何があるのかという疑問が生じます。",
+            "その答えがMixture of Experts、つまりMOEです。",
+            "こうして指数関数的なスケーリングの傾向を継続させるのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 16.02,
+          "avg_seconds_per_segment": 1.46,
+          "chrf_score": 0.617,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャ、そしてアテンションコンポーネントで使われるさまざまなマスキング手法を取り上げます。",
+            "違いを見ると、T5のような過去のモデルは生成能力があまり高くなく、タスク固有のファインチューニングを必要としていました。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を実現しました。",
+            "そしてプレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、表現力がやや高くなっています。",
+            "高密度モデルのサイズが劇的に飛躍し、元のT5は110億パラメータに達し、Googleでは1つの巨大モデルと呼ばれ、GPT-3は1750億パラメータに達しました。",
+            "その後、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大型化するにつれて、コストと学習時間は持続不可能になりました。",
+            "これにより、高密度モデルのスケーリングの先には何があるのか、という疑問が生じます。",
+            "その答えがMixture of Experts、つまりMOEです。",
+            "こうして、指数のスケーリング傾向を継続するのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_2d07bb74_v2_clip1_scaling_intro",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 3.5,
+      "avg_seconds_per_segment_range": [
+        2.5,
+        4.51
+      ],
+      "chrf_score_mean": 0.6842,
+      "chrf_score_range": [
+        0.679,
+        0.6893
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 27.49,
+          "avg_seconds_per_segment": 2.5,
+          "chrf_score": 0.6893,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で用いられている異なるマスキング手法を浮き彫りにします。",
+            "違いを見てみると、T5のような以前のモデルは生成能力がそれほど高くなく、タスクごとのファインチューニングが必要でした。",
+            "一方、GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を実現しました。",
+            "そしてプレフィックスモデリングを採用するPaLM 2は、アテンション層が双方向であるため表現力がやや高くなっています。",
+            "高密度モデルのサイズが劇的に増大し、当初T5は110億パラメータに達し、Googleでは巨大モデルと呼ばれましたが、GPT-3は1750億パラメータに達しました。",
+            "そしてその後、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大規模化するにつれて、コストと学習時間は維持できなくなりました。",
+            "これにより、高密度モデルのスケーリングの限界の先には何があるのか、という疑問が生じます。",
+            "その答えが、Mixture of Experts、すなわちMOEです。",
+            "こうして指数関数的なスケーリングの傾向を継続していくのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 49.61,
+          "avg_seconds_per_segment": 4.51,
+          "chrf_score": 0.679,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で用いられている異なるマスキング手法を強調しています。",
+            "違いを見てみると、T5のような従来のモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって強力な汎化性能を達成しました。",
+            "そしてプレフィックスモデリングを採用しているPaLM 2は、アテンション層が双方向であるため、表現力がやや高くなっています。",
+            "高密度モデルのサイズが劇的に増大し、T5は当初110億パラメータに達し、Googleでは巨大モデルと呼ばれ、GPT-3は1750億パラメータに達しました。",
+            "その後、PaLMは5000億パラメータに達しました。",
+            "しかし高密度モデルが大規模化するにつれ、コストと学習時間は維持できないものになりました。",
+            "そこで、「高密度モデルのスケーリングの限界の先には何があるのか？」という疑問が生じます。",
+            "その答えが、Mixture of Experts、すなわちMOEです。",
+            "これによって、指数関数的なスケーリングのトレンドを継続できるのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_2d07bb74_v2_clip1_scaling_intro",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 2.26,
+      "avg_seconds_per_segment_range": [
+        2.18,
+        2.34
+      ],
+      "chrf_score_mean": 0.6798,
+      "chrf_score_range": [
+        0.6695,
+        0.6901
+      ],
+      "llm_judge_mean": 0.9918,
+      "llm_judge_range": [
+        0.9836,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 25.75,
+          "avg_seconds_per_segment": 2.34,
+          "chrf_score": 0.6695,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で用いられているマスキング手法の違いを浮き彫りにしています。",
+            "違いに目を向けると、T5のような従来モデルは生成能力がそこまで高くなく、タスクごとのファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって強力な汎化能力を実現しました。",
+            "そしてプレフィックスモデリングを採用しているPaLM 2は、アテンション層で双方向性を持つため、より表現力が高くなっています。",
+            "高密度モデルのサイズが大幅に増大する中で、当初T5は110億パラメータに達し、Googleでは巨大モデルと呼ばれましたが、GPT-3は1,750億パラメータに達しました。",
+            "そしてその後、PaLMは5,000億パラメータに達しました。",
+            "しかし高密度モデルが巨大化するにつれ、コストと学習時間は維持できなくなりました。",
+            "ここで「高密度モデルのスケーリングの限界の先には、何があるのか？」という疑問が生じます。",
+            "その答えが、Mixture of Experts、すなわちMOEです。",
+            "こうして、私たちは指数関数的なスケーリングトレンドを継続させていくのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 23.98,
+          "avg_seconds_per_segment": 2.18,
+          "chrf_score": 0.6901,
+          "llm_judge": 0.9836,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で用いられているマスキング手法の違いを浮き彫りにします。",
+            "違いを見てみると、T5のような古いモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "一方、GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって強力な汎化能力を実現しました。",
+            "そしてプレフィックスモデリングを採用するPaLM 2は、アテンション層が双方向であるため、より高い表現力を持っています。",
+            "高密度モデルのサイズが劇的に増大し、当初T5は110億パラメータに達し、Googleでは巨大モデルと呼ばれましたが、GPT-3は1750億パラメータに達しました。",
+            "そしてその後、PaLMは5000億パラメータに達しました。",
+            "しかし高密度モデルが大型化するにつれ、コストと学習時間は維持できないものになりました。",
+            "そこで、高密度モデルのスケーリングの先には何があるのか、という疑問が生じます。",
+            "その答えが、Mixture of Experts、すなわちMOEです。",
+            "このようにして、指数関数的なスケーリングの傾向を継続させるのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_gpt3_generalization",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.62,
+      "avg_seconds_per_segment_range": [
+        1.62,
+        1.63
+      ],
+      "chrf_score_mean": 0.7475,
+      "chrf_score_range": [
+        0.7475,
+        0.7475
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.63,
+          "avg_seconds_per_segment": 1.63,
+          "chrf_score": 0.7475,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を実現しました。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.62,
+          "avg_seconds_per_segment": 1.62,
+          "chrf_score": 0.7475,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を実現しました。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_gpt3_generalization",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.28,
+      "avg_seconds_per_segment_range": [
+        1.77,
+        2.79
+      ],
+      "chrf_score_mean": 0.8523,
+      "chrf_score_range": [
+        0.8523,
+        0.8523
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.79,
+          "avg_seconds_per_segment": 2.79,
+          "chrf_score": 0.8523,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって強力な汎化能力を実現しました。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.77,
+          "avg_seconds_per_segment": 1.77,
+          "chrf_score": 0.8523,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって強力な汎化能力を実現しました。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_gpt3_generalization",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.27,
+      "avg_seconds_per_segment_range": [
+        2.25,
+        2.3
+      ],
+      "chrf_score_mean": 0.724,
+      "chrf_score_range": [
+        0.5958,
+        0.8523
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.3,
+          "avg_seconds_per_segment": 2.3,
+          "chrf_score": 0.8523,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって強力な汎化能力を実現しました。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.25,
+          "avg_seconds_per_segment": 2.25,
+          "chrf_score": 0.5958,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて高い汎化性能を達成しました。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_moe_definition",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.62,
+      "avg_seconds_per_segment_range": [
+        1.6,
+        1.65
+      ],
+      "chrf_score_mean": 0.6612,
+      "chrf_score_range": [
+        0.6612,
+        0.6612
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.65,
+          "avg_seconds_per_segment": 1.65,
+          "chrf_score": 0.6612,
+          "llm_judge": 1.0,
+          "hyps": [
+            "そして、その答えがMixture of Experts、つまりMOEです。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.6,
+          "avg_seconds_per_segment": 1.6,
+          "chrf_score": 0.6612,
+          "llm_judge": 1.0,
+          "hyps": [
+            "そして、その答えがMixture of Experts、つまりMOEです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_moe_definition",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.18,
+      "avg_seconds_per_segment_range": [
+        2.02,
+        2.34
+      ],
+      "chrf_score_mean": 0.6674,
+      "chrf_score_range": [
+        0.6612,
+        0.6736
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.02,
+          "avg_seconds_per_segment": 2.02,
+          "chrf_score": 0.6612,
+          "llm_judge": 1.0,
+          "hyps": [
+            "そして、その答えがMixture of Experts、つまりMOEです。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.34,
+          "avg_seconds_per_segment": 2.34,
+          "chrf_score": 0.6736,
+          "llm_judge": 1.0,
+          "hyps": [
+            "その答えがMixture of Experts、つまりMOEです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_moe_definition",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.46,
+      "avg_seconds_per_segment_range": [
+        2.36,
+        2.57
+      ],
+      "chrf_score_mean": 0.7309,
+      "chrf_score_range": [
+        0.6736,
+        0.7882
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.36,
+          "avg_seconds_per_segment": 2.36,
+          "chrf_score": 0.6736,
+          "llm_judge": 1.0,
+          "hyps": [
+            "その答えがMixture of Experts、つまりMOEです。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.57,
+          "avg_seconds_per_segment": 2.57,
+          "chrf_score": 0.7882,
+          "llm_judge": 1.0,
+          "hyps": [
+            "その答えが、Mixture of Experts、つまりMOEです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_t5_finetuning",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 1.72,
+      "avg_seconds_per_segment_range": [
+        1.58,
+        1.85
+      ],
+      "chrf_score_mean": 0.4269,
+      "chrf_score_range": [
+        0.373,
+        0.4809
+      ],
+      "llm_judge_mean": 0.97,
+      "llm_judge_range": [
+        0.96,
+        0.98
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.58,
+          "avg_seconds_per_segment": 1.58,
+          "chrf_score": 0.373,
+          "llm_judge": 0.96,
+          "hyps": [
+            "T5のような以前のモデルは、生成能力がそこまで高くなく、タスク固有のファインチューニングを必要としていました。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 1.85,
+          "avg_seconds_per_segment": 1.85,
+          "chrf_score": 0.4809,
+          "llm_judge": 0.98,
+          "hyps": [
+            "T5のような従来のモデルは生成能力が低く、タスク固有のファインチューニングが必要でした。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_t5_finetuning",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.25,
+      "avg_seconds_per_segment_range": [
+        2.23,
+        2.27
+      ],
+      "chrf_score_mean": 0.5614,
+      "chrf_score_range": [
+        0.5614,
+        0.5614
+      ],
+      "llm_judge_mean": 0.995,
+      "llm_judge_range": [
+        0.99,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.23,
+          "avg_seconds_per_segment": 2.23,
+          "chrf_score": 0.5614,
+          "llm_judge": 1.0,
+          "hyps": [
+            "違いを見ると、T5のような従来のモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.27,
+          "avg_seconds_per_segment": 2.27,
+          "chrf_score": 0.5614,
+          "llm_judge": 0.99,
+          "hyps": [
+            "違いを見ると、T5のような従来のモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_fragment_t5_finetuning",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 1,
+      "avg_seconds_per_segment_mean": 2.17,
+      "avg_seconds_per_segment_range": [
+        2.13,
+        2.2
+      ],
+      "chrf_score_mean": 0.6032,
+      "chrf_score_range": [
+        0.5614,
+        0.645
+      ],
+      "llm_judge_mean": 0.99,
+      "llm_judge_range": [
+        0.98,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.13,
+          "avg_seconds_per_segment": 2.13,
+          "chrf_score": 0.5614,
+          "llm_judge": 0.98,
+          "hyps": [
+            "違いを見ると、T5のような従来のモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 1,
+          "elapsed_seconds": 2.2,
+          "avg_seconds_per_segment": 2.2,
+          "chrf_score": 0.645,
+          "llm_judge": 1.0,
+          "hyps": [
+            "違いを見ると、T5のような以前のモデルは生成能力がそれほど高くなく、タスクごとのファインチューニングが必要でした。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_prefill_decoding",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 7,
+      "avg_seconds_per_segment_mean": 1.6,
+      "avg_seconds_per_segment_range": [
+        1.57,
+        1.64
+      ],
+      "chrf_score_mean": 0.5458,
+      "chrf_score_range": [
+        0.537,
+        0.5546
+      ],
+      "llm_judge_mean": 0.9428,
+      "llm_judge_range": [
+        0.9071,
+        0.9786
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 7,
+          "elapsed_seconds": 11.5,
+          "avg_seconds_per_segment": 1.64,
+          "chrf_score": 0.537,
+          "llm_judge": 0.9071,
+          "hyps": [
+            "言語のプレフィルと学習において、プレフィルではプロンプトを入力します。プロンプトをすべて与えるとプレフィルが行われ、すべてのプロンプトを言語モデルへの入力として使用し、KVキャッシュを計算します。また学習中もすべてのトークンがすでに与えられており、単に",
+            "すべてのトークンをまとめて処理します。",
+            "したがってこれを行う場合、行列計算はバッチサイズ×シーケンス長となります。シーケンス長は学習やプレフィルでは32kなどになるでしょう。これはパフォーマンス上の長さに依存するかもしれませんが、いずれにせよ1より大きくなります。そして、行列計算はバッチサイズ×シーケンス長、さらに…",
+            "モデル次元数を掛け合わせたものになります。",
+            "したがって、この行列計算は極めて大きくなります。そのため、処理ユニットがこれらすべての行列計算を処理するのが非常に困難になり、計算能力によって制限を受けることになります。",
+            "しかし、デコーディングを行う際はトークンを1つずつ生成するため、行列演算はバッチサイズ×シーケンス長×モデル次元数となりますが、シーケンス長は1に過ぎません。そのため計算コストは極めて低くなります。",
+            "したがってこの時、ボトルネックは計算能力ではなくメモリ帯域幅となります。サービング中のプロセスの大半は、重みをメモリから処理ユニットへ移動させる時間です。そのため、このステージはメモリウォール（memory bound）と呼ばれます。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 7,
+          "elapsed_seconds": 10.96,
+          "avg_seconds_per_segment": 1.57,
+          "chrf_score": 0.5546,
+          "llm_judge": 0.9786,
+          "hyps": [
+            "言語のプリフィルと事前学習において、プリフィルではプロンプトを入力します。プロンプトをすべて提供すると、それを言語モデルへの入力として使用し、KVキャッシュを計算します。また学習時においても、すべてのトークンはすでに与えられています。私たちはただ、",
+            "すべてのトークンをまとめて処理します。",
+            "したがってこれを行うと、行列計算はバッチサイズ×シーケンス長となります。シーケンス長はプリフィルの学習時で32k程度になるかもしれません。パフォーマンスの長さに依存するかもしれませんが、いずれにせよ1より大きくなります。そして、行列はバッチサイズ×シーケンス長、さらに…",
+            "モデル次元を掛けた大きさになります。",
+            "したがって、この行列は非常に大きくなることが分かります。そのため、プロセッサがこれらすべての行列計算を処理するのが非常に困難になり、計算能力によって制約されることになります。",
+            "しかしデコーディングを行う際は、トークンを1つずつ生成するため、行列演算はバッチサイズ×シーケンス長（シーケンス長は1のみ）×モデル次元（1）となります。そしてシーケンス長が1であるため、計算量は非常に少なくなります。",
+            "したがって、この時点でのボトルネックは計算能力ではなくメモリ帯域幅になります。サービング中のプロセスのほとんどは、メモリから処理ユニットへの重みの移動となります。そのため、このステージはメモリバウンドと呼ばれます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_prefill_decoding",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 7,
+      "avg_seconds_per_segment_mean": 2.62,
+      "avg_seconds_per_segment_range": [
+        2.42,
+        2.81
+      ],
+      "chrf_score_mean": 0.5721,
+      "chrf_score_range": [
+        0.5667,
+        0.5775
+      ],
+      "llm_judge_mean": 0.9622,
+      "llm_judge_range": [
+        0.9514,
+        0.9729
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 7,
+          "elapsed_seconds": 16.94,
+          "avg_seconds_per_segment": 2.42,
+          "chrf_score": 0.5667,
+          "llm_judge": 0.9729,
+          "hyps": [
+            "プリフィルと学習においては、プリフィルではプロンプトを入力し、すべてのプロンプトを事前に渡します。プリフィルを実行し、すべてのプロンプトを言語モデルへの入力として使用してKVキャッシュを計算します。また学習時も、すべてのトークンがすでに与えられているため、単に",
+            "すべてのトークンをまとめて処理します。",
+            "したがってこれを行う際、行列計算はバッチサイズ×シーケンス長になります。シーケンス長は学習やプリフィルでは32kなどになるでしょう。プロンプトの長さにもよりますが、いずれにせよ1より大きくなります。そして…行列計算はバッチサイズ×シーケンス長、そして…",
+            "モデルの次元数を掛けたものになります。",
+            "したがってこの行列は非常に大きくなることが分かります。そのため、プロセッサがこの行列計算全体を処理するのが非常に困難になり、計算能力によって制約を受けることになります。",
+            "しかしデコーディング時には、トークンを1つずつ生成するため、行列演算はバッチサイズ×シーケンス長となり、シーケンス長は1に過ぎず、モデル次元数×1となります。シーケンスが1であるため、計算コストは極めて低くなります。",
+            "そのためこの時は、ボトルネックは計算能力ではなくメモリ帯域幅になります。サービング中の大半の時間は、メモリからプロセッサへと重みを転送する処理になります。したがってこの段階は、メモリバウンドと呼ばれます。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 7,
+          "elapsed_seconds": 19.7,
+          "avg_seconds_per_segment": 2.81,
+          "chrf_score": 0.5775,
+          "llm_judge": 0.9514,
+          "hyps": [
+            "言語のプレフィルと学習において、プレフィルではプロンプトを入力します。プロンプトをすべて渡すと、プレフィルを行い、すべてのプロンプトを言語モデルへの入力として使用して、KVキャッシュを計算します。また、学習中もすべてのトークンがすでに与えられており、ただ",
+            "すべてのトークンをまとめて処理します。",
+            "そのため、これを行う際、行列計算はバッチサイズ×シーケンス長になります。シーケンス長は学習やプレフィルでは32kなどになるかもしれません。プロンプトの長さにもよりますが、いずれにしても1よりは大きくなります。したがって、行列はバッチサイズ×シーケンス長、そして…",
+            "モデル次元を掛けたものになります。",
+            "そのため、この行列は非常に大きくなることが分かります。そのためプロセッシングユニットにとって、この行列計算すべてを処理するのが極めて困難になり、コンピュート（計算性能）がボトルネックになります。",
+            "しかしデコーディングを行う際には、トークンを1つずつ生成するため、行列演算はバッチサイズ×シーケンス長（シーケンス長は1のみ）×モデル次元（1つ分）となります。そしてシーケンス長が1であるため、計算コストは極めて低くなります。",
+            "そのため、この時点でボトルネックになるのは計算性能ではなく、メモリ帯域幅です。サービング時の大半の時間は、メモリからプロセッシングユニットへ重みを移動することに費やされます。したがってこの段階は、メモリバウンドと呼ばれます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_prefill_decoding",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 7,
+      "avg_seconds_per_segment_mean": 2.3,
+      "avg_seconds_per_segment_range": [
+        2.19,
+        2.42
+      ],
+      "chrf_score_mean": 0.5746,
+      "chrf_score_range": [
+        0.5706,
+        0.5787
+      ],
+      "llm_judge_mean": 0.9135,
+      "llm_judge_range": [
+        0.9114,
+        0.9157
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 7,
+          "elapsed_seconds": 16.94,
+          "avg_seconds_per_segment": 2.42,
+          "chrf_score": 0.5787,
+          "llm_judge": 0.9114,
+          "hyps": [
+            "言語モデルのプレフィルと学習において、プレフィルではプロンプトを入力し、すべてのプロンプトをあらかじめ渡すと、すべてのプロンプトを言語モデルへの入力として使用してプレフィルを行い、そのKVキャッシュを計算します。また、学習中もすべてのトークンがすでに与えられており、単に",
+            "すべてのトークンをまとめて処理します。",
+            "そのため、これを行う際、行列計算はバッチサイズ×シーケンス長になります。学習やプレフィルでのシーケンス長は32kなどになり、プロンプトの長さにもよりますが、いずれにしても1より大きくなります。そして、行列はバッチサイズ×シーケンス長、さらに",
+            "モデルの次元数を掛けたものになります。",
+            "したがって、この行列は非常に大きなものになります。そのため、プロセッサがこのすべての行列計算を処理するのが極めて困難になり、計算がボトルネックになります。",
+            "しかしデコーディング時には、トークンを1つずつ生成するため、行列演算はバッチサイズ×シーケンス長（シーケンス長はわずか1）×モデル次元数となります。シーケンス長が1であるため、計算コストは非常に低くなります。",
+            "そのためこの時は、ボトルネックは計算ではなくメモリ帯域幅になります。サービング中のほとんどの時間は、メモリからプロセッサへの重みの転送に費やされます。したがってこの段階は、メモリバウンド（メモリ律速）と呼ばれます。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 7,
+          "elapsed_seconds": 15.3,
+          "avg_seconds_per_segment": 2.19,
+          "chrf_score": 0.5706,
+          "llm_judge": 0.9157,
+          "hyps": [
+            "言語モデルのプリフィルと学習において、プリフィルではプロンプトを入力します。プロンプト全体をあらかじめ与えておき、それを言語モデルの入力としてプリフィルを行い、KVキャッシュを計算します。また、学習時にもすべてのトークンがすでに与えられており、単に",
+            "すべてのトークンをまとめて処理します。",
+            "そのため、この処理を行う際、行列計算はバッチサイズ×シーケンス長となります。学習やプリフィル時のシーケンス長はおそらく32kなどになり、プロンプトの長さにもよりますが、いずれにしても1より大きくなります。そして……したがって行列はバッチサイズ×シーケンス長、さらには……",
+            "モデル次元の積になります。",
+            "そのため、この行列は極めて大きくなることが分かります。そのためプロセッサにとってこれらすべての行列計算を処理するのが非常に困難になり、計算能力がボトルネックになります。",
+            "しかし、デコーディングを行う際はトークンを1つずつ生成するため、行列演算はバッチサイズ×シーケンス長（シーケンス長はわずか1）×モデル次元（1）となります。そしてシーケンス長が1であるため、計算コストは非常に低くなります。",
+            "そのためこの時点では、ボトルネックは計算能力ではなくメモリ帯域幅になります。推論提供中の大半の時間は、メモリからプロセッサへの重みの転送に費やされます。したがって、このステージはメモリバウンドと呼ばれます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_qa_sparsity",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 14,
+      "avg_seconds_per_segment_mean": 1.44,
+      "avg_seconds_per_segment_range": [
+        1.44,
+        1.45
+      ],
+      "chrf_score_mean": 0.5474,
+      "chrf_score_range": [
+        0.5472,
+        0.5476
+      ],
+      "llm_judge_mean": 0.9964,
+      "llm_judge_range": [
+        0.9964,
+        0.9964
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 14,
+          "elapsed_seconds": 20.25,
+          "avg_seconds_per_segment": 1.45,
+          "chrf_score": 0.5472,
+          "llm_judge": 0.9964,
+          "hyps": [
+            "そのため、最初の質問はスパース性に関するものです。スパース性の重みが検出された場合、より少ないパラメータ重みでモデルを再学習することはできないのでしょうか？",
+            "画面を共有していただけますか？あ、はい。",
+            "はい。",
+            "すでに画面を共有していますので…見えませんか？",
+            "はい、見えません。すみません。",
+            "わかりました。",
+            "画面共有を試してみます。",
+            "あなたが画面共有を停止すれば、私の画面が見えるようになるかもしれません。",
+            "わかりました。",
+            "ええ、これは良い質問ですね。",
+            "ええ。実は、それについては2つの視点からお答えできます。1つ目は、追加の学習コストが発生するという点です。ご存じの通り、言語モデルを再学習する場合、1からトレーニングするのは非常に高コストです。つまり...",
+            "学習コストが2倍になってしまいます。",
+            "そして2つ目の点として、行列がスパース（疎）であっても、GPUは静的なパターンで一括処理することに長けているからです。",
+            "しかし、スパース性は構造化されていない場合があり、非常にランダムです。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 14,
+          "elapsed_seconds": 20.09,
+          "avg_seconds_per_segment": 1.44,
+          "chrf_score": 0.5476,
+          "llm_judge": 0.9964,
+          "hyps": [
+            "では、最初の質問はスパース性についてです。スパース性の重みが検出された場合、パラメータの重みを減らしてモデルを再学習させることはできないのでしょうか？",
+            "ええ。画面を共有していただけますか？お願いします。はい。",
+            "ええ。",
+            "画面はすでに共有しています。ご覧になれませんか。",
+            "ええ、見えていません。すみません。",
+            "わかりました。",
+            "画面共有を試してみます。",
+            "あなたが画面共有を停止すれば、私の画面が見えるようになるかもしれません。",
+            "わかりました。",
+            "ええ、これは良い質問ですね。",
+            "ええ、実はそれについては2つの視点からお答えできます。1つ目は、追加の学習コストが発生するという点です。言語モデルを再学習する場合、1からの学習には膨大なコストがかかります。つまり、",
+            "学習コストが2倍になります。",
+            "そして2つ目の点として、行列がスパースであっても、GPUは静的なパターンに基づいて一括処理するのが非常に得意だということが挙げられます。",
+            "しかし、スパース性は構造化されていない可能性があり、非常にランダムです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_qa_sparsity",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 14,
+      "avg_seconds_per_segment_mean": 2.29,
+      "avg_seconds_per_segment_range": [
+        2.27,
+        2.31
+      ],
+      "chrf_score_mean": 0.5791,
+      "chrf_score_range": [
+        0.559,
+        0.5992
+      ],
+      "llm_judge_mean": 0.995,
+      "llm_judge_range": [
+        0.995,
+        0.995
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 14,
+          "elapsed_seconds": 32.32,
+          "avg_seconds_per_segment": 2.31,
+          "chrf_score": 0.559,
+          "llm_judge": 0.995,
+          "hyps": [
+            "最初の質問はスパース性についてです。重みのスパース性が検出された場合、パラメータの重みを減らしてモデルを再学習することはできないのでしょうか？",
+            "ええ。画面を共有していただけますか？あ、はい。",
+            "はい。",
+            "すでに画面は共有しています。見えていませんでしょうか？",
+            "ええ、見えていません。すみません。",
+            "わかりました。",
+            "画面共有をやり直してみます。",
+            "おそらく一度画面共有を停止していただければ、私の画面が見えるようになると思います。",
+            "わかりました。",
+            "はい、これは良い質問ですね。",
+            "はい、実はこれには2つの観点からお答えできます。まず1つ目は、追加のトレーニングコストがかかる点です。言語モデルの再学習には膨大なコストがかかることが知られており、つまり…",
+            "学習コストが2倍になってしまうということです。",
+            "そして2つ目は…行列がスパースであっても、GPUは静的なパターンで一括処理する方が非常に得意だからです。",
+            "しかし、そのスパース性は非構造化されているかもしれず、非常にランダムです。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 14,
+          "elapsed_seconds": 31.82,
+          "avg_seconds_per_segment": 2.27,
+          "chrf_score": 0.5992,
+          "llm_judge": 0.995,
+          "hyps": [
+            "最初の質問はスパース性についてです。スパースな重みが検出された場合、より少ないパラメータの重みでモデルを再学習することはできないのでしょうか？",
+            "ええ、画面を共有していただけますか？あ、はい、ありがとうございます。",
+            "はい。",
+            "すでに画面を共有しているのですが、見えていませんでしょうか？",
+            "はい、見えていません。すみません。",
+            "わかりました。",
+            "画面共有をやり直してみます。",
+            "一度画面共有を停止していただければ、こちらの画面が見えるかもしれません。",
+            "わかりました。",
+            "はい。これは良い質問ですね。",
+            "ええ、実はこれには2つの観点からお答えできます。1つ目は、追加のトレーニングコストがかかる点です。ご存じの通り、再トレーニングするとなると、言語モデルの学習は非常に高コストになります。つまり、",
+            "トレーニングコストが2倍になってしまいます。",
+            "そして2つ目に、行列がスパースであっても、GPUは静的なパターンで一括処理することを得意としています。",
+            "しかし、スパース性は非構造化されているかもしれず、非常にランダムです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_qa_sparsity",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 14,
+      "avg_seconds_per_segment_mean": 2.73,
+      "avg_seconds_per_segment_range": [
+        2.65,
+        2.82
+      ],
+      "chrf_score_mean": 0.5947,
+      "chrf_score_range": [
+        0.5724,
+        0.6169
+      ],
+      "llm_judge_mean": 0.9911,
+      "llm_judge_range": [
+        0.9893,
+        0.9929
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 14,
+          "elapsed_seconds": 37.07,
+          "avg_seconds_per_segment": 2.65,
+          "chrf_score": 0.6169,
+          "llm_judge": 0.9929,
+          "hyps": [
+            "最初の質問はスパース性についてです。スパースな重みが検出された場合、より少ないパラメータや重みでモデルを再学習することはできないのでしょうか？",
+            "はい。画面を共有していただけますか？あ、はい。",
+            "はい。",
+            "すでに画面を共有しています。見えていませんでしょうか？",
+            "はい、見えていません。すみません。",
+            "分かりました。",
+            "画面共有をやり直してみます。",
+            "そちらの画面共有を一度停止していただければ、私の画面が見えるかもしれません。",
+            "分かりました。",
+            "はい、これは良い質問ですね。",
+            "はい。実はそれについては2つの視点からお答えできます。まず1つ目は、追加のトレーニングコストが発生する点です。再トレーニングする場合、言語モデルを1つトレーニングするのは非常に高コストであることが分かっています。つまり、",
+            "トレーニングコストが2倍になってしまいます。",
+            "そして2つ目は、たとえ…というのも、行列が疎であっても、GPUは静的なパターンでまとめて処理するのが非常に得意だからです。",
+            "しかし、スパース性は非構造的で、非常にランダムな場合があります。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 14,
+          "elapsed_seconds": 39.53,
+          "avg_seconds_per_segment": 2.82,
+          "chrf_score": 0.5724,
+          "llm_judge": 0.9893,
+          "hyps": [
+            "最初の質問はスパース性についてです。スパースな重みが検出された場合、より少ないパラメータの重みでモデルを再学習することはできないのでしょうか？",
+            "ええ、画面を共有していただけますか？あ、はい、ありがとうございます。",
+            "はい。",
+            "すでに画面を共有しているのですが、見えていませんか？",
+            "はい、見えていません。すみません。",
+            "わかりました。",
+            "画面共有をやり直してみます。",
+            "一度画面共有を停止していただければ、こちらの画面が見えるかもしれません。",
+            "分かりました。",
+            "ええ、これは良い質問ですね。",
+            "ええ。実はこれについては2つの観点からお答えできます。まず1点目は、追加のトレーニングコストが発生するということです。言語モデルの再トレーニングは極めて高コストであり、つまり…",
+            "トレーニングコストが2倍になるということです。",
+            "そして2点目として、たとえ…というのも、行列がスパースであっても、GPUは静的なパターンの処理を一括で行うのが非常に得意だからです。",
+            "しかし、そのスパース性は非構造化である可能性があり、非常にランダムです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_speculative_decoding",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 1.71,
+      "avg_seconds_per_segment_range": [
+        1.6,
+        1.82
+      ],
+      "chrf_score_mean": 0.5344,
+      "chrf_score_range": [
+        0.5277,
+        0.5411
+      ],
+      "llm_judge_mean": 0.9668,
+      "llm_judge_range": [
+        0.9509,
+        0.9827
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 20.03,
+          "avg_seconds_per_segment": 1.82,
+          "chrf_score": 0.5277,
+          "llm_judge": 0.9509,
+          "hyps": [
+            "次のセクションは、アルゴリズムの観点から見た言語モデルのエフィシェンシーについてです。",
+            "最初に挙げたいのは、投機的デコーディング（speculative decoding）です。",
+            "これは、言語モデルのエフィシェンシーを向上させるためのトークンレベルのアルゴリズムのようなものです。",
+            "例えば、ここに1つの文章があります。「GoogleやOpenAIの研究者に対する予想外の1億ドルの給与パッケージを本当にありがとう」といった内容です。なぜなら、最近MetaがGoogleやOpenAIの一部の研究者に非常に高い給与パッケージを提示したからです。",
+            "そして、この文章を使えるでしょうか？「sank」という入力があれば、次に続くトークンが「you very much」であることは目新しいものではないため、既に予測がつきますよね。通常、私たちはこれを出力するのにそれほど深く考えません。",
+            "「sank」というコンテキストが与えられれば、「you very much」と出力するのに深くは考えません。",
+            "そのため、これを「簡単なトークン」と呼ぶことができます。これはn-gramアルゴリズムによって直接予測できる可能性があります。",
+            "一方、1億ドルの給与パッケージといった赤いトークンについては、より多くのコンテキストを与え、次のトークンが1億ドルであることを予測する方法を知るためにノードを検索して思考する必要があります。",
+            "したがって、このようなトークン、つまり生成にコンテキストと思考（推論）を必要とする難しいトークンを、私たちは「難しいトークン（hard tokens）」と呼んでいます。",
+            "では、簡単なトークンを生成するにはより少ない計算量を使い、難しいトークンを生成するにはより多くの計算量を使うというような方法はあるのでしょうか？",
+            "それが投機的デコーディングの直感的なアイデアです。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 17.58,
+          "avg_seconds_per_segment": 1.6,
+          "chrf_score": 0.5411,
+          "llm_judge": 0.9827,
+          "hyps": [
+            "次のセクションは、言語モデルの効率化アルゴリズムの観点についてです。",
+            "最初に挙げたいのは、投機的デコーディング（speculative decoding）です。",
+            "これは、言語モデルの効率を高めるためのトークンレベルのアルゴリズムです。",
+            "ここにあるのは、「GoogleとOpenAIの研究者に思いがけない1億円の給与パッケージをありがとう」というような文です。というのも最近、MetaがGoogleやOpenAIの一部の研究者に非常に高額な給与パッケージを提示したからです。",
+            "そして、この文を使えるかというと、例えば「sank（thank）」という入力があれば、次に続くトークンが「you very much」であることは非常によく使われるため、すでに分かっていますよね。そのため、通常は出力の際にそれほど深く考える必要はありません。",
+            "「thank」というコンテキストがあれば、「you very much」と出力するのに深く考える必要はありません。",
+            "そのため、このようなトークンを「簡単なトークン」と呼びます。n-gramアルゴリズムで直接予測できるかもしれません。",
+            "一方、赤色で示された「1億円の給与パッケージ」のようなトークンについては、より多くのコンテキストを与え、次のトークンが1億円であることを予測するために一部のノードを探索して熟考する必要があります。",
+            "ですから、こうした難解なトークン、生成するのにコンテキストと推論を必要とする種類のトークンを「ハードトークン」と呼びます。",
+            "では、簡単なトークンを生成するにはより少ない計算量を使い、ハードトークンを生成するにはより多くの計算量を使う方法はあるのでしょうか？",
+            "それが投機的デコーディング（speculative decoding）の直感的なアイデアです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_speculative_decoding",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 2.63,
+      "avg_seconds_per_segment_range": [
+        2.47,
+        2.79
+      ],
+      "chrf_score_mean": 0.5731,
+      "chrf_score_range": [
+        0.5567,
+        0.5894
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 30.68,
+          "avg_seconds_per_segment": 2.79,
+          "chrf_score": 0.5567,
+          "llm_judge": 1.0,
+          "hyps": [
+            "そして次のセクションは、アルゴリズムの観点から見た言語モデルの効率性についてです。",
+            "まず挙げたいのは、投機的デコーディングです。",
+            "これは言語モデルの効率を高めるトークンレベルのアルゴリズムです。",
+            "ここに例文があります。「GoogleやOpenAIの研究者への思いがけない1億ドルの給与パッケージをどうもありがとう」といったようなものです。というのも、最近Metaが一部のGoogleやOpenAIの研究者に非常に高額な給与パッケージを提示したからです。",
+            "ええ、そしてこの文を使える理由として、このような「thank」という入力があれば、非常によく使われる表現なので、次のトークンが「you very much」になるとすでに分かりますよね。そのため、通常は出力するのにあまり深く考えません。",
+            "「thank」というコンテキストが与えられれば、「you very much」と出力するのに深くは考えません。",
+            "そのため、こうしたトークンは「簡単なトークン」と呼べるかもしれません。n-gramアルゴリズムで直接予測できるようなものです。",
+            "そして「100,000,000 salary package」のような赤色のトークンについては、深く考え、より多くのコンテキストを与え、次のトークンが「100,000,000」だとどう予測できるかを知るためにノードを探索する必要があります。",
+            "そのため、このような「難しいトークン」を生成するには、コンテキストと推論が必要になります。これを「難しいトークン」と呼んでいます。",
+            "では、簡単なトークンの生成にはより少ない計算量を使い、難しいトークンの生成にはより多くの計算量を使うような手法は可能でしょうか？",
+            "それが投機的デコーディングの直感的なアイデアです。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 27.14,
+          "avg_seconds_per_segment": 2.47,
+          "chrf_score": 0.5894,
+          "llm_judge": 1.0,
+          "hyps": [
+            "次のセクションは、アルゴリズムの観点から見た言語モデルの効率性についてです。",
+            "最初に取り上げたいのは、投機的デコーディングです。",
+            "これは言語モデルの効率性を高めるための、トークンレベルのアルゴリズムです。",
+            "ここに例文があります。「GoogleやOpenAIの研究者に対する予想外の1億ドルの給与パッケージをどうもありがとう」といったものです。というのも、最近MetaがGoogleやOpenAIの一部の研究者に非常に高額な給与パッケージを提示したからです。",
+            "そして、この文を使うとどうなるでしょうか。「thank」という入力があれば、非常によく使われる表現なので、次のトークンが「you very much」になることはもう分かりますよね。そのため通常は、深く考えずに出力できます。",
+            "「thank」というコンテキストがあれば、「you very much」を出力するのに深く考える必要はありません。",
+            "そのため、このようなトークンは「簡単なトークン」と呼べるかもしれません。n-gramアルゴリズムで直接予測できるからです。",
+            "一方、1億ドルの給与パッケージのような赤色のトークンについては、深く考え、より多くのコンテキストを与え、次のトークンが1億ドルになると予測するためにノードを探索する必要があります。",
+            "したがって、このような生成にコンテキストや推論を必要とするトークンを、「難しいトークン」と呼びます。",
+            "では、簡単なトークンの生成には少ない計算量を使い、難しいトークンの生成にはより多くの計算量を使うような手法は可能でしょうか？",
+            "それが投機的デコーディングの直感的なアイデアです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_speculative_decoding",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 2.99,
+      "avg_seconds_per_segment_range": [
+        2.52,
+        3.45
+      ],
+      "chrf_score_mean": 0.5637,
+      "chrf_score_range": [
+        0.5631,
+        0.5643
+      ],
+      "llm_judge_mean": 0.995,
+      "llm_judge_range": [
+        0.99,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 27.75,
+          "avg_seconds_per_segment": 2.52,
+          "chrf_score": 0.5643,
+          "llm_judge": 0.99,
+          "hyps": [
+            "そして次のセクションは、言語モデルの効率性に関するアルゴリズムの観点についてです。",
+            "最初に取り上げたいのは、投機的デコーディングです。",
+            "これは言語モデルの効率性を高めるための、トークンレベルのアルゴリズムです。",
+            "ここに例文があります。「GoogleやOpenAIの研究者への思いがけない1億ドルの給与パッケージをどうもありがとう」といったものです。というのも、最近MetaがGoogleやOpenAIの一部の研究者に破格の給与パッケージを提示したからです。",
+            "そして、この文を使うことができる理由として、「thank」という入力があれば、次は「you very much」が来ると既に分かりますよね。非常によく使われる表現ですから。そのため通常、これを出力するのに深く考える必要はありません。",
+            "「thank」というコンテキストがあれば、「you very much」と出力するのにです。",
+            "そのため、こうしたトークンはいわば「簡単なトークン」と呼べます。n-gramアルゴリズムで直接予測できるようなものです。",
+            "そして「1億ドルの給与パッケージ」のような赤色のトークンについては、思考を巡らせ、より多くのコンテキストを与え、次のトークンがなぜ「1億」だと予測できるのかを知るためにノードを探索する必要があります。",
+            "つまり、このようなコンテキストや推論を必要とするトークンを「難しいトークン」と呼びます。",
+            "では、簡単なトークンの生成には少ない計算量を使い、難しいトークンの生成にはより多くの計算量を使うような手法は可能でしょうか？",
+            "それが投機的デコーディングの直感的な着想です。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 37.91,
+          "avg_seconds_per_segment": 3.45,
+          "chrf_score": 0.5631,
+          "llm_judge": 1.0,
+          "hyps": [
+            "次のセクションは、言語モデルの効率性に関するアルゴリズムの観点についてです。",
+            "まず挙げたいのは、投機的デコーディングです。",
+            "これは言語モデルの効率を高めるための、トークンレベルのアルゴリズムです。",
+            "ここに例文があります。「GoogleやOpenAIの研究者への思いがけない1億ドルの給与パッケージをどうもありがとう」というようなものです。というのも、最近Metaが一部のGoogleやOpenAIの研究者に破格の給与パッケージを提示したからです。",
+            "では、この文を使えるでしょうか？例えば「sank（thank）」という入力があれば、非常によく使われる表現なので、次のトークンが「you very much」になるとすでに分かりますよね。ですから通常、これを出力するのに深く考えることはありません。",
+            "「thank」というコンテキストがあれば、「you very much」を出力するのにです。",
+            "そのため、このようなトークンはいわば「簡単なトークン」と呼べます。N-gramアルゴリズムで直接予測できるようなものです。",
+            "一方、「1億ドルの給与パッケージ」のような赤色のトークンについては、深く考え、より多くのコンテキストを与え、いくつかのノードを探索して次のトークンが「1億ドル」だと予測する方法を知る必要があります。",
+            "ですから、このようなトークン、つまり生成により多くのコンテキストや推論を必要とするものを、私たちは「難しいトークン」と呼んでいます。",
+            "では、簡単なトークンの生成には少ない計算量を使い、難しいトークンの生成にはより多くの計算量を使うような方法は可能でしょうか？",
+            "これこそが投機的デコーディングの直感的なアイデアです。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_transformer_basics",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.61,
+      "avg_seconds_per_segment_range": [
+        1.54,
+        1.69
+      ],
+      "chrf_score_mean": 0.5479,
+      "chrf_score_range": [
+        0.5179,
+        0.5779
+      ],
+      "llm_judge_mean": 0.9967,
+      "llm_judge_range": [
+        0.9933,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 13.86,
+          "avg_seconds_per_segment": 1.54,
+          "chrf_score": 0.5179,
+          "llm_judge": 0.9933,
+          "hyps": [
+            "セルフアテンションの意味とは何でしょうか？セルフアテンションは、異なる単語間の依存関係をモデル化します。",
+            "たとえば、これについては「日本料理で、美味しい」といった内容です。",
+            "といった表現をする際…",
+            "「delicious」のような次のトークンを生成したい場合、私たちは「Japanese」や「food」のような依存関係をモデル化します。そして、大量の学習データセットに基づき、次のトークンが「delicious」であることをすでに把握しているのです。",
+            "そしてこの後、FFNレイヤーを通過します。FFNレイヤーは… 通常、静的メモリのように考えられます。このFFNレイヤーには多くのメモリ、世界の知識が保存されます。通常、FFNレイヤーは単なる非線形変換のようなもので、2つのレイヤーで構成されています。",
+            "MLPで、1つはアッププロジェクション、そしてダウンプロジェクションです…",
+            "単語をd_modelサイズのベクトルにマッピングします。そしてトランスフォーマーのデコーダブロックを積み重ねることで、どのトークンが次のトークンかを決定する出力層を持つことができます。",
+            "そしてトランスフォーマーの優れている点は、すべてのブロックが同じであるため、何度でも積み重ねてトランスフォーマーを非常に大きくできることです。そして非常に大きくすることで、インターネット規模の極めて巨大なコーパスでトランスフォーマーを学習させることができます。",
+            "そして、その上で学習を行う、このプロセスを事前学習と呼びます。"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 15.21,
+          "avg_seconds_per_segment": 1.69,
+          "chrf_score": 0.5779,
+          "llm_judge": 1.0,
+          "hyps": [
+            "セルフアテンションの意味とは何でしょうか？セルフアテンションは、異なる単語間の依存関係をモデル化します。",
+            "たとえば「これ、日本の食べ物みたいで美味しい」とか、",
+            "「...」と言うとき、",
+            "「美味しい」のような次のトークンを生成する際、「日本」や「食べ物」といった言葉の依存関係をモデル化します。そして、膨大なトレーニングデータセットに基づき、次のトークンが「美味しい」であることをすでに把握しているのです。",
+            "そしてこの後、FFN層を通ります。FFN層は静的なメモリのようなものと見なされます。このFFN層には、多くのメモリ、つまり世界の知識が格納されます。通常、FFN層は非線形変換のようなもので、2つの層で構成されています。",
+            "MLPです。1つはアッププロジェクション、もう1つはダウンプロジェクションで...",
+            "単語をd_modelサイズのベクトルにマッピングします。そしてトランスフォーマーでデコーダブロックを積み重ねることで、どのトークンが次のトークンかを決定する出力層を持つことができます。",
+            "トランスフォーマーの優れている点は、すべてのブロックが同じ構造であるため、何度も積み重ねて非常に大きくできることです。そして大きくすることで、インターネット規模の超膨大なコーパスでトランスフォーマーを学習させることが可能になります。",
+            "そしてその上での学習を経たこのプロセスを、事前学習と呼びます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_transformer_basics",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.6,
+      "avg_seconds_per_segment_range": [
+        2.53,
+        2.68
+      ],
+      "chrf_score_mean": 0.5523,
+      "chrf_score_range": [
+        0.5414,
+        0.5631
+      ],
+      "llm_judge_mean": 0.9745,
+      "llm_judge_range": [
+        0.9733,
+        0.9756
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 24.1,
+          "avg_seconds_per_segment": 2.68,
+          "chrf_score": 0.5414,
+          "llm_judge": 0.9733,
+          "hyps": [
+            "自己注意機構の意味とは何でしょうか？自己注意機構は異なる単語間の依存関係をモデル化します。",
+            "例えばこれなら、「日本食のようで、美味しい」といった具合です。",
+            "私たちが…と言うとき、",
+            "「美味しい」といった次のトークンを生成したいとき、「日本」や「食」といった単語の依存関係をモデル化します。そして、多くの学習データセットに基づいて、次のトークンが「美味しい」であることをすでに把握しているのです。",
+            "そしてこの後、FFN層を通過します。FFN層は通常、静的メモリのようなものと見なされます。このFFN層には、多くのメモリ、つまり世界の知識が蓄積されているようなものです。通常、FFN層は非線形変換のようなもので、2層の",
+            "MLPで構成されます。1つはアッパープロジェクション（拡大投影）、そしてダウンプロジェクション（縮小投影）です。",
+            "単語をモデル次元のベクトルにマッピングします。そしてトランスフォーマーのデコーダーブロックを積み重ねることで、出力層によって次のトークンがどれになるかを決定できるのです。",
+            "そしてトランスフォーマーの利点は、すべてのブロックが同じ構造であるため、何重にも積み重ねて非常に大規模にできる点です。そして巨大化させることで、インターネット規模の極めて大規模なコーパスでトランスフォーマーを学習させることができます。",
+            "そしてこの学習を経るプロセスを、事前学習と呼びます。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 22.74,
+          "avg_seconds_per_segment": 2.53,
+          "chrf_score": 0.5631,
+          "llm_judge": 0.9756,
+          "hyps": [
+            "自己注意機構とは何でしょうか？自己注意機構は異なる単語間の依存関係をモデル化します。",
+            "例えばこれだと、日本の食べ物みたいで美味しいです。",
+            "例えば...",
+            "「delicious」のような次のトークンを生成したいとき、「Japanese」や「food」のような依存関係をモデル化します。そして、多くの学習データセットに基づいて、次のトークンが「delicious」であることをすでに把握しています。",
+            "そしてこの後、FFN層を通過します。FFN層は通常、静的メモリのようにみなされます。多くのメモリ、つまり世界の知識をこのFFN層に保持しているようなものです。通常、FFN層は非線形変換であり、2層構造になっています。",
+            "MLPです。1つはアッププロジェクション、もう1つはダウンプロジェクションです...",
+            "単語をd_modelサイズのベクトルにマッピングします。そしてトランスフォーマーのデコーダブロックを積み重ねることで、出力層がどれが...どれが次のトークンかを決定できます。",
+            "トランスフォーマーの利点は、各ブロックが同じ構造なので、積み重ねて非常に大規模にできる点です。そして大規模化することで、インターネット規模の膨大なコーパスでトランスフォーマーを学習させることができます。",
+            "そしてこの学習を経るプロセスを、事前学習と呼びます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_lec08a_transformer_basics",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.84,
+      "avg_seconds_per_segment_range": [
+        2.54,
+        3.14
+      ],
+      "chrf_score_mean": 0.555,
+      "chrf_score_range": [
+        0.5373,
+        0.5726
+      ],
+      "llm_judge_mean": 0.9633,
+      "llm_judge_range": [
+        0.9589,
+        0.9678
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 28.26,
+          "avg_seconds_per_segment": 3.14,
+          "chrf_score": 0.5373,
+          "llm_judge": 0.9589,
+          "hyps": [
+            "自己注意機構の意味とは何でしょうか？自己注意機構は異なる単語間の依存関係をモデル化します。",
+            "例えばこれなら、「日本食のようで美味しい」といった具合です。",
+            "「…」と言うとき、",
+            "「delicious」のような次のトークンを生成したいとき、「Japanese」や「food」のような依存関係をモデル化します。そして大量のトレーニングデータセットに基づいて、次のトークンが「delicious」であることをすでに把握しているのです。",
+            "そしてこの後、FFN層を通過します。FFN層は通常、静的メモリのようなものと見なされます。このFFN層には多くのメモリ、つまり世界の知識が蓄積されます。通常、FFN層は非線形変換のようなものに過ぎず、2層の構造になっています。",
+            "MLPです。1つはアッププロジェクション、そしてもう1つはダウンプロジェクションで…",
+            "単語をd_modelサイズのベクトルにマッピングします。そしてトランスフォーマーでデコーダブロックを積み重ねることで、出力層を用いて次のトークンがどれであるかを決定できます。",
+            "トランスフォーマーの利点は、各ブロックが同じであるため、何度も積み重ねて非常に大規模にできる点です。そして大規模化することで、インターネット規模の非常に大きなコーパスでトランスフォーマーをトレーニングできます。",
+            "そしてその上でトレーニングを行うこのプロセスを、事前学習と呼びます。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 22.88,
+          "avg_seconds_per_segment": 2.54,
+          "chrf_score": 0.5726,
+          "llm_judge": 0.9678,
+          "hyps": [
+            "自己注意機構の意味とは何でしょうか？自己注意機構は異なる単語間の依存関係をモデル化します。",
+            "例えばこの場合、日本食のようなもので、とても美味しいです。",
+            "例えば…",
+            "「delicious」のような次のトークンを生成する際、「Japanese」や「food」との依存関係をモデル化します。そして、膨大なトレーニングデータセットに基づき、次のトークンが「delicious」であることがすでに分かっています。",
+            "その後、FFN層を通過します。FFN層は通常、静的メモリのようなものとみなされます。このFFN層には、膨大なメモリ、つまり世界の知識が蓄えられます。通常、FFN層は単なる非線形変換であり、2つの層のような構成です。",
+            "MLPです。1つはアッププロジェクション、そしてダウンプロジェクションと…",
+            "単語をd_modelサイズのベクトルにマッピングします。そしてトランスフォーマーのデコーダブロックを積み重ねることで、出力層で次のトークンがどれかを決定できます。",
+            "トランスフォーマーの利点は、各ブロックが同じ構造であるため、何度も積み重ねて非常に大規模にできる点です。そして大規模化することで、インターネット規模の極めて巨大なコーパスでトランスフォーマーを学習させることができます。",
+            "そしてこの学習を経るプロセスを、事前学習と呼びます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip1",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.67,
+      "avg_seconds_per_segment_range": [
+        1.44,
+        1.91
+      ],
+      "chrf_score_mean": 0.6162,
+      "chrf_score_range": [
+        0.5971,
+        0.6353
+      ],
+      "llm_judge_mean": 0.9688,
+      "llm_judge_range": [
+        0.9433,
+        0.9944
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 12.99,
+          "avg_seconds_per_segment": 1.44,
+          "chrf_score": 0.5971,
+          "llm_judge": 0.9433,
+          "hyps": [
+            "モデルは新たな特定ドメインを優先します。",
+            "モデルが本来持つ貴重な汎用能力を保持しつつ、新たなドメインにうまく適応できるようにするには、継続学習の手法が必要です。",
+            "そして根本的な問題は、もちろん破滅的忘却です。",
+            "新しいデータセットのみで学習を行うと、元のデータセットのデータ分布に対するパフォーマンスが大幅に低下します。",
+            "ここでの目標は、過去の知識を保持しつつ新たなデータに適応できる汎用モデルを構築することです。",
+            "私たちの解決策は、分布ベースのMOEアーキテクチャを使用して新しいデータ分布に対して順次エキスパートを追加し、正則化手法を用いて破滅的忘却を緩和することです。",
+            "このアプローチでは、正則化を用いてモデルが新しいデータに過学習し、元の重みから離れすぎるのを防ぎます。",
+            "そしてモデル拡張により、新しいデータ分布を扱うためのエキスパートを動的に追加し、新しい知識を吸収するための新たなモデル容量を提供します。",
+            "具体的には、"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 17.21,
+          "avg_seconds_per_segment": 1.91,
+          "chrf_score": 0.6353,
+          "llm_judge": 0.9944,
+          "hyps": [
+            "新しい特定ドメインを優先するためです。",
+            "モデルが本来の価値ある汎用能力を保持しつつ、新しいドメインに正しく適応できるようにするには、継続学習の手法が必要です。",
+            "そして核心となる問題は、当然ながら「忘却」です。",
+            "新しいデータセットのみで学習を行うと、元のデータセットのデータ分布に対するパフォーマンスが大幅に低下します。",
+            "ここでの目標は、過去の知識を保持しつつ新しいデータに適応できる汎用モデルを構築することです。",
+            "そして私たちの解決策は、分布ベースのMOEアーキテクチャを使用して新しいデータ分布に対してより多くのエキスパートを段階的に追加し、正則化手法を活用して忘却を軽減することです。",
+            "このアプローチでは、モデルが新しいデータに過剰適合して元の重みから大きく逸脱するのを防ぐために、正則化を活用します。",
+            "そして拡張により、モデルが新しいデータ分布に対応するために新たなエキスパートを動的に追加し、新しい知識を取り込むための新たなモデル容量を提供できるようになります。",
+            "具体的には、私たちは"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip1",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.21,
+      "avg_seconds_per_segment_range": [
+        2.14,
+        2.28
+      ],
+      "chrf_score_mean": 0.6677,
+      "chrf_score_range": [
+        0.6631,
+        0.6723
+      ],
+      "llm_judge_mean": 0.9639,
+      "llm_judge_range": [
+        0.9389,
+        0.9889
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 19.29,
+          "avg_seconds_per_segment": 2.14,
+          "chrf_score": 0.6631,
+          "llm_judge": 0.9389,
+          "hyps": [
+            "新しい特定ドメインを優先するためです。",
+            "モデルが本来持つ貴重な汎用能力を維持しながら、新しいドメインにうまく適応できるようにするには、継続学習の手法が必要です。",
+            "そして、その核心的な問題はもちろん「忘却」です。",
+            "新しいデータセットだけで学習させると、元のデータ分布におけるパフォーマンスが大幅に低下してしまいます。",
+            "ここでの目標は、過去の知識を維持しながら新しいデータに適応できる汎用モデルを構築することです。",
+            "そして私たちの解決策は、分布ベースのMOEアーキテクチャを採用し、新しいデータ分布に対してエキスパートを段階的に追加しながら、正則化手法によって忘却を緩和することです。",
+            "このアプローチでは、モデルが新しいデータに過学習して元の重みから大きく乖離するのを防ぐために正則化を使用します。",
+            "そして拡張によって、モデルが新しいエキスパートを動的に追加して新たなデータ分布に対応し、新しい知識を吸収するための新たなモデル容量を提供できるようにします。",
+            "具体的には、私たちは"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 20.49,
+          "avg_seconds_per_segment": 2.28,
+          "chrf_score": 0.6723,
+          "llm_judge": 0.9889,
+          "hyps": [
+            "新しい特定ドメインを優先するためです。",
+            "モデルが元の価値ある汎用能力を維持しながら、新しいドメインにうまく適応できるようにするには、継続学習の技術が必要です。",
+            "そして根本的な問題は、言うまでもなく忘却です。",
+            "新しいデータセットだけで学習を行うと、元のデータセットのデータ分布に対する性能は大幅に低下してしまいます。",
+            "ここでの目標は、過去の知識を維持しながら新しいデータに適応できる汎用モデルを構築することです。",
+            "そこで私たちの解決策は、分布ベースのMOEアーキテクチャを使用して新しいデータ分布向けにエキスパートを段階的に追加し、正則化手法を用いて忘却を軽減することです。",
+            "このアプローチでは、モデルが新しいデータに過学習して元の重みから大きく乖離するのを防ぐ正則化と、",
+            "そして拡張を併用します。これによりモデルは新しいデータ分布に対応するために新しいエキスパートを動的に追加し、新たな知識を吸収するための新しいモデルキャパシティを提供できます。",
+            "具体的には、私たちは"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip1",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.52,
+      "avg_seconds_per_segment_range": [
+        2.36,
+        2.68
+      ],
+      "chrf_score_mean": 0.6864,
+      "chrf_score_range": [
+        0.6794,
+        0.6934
+      ],
+      "llm_judge_mean": 0.9622,
+      "llm_judge_range": [
+        0.9611,
+        0.9633
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 21.21,
+          "avg_seconds_per_segment": 2.36,
+          "chrf_score": 0.6934,
+          "llm_judge": 0.9611,
+          "hyps": [
+            "新しい特定ドメインを優先するためです。",
+            "モデルが元の貴重な汎用能力を維持しつつ、新しいドメインにうまく適応できるようにするには、継続学習の技術が必要です。",
+            "そして根本的な問題は、もちろん忘却です。",
+            "新しいデータセットのみで学習を行うと、元のデータセットのデータ分布に対する性能は大幅に低下します。",
+            "ここでの目標は、過去の知識を維持しながら新しいデータに適応できる汎用モデルを構築することです。",
+            "私たちの解決策は、分布ベースのMOEアーキテクチャを使用して新しいデータ分布向けにエキスパートを段階的に追加し、正則化技術を用いて忘却を軽減することです。",
+            "このアプローチでは、モデルが新しいデータに過剰適合し、元の重みから大きく乖離するのを防ぐために正則化を使用しています。",
+            "そして拡張により、モデルは新しいエキスパートを動的に追加して新しいデータ分布を処理し、新たな知識を吸収するためのモデル容量を提供できるようになります。",
+            "具体的には、私たちは"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 24.1,
+          "avg_seconds_per_segment": 2.68,
+          "chrf_score": 0.6794,
+          "llm_judge": 0.9633,
+          "hyps": [
+            "新しい特定ドメインを優先するためです。",
+            "モデルが本来持つ貴重な汎用能力を維持しながら、新しいドメインにうまく適応できるようにするには、継続学習の技術が必要です。",
+            "そして、その根本的な問題は、もちろん忘却です。",
+            "新しいデータセットだけで学習すると、元のデータセットのデータ分布に対する性能が大幅に低下してしまいます。",
+            "ここでの目標は、過去の知識を維持しながら新しいデータに適応できる汎用モデルを構築することです。",
+            "そして私たちの解決策は、分布ベースのMOEアーキテクチャを使用して新しいデータ分布に対して段階的にエキスパートを追加し、正則化手法を用いて忘却を軽減することです。",
+            "このアプローチでは、モデルが新しいデータに過学習して元の重みから大きく乖離するのを防ぐ正則化を使用します。",
+            "さらに拡張を行うことで、モデルは新しいデータ分布を処理する新規エキスパートを動的に追加し、新たな知識を吸収するためのモデル容量を確保できます。",
+            "具体的には、私たちは"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip2",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.58,
+      "avg_seconds_per_segment_range": [
+        1.55,
+        1.6
+      ],
+      "chrf_score_mean": 0.6613,
+      "chrf_score_range": [
+        0.6513,
+        0.6713
+      ],
+      "llm_judge_mean": 0.9945,
+      "llm_judge_range": [
+        0.9889,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 13.99,
+          "avg_seconds_per_segment": 1.55,
+          "chrf_score": 0.6513,
+          "llm_judge": 1.0,
+          "hyps": [
+            "ムーアの法則とべき乗則による歴史的背景を踏まえた上で、",
+            "その後、BERTやT5のようなGoogleの大規模言語モデルを見てから、本日の講演の核であるMixture of Experts（MOE）による大規模言語モデルのスケーリングについて掘り下げます。",
+            "最後に、MOEをベースにした2つの重要な進歩である継続学習とモジュール性について説明します。",
+            "最後に全体を要約し、質疑応答の時間を設けます。",
+            "そしてこのセクションは、私たちがなぜスケーリングのための新たな手法を求めているのか、その背景を示しています。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに倍増するという有名な説を唱えました。",
+            "しかし、現在私たちはこの法則の物理的限界に達しつつあります。",
+            "トランジスタの発熱や、メモリ帯域を制限するメモリウォールなどの問題により、もはや従来のチップの進化だけに頼って大規模言語モデルの指数関数的な成長を支えることはできません。",
+            "また、深層学習モデルのスケーリングは長らく予測可能なべき乗則に支配されていました。2017年のBaiduによる独創的な論文や2020年のOpenAIの論文で示されたように、"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 14.39,
+          "avg_seconds_per_segment": 1.6,
+          "chrf_score": 0.6713,
+          "llm_judge": 0.9889,
+          "hyps": [
+            "ムーアの法則とべき乗則で歴史的文脈を整理することで、",
+            "そして本論であるMixture of Experts（MOE）による大規模言語モデルのスケーリングに入る前に、BERTやT5といったGoogleの大規模言語モデルを見ていきます。",
+            "最後に、MOEをベースにした2つの重要な進歩である、継続学習とモジュール性について取り上げます。",
+            "最後にまとめを行い、質疑応答の時間を設けます。",
+            "そしてこのセクションは、なぜ私たちが新たなスケーリング手法を模索しているのかという背景を示しています。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに倍増すると提唱したことで有名です。",
+            "しかし、現在私たちはこの法則の物理的限界に達しつつあります。",
+            "トランジスタの発熱や、メモリ帯域を制限するメモリウォールといった問題により、もはや従来のチップの進歩に頼って大規模言語モデルの指数関数的な成長を支えることはできません。",
+            "また、深層学習モデルのスケーリングは、2017年のBaiduの画期的な論文や2020年のOpenAIの論文で示されたように、長らく予測可能なべき乗則に従っていました。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip2",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.38,
+      "avg_seconds_per_segment_range": [
+        2.34,
+        2.42
+      ],
+      "chrf_score_mean": 0.6916,
+      "chrf_score_range": [
+        0.6841,
+        0.6991
+      ],
+      "llm_judge_mean": 0.9877,
+      "llm_judge_range": [
+        0.9833,
+        0.9922
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 21.78,
+          "avg_seconds_per_segment": 2.42,
+          "chrf_score": 0.6841,
+          "llm_judge": 0.9922,
+          "hyps": [
+            "ムーアの法則とべき乗則による歴史的背景を踏まえた上で、",
+            "その後、本日の講演の核心であるMixture of Experts（MOE）を用いた大規模言語モデルのスケーリングに入る前に、BERTやT5といったGoogleの大規模言語モデルを見ていきます。",
+            "最後に、MOEをベースにした2つの重要な進展である継続学習とモジュール性について取り上げます。",
+            "そして最後にまとめを行い、質疑応答に移ります。",
+            "そしてこのセクションでは、なぜ新たなスケーリング手法を模索しているのか、その背景について説明します。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに2倍になると提唱したことで有名です。",
+            "しかし現在、この法則の物理的限界に達しつつあります。",
+            "トランジスタの高熱化や、メモリ帯域を制限するメモリウォールといった問題により、大規模言語モデルの指数関数的な成長を支えるために従来のチップの進化だけに頼ることは、もはやできなくなっています。",
+            "深層学習モデルのスケーリングは、長きにわたり予測可能なべき乗則に支配されていました。2017年のBaiduや2020年のOpenAIによる画期的な論文で示されたように、そこには"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 21.07,
+          "avg_seconds_per_segment": 2.34,
+          "chrf_score": 0.6991,
+          "llm_judge": 0.9833,
+          "hyps": [
+            "ムーアの法則とべき乗則による歴史的背景を踏まえて、",
+            "その後、BERTやT5といったGoogleの大規模言語モデルを見てから、本日の本題であるMixture of Experts（MOE）による大規模言語モデルのスケーリングに入ります。",
+            "最後に、MOEをベースにした2つの重要な進展である、継続学習とモジュール性について取り上げます。",
+            "そして最後に全体のまとめを行い、質疑応答に移ります。",
+            "そしてこのセクションでは、私たちがなぜ新たなスケーリング手法を模索しているのか、その背景を説明します。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに倍増するという有名な法則を提唱しました。",
+            "しかし、現在はこの法則の物理的限界に達しつつあります。",
+            "トランジスタの高温化や、メモリ帯域を制限するメモリウォールといった問題により、大規模言語モデルの指数関数的な成長を支えるために、従来のチップの進化へ依存し続けることはもはやできなくなっています。",
+            "また、深層学習モデルのスケーリングは長い間、予測可能なべき乗則に支配されていました。2017年のBaiduによる独創的な論文や2020年のOpenAIの論文で示されたように、そこには"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip2",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.44,
+      "avg_seconds_per_segment_range": [
+        2.36,
+        2.53
+      ],
+      "chrf_score_mean": 0.7044,
+      "chrf_score_range": [
+        0.6962,
+        0.7126
+      ],
+      "llm_judge_mean": 0.9528,
+      "llm_judge_range": [
+        0.9389,
+        0.9667
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 22.76,
+          "avg_seconds_per_segment": 2.53,
+          "chrf_score": 0.7126,
+          "llm_judge": 0.9389,
+          "hyps": [
+            "ムーアの法則とべき乗則による歴史的背景を踏まえた上で、",
+            "その後、本日のメインテーマであるMixture of Experts（MOE）による大規模言語モデルのスケーリングに入る前に、BERTやT5といったGoogleの大規模言語モデルを見ていきます。",
+            "最後に、MOEをベースにした2つの重要な進展である継続学習とモジュール性について取り上げます。",
+            "そして最後にまとめを行い、質疑応答に移ります。",
+            "このセクションでは、なぜ私たちが新たなスケーリング手法を模索しているのか、その背景について説明します。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに倍増すると提唱したことで有名です。",
+            "しかし、私たちは現在、この法則の物理的な限界を迎えつつあります。",
+            "トランジスタの高熱化や、メモリ帯域を制限するメモリウォールといった問題により、大規模言語モデルの指数関数的な成長を支えるために従来のチップの進歩だけに頼ることは、もはやできなくなっています。",
+            "また、深層学習モデルのスケーリングは、2017年のBaiduによる独創的な論文や2020年のOpenAIの論文で示されたように、長らく予測可能なべき乗則に支配されていました。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 21.27,
+          "avg_seconds_per_segment": 2.36,
+          "chrf_score": 0.6962,
+          "llm_judge": 0.9667,
+          "hyps": [
+            "ムーアの法則とべき乗則による歴史的背景を踏まえた上で、",
+            "そして、Googleの大規模言語モデルであるBERTやT5を見た後に、本日のメインテーマであるMixture of Experts（MOE）を用いた大規模言語モデルのスケーリングについて掘り下げていきます。",
+            "最後に、MOEをベースにした2つの重要な進展である、継続学習とモジュール性について取り上げます。",
+            "そして最後にまとめを行い、質疑応答に移ります。",
+            "そしてこのセクションでは、なぜ新たなスケーリング手法を模索しているのか、その背景を説明します。",
+            "ゴードン・ムーアは、チップ上のトランジスタ数が2年ごとに2倍になると提唱したことで有名です。",
+            "しかし現在、この法則の物理的な限界に達しつつあります。",
+            "トランジスタの高温化や、メモリ帯域を制限するメモリウォールといった問題により、大規模言語モデルの指数関数的な成長を支えるために従来のチップの進歩へ依存することはもはやできません。",
+            "そして、深層学習モデルのスケーリングは長い間、予測可能なべき乗則に支配されていました。2017年のBaiduによる独創的な論文や2020年のOpenAIの論文で示されたように、そこには"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 1.81,
+      "avg_seconds_per_segment_range": [
+        1.48,
+        2.15
+      ],
+      "chrf_score_mean": 0.6177,
+      "chrf_score_range": [
+        0.5859,
+        0.6494
+      ],
+      "llm_judge_mean": 0.9982,
+      "llm_judge_range": [
+        0.9964,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 16.27,
+          "avg_seconds_per_segment": 1.48,
+          "chrf_score": 0.6494,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャ。特に、アテンションコンポーネントで使われている異なるマスキング手法を強調しています。",
+            "違いを見ると、T5のような古いモデルは生成能力が低く、タスクごとのファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて高い汎化能力を実現します。",
+            "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層で双方向であるため、やや表現力が高くなっています。",
+            "高密度モデルのサイズは大幅に跳ね上がりました。元々のT5は110億パラメータに達し、Googleでは1つの巨大モデルと呼んでいました。そして1750億パラメータのGPT-3が登場します。",
+            "その後、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大きくなるにつれて、コストと学習時間は持続不可能になりました。",
+            "これにより、「高密度モデルのスケーリングが終わった後、何が来るのか？」という疑問が生じます。",
+            "その答えがMixture of Experts（MOE）です。",
+            "このようにして、私たちは指数関数的なスケーリングのトレンドを継続しています。",
+            "タイムラインを振り返ってみると、"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 23.66,
+          "avg_seconds_per_segment": 2.15,
+          "chrf_score": 0.5859,
+          "llm_judge": 0.9964,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャ。アテンションコンポーネントで使われる様々なマスキング技術に注目します。",
+            "違いを見ると、T5のような従来のモデルは生成能力がそれほど高くなく、タスク固有のファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって高い汎化性能を実現しています。",
+            "そして、プレフィックスモデリングを使用するPaLM 2は、アテンション層が双方向であるため、表現力がやや高くなります。",
+            "高密度モデルのサイズが劇的に飛躍し、元々のT5は110億パラメータに達してGoogleでは1つの巨大モデルと呼ばれ、GPT-3は1,750億パラメータに達しました。",
+            "その後、PaLMは5,000億パラメータに達しました。",
+            "しかし、高密度モデルが大型化するにつれて、コストと学習時間が持続不可能になりました。",
+            "これにより、「高密度モデルのスケーリングの終焉の後に何が来るのか？」という疑問が生じます。",
+            "その答えがMixture of Experts（MOE）です。",
+            "こうして、指数関数的なスケーリングの傾向を継続させるのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 2.09,
+      "avg_seconds_per_segment_range": [
+        2.06,
+        2.13
+      ],
+      "chrf_score_mean": 0.6641,
+      "chrf_score_range": [
+        0.6594,
+        0.6687
+      ],
+      "llm_judge_mean": 1.0,
+      "llm_judge_range": [
+        1.0,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 22.69,
+          "avg_seconds_per_segment": 2.06,
+          "chrf_score": 0.6594,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で用いられる異なるマスキング技術に注目します。",
+            "その違いを見ると、T5のような以前のモデルは生成能力がそれほど高くなく、タスクごとのファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって高い汎化性能を実現しています。",
+            "そしてプレフィックスモデリングを採用するPaLM 2は、アテンション層で双方向性を持つため、より表現力が高くなっています。",
+            "高密度モデルのサイズが大幅に増大し、当初T5は110億パラメータに達してGoogleでは1つの巨大モデルと呼んでいましたが、GPT-3は1750億パラメータに達しました。",
+            "そしてその後、PaLMは5000億パラメータに達しました。",
+            "しかし高密度モデルが巨大化するにつれ、コストと学習時間は持続不可能になりました。",
+            "そこで、高密度モデルのスケーリングの限界の先には何があるのか、という問いに至ります。",
+            "その答えが、Mixture of Experts、すなわちMOEです。",
+            "こうして私たちは指数のスケーリング傾向を維持し続けます。",
+            "タイムラインを振り返ってみると、"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 23.43,
+          "avg_seconds_per_segment": 2.13,
+          "chrf_score": 0.6687,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で用いられているマスキング手法の違いに注目します。",
+            "違いを見てみると、T5のような以前のモデルは生成能力がそれほど高くなく、タスクごとのファインチューニングが必要でした。",
+            "一方、GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習によって高い汎化性能を実現しています。",
+            "そして、プレフィックスモデリングを採用するPaLM 2は、アテンション層が双方向であるため、表現力がやや高くなっています。",
+            "高密度モデルのサイズが劇的に増大し、当初110億パラメータに達したT5をGoogleでは巨大モデルと呼んでいましたが、GPT-3は1750億パラメータに達しました。",
+            "その後、PaLMは5000億パラメータに達しました。",
+            "しかし高密度モデルが大型化するにつれ、コストと学習時間は維持できなくなりました。",
+            "そこで疑問が生じます。高密度モデルのスケーリングの先には何があるのでしょうか？",
+            "その答えがMixture of Experts、すなわちMOEです。",
+            "こうして私たちは指数関数的なスケーリングのトレンドを継続しています。",
+            "これまでのタイムラインを振り返ると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip3",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 11,
+      "avg_seconds_per_segment_mean": 2.37,
+      "avg_seconds_per_segment_range": [
+        2.21,
+        2.52
+      ],
+      "chrf_score_mean": 0.7139,
+      "chrf_score_range": [
+        0.7134,
+        0.7144
+      ],
+      "llm_judge_mean": 0.9991,
+      "llm_judge_range": [
+        0.9982,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 24.3,
+          "avg_seconds_per_segment": 2.21,
+          "chrf_score": 0.7134,
+          "llm_judge": 0.9982,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で用いられるマスキング手法の違いを強調しています。",
+            "違いを見てみると、T5のような以前のモデルは生成能力がそれほど高くなく、タスクごとのファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて高い汎化能力を実現しています。",
+            "また、プレフィックスモデリングを採用するPaLM 2は、アテンション層が双方向であるため表現力がやや高くなっています。",
+            "高密度モデルのサイズが大幅に増大するのを見てきましたが、元々T5は110億パラメータに達し、Googleでは巨大モデルと呼んでいましたし、GPT-3は1750億パラメータに達しました。",
+            "そしてその後、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大型化するにつれて、コストと学習時間は維持不可能なものになっていきました。",
+            "そこで、「高密度モデルのスケーリングの限界の先には何があるのか？」という疑問が生じます。",
+            "その答えがMixture of Experts、すなわちMOEです。",
+            "このようにして、指数関数的なスケーリングの傾向を継続させるのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 11,
+          "elapsed_seconds": 27.71,
+          "avg_seconds_per_segment": 2.52,
+          "chrf_score": 0.7144,
+          "llm_judge": 1.0,
+          "hyps": [
+            "GPT-3とPaLM 2のアーキテクチャを取り上げ、それぞれのアテンション機構で用いられているマスキング手法の違いを浮き彫りにします。",
+            "違いを見てみると、T5のような従来のモデルは生成能力がそれほど高くなく、タスクごとのファインチューニングが必要でした。",
+            "GPT-3のような新しいデコーダオンリーモデルは、インコンテキスト学習を通じて強力な汎化能力を実現しています。",
+            "そして、プレフィックスモデリングを採用するPaLM 2は、アテンション層が双方向であるため、表現力がやや高くなっています。",
+            "高密度モデルのサイズが劇的に増大し、当初のT5は110億パラメータに達し、Googleでは巨大モデルと呼んでいましたが、GPT-3は1750億パラメータに達しました。",
+            "そしてその後、PaLMは5000億パラメータに達しました。",
+            "しかし、高密度モデルが大規模化するにつれ、コストと学習時間は維持できなくなりました。",
+            "これにより、高密度モデルのスケーリングの先には何があるのか、という疑問が生じます。",
+            "その答えが、Mixture of Experts、すなわちMOEです。",
+            "こうして私たちは、指数関数的なスケーリングトレンドを維持していくのです。",
+            "タイムラインを振り返ってみると、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip4",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.47,
+      "avg_seconds_per_segment_range": [
+        1.45,
+        1.49
+      ],
+      "chrf_score_mean": 0.6728,
+      "chrf_score_range": [
+        0.6658,
+        0.6798
+      ],
+      "llm_judge_mean": 0.9922,
+      "llm_judge_range": [
+        0.99,
+        0.9944
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 13.05,
+          "avg_seconds_per_segment": 1.45,
+          "chrf_score": 0.6798,
+          "llm_judge": 0.99,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、1つのアダプターで学習されたプライベートデータが公開モジュールに漏洩しないことも保証します。",
+            "このようにして、コーディングタスクを処理するためのアダプテッドモジュールを継続的に学習させたり、別のモジュールをチャットボット対話エージェントなどに変えたりすることができます。あるいは、モジュールをチェスの専門家に変えることさえ可能です。",
+            "MOAの利点は数多く存在します。",
+            "クエリあたりのアクティブパラメータ数が少なく、開発が容易で、多様なチームがアダプターを独立して開発できます。",
+            "また、非常に強力な区画化とプライバシー保証も提供します。",
+            "そして一般的に、私たちは従来の MOE 設定で Mixture of Adapters を構築します。",
+            "一般的な形でMixture of Expertsを構築する代わりに、各ドメインがいくつかのエキスパートで構成されるドメインエキスパートの混合を構築できます。",
+            "そして、ブロックレベルのマスクを適用してMOEレイヤー全体をアクティブ化または非アクティブ化し、レイヤー全体をドメインエキスパートとして扱うことができます。",
+            "あるいは、レイヤーごとのドメインを使用してMixture of Adaptersを実装することもできます"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 13.43,
+          "avg_seconds_per_segment": 1.49,
+          "chrf_score": 0.6658,
+          "llm_judge": 0.9944,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、1つのアダプターで学習されたプライベートデータが公開モジュールに漏洩しないことも保証します。",
+            "このようにして、アダプティブモジュールを継続的に学習させ、コーディングタスクに対応させたり、別のモジュールをチャットボット対話エージェントなどに変えることができます。あるいは、モジュールをチェスエキスパートに変えることすら可能です。",
+            "MOAのメリットは数多くあります。",
+            "クエリあたりのアクティブパラメータ数が少なくなり、開発が容易になるほか、異なるチームが独立してアダプターを開発できるようになります。",
+            "また、非常に強力な区分化とプライバシー保証も提供します。",
+            "そして一般的に、従来のMOEの設定でMixture of Adaptersを作成します。",
+            "そのため、一般的形でMixture of Expertsを作成する代わりに、各ドメインがいくつかのエキスパートで構成されるドメインエキスパートの混合を作成できます。",
+            "そして、ブロックレベルのマスクを適用してMOEレイヤー全体をアクティブ化または非アクティブ化し、レイヤー全体をドメインエキスパートとして扱うことができます。",
+            "あるいは、レイヤーごとのドメインを使用してMixture of Adaptersを実装することもできます。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip4",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.19,
+      "avg_seconds_per_segment_range": [
+        2.17,
+        2.2
+      ],
+      "chrf_score_mean": 0.6806,
+      "chrf_score_range": [
+        0.6466,
+        0.7146
+      ],
+      "llm_judge_mean": 0.9989,
+      "llm_judge_range": [
+        0.9978,
+        1.0
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 19.78,
+          "avg_seconds_per_segment": 2.2,
+          "chrf_score": 0.7146,
+          "llm_judge": 1.0,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、特定のアダプターで学習したプライベートデータが公開モジュールに漏洩しないことも保証します。",
+            "このようにして、コーディングタスクを処理するために適応させたモジュールを継続的に学習させたり、別のモジュールをチャットボットの対話エージェントなどに変えたりできます。あるいは、モジュールをチェスのエキスパートにすることさえ可能です。",
+            "MOAのメリットは数多くあります。",
+            "クエリごとの活性化パラメータ数が少なく、開発が容易で、異なるチームがアダプターを独立して開発できます。",
+            "また、非常に強力な区画化とプライバシー保証も提供します。",
+            "そして一般的に、従来のMOE環境でMixture of Adaptersを作成します。",
+            "したがって、一般的な形式でMixture of Expertsを作成する代わりに、各ドメインが少数のエキスパートで構成されるドメインエキスパートの混合を作成できます。",
+            "そしてブロックレベルのマスクを適用してMOEレイヤー全体を活性化または非活性化し、レイヤー全体をドメインエキスパートとして扱うことができます。",
+            "あるいは、レイヤーごとのドメインを使用してMixture of Adaptersを実装することもできます。"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 19.56,
+          "avg_seconds_per_segment": 2.17,
+          "chrf_score": 0.6466,
+          "llm_judge": 0.9978,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、特定のアダプターで学習したプライベートデータが公開モジュールに漏洩しないことも保証します。",
+            "こうすることで、コーディングタスクに対応するよう適応モジュールを継続学習させたり、別のモジュールをチャットボットの対話エージェントなどに変えたりできます。あるいは、モジュールをチェスのエキスパートにすることさえ可能です。",
+            "MOAのメリットは数多くあります。",
+            "クエリごとの活性化パラメータ数が少なく、開発が容易になり、異なるチームが個別にアダプターを開発できるようになります。",
+            "また、非常に強力な区分化とプライバシー保証も提供します。",
+            "そして一般的に、従来のMOEの設定でMixture of Adaptersを構築します。",
+            "そのため、一般的な形式でMixture of Expertsを作成する代わりに、各ドメインが少数のエキスパートで構成されるドメインエキスパートの混合を作成できます。",
+            "そして、ブロックレベルのマスクを適用してMOE層全体を有効化または無効化し、層全体をドメインエキスパートとして扱うことができます。",
+            "あるいは、層ごとのドメインを使用してMixture of Adaptersを実装することも可能です。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip4",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.36,
+      "avg_seconds_per_segment_range": [
+        2.18,
+        2.54
+      ],
+      "chrf_score_mean": 0.6779,
+      "chrf_score_range": [
+        0.6593,
+        0.6964
+      ],
+      "llm_judge_mean": 0.9916,
+      "llm_judge_range": [
+        0.9889,
+        0.9944
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 22.88,
+          "avg_seconds_per_segment": 2.54,
+          "chrf_score": 0.6593,
+          "llm_judge": 0.9889,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、あるアダプターで学習したプライベートデータが公開モジュールに漏洩しないことも保証します。",
+            "このようにして、コーディングタスクを処理できるように適応モジュールを継続的に学習させたり、別のモジュールを対話型エージェントのチャットボットなどに変えたりできます。あるいは、チェスのエキスパートに変えることさえ可能です。",
+            "MOAの利点は数多くあります。",
+            "クエリごとの活性化パラメータ数が少なく、開発が容易になり、異なるチームが独立してアダプターを開発できるようになります。",
+            "また、非常に強力な区分化とプライバシーの保証も提供します。",
+            "そして一般的には、従来のMOEの設定でMixture of Adaptersを構築します。",
+            "そのため、一般的な形式でMixture of Expertsを構築する代わりに、各ドメインが少数のエキスパートで構成されるドメインエキスパートの混合を構築できます。",
+            "そして、ブロックレベルのマスクを適用してMOE層全体をアクティブ化または非アクティブ化し、層全体をドメインエキスパートとして扱うことができます。",
+            "あるいは、層ごとのドメインを活用してMixture of Adaptersを実装することも可能です。"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 19.64,
+          "avg_seconds_per_segment": 2.18,
+          "chrf_score": 0.6964,
+          "llm_judge": 0.9944,
+          "hyps": [
+            "これは忘却を防ぐだけでなく、あるアダプターで学習されたプライベートデータが公開モジュールに漏洩しないことも保証します。",
+            "このようにして、コーディングタスクを処理するために適応させたモジュールを継続的に学習させたり、別のモジュールをチャットボットの対話エージェントなどに変えたりすることができます。あるいは、あるモジュールをチェスのエキスパートにすることさえ可能です。",
+            "MOAの利点は数多くあります。",
+            "クエリあたりの活性化パラメータ数が少なく、開発が容易になり、異なるチームがアダプターを独立して開発できるようになります。",
+            "また、非常に強力な区画化とプライバシーの保証も提供します。",
+            "そして一般的には、従来のMOE環境でMixture of Adaptersを作成します。",
+            "ですから一般的な形式でMixture of Expertsを作成する代わりに、各ドメインが少数のエキスパートで構成されるドメインエキスパートの集合（Mixture）を作成できるのです。",
+            "そしてブロックレベルのマスクを適用してMOEレイヤー全体を活性化または非活性化し、レイヤー全体をドメインエキスパートとして扱うことができます。",
+            "あるいは、層ごとのドメインを使用してMixture of Adaptersを実装することも可能です。"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.5-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip5",
+      "note": "動画字幕設定（thinking_budget=1024）、現行の動画字幕モデル",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 1.44,
+      "avg_seconds_per_segment_range": [
+        1.4,
+        1.48
+      ],
+      "chrf_score_mean": 0.5942,
+      "chrf_score_range": [
+        0.5923,
+        0.5961
+      ],
+      "llm_judge_mean": 0.9266,
+      "llm_judge_range": [
+        0.9,
+        0.9533
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 12.63,
+          "avg_seconds_per_segment": 1.4,
+          "chrf_score": 0.5923,
+          "llm_judge": 0.9533,
+          "hyps": [
+            "フリーズされたバックボーンを持ち、特定データ所有権でトレーニングされたMOAは、データの混合でトレーニングされたベースラインMOEと同等、あるいはそれ以上にFLOPS効率的であることがわかりました。",
+            "そして30億パラメータのスケールにおいても、MOAは再び非常に効率的であることが証明されました。",
+            "具体的には、ドメインデータのみを使用したMOA Tail Patchingと呼ばれる手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の両方が示されました。",
+            "そして、このMOAを事前学習の設定に汎化するため、Mixture of Domain Expertsというアイデアを検討しました。",
+            "これには、データのシャード化に関するエキスパートと、アテンション機構における共有パラメータが含まれます。",
+            "高速な推論、通信の削減、クエリあたりのアクティブパラメータ数の削減、そしてはるかに多くのエキスパートを収容できる能力など、パフォーマンス上のメリットがあります。",
+            "そしてモデルは、ドメインIDを含むメタデータを活用して、トークンのシーケンスをドメインマスクにマッピングします。",
+            "そしてこのマスクにより、トークンはエキスパートの小さなサブセットに強制的にルーティングされ、All-to-All通信のオーバーヘッドが効果的に削減されます。",
+            "そして、この粗粒度のルーティングによって、次の数も削減されます"
+          ]
+        },
+        {
+          "model": "gemini-3.5-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 13.29,
+          "avg_seconds_per_segment": 1.48,
+          "chrf_score": 0.5961,
+          "llm_judge": 0.9,
+          "hyps": [
+            "凍結されたバックボーンを持ちターゲットデータの所有権を持つMOAは、混合データで学習させたベースラインのMOEと同等、あるいはそれ以上にFLOPS効率が良いことが判明しました。",
+            "そして30億パラメータのスケールにおいても、MOAは再び非常に高い効率性を示しました。",
+            "具体的には、ドメインデータのみを使用するMOA tail patchingと呼ばれる手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の両方が示されました。",
+            "そして、このMOAを事前学習の設定に汎化するため、 Mixture of Domain Experts というアイデアを検証しました。",
+            "これにはデータのアシャード化を行うエキスパートと、アテンション機構における共有パラメータが含まれます。",
+            "そして、推論の高速化、通信量の削減、クエリあたりのアクティブパラメータ数の削減、より多くのエキスパートを収容できる能力など、パフォーマンス上のメリットがあります。",
+            "そしてモデルは、ドメインIDを含むメタデータを活用して、トークンのシーケンスをドメインマスクにマッピングします。",
+            "そしてこのマスクにより、トークンはエキスパートの小さなサブセットに強制的にルーティングされ、All-to-All通信のオーバーヘッドが効果的に削減されます。",
+            "また、この粒度の粗いルーティングにより、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.7-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip5",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.54,
+      "avg_seconds_per_segment_range": [
+        2.4,
+        2.67
+      ],
+      "chrf_score_mean": 0.6419,
+      "chrf_score_range": [
+        0.6365,
+        0.6472
+      ],
+      "llm_judge_mean": 0.9661,
+      "llm_judge_range": [
+        0.9611,
+        0.9711
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 21.61,
+          "avg_seconds_per_segment": 2.4,
+          "chrf_score": 0.6365,
+          "llm_judge": 0.9611,
+          "hyps": [
+            "対象データのみを用いて学習した、バックボーンを固定したMOAは、混合データで学習したベースラインのMOEと同等、あるいはそれ以上にFLOPS効率が良いことがわかりました。",
+            "そして30億パラメータの規模でも、MOAは再び高い効率性を示しました。",
+            "具体的には、ドメインデータのみを用いたMOA tail patchingと呼ばれる手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の両方が実証されました。",
+            "そして、このMOAを事前学習の設定へと一般化するために、Mixture of Domain Expertsというアプローチを探求しました。",
+            "これには、データのシャーディングを専門とするエキスパートや、アテンション機構における共有パラメータが含まれます。",
+            "推論の高速化、通信量の削減、クエリあたりの活性化パラメータ数の削減、そしてより多くのエキスパートを収容できることなどの性能上のメリットがあります。",
+            "そしてこのモデルは、ドメインIDを含むメタデータを活用して、トークン列をドメインマスクにマッピングします。",
+            "そしてこのマスクにより、トークンが少数のエキスパートに限定してルーティングされ、All-to-All通信のオーバーヘッドを効果的に削減します。",
+            "また、この粗粒度ルーティングによって、"
+          ]
+        },
+        {
+          "model": "gemini-3.7-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 24.05,
+          "avg_seconds_per_segment": 2.67,
+          "chrf_score": 0.6472,
+          "llm_judge": 0.9711,
+          "hyps": [
+            "対象データのみを用いてフリーズしたバックボーンで学習させたMOAは、混合データで学習させたベースラインのMOEと同等、あるいはそれ以上にFLOPS効率が高いことがわかりました。",
+            "そして30億パラメータのスケールでも、MOAは再び極めて高い効率性を示しました。",
+            "具体的には、ドメインデータのみを使用するMOA tail patchingと呼ばれる手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の両方が実証されました。",
+            "そして、このMOAを事前学習の設定へと一般化するために、Mixture of Domain Expertsというアイデアを探求しました。",
+            "これには、データのシャーディングを担当するエキスパートと、アテンション機構における共有パラメータが含まれます。",
+            "推論の高速化、通信量の削減、クエリあたりの活性化パラメータ数の削減、そしてより多くのエキスパートを収容できる能力といったパフォーマンス上の利点があります。",
+            "そしてモデルは、ドメインIDを含むメタデータを活用して、トークン列をドメインマスクへとマッピングします。",
+            "そしてこのマスクにより、トークンが少数のエキスパートにルーティングされるようになり、all-to-all通信のオーバーヘッドを効果的に削減します。",
+            "また、この粗粒度なルーティングにより、"
+          ]
+        }
+      ]
+    },
+    {
+      "model": "gemini-3.8-flash",
+      "thinking_budget": 1024,
+      "benchmark_id": "technology_moe_2d07bb74_clip5",
+      "note": "動画字幕設定（thinking_budget=1024）",
+      "repeats": 2,
+      "segment_count": 9,
+      "avg_seconds_per_segment_mean": 2.29,
+      "avg_seconds_per_segment_range": [
+        2.21,
+        2.37
+      ],
+      "chrf_score_mean": 0.6779,
+      "chrf_score_range": [
+        0.6428,
+        0.713
+      ],
+      "llm_judge_mean": 0.9745,
+      "llm_judge_range": [
+        0.9611,
+        0.9878
+      ],
+      "runs": [
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 21.29,
+          "avg_seconds_per_segment": 2.37,
+          "chrf_score": 0.713,
+          "llm_judge": 0.9878,
+          "hyps": [
+            "対象データのみでバックボーンを固定して学習したMOAは、混合データで学習したベースラインのMOEと同等、あるいはそれ以上にFLOPS効率が高いことがわかりました。",
+            "そして30億パラメータのスケールでも、MOAは再び極めて高い効率性を示しました。",
+            "具体的には、ドメインデータのみを用いたMOA tail patchingと呼ばれる手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の両方が示されました。",
+            "そして、このMOAを事前学習の設定に汎化させるため、ドメインエキスパートの混合というアイデアを探求しました。",
+            "これには、データのシャーディングに関するエキスパートや、アテンション機構における共有パラメータが含まれます。",
+            "性能面でのメリットには、推論の高速化、通信量の削減、クエリあたりのアクティブパラメータの縮小、そしてはるかに多くのエキスパートを収容できる能力が含まれます。",
+            "そしてモデルは、ドメインIDを含むメタデータを活用して、トークン列をドメインマスクへとマッピングします。",
+            "このマスクによってトークンは少数のエキスパートへとルーティングされ、all-to-all通信のオーバーヘッドを効果的に削減します。",
+            "そしてこの粗粒度のルーティングにより、"
+          ]
+        },
+        {
+          "model": "gemini-3.8-flash",
+          "thinking_budget": 1024,
+          "segment_count": 9,
+          "elapsed_seconds": 19.86,
+          "avg_seconds_per_segment": 2.21,
+          "chrf_score": 0.6428,
+          "llm_judge": 0.9611,
+          "hyps": [
+            "凍結されたバックボーンを持ち、対象データのみで学習させたMOAは、混合データで学習させたベースラインのMOEと同等、あるいはそれ以上にFLOPS効率が高いことがわかりました。",
+            "そして30億パラメータのスケールでも、MOAは非常に効率的であることが改めて証明されました。",
+            "具体的には、ドメインデータのみを使用するMOA tail patchingと呼ばれる手法により、MMLUスコアが約30ポイント向上し、効率性と大幅な品質向上の両方が実証されました。",
+            "そして、このMOAを事前学習の設定へと一般化するために、私たちはMixture of Domain Expertsというアイデアを探求しました。",
+            "これには、データをシャーディングするエキスパートと、アテンション機構における共有パラメータが含まれます。",
+            "推論の高速化、通信の削減、クエリあたりの活性化パラメータ数の削減、そしてより多くのエキスパートを収容できることなどの性能上のメリットがあります。",
+            "そしてモデルは、トークンシーケンスをドメインマスクへとマッピングするために、ドメインIDを含むメタデータを活用します。",
+            "このマスクにより、トークンがごく一部のエキスパートのみにルーティングされるようになり、all-to-all通信のオーバーヘッドが効果的に削減されます。",
+            "そしてこの粗密度のルーティングにより、また、"
+          ]
+        }
+      ]
+    }
+  ]
+}
