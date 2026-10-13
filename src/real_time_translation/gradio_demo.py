@@ -52,6 +52,12 @@ MAX_DISPLAY_LINES = 50
 # add_subtitles.py だけの機能になっていたため合わせて追加した。
 VIDEO_MERGE_UTTERANCES = os.environ.get("MERGE_UTTERANCES", "true").lower() == "true"
 VIDEO_DICTIONARY_PATH = os.environ.get("DICTIONARY_PATH") or None
+# 動画字幕の翻訳モデル。2026-10-13のベンチマーク（14件×2回、thinking_budget=1024、
+# experiments/20261013_model_comparison_flash_video*.json）で gemini-3.8-flash が
+# COMET-22最高（0.930 vs 3.5-flash 0.921、14件中7件で最高）だったため採用。
+# 1文あたり約0.7秒遅い（2.43s vs 1.71s）が、動画は待ち時間より品質を優先する。
+# マイク経路（GEMINI_MODEL）は遅延優先のため別設定。
+VIDEO_GEMINI_MODEL = os.environ.get("VIDEO_GEMINI_MODEL", "gemini-3.8-flash")
 VIDEO_INCOMPLETE_END_DETECTION_ENABLED = (
     os.environ.get("INCOMPLETE_END_DETECTION_ENABLED", "true").lower() == "true"
 )
@@ -685,7 +691,7 @@ async def _video_translate_with_pipeline(
     translator = LLMTranslator(
         provider="gemini",
         api_key=api_key,
-        model="gemini-2.5-flash",
+        model=VIDEO_GEMINI_MODEL,
         source_language=_to_full_name(source_language),
         target_language=_to_full_name(target_language),
         domain=domain,

@@ -20,6 +20,13 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 sys.path.insert(0, str(ROOT / "src"))
 
+# 動画字幕タブは os.environ から APIキーを読むため、起動時に .env を読み込む
+# （以前はマイクの Start 押下時に Config.from_env() 経由でしか読まれず、
+# 起動直後に動画タブを使うと「APIキーが未設定です」になっていた）
+from dotenv import load_dotenv  # noqa: E402
+
+load_dotenv(ROOT / ".env")
+
 # Windows で日本語ファイル名を含むパスを aiofiles が開けない問題の対処
 # PYTHONUTF8=1 でファイルパスの UTF-8 処理を強制する
 os.environ.setdefault("PYTHONUTF8", "1")
