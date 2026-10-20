@@ -1,0 +1,5244 @@
+{
+  "date": "2026-10-19",
+  "video": "harari_utada_part05.mp4",
+  "deepgram": {
+    "model": "nova-2-general",
+    "diarize": true,
+    "utt_split": 0.8
+  },
+  "split": "word",
+  "merge_within_speaker": true,
+  "summary": {
+    "num_speakers": 2,
+    "speaker_turns": 8,
+    "per_speaker": {
+      "話者A": {
+        "segments": 11,
+        "seconds": 73.8
+      },
+      "話者B": {
+        "segments": 18,
+        "seconds": 172.4
+      }
+    }
+  },
+  "segments": [
+    {
+      "start": 1.4399999,
+      "end": 4.34,
+      "speaker": 0,
+      "transcript": "That I don't know what the result is until I get there.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 6.0,
+      "end": 7.8599997,
+      "speaker": 1,
+      "transcript": "What is the result for for you?",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 8.48,
+      "end": 10.82,
+      "speaker": 0,
+      "transcript": "Just the piece of music, but it's almost like a byproduct.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 11.92,
+      "end": 19.535,
+      "speaker": 0,
+      "transcript": "And everything important that happened to me, the value of the song is what happened while I was making it. Yeah.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 19.535,
+      "end": 32.33,
+      "speaker": 1,
+      "transcript": "But this is for us as creators or as... I mean, this I completely understand. I agree that there is a deep need yearning in humans to create, and this will continue irrespective of AI.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 32.63,
+      "end": 33.13,
+      "speaker": 1,
+      "transcript": "Yeah.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 33.99,
+      "end": 36.71,
+      "speaker": 0,
+      "transcript": "So... But whether people will appreciate that or not.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 36.71,
+      "end": 46.255,
+      "speaker": 1,
+      "transcript": "Right? Whether people will appreciate it, whether it will have a place in in the world and it won't just be my hobby to do it, That's the question.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 46.875,
+      "end": 55.935,
+      "speaker": 1,
+      "transcript": "And when... A lot of time when you ask artists or or or, creators, what are you try... What is the result? What are we trying to achieve?",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 56.955,
+      "end": 71.64,
+      "speaker": 1,
+      "transcript": "So one very common answer is that they are trying to create a certain state of mind in somebody else, to bring up a certain emotion, joy or sadness or whatever.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 72.34,
+      "end": 78.405,
+      "speaker": 1,
+      "transcript": "And this is the kind of thing that potentially AI would would be very good at.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 78.405,
+      "end": 79.205,
+      "speaker": 0,
+      "transcript": "Yes. Yeah.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 79.205,
+      "end": 85.785,
+      "speaker": 1,
+      "transcript": "Even if it has no emotions of its own, it will be able to recognize the emotion of other people.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 86.325005,
+      "end": 110.105,
+      "speaker": 1,
+      "transcript": "And then find by trial and error how if you imagine, like, if you compare a human being, like our emotional system is basically like a piano, that the AI will learn how to play the human emotional piano and how to produce sadness, how to produce joy, how to produce fear or awe,",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 111.365,
+      "end": 120.39,
+      "speaker": 1,
+      "transcript": "better than a human artist, simply through the sheer volume of information it can process.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 121.49,
+      "end": 134.295,
+      "speaker": 1,
+      "transcript": "Like, it can gather data on millions and millions of actual human beings. Like when I write a book, so I would sometimes try to imagine my reader.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 135.075,
+      "end": 148.58,
+      "speaker": 1,
+      "transcript": "And I usually base my imagined reader either on myself or on people I actually know or on encounters I had with students at university or public events or interviews.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 148.88,
+      "end": 154.66,
+      "speaker": 1,
+      "transcript": "But this is a very limited, pool of examples of data.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 156.06499,
+      "end": 163.28499,
+      "speaker": 1,
+      "transcript": "So when I'm doing it, maybe I have a kind of a pool of information on a couple of 100 people.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 164.305,
+      "end": 172.65,
+      "speaker": 1,
+      "transcript": "The AI that would write the book or the piece of music, it would have data on millions and billions of human beings over time.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 173.34999,
+      "end": 196.995,
+      "speaker": 1,
+      "transcript": "So if the goal is to create a certain state of mind for other people, I just don't see how we can compete with the AI on that, especially as it will also have the advantage of being able to tailor the the book, the songs, specifically to different people.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 197.81,
+      "end": 200.95,
+      "speaker": 1,
+      "transcript": "I can't write a slightly different book for different people.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 201.49,
+      "end": 205.51,
+      "speaker": 1,
+      "transcript": "But for AI, maybe it would be quite easy.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 205.97,
+      "end": 211.03,
+      "speaker": 0,
+      "transcript": "Yeah. I think the tailor making aspect is quite interesting. I'd love to know.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 211.515,
+      "end": 226.25499,
+      "speaker": 0,
+      "transcript": "I'd love to try it and see if it'll make music that will eventually, I guess, the kind of music that I really love. I mean, it's almost like music streaming platforms suggesting playlists and songs based on what you've listened to algorithmically.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 228.28,
+      "end": 230.14,
+      "speaker": 0,
+      "transcript": "But the...",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 231.64,
+      "end": 242.54,
+      "speaker": 0,
+      "transcript": "I I just wonder... I I don't know if this is a good enough comparison, but let's say there's something cheap and quick, quickly prepared, very accessible like fast food.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 244.575,
+      "end": 265.33002,
+      "speaker": 0,
+      "transcript": "Yes it does have a big market, but then there's a different type of value that people place on something like the, what is it called, the effort heuristic, where people if they know that, you know, if peep... The human or",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 265.71002,
+      "end": 269.7927,
+      "speaker": 0,
+      "transcript": "maybe even AI, if they've done it in a more difficult way or something.",
+      "speaker_label": "話者A"
+    }
+  ],
+  "raw_utterances": [
+    {
+      "start": 1.4399999,
+      "end": 4.34,
+      "speaker": 0,
+      "transcript": "That I don't know what the result is until I get there.",
+      "words": [
+        {
+          "word": "That",
+          "start": 1.4399999,
+          "end": 1.68,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "I",
+          "start": 1.68,
+          "end": 1.8399999,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "don't",
+          "start": 1.8399999,
+          "end": 2.08,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "know",
+          "start": 2.08,
+          "end": 2.24,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "what",
+          "start": 2.24,
+          "end": 2.48,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "the",
+          "start": 2.48,
+          "end": 2.6399999,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "result",
+          "start": 2.6399999,
+          "end": 2.96,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "is",
+          "start": 2.96,
+          "end": 3.1999998,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "until",
+          "start": 3.1999998,
+          "end": 3.52,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "I",
+          "start": 3.52,
+          "end": 3.6,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "get",
+          "start": 3.6,
+          "end": 3.84,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        },
+        {
+          "word": "there.",
+          "start": 3.84,
+          "end": 4.34,
+          "speaker": 0,
+          "speaker_confidence": 0.5901785
+        }
+      ]
+    },
+    {
+      "start": 6.0,
+      "end": 7.8599997,
+      "speaker": 1,
+      "transcript": "What is the result for for you?",
+      "words": [
+        {
+          "word": "What",
+          "start": 6.0,
+          "end": 6.3199997,
+          "speaker": 1,
+          "speaker_confidence": 0.3013857
+        },
+        {
+          "word": "is",
+          "start": 6.3199997,
+          "end": 6.48,
+          "speaker": 1,
+          "speaker_confidence": 0.3013857
+        },
+        {
+          "word": "the",
+          "start": 6.48,
+          "end": 6.64,
+          "speaker": 1,
+          "speaker_confidence": 0.3013857
+        },
+        {
+          "word": "result",
+          "start": 6.64,
+          "end": 7.04,
+          "speaker": 1,
+          "speaker_confidence": 0.3013857
+        },
+        {
+          "word": "for",
+          "start": 7.04,
+          "end": 7.2,
+          "speaker": 1,
+          "speaker_confidence": 0.3013857
+        },
+        {
+          "word": "for",
+          "start": 7.2,
+          "end": 7.3599997,
+          "speaker": 1,
+          "speaker_confidence": 0.3013857
+        },
+        {
+          "word": "you?",
+          "start": 7.3599997,
+          "end": 7.8599997,
+          "speaker": 1,
+          "speaker_confidence": 0.3013857
+        }
+      ]
+    },
+    {
+      "start": 8.48,
+      "end": 10.82,
+      "speaker": 0,
+      "transcript": "Just the piece of music, but it's almost like a byproduct.",
+      "words": [
+        {
+          "word": "Just",
+          "start": 8.48,
+          "end": 8.639999,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "the",
+          "start": 8.639999,
+          "end": 8.72,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "piece",
+          "start": 8.72,
+          "end": 8.96,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "of",
+          "start": 8.96,
+          "end": 9.12,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "music,",
+          "start": 9.12,
+          "end": 9.36,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "but",
+          "start": 9.36,
+          "end": 9.5199995,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "it's",
+          "start": 9.5199995,
+          "end": 9.76,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "almost",
+          "start": 9.76,
+          "end": 10.0,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "like",
+          "start": 10.0,
+          "end": 10.16,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "a",
+          "start": 10.16,
+          "end": 10.32,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "byproduct.",
+          "start": 10.32,
+          "end": 10.82,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        }
+      ]
+    },
+    {
+      "start": 11.92,
+      "end": 12.42,
+      "speaker": 0,
+      "transcript": "And",
+      "words": [
+        {
+          "word": "And",
+          "start": 11.92,
+          "end": 12.42,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        }
+      ]
+    },
+    {
+      "start": 12.96,
+      "end": 14.66,
+      "speaker": 0,
+      "transcript": "everything important that happened",
+      "words": [
+        {
+          "word": "everything",
+          "start": 12.96,
+          "end": 13.46,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "important",
+          "start": 13.5199995,
+          "end": 13.92,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "that",
+          "start": 13.92,
+          "end": 14.16,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "happened",
+          "start": 14.16,
+          "end": 14.66,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        }
+      ]
+    },
+    {
+      "start": 15.215,
+      "end": 26.195,
+      "speaker": 1,
+      "transcript": "to me, the value of the song is what happened while I was making it. Yeah. But this is for us as creators or as... I mean, this I completely understand. I agree that there is a deep",
+      "words": [
+        {
+          "word": "to",
+          "start": 15.215,
+          "end": 15.375,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "me,",
+          "start": 15.375,
+          "end": 15.535,
+          "speaker": 0,
+          "speaker_confidence": 0.7770696
+        },
+        {
+          "word": "the",
+          "start": 15.535,
+          "end": 15.615,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "value",
+          "start": 15.615,
+          "end": 16.095,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "of",
+          "start": 16.095,
+          "end": 16.255001,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "the",
+          "start": 16.255001,
+          "end": 16.415,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "song",
+          "start": 16.415,
+          "end": 16.915,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "is",
+          "start": 17.135,
+          "end": 17.375,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "what",
+          "start": 17.375,
+          "end": 17.535,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "happened",
+          "start": 17.535,
+          "end": 18.015,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "while",
+          "start": 18.015,
+          "end": 18.255001,
+          "speaker": 0,
+          "speaker_confidence": 0.48472238
+        },
+        {
+          "word": "I",
+          "start": 18.255001,
+          "end": 18.335,
+          "speaker": 0,
+          "speaker_confidence": 0.30247784
+        },
+        {
+          "word": "was",
+          "start": 18.335,
+          "end": 18.495,
+          "speaker": 0,
+          "speaker_confidence": 0.30247784
+        },
+        {
+          "word": "making",
+          "start": 18.495,
+          "end": 18.815,
+          "speaker": 0,
+          "speaker_confidence": 0.30247784
+        },
+        {
+          "word": "it.",
+          "start": 18.815,
+          "end": 19.175,
+          "speaker": 0,
+          "speaker_confidence": 0.30247784
+        },
+        {
+          "word": "Yeah.",
+          "start": 19.175,
+          "end": 19.535,
+          "speaker": 0,
+          "speaker_confidence": 0.30247784
+        },
+        {
+          "word": "But",
+          "start": 19.535,
+          "end": 19.775,
+          "speaker": 1,
+          "speaker_confidence": 0.29932266
+        },
+        {
+          "word": "this",
+          "start": 19.775,
+          "end": 20.015,
+          "speaker": 1,
+          "speaker_confidence": 0.29932266
+        },
+        {
+          "word": "is",
+          "start": 20.015,
+          "end": 20.095001,
+          "speaker": 1,
+          "speaker_confidence": 0.29932266
+        },
+        {
+          "word": "for",
+          "start": 20.095001,
+          "end": 20.415,
+          "speaker": 1,
+          "speaker_confidence": 0.29932266
+        },
+        {
+          "word": "us",
+          "start": 20.415,
+          "end": 20.735,
+          "speaker": 1,
+          "speaker_confidence": 0.29932266
+        },
+        {
+          "word": "as",
+          "start": 20.735,
+          "end": 21.235,
+          "speaker": 1,
+          "speaker_confidence": 0.29932266
+        },
+        {
+          "word": "creators",
+          "start": 21.295,
+          "end": 21.695,
+          "speaker": 1,
+          "speaker_confidence": 0.15206254
+        },
+        {
+          "word": "or",
+          "start": 21.695,
+          "end": 21.855,
+          "speaker": 1,
+          "speaker_confidence": 0.15206254
+        },
+        {
+          "word": "as...",
+          "start": 21.855,
+          "end": 22.095001,
+          "speaker": 1,
+          "speaker_confidence": 0.15206254
+        },
+        {
+          "word": "I",
+          "start": 22.095001,
+          "end": 22.175,
+          "speaker": 1,
+          "speaker_confidence": 0.15206254
+        },
+        {
+          "word": "mean,",
+          "start": 22.175,
+          "end": 22.415,
+          "speaker": 1,
+          "speaker_confidence": 0.15206254
+        },
+        {
+          "word": "this",
+          "start": 22.415,
+          "end": 22.655,
+          "speaker": 1,
+          "speaker_confidence": 0.15206254
+        },
+        {
+          "word": "I",
+          "start": 22.655,
+          "end": 22.735,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "completely",
+          "start": 22.735,
+          "end": 23.135,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "understand.",
+          "start": 23.135,
+          "end": 23.535,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "I",
+          "start": 23.535,
+          "end": 24.035,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "agree",
+          "start": 24.335,
+          "end": 24.814999,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "that",
+          "start": 24.814999,
+          "end": 25.055,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "there",
+          "start": 25.055,
+          "end": 25.295,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "is",
+          "start": 25.295,
+          "end": 25.535,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "a",
+          "start": 25.535,
+          "end": 25.695,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "deep",
+          "start": 25.695,
+          "end": 26.195,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        }
+      ]
+    },
+    {
+      "start": 26.654999,
+      "end": 29.235,
+      "speaker": 1,
+      "transcript": "need yearning in humans to create,",
+      "words": [
+        {
+          "word": "need",
+          "start": 26.654999,
+          "end": 27.055,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "yearning",
+          "start": 27.055,
+          "end": 27.555,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "in",
+          "start": 27.695,
+          "end": 27.935,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "humans",
+          "start": 27.935,
+          "end": 28.435,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "to",
+          "start": 28.494999,
+          "end": 28.735,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        },
+        {
+          "word": "create,",
+          "start": 28.735,
+          "end": 29.235,
+          "speaker": 1,
+          "speaker_confidence": 0.51635605
+        }
+      ]
+    },
+    {
+      "start": 29.91,
+      "end": 32.33,
+      "speaker": 1,
+      "transcript": "and this will continue irrespective of AI.",
+      "words": [
+        {
+          "word": "and",
+          "start": 29.91,
+          "end": 29.99,
+          "speaker": 1,
+          "speaker_confidence": 0.45700824
+        },
+        {
+          "word": "this",
+          "start": 29.99,
+          "end": 30.23,
+          "speaker": 1,
+          "speaker_confidence": 0.45700824
+        },
+        {
+          "word": "will",
+          "start": 30.23,
+          "end": 30.550001,
+          "speaker": 1,
+          "speaker_confidence": 0.45700824
+        },
+        {
+          "word": "continue",
+          "start": 30.550001,
+          "end": 31.03,
+          "speaker": 1,
+          "speaker_confidence": 0.45700824
+        },
+        {
+          "word": "irrespective",
+          "start": 31.03,
+          "end": 31.53,
+          "speaker": 1,
+          "speaker_confidence": 0.45700824
+        },
+        {
+          "word": "of",
+          "start": 31.59,
+          "end": 31.83,
+          "speaker": 1,
+          "speaker_confidence": 0.45700824
+        },
+        {
+          "word": "AI.",
+          "start": 31.83,
+          "end": 32.33,
+          "speaker": 1,
+          "speaker_confidence": 0.45700824
+        }
+      ]
+    },
+    {
+      "start": 32.63,
+      "end": 33.13,
+      "speaker": 1,
+      "transcript": "Yeah.",
+      "words": [
+        {
+          "word": "Yeah.",
+          "start": 32.63,
+          "end": 33.13,
+          "speaker": 1,
+          "speaker_confidence": 0.45700824
+        }
+      ]
+    },
+    {
+      "start": 33.99,
+      "end": 44.65,
+      "speaker": 1,
+      "transcript": "So... But whether people will appreciate that or not. Right? Whether people will appreciate it, whether it will have a place in in the world and it won't just be my hobby to do it,",
+      "words": [
+        {
+          "word": "So...",
+          "start": 33.99,
+          "end": 34.49,
+          "speaker": 0,
+          "speaker_confidence": 0.2942012
+        },
+        {
+          "word": "But",
+          "start": 34.71,
+          "end": 34.95,
+          "speaker": 0,
+          "speaker_confidence": 0.2942012
+        },
+        {
+          "word": "whether",
+          "start": 34.95,
+          "end": 35.19,
+          "speaker": 0,
+          "speaker_confidence": 0.2942012
+        },
+        {
+          "word": "people",
+          "start": 35.19,
+          "end": 35.510002,
+          "speaker": 0,
+          "speaker_confidence": 0.2942012
+        },
+        {
+          "word": "will",
+          "start": 35.510002,
+          "end": 35.75,
+          "speaker": 0,
+          "speaker_confidence": 0.2942012
+        },
+        {
+          "word": "appreciate",
+          "start": 35.75,
+          "end": 36.15,
+          "speaker": 0,
+          "speaker_confidence": 0.2942012
+        },
+        {
+          "word": "that",
+          "start": 36.15,
+          "end": 36.47,
+          "speaker": 0,
+          "speaker_confidence": 0.2942012
+        },
+        {
+          "word": "or",
+          "start": 36.47,
+          "end": 36.55,
+          "speaker": 0,
+          "speaker_confidence": 0.0
+        },
+        {
+          "word": "not.",
+          "start": 36.55,
+          "end": 36.71,
+          "speaker": 0,
+          "speaker_confidence": 0.0
+        },
+        {
+          "word": "Right?",
+          "start": 36.71,
+          "end": 37.03,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "Whether",
+          "start": 37.03,
+          "end": 37.43,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "people",
+          "start": 37.43,
+          "end": 37.91,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "will",
+          "start": 37.91,
+          "end": 38.15,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "appreciate",
+          "start": 38.15,
+          "end": 38.65,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "it,",
+          "start": 38.71,
+          "end": 39.11,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "whether",
+          "start": 39.11,
+          "end": 39.43,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "it",
+          "start": 39.43,
+          "end": 39.59,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "will",
+          "start": 39.59,
+          "end": 39.83,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "have",
+          "start": 39.83,
+          "end": 40.15,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "a",
+          "start": 40.15,
+          "end": 40.39,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "place",
+          "start": 40.39,
+          "end": 40.89,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "in",
+          "start": 40.95,
+          "end": 41.11,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "in",
+          "start": 41.11,
+          "end": 41.35,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "the",
+          "start": 41.35,
+          "end": 41.510002,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "world",
+          "start": 41.510002,
+          "end": 41.83,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "and",
+          "start": 41.83,
+          "end": 42.07,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "it",
+          "start": 42.07,
+          "end": 42.23,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "won't",
+          "start": 42.23,
+          "end": 42.55,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "just",
+          "start": 42.55,
+          "end": 42.95,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "be",
+          "start": 42.95,
+          "end": 43.11,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "my",
+          "start": 43.11,
+          "end": 43.35,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "hobby",
+          "start": 43.35,
+          "end": 43.85,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "to",
+          "start": 43.91,
+          "end": 43.989998,
+          "speaker": 1,
+          "speaker_confidence": 0.5142149
+        },
+        {
+          "word": "do",
+          "start": 43.989998,
+          "end": 44.15,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "it,",
+          "start": 44.15,
+          "end": 44.65,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        }
+      ]
+    },
+    {
+      "start": 45.195004,
+      "end": 46.255,
+      "speaker": 1,
+      "transcript": "That's the question.",
+      "words": [
+        {
+          "word": "That's",
+          "start": 45.195004,
+          "end": 45.435,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "the",
+          "start": 45.435,
+          "end": 45.755,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "question.",
+          "start": 45.755,
+          "end": 46.255,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        }
+      ]
+    },
+    {
+      "start": 46.875,
+      "end": 49.615,
+      "speaker": 1,
+      "transcript": "And when... A lot of time when you ask",
+      "words": [
+        {
+          "word": "And",
+          "start": 46.875,
+          "end": 47.275,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "when...",
+          "start": 47.275,
+          "end": 47.775,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "A",
+          "start": 47.915,
+          "end": 48.075,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "lot",
+          "start": 48.075,
+          "end": 48.315002,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "of",
+          "start": 48.315002,
+          "end": 48.475002,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "time",
+          "start": 48.475002,
+          "end": 48.715,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "when",
+          "start": 48.715,
+          "end": 48.875,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "you",
+          "start": 48.875,
+          "end": 49.115,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "ask",
+          "start": 49.115,
+          "end": 49.615,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        }
+      ]
+    },
+    {
+      "start": 50.075,
+      "end": 55.935,
+      "speaker": 1,
+      "transcript": "artists or or or, creators, what are you try... What is the result? What are we trying to achieve?",
+      "words": [
+        {
+          "word": "artists",
+          "start": 50.075,
+          "end": 50.575,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "or",
+          "start": 50.795002,
+          "end": 51.115,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "or",
+          "start": 51.115,
+          "end": 51.475002,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "or,",
+          "start": 51.475002,
+          "end": 51.835003,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "creators,",
+          "start": 52.155003,
+          "end": 52.655003,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "what",
+          "start": 52.955,
+          "end": 53.115,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "are",
+          "start": 53.115,
+          "end": 53.275,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "you",
+          "start": 53.275,
+          "end": 53.435,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "try...",
+          "start": 53.435,
+          "end": 53.755,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "What",
+          "start": 53.755,
+          "end": 53.915,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "is",
+          "start": 53.915,
+          "end": 54.075,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "the",
+          "start": 54.075,
+          "end": 54.235,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "result?",
+          "start": 54.235,
+          "end": 54.555,
+          "speaker": 1,
+          "speaker_confidence": 0.57175076
+        },
+        {
+          "word": "What",
+          "start": 54.555,
+          "end": 54.635002,
+          "speaker": 1,
+          "speaker_confidence": 0.22921604
+        },
+        {
+          "word": "are",
+          "start": 54.635002,
+          "end": 54.795002,
+          "speaker": 1,
+          "speaker_confidence": 0.22921604
+        },
+        {
+          "word": "we",
+          "start": 54.795002,
+          "end": 54.955,
+          "speaker": 1,
+          "speaker_confidence": 0.22921604
+        },
+        {
+          "word": "trying",
+          "start": 54.955,
+          "end": 55.275,
+          "speaker": 1,
+          "speaker_confidence": 0.22921604
+        },
+        {
+          "word": "to",
+          "start": 55.275,
+          "end": 55.435,
+          "speaker": 1,
+          "speaker_confidence": 0.22921604
+        },
+        {
+          "word": "achieve?",
+          "start": 55.435,
+          "end": 55.935,
+          "speaker": 1,
+          "speaker_confidence": 0.22921604
+        }
+      ]
+    },
+    {
+      "start": 56.955,
+      "end": 58.175003,
+      "speaker": 1,
+      "transcript": "So one very common",
+      "words": [
+        {
+          "word": "So",
+          "start": 56.955,
+          "end": 57.195,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "one",
+          "start": 57.195,
+          "end": 57.435,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "very",
+          "start": 57.435,
+          "end": 57.675003,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "common",
+          "start": 57.675003,
+          "end": 58.175003,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        }
+      ]
+    },
+    {
+      "start": 58.795002,
+      "end": 59.295002,
+      "speaker": 1,
+      "transcript": "answer",
+      "words": [
+        {
+          "word": "answer",
+          "start": 58.795002,
+          "end": 59.295002,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        }
+      ]
+    },
+    {
+      "start": 59.835003,
+      "end": 60.575,
+      "speaker": 1,
+      "transcript": "is that",
+      "words": [
+        {
+          "word": "is",
+          "start": 59.835003,
+          "end": 60.075,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "that",
+          "start": 60.075,
+          "end": 60.575,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        }
+      ]
+    },
+    {
+      "start": 61.22,
+      "end": 66.28,
+      "speaker": 1,
+      "transcript": "they are trying to create a certain state of mind in somebody else,",
+      "words": [
+        {
+          "word": "they",
+          "start": 61.22,
+          "end": 61.46,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "are",
+          "start": 61.46,
+          "end": 61.7,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "trying",
+          "start": 61.7,
+          "end": 62.2,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "to",
+          "start": 62.26,
+          "end": 62.579998,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "create",
+          "start": 62.579998,
+          "end": 63.06,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "a",
+          "start": 63.06,
+          "end": 63.22,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "certain",
+          "start": 63.22,
+          "end": 63.72,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "state",
+          "start": 63.94,
+          "end": 64.18,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "of",
+          "start": 64.18,
+          "end": 64.42,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "mind",
+          "start": 64.42,
+          "end": 64.92,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "in",
+          "start": 65.14,
+          "end": 65.3,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "somebody",
+          "start": 65.3,
+          "end": 65.78,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        },
+        {
+          "word": "else,",
+          "start": 65.78,
+          "end": 66.28,
+          "speaker": 1,
+          "speaker_confidence": 0.57753044
+        }
+      ]
+    },
+    {
+      "start": 66.66,
+      "end": 68.36,
+      "speaker": 1,
+      "transcript": "to bring up a certain emotion,",
+      "words": [
+        {
+          "word": "to",
+          "start": 66.66,
+          "end": 66.9,
+          "speaker": 1,
+          "speaker_confidence": 0.24308378
+        },
+        {
+          "word": "bring",
+          "start": 66.9,
+          "end": 67.14,
+          "speaker": 1,
+          "speaker_confidence": 0.24308378
+        },
+        {
+          "word": "up",
+          "start": 67.14,
+          "end": 67.38,
+          "speaker": 1,
+          "speaker_confidence": 0.24308378
+        },
+        {
+          "word": "a",
+          "start": 67.38,
+          "end": 67.46,
+          "speaker": 1,
+          "speaker_confidence": 0.24308378
+        },
+        {
+          "word": "certain",
+          "start": 67.46,
+          "end": 67.86,
+          "speaker": 1,
+          "speaker_confidence": 0.24308378
+        },
+        {
+          "word": "emotion,",
+          "start": 67.86,
+          "end": 68.36,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        }
+      ]
+    },
+    {
+      "start": 69.3,
+      "end": 71.64,
+      "speaker": 1,
+      "transcript": "joy or sadness or whatever.",
+      "words": [
+        {
+          "word": "joy",
+          "start": 69.3,
+          "end": 69.8,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "or",
+          "start": 69.86,
+          "end": 70.18,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "sadness",
+          "start": 70.18,
+          "end": 70.68,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "or",
+          "start": 70.82,
+          "end": 71.14,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "whatever.",
+          "start": 71.14,
+          "end": 71.64,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        }
+      ]
+    },
+    {
+      "start": 72.34,
+      "end": 75.545006,
+      "speaker": 1,
+      "transcript": "And this is the kind of thing that potentially",
+      "words": [
+        {
+          "word": "And",
+          "start": 72.34,
+          "end": 72.84,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "this",
+          "start": 72.979996,
+          "end": 73.22,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "is",
+          "start": 73.22,
+          "end": 73.38,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "the",
+          "start": 73.38,
+          "end": 73.62,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "kind",
+          "start": 73.62,
+          "end": 73.86,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "of",
+          "start": 73.86,
+          "end": 74.02,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "thing",
+          "start": 74.02,
+          "end": 74.52,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "that",
+          "start": 74.805,
+          "end": 75.045006,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "potentially",
+          "start": 75.045006,
+          "end": 75.545006,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        }
+      ]
+    },
+    {
+      "start": 76.005005,
+      "end": 81.465004,
+      "speaker": 1,
+      "transcript": "AI would would be very good at. Yes. Yeah. Even if it has no emotions of its own,",
+      "words": [
+        {
+          "word": "AI",
+          "start": 76.005005,
+          "end": 76.325005,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "would",
+          "start": 76.325005,
+          "end": 76.725006,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "would",
+          "start": 76.725006,
+          "end": 77.045006,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "be",
+          "start": 77.045006,
+          "end": 77.545006,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "very",
+          "start": 77.605,
+          "end": 77.925,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "good",
+          "start": 77.925,
+          "end": 78.165,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "at.",
+          "start": 78.165,
+          "end": 78.405,
+          "speaker": 1,
+          "speaker_confidence": 0.67084783
+        },
+        {
+          "word": "Yes.",
+          "start": 78.405,
+          "end": 78.805,
+          "speaker": 0,
+          "speaker_confidence": 0.11323142
+        },
+        {
+          "word": "Yeah.",
+          "start": 78.805,
+          "end": 79.205,
+          "speaker": 0,
+          "speaker_confidence": 0.11323142
+        },
+        {
+          "word": "Even",
+          "start": 79.205,
+          "end": 79.445,
+          "speaker": 1,
+          "speaker_confidence": 0.18444413
+        },
+        {
+          "word": "if",
+          "start": 79.445,
+          "end": 79.605,
+          "speaker": 1,
+          "speaker_confidence": 0.18444413
+        },
+        {
+          "word": "it",
+          "start": 79.605,
+          "end": 79.685005,
+          "speaker": 1,
+          "speaker_confidence": 0.18444413
+        },
+        {
+          "word": "has",
+          "start": 79.685005,
+          "end": 79.925,
+          "speaker": 1,
+          "speaker_confidence": 0.18444413
+        },
+        {
+          "word": "no",
+          "start": 79.925,
+          "end": 80.165,
+          "speaker": 1,
+          "speaker_confidence": 0.18444413
+        },
+        {
+          "word": "emotions",
+          "start": 80.165,
+          "end": 80.645004,
+          "speaker": 1,
+          "speaker_confidence": 0.18444413
+        },
+        {
+          "word": "of",
+          "start": 80.645004,
+          "end": 80.725006,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "its",
+          "start": 80.725006,
+          "end": 80.965004,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "own,",
+          "start": 80.965004,
+          "end": 81.465004,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 81.845,
+      "end": 85.785,
+      "speaker": 1,
+      "transcript": "it will be able to recognize the emotion of other people.",
+      "words": [
+        {
+          "word": "it",
+          "start": 81.845,
+          "end": 82.085,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "will",
+          "start": 82.085,
+          "end": 82.245,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "be",
+          "start": 82.245,
+          "end": 82.485,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "able",
+          "start": 82.485,
+          "end": 82.805,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "to",
+          "start": 82.805,
+          "end": 83.045,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "recognize",
+          "start": 83.045,
+          "end": 83.545,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "the",
+          "start": 83.685005,
+          "end": 83.925,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "emotion",
+          "start": 83.925,
+          "end": 84.425,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "of",
+          "start": 84.645004,
+          "end": 84.965004,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "other",
+          "start": 84.965004,
+          "end": 85.285,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "people.",
+          "start": 85.285,
+          "end": 85.785,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 86.325005,
+      "end": 88.585,
+      "speaker": 1,
+      "transcript": "And then find by trial and error",
+      "words": [
+        {
+          "word": "And",
+          "start": 86.325005,
+          "end": 86.485,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "then",
+          "start": 86.485,
+          "end": 86.885,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "find",
+          "start": 86.885,
+          "end": 87.285,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "by",
+          "start": 87.285,
+          "end": 87.525,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "trial",
+          "start": 87.525,
+          "end": 87.925,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "and",
+          "start": 87.925,
+          "end": 88.085,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "error",
+          "start": 88.085,
+          "end": 88.585,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 89.24,
+      "end": 95.58,
+      "speaker": 1,
+      "transcript": "how if you imagine, like, if you compare a human being, like our emotional system is basically like a piano,",
+      "words": [
+        {
+          "word": "how",
+          "start": 89.24,
+          "end": 89.48,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "if",
+          "start": 89.48,
+          "end": 89.72,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "you",
+          "start": 89.72,
+          "end": 89.88,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "imagine,",
+          "start": 89.88,
+          "end": 90.36,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "like,",
+          "start": 90.36,
+          "end": 90.6,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "if",
+          "start": 90.6,
+          "end": 90.76,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "you",
+          "start": 90.76,
+          "end": 90.92,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "compare",
+          "start": 90.92,
+          "end": 91.16,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "a",
+          "start": 91.16,
+          "end": 91.4,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "human",
+          "start": 91.4,
+          "end": 91.72,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "being,",
+          "start": 91.72,
+          "end": 92.12,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "like",
+          "start": 92.12,
+          "end": 92.44,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "our",
+          "start": 92.44,
+          "end": 92.68,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "emotional",
+          "start": 92.68,
+          "end": 93.18,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "system",
+          "start": 93.32,
+          "end": 93.82,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "is",
+          "start": 93.96,
+          "end": 94.28,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "basically",
+          "start": 94.28,
+          "end": 94.76,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "like",
+          "start": 94.76,
+          "end": 94.92,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "a",
+          "start": 94.92,
+          "end": 95.08,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "piano,",
+          "start": 95.08,
+          "end": 95.58,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 96.52,
+      "end": 100.38,
+      "speaker": 1,
+      "transcript": "that the AI will learn how to play the human",
+      "words": [
+        {
+          "word": "that",
+          "start": 96.52,
+          "end": 96.84,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "the",
+          "start": 96.84,
+          "end": 97.08,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "AI",
+          "start": 97.08,
+          "end": 97.48,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "will",
+          "start": 97.48,
+          "end": 97.72,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "learn",
+          "start": 97.72,
+          "end": 98.22,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "how",
+          "start": 98.44,
+          "end": 98.76,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "to",
+          "start": 98.76,
+          "end": 98.92,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "play",
+          "start": 98.92,
+          "end": 99.42,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "the",
+          "start": 99.56,
+          "end": 99.88,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "human",
+          "start": 99.88,
+          "end": 100.38,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 100.68,
+      "end": 101.82,
+      "speaker": 1,
+      "transcript": "emotional piano",
+      "words": [
+        {
+          "word": "emotional",
+          "start": 100.68,
+          "end": 101.18,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "piano",
+          "start": 101.32,
+          "end": 101.82,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 102.405,
+      "end": 102.905,
+      "speaker": 1,
+      "transcript": "and",
+      "words": [
+        {
+          "word": "and",
+          "start": 102.405,
+          "end": 102.905,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 103.525,
+      "end": 104.825,
+      "speaker": 1,
+      "transcript": "how to produce",
+      "words": [
+        {
+          "word": "how",
+          "start": 103.525,
+          "end": 104.005,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "to",
+          "start": 104.005,
+          "end": 104.325,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "produce",
+          "start": 104.325,
+          "end": 104.825,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 105.365,
+      "end": 110.105,
+      "speaker": 1,
+      "transcript": "sadness, how to produce joy, how to produce fear or awe,",
+      "words": [
+        {
+          "word": "sadness,",
+          "start": 105.365,
+          "end": 105.865,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "how",
+          "start": 106.085,
+          "end": 106.405,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "to",
+          "start": 106.405,
+          "end": 106.485,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "produce",
+          "start": 106.485,
+          "end": 106.965004,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "joy,",
+          "start": 106.965004,
+          "end": 107.465004,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "how",
+          "start": 107.685,
+          "end": 108.005,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "to",
+          "start": 108.005,
+          "end": 108.085,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "produce",
+          "start": 108.085,
+          "end": 108.585,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "fear",
+          "start": 108.725,
+          "end": 109.225,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "or",
+          "start": 109.365,
+          "end": 109.605,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "awe,",
+          "start": 109.605,
+          "end": 110.105,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 111.365,
+      "end": 111.865,
+      "speaker": 1,
+      "transcript": "better",
+      "words": [
+        {
+          "word": "better",
+          "start": 111.365,
+          "end": 111.865,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 112.645004,
+      "end": 113.865,
+      "speaker": 1,
+      "transcript": "than a human artist,",
+      "words": [
+        {
+          "word": "than",
+          "start": 112.645004,
+          "end": 112.885,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "a",
+          "start": 112.885,
+          "end": 112.965004,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "human",
+          "start": 112.965004,
+          "end": 113.365,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        },
+        {
+          "word": "artist,",
+          "start": 113.365,
+          "end": 113.865,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 114.69,
+      "end": 115.19,
+      "speaker": 1,
+      "transcript": "simply",
+      "words": [
+        {
+          "word": "simply",
+          "start": 114.69,
+          "end": 115.19,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 115.81,
+      "end": 116.31,
+      "speaker": 1,
+      "transcript": "through",
+      "words": [
+        {
+          "word": "through",
+          "start": 115.81,
+          "end": 116.31,
+          "speaker": 1,
+          "speaker_confidence": 0.8123653
+        }
+      ]
+    },
+    {
+      "start": 116.69,
+      "end": 117.83,
+      "speaker": 1,
+      "transcript": "the sheer volume",
+      "words": [
+        {
+          "word": "the",
+          "start": 116.69,
+          "end": 116.85,
+          "speaker": 1,
+          "speaker_confidence": 0.40229976
+        },
+        {
+          "word": "sheer",
+          "start": 116.85,
+          "end": 117.33,
+          "speaker": 1,
+          "speaker_confidence": 0.40229976
+        },
+        {
+          "word": "volume",
+          "start": 117.33,
+          "end": 117.83,
+          "speaker": 1,
+          "speaker_confidence": 0.40229976
+        }
+      ]
+    },
+    {
+      "start": 118.53,
+      "end": 120.39,
+      "speaker": 1,
+      "transcript": "of information it can process.",
+      "words": [
+        {
+          "word": "of",
+          "start": 118.53,
+          "end": 118.93,
+          "speaker": 1,
+          "speaker_confidence": 0.40229976
+        },
+        {
+          "word": "information",
+          "start": 118.93,
+          "end": 119.43,
+          "speaker": 1,
+          "speaker_confidence": 0.40229976
+        },
+        {
+          "word": "it",
+          "start": 119.49,
+          "end": 119.729996,
+          "speaker": 1,
+          "speaker_confidence": 0.40229976
+        },
+        {
+          "word": "can",
+          "start": 119.729996,
+          "end": 119.89,
+          "speaker": 1,
+          "speaker_confidence": 0.40229976
+        },
+        {
+          "word": "process.",
+          "start": 119.89,
+          "end": 120.39,
+          "speaker": 1,
+          "speaker_confidence": 0.45613307
+        }
+      ]
+    },
+    {
+      "start": 121.49,
+      "end": 121.99,
+      "speaker": 1,
+      "transcript": "Like,",
+      "words": [
+        {
+          "word": "Like,",
+          "start": 121.49,
+          "end": 121.99,
+          "speaker": 1,
+          "speaker_confidence": 0.45613307
+        }
+      ]
+    },
+    {
+      "start": 123.09,
+      "end": 123.83,
+      "speaker": 1,
+      "transcript": "it can",
+      "words": [
+        {
+          "word": "it",
+          "start": 123.09,
+          "end": 123.33,
+          "speaker": 1,
+          "speaker_confidence": 0.45613307
+        },
+        {
+          "word": "can",
+          "start": 123.33,
+          "end": 123.83,
+          "speaker": 1,
+          "speaker_confidence": 0.45613307
+        }
+      ]
+    },
+    {
+      "start": 125.01,
+      "end": 129.59,
+      "speaker": 1,
+      "transcript": "gather data on millions and millions of actual human beings. Like when I write a book,",
+      "words": [
+        {
+          "word": "gather",
+          "start": 125.01,
+          "end": 125.409996,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "data",
+          "start": 125.409996,
+          "end": 125.89,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "on",
+          "start": 125.89,
+          "end": 126.05,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "millions",
+          "start": 126.05,
+          "end": 126.45,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "and",
+          "start": 126.45,
+          "end": 126.69,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "millions",
+          "start": 126.69,
+          "end": 127.09,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "of",
+          "start": 127.09,
+          "end": 127.25,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "actual",
+          "start": 127.25,
+          "end": 127.57,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "human",
+          "start": 127.57,
+          "end": 127.89,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "beings.",
+          "start": 127.89,
+          "end": 128.20999,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "Like",
+          "start": 128.20999,
+          "end": 128.37,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "when",
+          "start": 128.37,
+          "end": 128.61,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "I",
+          "start": 128.61,
+          "end": 128.77,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "write",
+          "start": 128.77,
+          "end": 129.01,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "a",
+          "start": 129.01,
+          "end": 129.09,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "book,",
+          "start": 129.09,
+          "end": 129.59,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 130.035,
+      "end": 132.535,
+      "speaker": 1,
+      "transcript": "so I would sometimes try to imagine",
+      "words": [
+        {
+          "word": "so",
+          "start": 130.035,
+          "end": 130.275,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "I",
+          "start": 130.275,
+          "end": 130.755,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "would",
+          "start": 130.755,
+          "end": 131.075,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "sometimes",
+          "start": 131.075,
+          "end": 131.555,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "try",
+          "start": 131.555,
+          "end": 131.795,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "to",
+          "start": 131.795,
+          "end": 132.035,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "imagine",
+          "start": 132.035,
+          "end": 132.535,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 133.47499,
+      "end": 134.295,
+      "speaker": 1,
+      "transcript": "my reader.",
+      "words": [
+        {
+          "word": "my",
+          "start": 133.47499,
+          "end": 133.795,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "reader.",
+          "start": 133.795,
+          "end": 134.295,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 135.075,
+      "end": 139.095,
+      "speaker": 1,
+      "transcript": "And I usually base my imagined reader either on myself",
+      "words": [
+        {
+          "word": "And",
+          "start": 135.075,
+          "end": 135.555,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "I",
+          "start": 135.555,
+          "end": 135.795,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "usually",
+          "start": 135.795,
+          "end": 136.275,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "base",
+          "start": 136.275,
+          "end": 136.675,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "my",
+          "start": 136.675,
+          "end": 136.995,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "imagined",
+          "start": 136.995,
+          "end": 137.495,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "reader",
+          "start": 137.555,
+          "end": 138.055,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "either",
+          "start": 138.11499,
+          "end": 138.435,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "on",
+          "start": 138.435,
+          "end": 138.595,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "myself",
+          "start": 138.595,
+          "end": 139.095,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 139.875,
+      "end": 141.655,
+      "speaker": 1,
+      "transcript": "or on people I actually know",
+      "words": [
+        {
+          "word": "or",
+          "start": 139.875,
+          "end": 140.11499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "on",
+          "start": 140.11499,
+          "end": 140.275,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "people",
+          "start": 140.275,
+          "end": 140.595,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "I",
+          "start": 140.595,
+          "end": 140.755,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "actually",
+          "start": 140.755,
+          "end": 141.155,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "know",
+          "start": 141.155,
+          "end": 141.655,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 142.32,
+      "end": 143.06,
+      "speaker": 1,
+      "transcript": "or on",
+      "words": [
+        {
+          "word": "or",
+          "start": 142.32,
+          "end": 142.56,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "on",
+          "start": 142.56,
+          "end": 143.06,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 143.36,
+      "end": 145.78,
+      "speaker": 1,
+      "transcript": "encounters I had with students at university",
+      "words": [
+        {
+          "word": "encounters",
+          "start": 143.36,
+          "end": 143.86,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "I",
+          "start": 143.92,
+          "end": 144.16,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "had",
+          "start": 144.16,
+          "end": 144.40001,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "with",
+          "start": 144.40001,
+          "end": 144.64,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "students",
+          "start": 144.64,
+          "end": 145.12,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "at",
+          "start": 145.12,
+          "end": 145.28,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "university",
+          "start": 145.28,
+          "end": 145.78,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 146.32,
+      "end": 148.58,
+      "speaker": 1,
+      "transcript": "or public events or interviews.",
+      "words": [
+        {
+          "word": "or",
+          "start": 146.32,
+          "end": 146.8,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "public",
+          "start": 146.8,
+          "end": 147.28,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "events",
+          "start": 147.28,
+          "end": 147.78,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "or",
+          "start": 147.84,
+          "end": 148.08,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "interviews.",
+          "start": 148.08,
+          "end": 148.58,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 148.88,
+      "end": 150.42,
+      "speaker": 1,
+      "transcript": "But this is a very limited,",
+      "words": [
+        {
+          "word": "But",
+          "start": 148.88,
+          "end": 149.12,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "this",
+          "start": 149.12,
+          "end": 149.28,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "is",
+          "start": 149.28,
+          "end": 149.44,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "a",
+          "start": 149.44,
+          "end": 149.6,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "very",
+          "start": 149.6,
+          "end": 149.92,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "limited,",
+          "start": 149.92,
+          "end": 150.42,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 151.92,
+      "end": 154.66,
+      "speaker": 1,
+      "transcript": "pool of examples of data.",
+      "words": [
+        {
+          "word": "pool",
+          "start": 151.92,
+          "end": 152.42,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "of",
+          "start": 152.64,
+          "end": 153.04001,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "examples",
+          "start": 153.04001,
+          "end": 153.54001,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "of",
+          "start": 153.84,
+          "end": 154.16,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "data.",
+          "start": 154.16,
+          "end": 154.66,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 156.06499,
+      "end": 159.36499,
+      "speaker": 1,
+      "transcript": "So when I'm doing it, maybe I have a kind of",
+      "words": [
+        {
+          "word": "So",
+          "start": 156.06499,
+          "end": 156.385,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "when",
+          "start": 156.385,
+          "end": 156.625,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "I'm",
+          "start": 156.625,
+          "end": 156.86499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "doing",
+          "start": 156.86499,
+          "end": 157.185,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "it,",
+          "start": 157.185,
+          "end": 157.42499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "maybe",
+          "start": 157.42499,
+          "end": 157.825,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "I",
+          "start": 157.825,
+          "end": 157.985,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "have",
+          "start": 157.985,
+          "end": 158.385,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "a",
+          "start": 158.385,
+          "end": 158.625,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "kind",
+          "start": 158.625,
+          "end": 158.86499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "of",
+          "start": 158.86499,
+          "end": 159.36499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 160.06499,
+      "end": 163.28499,
+      "speaker": 1,
+      "transcript": "a pool of information on a couple of 100 people.",
+      "words": [
+        {
+          "word": "a",
+          "start": 160.06499,
+          "end": 160.22499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "pool",
+          "start": 160.22499,
+          "end": 160.625,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "of",
+          "start": 160.625,
+          "end": 160.94499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "information",
+          "start": 160.94499,
+          "end": 161.44499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "on",
+          "start": 161.58499,
+          "end": 161.825,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "a",
+          "start": 161.825,
+          "end": 161.985,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "couple",
+          "start": 161.985,
+          "end": 162.22499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "of",
+          "start": 162.22499,
+          "end": 162.385,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "100",
+          "start": 162.385,
+          "end": 162.78499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        },
+        {
+          "word": "people.",
+          "start": 162.78499,
+          "end": 163.28499,
+          "speaker": 1,
+          "speaker_confidence": 0.8225853
+        }
+      ]
+    },
+    {
+      "start": 164.305,
+      "end": 171.29,
+      "speaker": 1,
+      "transcript": "The AI that would write the book or the piece of music, it would have data on millions and billions of human beings",
+      "words": [
+        {
+          "word": "The",
+          "start": 164.305,
+          "end": 164.70499,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "AI",
+          "start": 164.70499,
+          "end": 165.105,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "that",
+          "start": 165.105,
+          "end": 165.265,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "would",
+          "start": 165.265,
+          "end": 165.50499,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "write",
+          "start": 165.50499,
+          "end": 165.825,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "the",
+          "start": 165.825,
+          "end": 165.985,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "book",
+          "start": 165.985,
+          "end": 166.22499,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "or",
+          "start": 166.22499,
+          "end": 166.385,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "the",
+          "start": 166.385,
+          "end": 166.545,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "piece",
+          "start": 166.545,
+          "end": 166.78499,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "of",
+          "start": 166.78499,
+          "end": 166.94499,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "music,",
+          "start": 166.94499,
+          "end": 167.43,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "it",
+          "start": 167.51,
+          "end": 167.67,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "would",
+          "start": 167.67,
+          "end": 167.90999,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "have",
+          "start": 167.90999,
+          "end": 168.40999,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "data",
+          "start": 168.46999,
+          "end": 168.87,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "on",
+          "start": 168.87,
+          "end": 169.26999,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "millions",
+          "start": 169.26999,
+          "end": 169.67,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "and",
+          "start": 169.67,
+          "end": 169.90999,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "billions",
+          "start": 169.90999,
+          "end": 170.23,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "of",
+          "start": 170.23,
+          "end": 170.46999,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "human",
+          "start": 170.46999,
+          "end": 170.79,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "beings",
+          "start": 170.79,
+          "end": 171.29,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        }
+      ]
+    },
+    {
+      "start": 171.82999,
+      "end": 172.65,
+      "speaker": 1,
+      "transcript": "over time.",
+      "words": [
+        {
+          "word": "over",
+          "start": 171.82999,
+          "end": 172.15,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "time.",
+          "start": 172.15,
+          "end": 172.65,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        }
+      ]
+    },
+    {
+      "start": 173.34999,
+      "end": 173.84999,
+      "speaker": 1,
+      "transcript": "So",
+      "words": [
+        {
+          "word": "So",
+          "start": 173.34999,
+          "end": 173.84999,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        }
+      ]
+    },
+    {
+      "start": 174.87,
+      "end": 178.17,
+      "speaker": 1,
+      "transcript": "if the goal is to create a certain state of mind",
+      "words": [
+        {
+          "word": "if",
+          "start": 174.87,
+          "end": 175.18999,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "the",
+          "start": 175.18999,
+          "end": 175.43,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "goal",
+          "start": 175.43,
+          "end": 175.75,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "is",
+          "start": 175.75,
+          "end": 175.98999,
+          "speaker": 1,
+          "speaker_confidence": 0.732398
+        },
+        {
+          "word": "to",
+          "start": 175.98999,
+          "end": 176.15,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        },
+        {
+          "word": "create",
+          "start": 176.15,
+          "end": 176.62999,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        },
+        {
+          "word": "a",
+          "start": 176.62999,
+          "end": 176.70999,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        },
+        {
+          "word": "certain",
+          "start": 176.70999,
+          "end": 177.18999,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        },
+        {
+          "word": "state",
+          "start": 177.18999,
+          "end": 177.51,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        },
+        {
+          "word": "of",
+          "start": 177.51,
+          "end": 177.67,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        },
+        {
+          "word": "mind",
+          "start": 177.67,
+          "end": 178.17,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        }
+      ]
+    },
+    {
+      "start": 179.82999,
+      "end": 180.89,
+      "speaker": 1,
+      "transcript": "for other people,",
+      "words": [
+        {
+          "word": "for",
+          "start": 179.82999,
+          "end": 180.06999,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        },
+        {
+          "word": "other",
+          "start": 180.06999,
+          "end": 180.39,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        },
+        {
+          "word": "people,",
+          "start": 180.39,
+          "end": 180.89,
+          "speaker": 1,
+          "speaker_confidence": 0.4711454
+        }
+      ]
+    },
+    {
+      "start": 181.535,
+      "end": 184.195,
+      "speaker": 1,
+      "transcript": "I just don't see how we can compete",
+      "words": [
+        {
+          "word": "I",
+          "start": 181.535,
+          "end": 181.77501,
+          "speaker": 1,
+          "speaker_confidence": 0.40243053
+        },
+        {
+          "word": "just",
+          "start": 181.77501,
+          "end": 182.175,
+          "speaker": 1,
+          "speaker_confidence": 0.40243053
+        },
+        {
+          "word": "don't",
+          "start": 182.175,
+          "end": 182.495,
+          "speaker": 1,
+          "speaker_confidence": 0.40243053
+        },
+        {
+          "word": "see",
+          "start": 182.495,
+          "end": 182.815,
+          "speaker": 1,
+          "speaker_confidence": 0.40243053
+        },
+        {
+          "word": "how",
+          "start": 182.815,
+          "end": 183.05501,
+          "speaker": 1,
+          "speaker_confidence": 0.40243053
+        },
+        {
+          "word": "we",
+          "start": 183.05501,
+          "end": 183.295,
+          "speaker": 1,
+          "speaker_confidence": 0.40243053
+        },
+        {
+          "word": "can",
+          "start": 183.295,
+          "end": 183.695,
+          "speaker": 1,
+          "speaker_confidence": 0.40243053
+        },
+        {
+          "word": "compete",
+          "start": 183.695,
+          "end": 184.195,
+          "speaker": 1,
+          "speaker_confidence": 0.40243053
+        }
+      ]
+    },
+    {
+      "start": 185.455,
+      "end": 186.995,
+      "speaker": 1,
+      "transcript": "with the AI on that,",
+      "words": [
+        {
+          "word": "with",
+          "start": 185.455,
+          "end": 185.695,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "the",
+          "start": 185.695,
+          "end": 185.935,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "AI",
+          "start": 185.935,
+          "end": 186.335,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "on",
+          "start": 186.335,
+          "end": 186.495,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "that,",
+          "start": 186.495,
+          "end": 186.995,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        }
+      ]
+    },
+    {
+      "start": 187.375,
+      "end": 191.235,
+      "speaker": 1,
+      "transcript": "especially as it will also have the advantage of being able to tailor",
+      "words": [
+        {
+          "word": "especially",
+          "start": 187.375,
+          "end": 187.775,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "as",
+          "start": 187.775,
+          "end": 187.935,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "it",
+          "start": 187.935,
+          "end": 188.095,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "will",
+          "start": 188.095,
+          "end": 188.335,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "also",
+          "start": 188.335,
+          "end": 188.655,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "have",
+          "start": 188.655,
+          "end": 188.815,
+          "speaker": 1,
+          "speaker_confidence": 0.44020438
+        },
+        {
+          "word": "the",
+          "start": 188.815,
+          "end": 188.975,
+          "speaker": 1,
+          "speaker_confidence": 0.46238387
+        },
+        {
+          "word": "advantage",
+          "start": 188.975,
+          "end": 189.475,
+          "speaker": 1,
+          "speaker_confidence": 0.46238387
+        },
+        {
+          "word": "of",
+          "start": 189.615,
+          "end": 189.775,
+          "speaker": 1,
+          "speaker_confidence": 0.46238387
+        },
+        {
+          "word": "being",
+          "start": 189.775,
+          "end": 190.175,
+          "speaker": 1,
+          "speaker_confidence": 0.46238387
+        },
+        {
+          "word": "able",
+          "start": 190.175,
+          "end": 190.495,
+          "speaker": 1,
+          "speaker_confidence": 0.46238387
+        },
+        {
+          "word": "to",
+          "start": 190.495,
+          "end": 190.735,
+          "speaker": 1,
+          "speaker_confidence": 0.46238387
+        },
+        {
+          "word": "tailor",
+          "start": 190.735,
+          "end": 191.235,
+          "speaker": 1,
+          "speaker_confidence": 0.46238387
+        }
+      ]
+    },
+    {
+      "start": 192.575,
+      "end": 193.075,
+      "speaker": 1,
+      "transcript": "the",
+      "words": [
+        {
+          "word": "the",
+          "start": 192.575,
+          "end": 193.075,
+          "speaker": 1,
+          "speaker_confidence": 0.46238387
+        }
+      ]
+    },
+    {
+      "start": 193.375,
+      "end": 196.995,
+      "speaker": 1,
+      "transcript": "the book, the songs, specifically to different people.",
+      "words": [
+        {
+          "word": "the",
+          "start": 193.375,
+          "end": 193.615,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "book,",
+          "start": 193.615,
+          "end": 194.115,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "the",
+          "start": 194.175,
+          "end": 194.575,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "songs,",
+          "start": 194.575,
+          "end": 195.075,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "specifically",
+          "start": 195.215,
+          "end": 195.715,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "to",
+          "start": 195.935,
+          "end": 196.095,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "different",
+          "start": 196.095,
+          "end": 196.495,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "people.",
+          "start": 196.495,
+          "end": 196.995,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        }
+      ]
+    },
+    {
+      "start": 197.81,
+      "end": 200.95,
+      "speaker": 1,
+      "transcript": "I can't write a slightly different book for different people.",
+      "words": [
+        {
+          "word": "I",
+          "start": 197.81,
+          "end": 197.97,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "can't",
+          "start": 197.97,
+          "end": 198.37,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "write",
+          "start": 198.37,
+          "end": 198.69,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "a",
+          "start": 198.69,
+          "end": 198.85,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "slightly",
+          "start": 198.85,
+          "end": 199.25,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "different",
+          "start": 199.25,
+          "end": 199.57,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "book",
+          "start": 199.57,
+          "end": 199.89,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "for",
+          "start": 199.89,
+          "end": 200.13,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "different",
+          "start": 200.13,
+          "end": 200.45,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "people.",
+          "start": 200.45,
+          "end": 200.95,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        }
+      ]
+    },
+    {
+      "start": 201.49,
+      "end": 203.91,
+      "speaker": 1,
+      "transcript": "But for AI, maybe it would be",
+      "words": [
+        {
+          "word": "But",
+          "start": 201.49,
+          "end": 201.97,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "for",
+          "start": 201.97,
+          "end": 202.37,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "AI,",
+          "start": 202.37,
+          "end": 202.77,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "maybe",
+          "start": 202.77,
+          "end": 203.09,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "it",
+          "start": 203.09,
+          "end": 203.25,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "would",
+          "start": 203.25,
+          "end": 203.41,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "be",
+          "start": 203.41,
+          "end": 203.91,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        }
+      ]
+    },
+    {
+      "start": 204.69,
+      "end": 205.51,
+      "speaker": 1,
+      "transcript": "quite easy.",
+      "words": [
+        {
+          "word": "quite",
+          "start": 204.69,
+          "end": 205.01,
+          "speaker": 1,
+          "speaker_confidence": 0.72382295
+        },
+        {
+          "word": "easy.",
+          "start": 205.01,
+          "end": 205.51,
+          "speaker": 1,
+          "speaker_confidence": 0.08073413
+        }
+      ]
+    },
+    {
+      "start": 205.97,
+      "end": 207.99,
+      "speaker": 0,
+      "transcript": "Yeah. I think the tailor making aspect",
+      "words": [
+        {
+          "word": "Yeah.",
+          "start": 205.97,
+          "end": 206.13,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "I",
+          "start": 206.13,
+          "end": 206.21,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "think",
+          "start": 206.21,
+          "end": 206.45,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "the",
+          "start": 206.45,
+          "end": 206.69,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "tailor",
+          "start": 206.69,
+          "end": 207.01,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "making",
+          "start": 207.01,
+          "end": 207.49,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "aspect",
+          "start": 207.49,
+          "end": 207.99,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        }
+      ]
+    },
+    {
+      "start": 208.61,
+      "end": 211.03,
+      "speaker": 0,
+      "transcript": "is quite interesting. I'd love to know.",
+      "words": [
+        {
+          "word": "is",
+          "start": 208.61,
+          "end": 208.93,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "quite",
+          "start": 208.93,
+          "end": 209.25,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "interesting.",
+          "start": 209.25,
+          "end": 209.75,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "I'd",
+          "start": 209.89,
+          "end": 210.13,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "love",
+          "start": 210.13,
+          "end": 210.37,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "to",
+          "start": 210.37,
+          "end": 210.53,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        },
+        {
+          "word": "know.",
+          "start": 210.53,
+          "end": 211.03,
+          "speaker": 0,
+          "speaker_confidence": 0.61040145
+        }
+      ]
+    },
+    {
+      "start": 211.515,
+      "end": 216.415,
+      "speaker": 0,
+      "transcript": "I'd love to try it and see if it'll make music that will eventually, I guess,",
+      "words": [
+        {
+          "word": "I'd",
+          "start": 211.515,
+          "end": 211.67499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "love",
+          "start": 211.67499,
+          "end": 211.75499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "to",
+          "start": 211.75499,
+          "end": 211.995,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "try",
+          "start": 211.995,
+          "end": 212.235,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "it",
+          "start": 212.235,
+          "end": 212.47499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "and",
+          "start": 212.47499,
+          "end": 212.715,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "see",
+          "start": 212.715,
+          "end": 212.95499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "if",
+          "start": 212.95499,
+          "end": 213.19499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "it'll",
+          "start": 213.19499,
+          "end": 213.515,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "make",
+          "start": 213.515,
+          "end": 213.83499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "music",
+          "start": 213.83499,
+          "end": 214.31499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "that",
+          "start": 214.31499,
+          "end": 214.81499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "will",
+          "start": 214.95499,
+          "end": 215.19499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "eventually,",
+          "start": 215.19499,
+          "end": 215.69499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "I",
+          "start": 215.75499,
+          "end": 215.915,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "guess,",
+          "start": 215.915,
+          "end": 216.415,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        }
+      ]
+    },
+    {
+      "start": 217.11499,
+      "end": 220.015,
+      "speaker": 0,
+      "transcript": "the kind of music that I really love. I mean, it's almost like",
+      "words": [
+        {
+          "word": "the",
+          "start": 217.11499,
+          "end": 217.275,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "kind",
+          "start": 217.275,
+          "end": 217.515,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "of",
+          "start": 217.515,
+          "end": 217.595,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "music",
+          "start": 217.595,
+          "end": 217.915,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "that",
+          "start": 217.915,
+          "end": 218.075,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "I",
+          "start": 218.075,
+          "end": 218.235,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "really",
+          "start": 218.235,
+          "end": 218.47499,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "love.",
+          "start": 218.47499,
+          "end": 218.715,
+          "speaker": 0,
+          "speaker_confidence": 0.82602525
+        },
+        {
+          "word": "I",
+          "start": 218.715,
+          "end": 218.795,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        },
+        {
+          "word": "mean,",
+          "start": 218.795,
+          "end": 218.95499,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        },
+        {
+          "word": "it's",
+          "start": 218.95499,
+          "end": 219.19499,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        },
+        {
+          "word": "almost",
+          "start": 219.19499,
+          "end": 219.515,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        },
+        {
+          "word": "like",
+          "start": 219.515,
+          "end": 220.015,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        }
+      ]
+    },
+    {
+      "start": 220.39499,
+      "end": 222.17499,
+      "speaker": 0,
+      "transcript": "music streaming platforms",
+      "words": [
+        {
+          "word": "music",
+          "start": 220.39499,
+          "end": 220.89499,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        },
+        {
+          "word": "streaming",
+          "start": 221.11499,
+          "end": 221.61499,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        },
+        {
+          "word": "platforms",
+          "start": 221.67499,
+          "end": 222.17499,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        }
+      ]
+    },
+    {
+      "start": 222.795,
+      "end": 226.25499,
+      "speaker": 0,
+      "transcript": "suggesting playlists and songs based on what you've listened to algorithmically.",
+      "words": [
+        {
+          "word": "suggesting",
+          "start": 222.795,
+          "end": 223.295,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        },
+        {
+          "word": "playlists",
+          "start": 223.355,
+          "end": 223.83499,
+          "speaker": 0,
+          "speaker_confidence": 0.6793083
+        },
+        {
+          "word": "and",
+          "start": 223.83499,
+          "end": 223.995,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        },
+        {
+          "word": "songs",
+          "start": 223.995,
+          "end": 224.39499,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        },
+        {
+          "word": "based",
+          "start": 224.39499,
+          "end": 224.635,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        },
+        {
+          "word": "on",
+          "start": 224.635,
+          "end": 224.795,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        },
+        {
+          "word": "what",
+          "start": 224.795,
+          "end": 224.95499,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        },
+        {
+          "word": "you've",
+          "start": 224.95499,
+          "end": 225.19499,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        },
+        {
+          "word": "listened",
+          "start": 225.19499,
+          "end": 225.435,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        },
+        {
+          "word": "to",
+          "start": 225.435,
+          "end": 225.75499,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        },
+        {
+          "word": "algorithmically.",
+          "start": 225.75499,
+          "end": 226.25499,
+          "speaker": 0,
+          "speaker_confidence": 0.5432012
+        }
+      ]
+    },
+    {
+      "start": 228.28,
+      "end": 228.78,
+      "speaker": 0,
+      "transcript": "But",
+      "words": [
+        {
+          "word": "But",
+          "start": 228.28,
+          "end": 228.78,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        }
+      ]
+    },
+    {
+      "start": 229.64,
+      "end": 230.14,
+      "speaker": 0,
+      "transcript": "the...",
+      "words": [
+        {
+          "word": "the...",
+          "start": 229.64,
+          "end": 230.14,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        }
+      ]
+    },
+    {
+      "start": 231.64,
+      "end": 235.66,
+      "speaker": 0,
+      "transcript": "I I just wonder... I I don't know if this is a good enough comparison, but",
+      "words": [
+        {
+          "word": "I",
+          "start": 231.64,
+          "end": 231.79999,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "I",
+          "start": 231.79999,
+          "end": 231.95999,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "just",
+          "start": 231.95999,
+          "end": 232.28,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "wonder...",
+          "start": 232.28,
+          "end": 232.78,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "I",
+          "start": 232.84,
+          "end": 233.0,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "I",
+          "start": 233.0,
+          "end": 233.16,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "don't",
+          "start": 233.16,
+          "end": 233.23999,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "know",
+          "start": 233.23999,
+          "end": 233.4,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "if",
+          "start": 233.4,
+          "end": 233.56,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "this",
+          "start": 233.56,
+          "end": 233.72,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "is",
+          "start": 233.72,
+          "end": 233.76001,
+          "speaker": 0,
+          "speaker_confidence": 0.5558463
+        },
+        {
+          "word": "a",
+          "start": 233.76001,
+          "end": 233.8,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "good",
+          "start": 233.8,
+          "end": 234.12,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "enough",
+          "start": 234.12,
+          "end": 234.44,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "comparison,",
+          "start": 234.44,
+          "end": 234.94,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "but",
+          "start": 235.16,
+          "end": 235.66,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        }
+      ]
+    },
+    {
+      "start": 236.04,
+      "end": 237.26,
+      "speaker": 0,
+      "transcript": "let's say there's something",
+      "words": [
+        {
+          "word": "let's",
+          "start": 236.04,
+          "end": 236.28,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "say",
+          "start": 236.28,
+          "end": 236.44,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "there's",
+          "start": 236.44,
+          "end": 236.76,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "something",
+          "start": 236.76,
+          "end": 237.26,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        }
+      ]
+    },
+    {
+      "start": 237.56,
+      "end": 239.58,
+      "speaker": 0,
+      "transcript": "cheap and quick, quickly prepared,",
+      "words": [
+        {
+          "word": "cheap",
+          "start": 237.56,
+          "end": 237.88,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "and",
+          "start": 237.88,
+          "end": 238.2,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "quick,",
+          "start": 238.2,
+          "end": 238.68,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "quickly",
+          "start": 238.68,
+          "end": 239.08,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "prepared,",
+          "start": 239.08,
+          "end": 239.58,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        }
+      ]
+    },
+    {
+      "start": 239.95999,
+      "end": 241.42,
+      "speaker": 0,
+      "transcript": "very accessible like",
+      "words": [
+        {
+          "word": "very",
+          "start": 239.95999,
+          "end": 240.28,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "accessible",
+          "start": 240.28,
+          "end": 240.78,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "like",
+          "start": 240.92,
+          "end": 241.42,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        }
+      ]
+    },
+    {
+      "start": 241.72,
+      "end": 242.54,
+      "speaker": 0,
+      "transcript": "fast food.",
+      "words": [
+        {
+          "word": "fast",
+          "start": 241.72,
+          "end": 242.04,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        },
+        {
+          "word": "food.",
+          "start": 242.04,
+          "end": 242.54,
+          "speaker": 0,
+          "speaker_confidence": 0.849789
+        }
+      ]
+    },
+    {
+      "start": 244.575,
+      "end": 246.595,
+      "speaker": 0,
+      "transcript": "Yes it does have a big market,",
+      "words": [
+        {
+          "word": "Yes",
+          "start": 244.575,
+          "end": 244.895,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        },
+        {
+          "word": "it",
+          "start": 244.895,
+          "end": 245.135,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        },
+        {
+          "word": "does",
+          "start": 245.135,
+          "end": 245.455,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        },
+        {
+          "word": "have",
+          "start": 245.455,
+          "end": 245.615,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        },
+        {
+          "word": "a",
+          "start": 245.615,
+          "end": 245.775,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        },
+        {
+          "word": "big",
+          "start": 245.775,
+          "end": 246.095,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        },
+        {
+          "word": "market,",
+          "start": 246.095,
+          "end": 246.595,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        }
+      ]
+    },
+    {
+      "start": 247.295,
+      "end": 248.035,
+      "speaker": 0,
+      "transcript": "but then",
+      "words": [
+        {
+          "word": "but",
+          "start": 247.295,
+          "end": 247.535,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        },
+        {
+          "word": "then",
+          "start": 247.535,
+          "end": 248.035,
+          "speaker": 0,
+          "speaker_confidence": 0.6235426
+        }
+      ]
+    },
+    {
+      "start": 248.895,
+      "end": 252.115,
+      "speaker": 0,
+      "transcript": "there's a different type of value that people place on",
+      "words": [
+        {
+          "word": "there's",
+          "start": 248.895,
+          "end": 249.295,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "a",
+          "start": 249.295,
+          "end": 249.455,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "different",
+          "start": 249.455,
+          "end": 249.69499,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "type",
+          "start": 249.69499,
+          "end": 249.935,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "of",
+          "start": 249.935,
+          "end": 250.095,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "value",
+          "start": 250.095,
+          "end": 250.575,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "that",
+          "start": 250.575,
+          "end": 250.735,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "people",
+          "start": 250.735,
+          "end": 251.055,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "place",
+          "start": 251.055,
+          "end": 251.555,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "on",
+          "start": 251.615,
+          "end": 252.115,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        }
+      ]
+    },
+    {
+      "start": 252.735,
+      "end": 256.675,
+      "speaker": 0,
+      "transcript": "something like the, what is it called, the effort heuristic,",
+      "words": [
+        {
+          "word": "something",
+          "start": 252.735,
+          "end": 253.13501,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "like",
+          "start": 253.13501,
+          "end": 253.535,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "the,",
+          "start": 253.535,
+          "end": 254.035,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "what",
+          "start": 254.095,
+          "end": 254.33499,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "is",
+          "start": 254.33499,
+          "end": 254.575,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "it",
+          "start": 254.575,
+          "end": 254.655,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "called,",
+          "start": 254.655,
+          "end": 255.155,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "the",
+          "start": 255.295,
+          "end": 255.615,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "effort",
+          "start": 255.615,
+          "end": 256.115,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        },
+        {
+          "word": "heuristic,",
+          "start": 256.175,
+          "end": 256.675,
+          "speaker": 0,
+          "speaker_confidence": 0.85737526
+        }
+      ]
+    },
+    {
+      "start": 258.67,
+      "end": 259.49002,
+      "speaker": 0,
+      "transcript": "where people",
+      "words": [
+        {
+          "word": "where",
+          "start": 258.67,
+          "end": 258.99002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "people",
+          "start": 258.99002,
+          "end": 259.49002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        }
+      ]
+    },
+    {
+      "start": 260.03,
+      "end": 260.93,
+      "speaker": 0,
+      "transcript": "if they know",
+      "words": [
+        {
+          "word": "if",
+          "start": 260.03,
+          "end": 260.27002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "they",
+          "start": 260.27002,
+          "end": 260.43,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "know",
+          "start": 260.43,
+          "end": 260.93,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        }
+      ]
+    },
+    {
+      "start": 261.39,
+      "end": 261.89,
+      "speaker": 0,
+      "transcript": "that,",
+      "words": [
+        {
+          "word": "that,",
+          "start": 261.39,
+          "end": 261.89,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        }
+      ]
+    },
+    {
+      "start": 262.59,
+      "end": 265.33002,
+      "speaker": 0,
+      "transcript": "you know, if peep... The human or",
+      "words": [
+        {
+          "word": "you",
+          "start": 262.59,
+          "end": 262.75,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "know,",
+          "start": 262.75,
+          "end": 263.23,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "if",
+          "start": 263.23,
+          "end": 263.55002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "peep...",
+          "start": 263.55002,
+          "end": 264.05002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "The",
+          "start": 264.11002,
+          "end": 264.27002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "human",
+          "start": 264.27002,
+          "end": 264.77002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "or",
+          "start": 264.83002,
+          "end": 265.33002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        }
+      ]
+    },
+    {
+      "start": 265.71002,
+      "end": 269.7927,
+      "speaker": 0,
+      "transcript": "maybe even AI, if they've done it in a more difficult way or something.",
+      "words": [
+        {
+          "word": "maybe",
+          "start": 265.71002,
+          "end": 266.19,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "even",
+          "start": 266.19,
+          "end": 266.51,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "AI,",
+          "start": 266.51,
+          "end": 266.99002,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "if",
+          "start": 266.99002,
+          "end": 267.15,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "they've",
+          "start": 267.15,
+          "end": 267.47,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "done",
+          "start": 267.47,
+          "end": 267.63,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "it",
+          "start": 267.63,
+          "end": 267.87,
+          "speaker": 0,
+          "speaker_confidence": 0.80104935
+        },
+        {
+          "word": "in",
+          "start": 267.87,
+          "end": 267.95,
+          "speaker": 0,
+          "speaker_confidence": 0.44195026
+        },
+        {
+          "word": "a",
+          "start": 267.95,
+          "end": 268.03,
+          "speaker": 0,
+          "speaker_confidence": 0.44195026
+        },
+        {
+          "word": "more",
+          "start": 268.03,
+          "end": 268.27002,
+          "speaker": 0,
+          "speaker_confidence": 0.44195026
+        },
+        {
+          "word": "difficult",
+          "start": 268.27002,
+          "end": 268.67,
+          "speaker": 0,
+          "speaker_confidence": 0.44195026
+        },
+        {
+          "word": "way",
+          "start": 268.67,
+          "end": 269.07,
+          "speaker": 0,
+          "speaker_confidence": 0.44195026
+        },
+        {
+          "word": "or",
+          "start": 269.07,
+          "end": 269.39,
+          "speaker": 0,
+          "speaker_confidence": 0.44195026
+        },
+        {
+          "word": "something.",
+          "start": 269.39,
+          "end": 269.7927,
+          "speaker": 0,
+          "speaker_confidence": 0.44195026
+        }
+      ]
+    }
+  ]
+}

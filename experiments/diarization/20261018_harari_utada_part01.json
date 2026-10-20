@@ -1,0 +1,698 @@
+{
+  "date": "2026-10-18",
+  "video": "harari_utada_part01.mp4",
+  "deepgram": {
+    "model": "nova-2-general",
+    "diarize": true,
+    "utt_split": 0.8
+  },
+  "merge_within_speaker": true,
+  "summary": {
+    "num_speakers": 2,
+    "speaker_turns": 6,
+    "per_speaker": {
+      "話者A": {
+        "segments": 15,
+        "seconds": 124.9
+      },
+      "話者B": {
+        "segments": 13,
+        "seconds": 118.7
+      }
+    }
+  },
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 4.98,
+      "speaker": 0,
+      "transcript": "Hi, it's very nice to meet you. It's nice to meet you too.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 6.64,
+      "end": 28.145,
+      "speaker": 1,
+      "transcript": "Well, I'm very happy to be here, it's very nice to meet you. Yeah, I'm also happy to meet you and especially in this location in the Freud Museum. I think it's the perfect place Yes. To talk about art and creativity and the human mind and, you know, in this age of of AI, when all of these things are in in question,",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 29.06,
+      "end": 34.2,
+      "speaker": 1,
+      "transcript": "And what what will be the future of of artists, of human creativity?",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 35.38,
+      "end": 37.8,
+      "speaker": 1,
+      "transcript": "But maybe we'll start with something a bit lighter.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 38.739998,
+      "end": 60.0,
+      "speaker": 0,
+      "transcript": "Yeah. There's a lot we can dive into. But when I first got the offer to do this talk with you, I was very excited because my son turns 10 this month. And when I was pregnant ten years ago, my very good friend gave me your book. Oh. Sapiens.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 60.38,
+      "end": 60.88,
+      "speaker": 0,
+      "transcript": "Okay.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 61.74,
+      "end": 70.16,
+      "speaker": 0,
+      "transcript": "With a note saying, since you're growing a new Sapiens, I'd like to gift you this book. And so it felt very full circle.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 72.255,
+      "end": 78.675,
+      "speaker": 1,
+      "transcript": "And was there anything in the book that kind of caught your attention? A story, an idea, something that...",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 79.695,
+      "end": 101.465,
+      "speaker": 0,
+      "transcript": "I'm sure a lot of people say this, but the part where you share the perspective that cultivating wheat, we didn't domesticate wheat, they domesticated humans. That was one of those like, oh my god, like world like view shifting moments that,",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 102.085,
+      "end": 103.545,
+      "speaker": 0,
+      "transcript": "I don't think I'll ever forget.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 104.965,
+      "end": 109.145,
+      "speaker": 0,
+      "transcript": "And I really enjoyed those moments in Nexus as well. Thank you.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 110.085,
+      "end": 123.619995,
+      "speaker": 0,
+      "transcript": "Like, I love the way you express... You take the way you leave all these ideas and then like a mathematical equation, you somehow bring it together into a very simple expression.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 123.92,
+      "end": 134.50499,
+      "speaker": 0,
+      "transcript": "Like, I love the analogy of the world wide web having spread and connected people, which you think might be compared to a cocoon.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 135.605,
+      "end": 137.785,
+      "speaker": 0,
+      "transcript": "I love I love making... I love those connections",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 138.325,
+      "end": 146.39,
+      "speaker": 1,
+      "transcript": "you make. Yeah. I think that previously, I mean, everybody expected the web to just connect all all all the universe ultimately.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 146.84999,
+      "end": 150.95,
+      "speaker": 1,
+      "transcript": "And now increasingly, the kind of the web is closing in on on us.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 151.25,
+      "end": 163.635,
+      "speaker": 1,
+      "transcript": "And people sometimes live side by side, each one cocooned in a different universe, almost unable to to to reach out and to connect to the next person.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 164.655,
+      "end": 177.67,
+      "speaker": 1,
+      "transcript": "And I think, you know, when when I think about music, I mean, this is what music has been trying to do for thousands of years. This is its power. And art. Yeah. To to connect people together. Yeah.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 178.37,
+      "end": 183.43,
+      "speaker": 1,
+      "transcript": "And I was wondering what our... Maybe we we just jump right in. Sure. Let's do it.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 184.005,
+      "end": 197.59001,
+      "speaker": 1,
+      "transcript": "What do you think is the future of music in the in the era of AI? Like, maybe I'll just say about myself. I I write books. I'm a scholar. But writing history is somewhere in between kind of science and art.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 197.97,
+      "end": 201.83,
+      "speaker": 1,
+      "transcript": "Because to write a history book, it's not an equation. You need to tell stories.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 202.37001,
+      "end": 206.87001,
+      "speaker": 1,
+      "transcript": "So I also, to some extent, I I I see myself as an artist.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 207.49,
+      "end": 226.14,
+      "speaker": 1,
+      "transcript": "And I don't know if I'll still be writing books in five years or ten years because maybe by the 2030s, AIs will write books like Sapiens and Nexus so much better than me that it will be kind of almost meaningless for a human being to engage in that.",
+      "speaker_label": "話者B"
+    },
+    {
+      "start": 227.42,
+      "end": 230.72,
+      "speaker": 0,
+      "transcript": "I just find that really hard to imagine.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 231.74,
+      "end": 245.92499,
+      "speaker": 0,
+      "transcript": "I don't... I understand logically that that is where things are going in a lot of creative fields. Like with, I was talking with my friend who's in the film industry and she said everyone's talking about VO3.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 246.385,
+      "end": 254.08499,
+      "speaker": 0,
+      "transcript": "It's the new... Oh, it's new. Yeah. Yeah. And it's just another level. It made a big jump in terms of what it could do.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 254.46,
+      "end": 263.28,
+      "speaker": 0,
+      "transcript": "And people are really, well, some people are quite shocked, shaken by their future, the future of their, you know, their work.",
+      "speaker_label": "話者A"
+    },
+    {
+      "start": 265.18,
+      "end": 267.2,
+      "speaker": 0,
+      "transcript": "I understand that logically.",
+      "speaker_label": "話者A"
+    }
+  ],
+  "raw_utterances": [
+    {
+      "start": 0.0,
+      "end": 0.5,
+      "speaker": 0,
+      "transcript": "Hi,"
+    },
+    {
+      "start": 1.92,
+      "end": 4.98,
+      "speaker": 0,
+      "transcript": "it's very nice to meet you. It's nice to meet you too."
+    },
+    {
+      "start": 6.64,
+      "end": 20.224998,
+      "speaker": 1,
+      "transcript": "Well, I'm very happy to be here, it's very nice to meet you. Yeah, I'm also happy to meet you and especially in this location in the Freud Museum. I think it's the perfect place Yes. To talk about art and creativity and the human mind"
+    },
+    {
+      "start": 20.525,
+      "end": 23.505,
+      "speaker": 1,
+      "transcript": "and, you know, in this age of of AI,"
+    },
+    {
+      "start": 24.605,
+      "end": 28.145,
+      "speaker": 1,
+      "transcript": "when all of these things are in in question,"
+    },
+    {
+      "start": 29.06,
+      "end": 31.16,
+      "speaker": 1,
+      "transcript": "And what what will be the future"
+    },
+    {
+      "start": 31.78,
+      "end": 34.2,
+      "speaker": 1,
+      "transcript": "of of artists, of human creativity?"
+    },
+    {
+      "start": 35.38,
+      "end": 37.8,
+      "speaker": 1,
+      "transcript": "But maybe we'll start with something a bit lighter."
+    },
+    {
+      "start": 38.739998,
+      "end": 42.255,
+      "speaker": 0,
+      "transcript": "Yeah. There's a lot we can dive into. But"
+    },
+    {
+      "start": 43.455,
+      "end": 44.595,
+      "speaker": 0,
+      "transcript": "when I first got"
+    },
+    {
+      "start": 45.535,
+      "end": 49.955,
+      "speaker": 0,
+      "transcript": "the offer to do this talk with you, I was very excited because"
+    },
+    {
+      "start": 50.655,
+      "end": 52.035,
+      "speaker": 0,
+      "transcript": "my son turns 10"
+    },
+    {
+      "start": 52.415,
+      "end": 53.555,
+      "speaker": 0,
+      "transcript": "this month. And"
+    },
+    {
+      "start": 54.095,
+      "end": 56.115,
+      "speaker": 0,
+      "transcript": "when I was pregnant ten years ago,"
+    },
+    {
+      "start": 56.460003,
+      "end": 60.0,
+      "speaker": 0,
+      "transcript": "my very good friend gave me your book. Oh. Sapiens."
+    },
+    {
+      "start": 60.38,
+      "end": 60.88,
+      "speaker": 0,
+      "transcript": "Okay."
+    },
+    {
+      "start": 61.74,
+      "end": 63.440002,
+      "speaker": 0,
+      "transcript": "With a note saying,"
+    },
+    {
+      "start": 64.14,
+      "end": 65.92,
+      "speaker": 0,
+      "transcript": "since you're growing a new Sapiens,"
+    },
+    {
+      "start": 66.7,
+      "end": 70.16,
+      "speaker": 0,
+      "transcript": "I'd like to gift you this book. And so it felt very full circle."
+    },
+    {
+      "start": 72.255,
+      "end": 77.315,
+      "speaker": 1,
+      "transcript": "And was there anything in the book that kind of caught your attention? A story, an idea,"
+    },
+    {
+      "start": 77.775,
+      "end": 78.675,
+      "speaker": 1,
+      "transcript": "something that..."
+    },
+    {
+      "start": 79.695,
+      "end": 82.354996,
+      "speaker": 0,
+      "transcript": "I'm sure a lot of people say this, but"
+    },
+    {
+      "start": 83.135,
+      "end": 84.435,
+      "speaker": 0,
+      "transcript": "the part where"
+    },
+    {
+      "start": 86.26,
+      "end": 88.68,
+      "speaker": 0,
+      "transcript": "you share the perspective that cultivating"
+    },
+    {
+      "start": 89.38,
+      "end": 89.88,
+      "speaker": 0,
+      "transcript": "wheat,"
+    },
+    {
+      "start": 91.78,
+      "end": 94.2,
+      "speaker": 0,
+      "transcript": "we didn't domesticate wheat, they domesticated"
+    },
+    {
+      "start": 94.5,
+      "end": 96.52,
+      "speaker": 0,
+      "transcript": "humans. That was one of those like,"
+    },
+    {
+      "start": 97.06,
+      "end": 98.119995,
+      "speaker": 0,
+      "transcript": "oh my god, like"
+    },
+    {
+      "start": 99.205,
+      "end": 101.465,
+      "speaker": 0,
+      "transcript": "world like view shifting moments that,"
+    },
+    {
+      "start": 102.085,
+      "end": 103.545,
+      "speaker": 0,
+      "transcript": "I don't think I'll ever forget."
+    },
+    {
+      "start": 104.965,
+      "end": 109.145,
+      "speaker": 0,
+      "transcript": "And I really enjoyed those moments in Nexus as well. Thank you."
+    },
+    {
+      "start": 110.085,
+      "end": 112.665,
+      "speaker": 0,
+      "transcript": "Like, I love the way you express... You take"
+    },
+    {
+      "start": 114.32,
+      "end": 116.5,
+      "speaker": 0,
+      "transcript": "the way you leave all these ideas"
+    },
+    {
+      "start": 116.88,
+      "end": 122.5,
+      "speaker": 0,
+      "transcript": "and then like a mathematical equation, you somehow bring it together into a very simple"
+    },
+    {
+      "start": 123.119995,
+      "end": 123.619995,
+      "speaker": 0,
+      "transcript": "expression."
+    },
+    {
+      "start": 123.92,
+      "end": 124.42,
+      "speaker": 0,
+      "transcript": "Like,"
+    },
+    {
+      "start": 124.799995,
+      "end": 127.7,
+      "speaker": 0,
+      "transcript": "I love the analogy of the world wide web"
+    },
+    {
+      "start": 128.485,
+      "end": 130.50499,
+      "speaker": 0,
+      "transcript": "having spread and connected people,"
+    },
+    {
+      "start": 131.205,
+      "end": 132.50499,
+      "speaker": 0,
+      "transcript": "which you think might"
+    },
+    {
+      "start": 133.125,
+      "end": 134.50499,
+      "speaker": 0,
+      "transcript": "be compared to a cocoon."
+    },
+    {
+      "start": 135.605,
+      "end": 137.785,
+      "speaker": 0,
+      "transcript": "I love I love making... I love those connections"
+    },
+    {
+      "start": 138.325,
+      "end": 143.03,
+      "speaker": 1,
+      "transcript": "you make. Yeah. I think that previously, I mean, everybody expected the web to just"
+    },
+    {
+      "start": 143.65,
+      "end": 145.34999,
+      "speaker": 1,
+      "transcript": "connect all all all the universe"
+    },
+    {
+      "start": 145.89,
+      "end": 146.39,
+      "speaker": 1,
+      "transcript": "ultimately."
+    },
+    {
+      "start": 146.84999,
+      "end": 150.95,
+      "speaker": 1,
+      "transcript": "And now increasingly, the kind of the web is closing in on on us."
+    },
+    {
+      "start": 151.25,
+      "end": 155.51,
+      "speaker": 1,
+      "transcript": "And people sometimes live side by side, each one cocooned"
+    },
+    {
+      "start": 155.855,
+      "end": 156.915,
+      "speaker": 1,
+      "transcript": "in a different universe,"
+    },
+    {
+      "start": 158.095,
+      "end": 158.995,
+      "speaker": 1,
+      "transcript": "almost unable"
+    },
+    {
+      "start": 159.855,
+      "end": 161.47499,
+      "speaker": 1,
+      "transcript": "to to to reach out"
+    },
+    {
+      "start": 161.775,
+      "end": 163.635,
+      "speaker": 1,
+      "transcript": "and to connect to the next person."
+    },
+    {
+      "start": 164.655,
+      "end": 166.03499,
+      "speaker": 1,
+      "transcript": "And I think,"
+    },
+    {
+      "start": 166.81499,
+      "end": 168.83499,
+      "speaker": 1,
+      "transcript": "you know, when when I think about music,"
+    },
+    {
+      "start": 169.33,
+      "end": 177.67,
+      "speaker": 1,
+      "transcript": "I mean, this is what music has been trying to do for thousands of years. This is its power. And art. Yeah. To to connect people together. Yeah."
+    },
+    {
+      "start": 178.37,
+      "end": 183.43,
+      "speaker": 1,
+      "transcript": "And I was wondering what our... Maybe we we just jump right in. Sure. Let's do it."
+    },
+    {
+      "start": 184.005,
+      "end": 188.025,
+      "speaker": 1,
+      "transcript": "What do you think is the future of music in the in the era of"
+    },
+    {
+      "start": 188.325,
+      "end": 188.985,
+      "speaker": 1,
+      "transcript": "AI? Like,"
+    },
+    {
+      "start": 189.285,
+      "end": 195.465,
+      "speaker": 1,
+      "transcript": "maybe I'll just say about myself. I I write books. I'm a scholar. But writing history is somewhere in between"
+    },
+    {
+      "start": 195.765,
+      "end": 197.59001,
+      "speaker": 1,
+      "transcript": "kind of science and art."
+    },
+    {
+      "start": 197.97,
+      "end": 201.83,
+      "speaker": 1,
+      "transcript": "Because to write a history book, it's not an equation. You need to tell stories."
+    },
+    {
+      "start": 202.37001,
+      "end": 206.87001,
+      "speaker": 1,
+      "transcript": "So I also, to some extent, I I I see myself as an artist."
+    },
+    {
+      "start": 207.49,
+      "end": 210.39,
+      "speaker": 1,
+      "transcript": "And I don't know if I'll still be writing books"
+    },
+    {
+      "start": 211.00499,
+      "end": 214.70499,
+      "speaker": 1,
+      "transcript": "in five years or ten years because maybe by the 2030s,"
+    },
+    {
+      "start": 215.805,
+      "end": 223.42499,
+      "speaker": 1,
+      "transcript": "AIs will write books like Sapiens and Nexus so much better than me that it will be kind of almost meaningless"
+    },
+    {
+      "start": 224.125,
+      "end": 226.14,
+      "speaker": 1,
+      "transcript": "for a human being to engage in that."
+    },
+    {
+      "start": 227.42,
+      "end": 228.96,
+      "speaker": 0,
+      "transcript": "I just find that really"
+    },
+    {
+      "start": 229.66,
+      "end": 230.72,
+      "speaker": 0,
+      "transcript": "hard to imagine."
+    },
+    {
+      "start": 231.74,
+      "end": 233.12,
+      "speaker": 0,
+      "transcript": "I don't... I understand"
+    },
+    {
+      "start": 233.98,
+      "end": 234.48,
+      "speaker": 0,
+      "transcript": "logically"
+    },
+    {
+      "start": 234.78,
+      "end": 241.52,
+      "speaker": 0,
+      "transcript": "that that is where things are going in a lot of creative fields. Like with, I was talking with my friend who's in the"
+    },
+    {
+      "start": 241.825,
+      "end": 242.64499,
+      "speaker": 0,
+      "transcript": "film industry"
+    },
+    {
+      "start": 242.94499,
+      "end": 243.44499,
+      "speaker": 0,
+      "transcript": "and"
+    },
+    {
+      "start": 244.06499,
+      "end": 245.92499,
+      "speaker": 0,
+      "transcript": "she said everyone's talking about VO3."
+    },
+    {
+      "start": 246.385,
+      "end": 252.245,
+      "speaker": 0,
+      "transcript": "It's the new... Oh, it's new. Yeah. Yeah. And it's just another level. It made a big jump"
+    },
+    {
+      "start": 252.545,
+      "end": 254.08499,
+      "speaker": 0,
+      "transcript": "in terms of what it could do."
+    },
+    {
+      "start": 254.46,
+      "end": 255.76,
+      "speaker": 0,
+      "transcript": "And people are really,"
+    },
+    {
+      "start": 256.22,
+      "end": 257.84,
+      "speaker": 0,
+      "transcript": "well, some people are quite"
+    },
+    {
+      "start": 258.46,
+      "end": 258.96,
+      "speaker": 0,
+      "transcript": "shocked,"
+    },
+    {
+      "start": 259.5,
+      "end": 263.28,
+      "speaker": 0,
+      "transcript": "shaken by their future, the future of their, you know, their work."
+    },
+    {
+      "start": 265.18,
+      "end": 267.2,
+      "speaker": 0,
+      "transcript": "I understand that logically."
+    }
+  ]
+}

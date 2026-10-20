@@ -1,0 +1,1839 @@
+1
+00:00:00,000 --> 00:00:03,679
+[話者A] Hi, it's very nice to meet you.
+
+2
+00:00:03,679 --> 00:00:04,980
+[話者B] It's nice to meet you too.
+
+3
+00:00:06,639 --> 00:00:09,859
+[話者A] Well, I'm very happy to be here, it's very nice to meet you.
+
+4
+00:00:09,919 --> 00:00:15,804
+[話者B] Yeah, I'm also happy to meet you and especially in this location in the Freud Museum. I think it's the perfect place
+
+5
+00:00:16,045 --> 00:00:16,204
+[話者A] Yes.
+
+6
+00:00:16,364 --> 00:00:34,200
+[話者B] To talk about art and creativity and the human mind and, you know, in this age of of AI, when all of these things are in in question, And what what will be the future of of artists, of human creativity?
+
+7
+00:00:35,380 --> 00:00:37,799
+[話者B] But maybe we'll start with something a bit lighter.
+
+8
+00:00:38,739 --> 00:01:00,000
+[話者A] Yeah. There's a lot we can dive into. But when I first got the offer to do this talk with you, I was very excited because my son turns 10 this month. And when I was pregnant ten years ago, my very good friend gave me your book. Oh. Sapiens.
+
+9
+00:01:00,380 --> 00:01:00,880
+[話者A] Okay.
+
+10
+00:01:01,740 --> 00:01:10,159
+[話者A] With a note saying, since you're growing a new Sapiens, I'd like to gift you this book. And so it felt very full circle.
+
+11
+00:01:12,254 --> 00:01:18,674
+[話者B] And was there anything in the book that kind of caught your attention? A story, an idea, something that...
+
+12
+00:01:19,694 --> 00:01:41,465
+[話者A] I'm sure a lot of people say this, but the part where you share the perspective that cultivating wheat, we didn't domesticate wheat, they domesticated humans. That was one of those like, oh my god, like world like view shifting moments that,
+
+13
+00:01:42,084 --> 00:01:43,545
+[話者A] I don't think I'll ever forget.
+
+14
+00:01:44,965 --> 00:01:48,185
+[話者A] And I really enjoyed those moments in Nexus as well.
+
+15
+00:01:48,325 --> 00:01:49,144
+[話者B] Thank you.
+
+16
+00:01:50,084 --> 00:02:03,619
+[話者A] Like, I love the way you express... You take the way you leave all these ideas and then like a mathematical equation, you somehow bring it together into a very simple expression.
+
+17
+00:02:03,920 --> 00:02:14,504
+[話者A] Like, I love the analogy of the world wide web having spread and connected people, which you think might be compared to a cocoon.
+
+18
+00:02:15,604 --> 00:02:18,965
+[話者A] I love I love making... I love those connections you make.
+
+19
+00:02:18,965 --> 00:02:26,389
+[話者B] Yeah. I think that previously, I mean, everybody expected the web to just connect all all all the universe ultimately.
+
+20
+00:02:26,849 --> 00:02:30,949
+[話者B] And now increasingly, the kind of the web is closing in on on us.
+
+21
+00:02:31,250 --> 00:02:43,634
+[話者B] And people sometimes live side by side, each one cocooned in a different universe, almost unable to to to reach out and to connect to the next person.
+
+22
+00:02:44,655 --> 00:02:54,550
+[話者B] And I think, you know, when when I think about music, I mean, this is what music has been trying to do for thousands of years. This is its power.
+
+23
+00:02:54,610 --> 00:02:55,349
+[話者A] And art.
+
+24
+00:02:55,409 --> 00:02:57,169
+[話者B] Yeah. To to connect people together.
+
+25
+00:02:57,169 --> 00:02:57,669
+[話者A] Yeah.
+
+26
+00:02:58,370 --> 00:03:02,209
+[話者B] And I was wondering what our... Maybe we we just jump right in.
+
+27
+00:03:02,209 --> 00:03:03,430
+[話者A] Sure. Let's do it.
+
+28
+00:03:04,004 --> 00:03:17,590
+[話者B] What do you think is the future of music in the in the era of AI? Like, maybe I'll just say about myself. I I write books. I'm a scholar. But writing history is somewhere in between kind of science and art.
+
+29
+00:03:17,969 --> 00:03:21,830
+[話者B] Because to write a history book, it's not an equation. You need to tell stories.
+
+30
+00:03:22,370 --> 00:03:26,870
+[話者B] So I also, to some extent, I I I see myself as an artist.
+
+31
+00:03:27,490 --> 00:03:46,139
+[話者B] And I don't know if I'll still be writing books in five years or ten years because maybe by the 2030s, AIs will write books like Sapiens and Nexus so much better than me that it will be kind of almost meaningless for a human being to engage in that.
+
+32
+00:03:47,419 --> 00:03:50,719
+[話者A] I just find that really hard to imagine.
+
+33
+00:03:51,740 --> 00:04:05,924
+[話者A] I don't... I understand logically that that is where things are going in a lot of creative fields. Like with, I was talking with my friend who's in the film industry and she said everyone's talking about VO3.
+
+34
+00:04:06,384 --> 00:04:07,485
+[話者A] It's the new...
+
+35
+00:04:07,485 --> 00:04:08,805
+[話者B] Oh, it's new. Yeah.
+
+36
+00:04:09,104 --> 00:04:09,185
+[話者B] Yeah.
+
+37
+00:04:09,185 --> 00:04:14,084
+[話者A] And it's just another level. It made a big jump in terms of what it could do.
+
+38
+00:04:14,460 --> 00:04:23,279
+[話者A] And people are really, well, some people are quite shocked, shaken by their future, the future of their, you know, their work.
+
+39
+00:04:25,180 --> 00:04:42,294
+[話者A] I understand that logically, my thinking part, but something, something deep inside me makes me, think there's no way humans will not want human made things.
+
+40
+00:04:43,235 --> 00:04:49,439
+[話者A] I mean I think we're, we're just naturally art making people.
+
+41
+00:04:49,980 --> 00:04:54,720
+[話者A] It's one of the first things we do when we, leave the womb.
+
+42
+00:04:55,180 --> 00:05:09,884
+[話者A] We start, we can't talk but we're like sort of singing and babbling And we can't even walk yet, but you sort of dance a bit or tap things or react to things like that.
+
+43
+00:05:12,105 --> 00:05:19,439
+[話者A] And I think the universe is full of music. That's where it comes from. And art. I mean, I think it's basically...
+
+44
+00:05:19,819 --> 00:05:30,435
+[話者A] I, I also... I love, the part where you said... You were talking about how AI... When AI beat, AlphaGo beat a human player. Yeah.
+
+45
+00:05:30,915 --> 00:05:50,379
+[話者A] And you were saying that, creativity... Well, the creative jobs are not safe either because creativity, in simple terms, you said creativity is, well, one of the big aspects of it is pattern recognition and, or, and also... And breaking the pattern. Exactly.
+
+46
+00:05:50,379 --> 00:05:54,319
+[話者B] Yes. You recognize the pattern and you break it. And that's the creativity.
+
+47
+00:05:55,099 --> 00:06:19,370
+[話者B] And in many fields, again, I I would love to hear your views on music because I I... I'm not really an expert in music. But certainly in games like Go and chess, now AI is far more creative than humans. You know, when you have this kind of humans only competition and there is always this fear that somebody's getting advice from an AI, one of the ways they check it is the level of creativity
+
+48
+00:06:19,829 --> 00:06:21,129
+[話者B] that the players display.
+
+49
+00:06:21,615 --> 00:06:29,394
+[話者B] If they play in a way which is too creative, immediately the suspicion is, oh, they must be getting advice from an AI.
+
+50
+00:06:30,175 --> 00:06:35,550
+[話者B] Now with with music, with film, or with writing books, we are still not there, of course.
+
+51
+00:06:36,669 --> 00:06:43,009
+[話者B] But when I look at the trend over the last ten years, you know, if I think what do I do when I write a book?
+
+52
+00:06:43,629 --> 00:07:01,414
+[話者B] So first of all, I need to come up with a subject, like a question that really bothers me. Then I need to gather a lot of material, and I need to analyze it. And then I need to kind of put it in writing with... I'm using stories and anecdotes and so forth. So these are the basic stages.
+
+53
+00:07:01,990 --> 00:07:13,850
+[話者B] And when I look at each one of these stages, I can't see why AI will not be able to do that. For a long time, I had friends who say they will never be able to come up with the questions.
+
+54
+00:07:14,794 --> 00:07:25,935
+[話者B] But now I have colleagues who go to the AI to Oh my god. Give them what are the most interesting research questions within field x.
+
+55
+00:07:26,490 --> 00:07:32,009
+[話者A] But that's not just asking them to do research, that's them coming up with the questions, or are they looking for...
+
+56
+00:07:32,009 --> 00:07:34,410
+[話者A] They they ask the AI To think of questions?
+
+57
+00:07:34,649 --> 00:07:46,625
+[話者B] To come up with what are the kind of main kind of missing links, The things it would be very interesting to know and that we still don't know about a certain field or a certain subject.
+
+58
+00:07:47,085 --> 00:07:51,105
+[話者B] And similarly, we we certainly gathering information and analyzing it.
+
+59
+00:07:51,485 --> 00:07:57,709
+[話者B] You the amount of information that I can gather is is infinitesimal compared to to the AI.
+
+60
+00:07:58,089 --> 00:08:02,670
+[話者B] And then all the way to writing, I'm using stories or anecdotes.
+
+61
+00:08:03,290 --> 00:08:08,914
+[話者B] So I've already seen, you know, these wonderful stories written by AI.
+
+62
+00:08:09,454 --> 00:08:32,259
+[話者B] And I agree that humans will always want to create for the joy of creating, as children do. But would it still be valued? I mean, until today, it's not just that we liked doing it, it was extremely valuable. Nothing on planet Earth could be as creative as as us.
+
+63
+00:08:32,960 --> 00:08:38,419
+[話者B] And now in more and more fields, there is something which can be more creative.
+
+64
+00:08:39,514 --> 00:08:52,254
+[話者B] And and lastly, I also really kind of connect to what you said that I can understand it in in my intellect, but deep inside, I I I tend to think about it as a kind of brain stomach barrier.
+
+65
+00:08:53,000 --> 00:08:59,659
+[話者B] But my brain already understands what is happening, but my stomach refuses to digest it.
+
+66
+00:09:00,759 --> 00:09:06,539
+[話者B] And the stomach is more powerful. I mean, ultimately, we are controlled by the stomach, not not by the brain.
+
+67
+00:09:07,154 --> 00:09:11,174
+[話者A] And our instincts seem to lie a lot in our gut feelings.
+
+68
+00:09:11,475 --> 00:09:19,174
+[話者B] Yeah. Our gut feelings are kind of deep, kind of emotional reactions. I think that they come from from from the stomach, like, literally.
+
+69
+00:09:19,490 --> 00:09:25,509
+[話者B] I mean, there are hundreds of millions of neurons in the stomach. It's not just... It's just just a metaphor.
+
+70
+00:09:26,289 --> 00:09:39,144
+[話者B] And so I can I can say these things and I give talks about it and interviews, but when I look at how I actually live my life, I still can't really take it seriously?
+
+71
+00:09:39,845 --> 00:09:42,824
+[話者B] And it's true of of most of my colleagues like that they...
+
+72
+00:09:43,365 --> 00:09:44,584
+[話者B] In the AI field.
+
+73
+00:09:45,044 --> 00:10:00,610
+[話者B] Like, they will come up with the most kind of scary or far reaching predictions about what AI will do, and then in the way they actually live, they don't change anything because it's too, it's, we can't really imagine it.
+
+74
+00:10:01,070 --> 00:10:09,004
+[話者A] Well, it's like, I guess we're, we're quite slow. We're not very good at adapting to something that hasn't really happened yet.
+
+75
+00:10:09,705 --> 00:10:18,924
+[話者A] We know that climate change is real, but we're not really dealing with it very well. So maybe we'll just have to see how it goes.
+
+76
+00:10:19,240 --> 00:10:29,259
+[話者A] But, I I do understand that being creative is a lot of problem solving. That's mainly how I see it.
+
+77
+00:10:29,960 --> 00:10:52,779
+[話者A] Well, raising a question, like you said. And then, thinking of finding problems is kind of how I view it. And then finding ways to solve the problem. And then a big part of it is also understanding patterns and breaking it in interesting ways, or ways that feel good. I like to explain that when I make music
+
+78
+00:10:53,480 --> 00:11:07,365
+[話者A] as, it's like a dance in how I feel, where it's going, or a balance of things that feel natural and expected, like a melody or chords.
+
+79
+00:11:07,904 --> 00:11:18,004
+[話者A] Well, chords are a very good way of, maybe a good way of thinking about how AI could make music very well.
+
+80
+00:11:18,639 --> 00:11:25,139
+[話者A] Because I mean if you open, if you open like a music theory book, you just see a bunch of numbers basically.
+
+81
+00:11:25,759 --> 00:11:41,245
+[話者A] There are patterns like, you know, the famous, like you start with a dominant chord, which is five, and then you resolve it in a tonic chord, which is one, and patterns like four five one, and two five one, or things like that.
+
+82
+00:11:41,865 --> 00:11:46,365
+[話者A] So it feels very mathematical and structured, and almost objective.
+
+83
+00:11:48,550 --> 00:11:50,330
+[話者A] But what I... But...
+
+84
+00:11:50,790 --> 00:12:11,254
+[話者A] So of all the musicians, I guess in a way I'm thinking AI is also another sea of musicians that have a different approach. But if I almost think of them as just having more musicians in the world, then I would still just keep doing what I do, which is
+
+85
+00:12:11,715 --> 00:12:25,590
+[話者A] I listen to the music that's out there, or that's been made in the past, that I love, or maybe don't like. And I come up with the natural parts, that feel natural and good to me as a human, or just as a listener.
+
+86
+00:12:26,285 --> 00:12:37,485
+[話者A] And then I like to throw in parts that are like a betrayal, to the listener, where it's a bit unexpected, or it's a bit weird, like that that shouldn't happen. So it's breaking the pattern. Yes.
+
+87
+00:12:39,085 --> 00:12:41,429
+[話者A] That's that's the most fun part of it.
+
+88
+00:12:41,909 --> 00:12:45,690
+[話者A] But I base it on what feels interesting for me.
+
+89
+00:12:46,070 --> 00:13:09,084
+[話者A] So I'm just curious. I wonder, without a clear objective, I think the biggest difference in the creative process as far as I can see with my limited knowledge of AI is that my objective in making music would be completely egotistical because it's, it's just me trying to discover things about me or the world around me.
+
+90
+00:13:11,639 --> 00:13:16,059
+[話者B] What do you discover through music? Can you give an example of like something you discovered?
+
+91
+00:13:17,240 --> 00:13:43,470
+[話者A] There's always something quite big that it's almost like I... Because if I if I don't, especially with lyrics, maybe this is where it comes in more than the musical part of it, but if I don't come up with something that I find is new to me, like a new idea, something I've been rolling in the back of my mind, a question I've had, and I'm stuck. I can't come up with the last line in the song, but I feel like it's the most important part
+
+92
+00:13:43,769 --> 00:13:57,184
+[話者A] and then I work on it more, push push, keep asking myself and then I'll come up with like the the web versus cocoon sort of analogy and maybe that becomes the title, webin cocoon. Or...
+
+93
+00:13:57,324 --> 00:14:09,019
+[話者B] How do you actually work on it? Like if you if you're missing the last line of of of the song. Yeah. What does... I mean what do you do to work on it?
+
+94
+00:14:09,720 --> 00:14:16,700
+[話者A] So it's another aspect of creativity that I think is really important, which is patience and also letting go.
+
+95
+00:14:17,320 --> 00:14:44,289
+[話者A] And I, I like to compare this patience part to... I feel like a fisherman sitting on a boat and no matter what I'm doing, if I'm working on lyrics or maybe even just the music part of a song, I'm I'm sitting on a boat in the middle of the ocean and whether I'm having dinner with, making, cooking, or getting changed, or just watching TV, or talking with a friend, I'm, in the back of my mind, I'm sitting on the boat.
+
+96
+00:14:44,429 --> 00:14:45,070
+[話者B] Waiting for...
+
+97
+00:14:45,070 --> 00:14:50,884
+[話者A] Because I know that I can't force it. I have to, part of me just has to be patient and believe that it will come.
+
+98
+00:14:51,585 --> 00:14:52,565
+[話者A] And then it does.
+
+99
+00:14:53,024 --> 00:14:58,404
+[話者A] And have enough distractions around me so that my mind is not laser focused on just that issue.
+
+100
+00:14:58,784 --> 00:15:01,365
+[話者A] Because the ideas really bubble up to the surface.
+
+101
+00:15:02,029 --> 00:15:07,090
+[話者A] Like the subconscious ideas when I'm well distracted.
+
+102
+00:15:08,350 --> 00:15:27,985
+[話者B] But is it just one fish? Or or I mean, when I try to think about the metaphor, like, is it like an empty ocean and I'm waiting for this one fish to to to to bite? Or is it that every second, one fish or the other bites and most of them are just, no, not this one, not this one,
+
+103
+00:15:28,539 --> 00:15:30,639
+[話者B] And until the the right fish bites.
+
+104
+00:15:31,100 --> 00:15:42,639
+[話者B] Like, is it like lots of noise in in the mind until out of the noise something, yes, this is the thing? Or is it just like silence, silence, silence, and then something?
+
+105
+00:15:43,815 --> 00:15:51,035
+[話者A] A lot of things bubble up and then I think, no, that's not quite it. Maybe once I think, oh, that's, that sounds good.
+
+106
+00:15:51,654 --> 00:15:56,970
+[話者A] And then a bit later I think, no, wait, no, not yet. That's not the thing that I was waiting for.
+
+107
+00:15:57,850 --> 00:15:59,230
+[話者A] And and then when something...
+
+108
+00:15:59,850 --> 00:16:15,605
+[話者A] I just know it when it really truly captures this like far away, out of focus vision, the the answer that I was sort of searching for in my in my self, which could be something as basic as what I have been feeling about something.
+
+109
+00:16:16,144 --> 00:16:28,820
+[話者A] It's like a way of discovering some sort of truth about myself, which I believe if it comes from deep within me enough and it's honest enough, it's a universal truth. So it'll...
+
+110
+00:16:29,679 --> 00:16:34,259
+[話者A] Pretty much anyone can relate to it because it's just that basic.
+
+111
+00:16:34,879 --> 00:16:35,379
+[話者B] Mhmm.
+
+112
+00:16:36,879 --> 00:16:40,815
+[話者A] And I love the ending of your acknowledgments and Nexus.
+
+113
+00:16:41,355 --> 00:16:42,654
+[話者A] I think it was the acknowledgments.
+
+114
+00:16:43,035 --> 00:16:43,615
+[話者A] Oh, okay.
+
+115
+00:16:44,475 --> 00:16:52,335
+[話者A] Where you said your book, when I'm reading your book, that's when our minds connect and so the book itself is is a Nexus.
+
+116
+00:16:53,460 --> 00:17:02,200
+[話者A] And that's the thing, that's the truth that makes me feel connected to myself and thus to everyone in the world.
+
+117
+00:17:03,940 --> 00:17:11,335
+[話者A] So, but the motivation, I guess, is what I'm trying to say, the biggest difference is. But I don't know how AI feel.
+
+118
+00:17:11,634 --> 00:17:25,289
+[話者A] So I'm just curious if AI, without giving an objective like make music that will grab people's attention, Or make music that will facilitate this specific sort of bodily reaction.
+
+119
+00:17:25,829 --> 00:17:32,890
+[話者A] Like sweating or elevated heart rate or maybe even deeper things in the brain like chemicals being released and analyzed.
+
+120
+00:17:34,365 --> 00:17:36,224
+[話者A] That's about the result.
+
+121
+00:17:36,445 --> 00:17:36,945
+[話者B] And
+
+122
+00:17:38,605 --> 00:17:41,984
+[話者A] winning a match that has a clear result, it's aiming for.
+
+123
+00:17:42,365 --> 00:17:51,519
+[話者A] But when I'm making something, I actually, it's like I'm trying to find that, I don't know what the result is until I get there.
+
+124
+00:17:53,259 --> 00:17:55,119
+[話者B] What is the result for for you?
+
+125
+00:17:55,579 --> 00:17:58,000
+[話者A] Just the piece of music, but it's almost like a byproduct.
+
+126
+00:17:59,099 --> 00:18:06,704
+[話者A] And everything important that happened to me, the value of the song is what happened while I was making it. Yeah.
+
+127
+00:18:06,704 --> 00:18:19,519
+[話者B] But this is for us as creators or as... I mean, this I completely understand. I I agree that there is a deep need yearning in humans to create, and this will continue irrespective of AI.
+
+128
+00:18:19,740 --> 00:18:20,240
+[話者A] Yeah.
+
+129
+00:18:21,180 --> 00:18:23,900
+[話者A] So... But whether people will appreciate that or not.
+
+130
+00:18:23,900 --> 00:18:24,299
+[話者A] Right? Yeah.
+
+131
+00:18:24,299 --> 00:18:31,815
+[話者B] Whether people will appreciate it, whether it will have a place in in the world and it won't just be my hobby to do it.
+
+132
+00:18:32,355 --> 00:18:33,335
+[話者B] That's the question.
+
+133
+00:18:34,035 --> 00:18:43,015
+[話者B] And when... A lot of time when you ask artists or or or, creators, what are you try... What is the result? What are we trying to achieve?
+
+134
+00:18:44,090 --> 00:18:53,390
+[話者B] So one very common answer is that they are trying to create a certain state of mind in somebody else.
+
+135
+00:18:53,849 --> 00:18:58,875
+[話者B] To bring up a certain emotion, Joy or sadness or whatever.
+
+136
+00:18:59,894 --> 00:19:05,654
+[話者B] And this is the kind of thing that potentially AI would would be very good at.
+
+137
+00:19:05,654 --> 00:19:06,375
+[話者A] Yes. Yeah.
+
+138
+00:19:06,375 --> 00:19:28,974
+[話者B] Even if it has no emotions of its own, it will be able to recognize the emotion of other people. And then find by trial and error how if you imagine, like, if you compare a human being, like, our emotional system is basically like a piano, that the AI will learn how to play the human emotional piano
+
+139
+00:19:30,394 --> 00:19:47,580
+[話者B] and how to produce sadness, how to produce joy, how to produce fear or awe, better than a human artist simply through the sheer volume of information it can process.
+
+140
+00:19:48,600 --> 00:20:01,414
+[話者B] Like, it can it can gather data on millions and millions of actual human beings. Like when I write a book, so I would sometimes try to imagine my reader.
+
+141
+00:20:02,400 --> 00:20:15,700
+[話者B] And I usually base my imagined reader either on myself or on people I actually know or on encounters I had with students at university or public events or interviews.
+
+142
+00:20:16,080 --> 00:20:21,855
+[話者B] But this is a very limited pool of examples, of data.
+
+143
+00:20:22,794 --> 00:20:30,494
+[話者B] So when I'm doing it, maybe I have a kind of a pool of information on a couple of 100 people.
+
+144
+00:20:31,399 --> 00:20:39,740
+[話者B] The AI that would write the book or the piece of music, it would have data on millions and billions of human beings over time.
+
+145
+00:20:40,519 --> 00:20:54,095
+[話者B] So if the goal is to create a certain state of mind for other people, I just don't see how we can compete with the AI on that.
+
+146
+00:20:54,474 --> 00:21:04,150
+[話者B] Especially as it will also have the advantage of being able to tailor the the book, the songs specifically to different people.
+
+147
+00:21:04,930 --> 00:21:12,710
+[話者B] I can't write a slightly different book for different people, but for AI maybe it would be quite easy.
+
+148
+00:21:13,174 --> 00:21:18,154
+[話者A] Yeah. I think the tailor making aspect is quite interesting. I'd love to know...
+
+149
+00:21:18,694 --> 00:21:33,480
+[話者A] I'd love to try it and see if it'll make music that will eventually, I guess, the kind of music that I really love. I mean, it's almost like music streaming platforms suggesting playlists and songs based on what you've listened to algorithmically.
+
+150
+00:21:35,620 --> 00:21:37,320
+[話者A] But the...
+
+151
+00:21:38,740 --> 00:21:49,695
+[話者A] I I just wonder... Let's... I I don't know if this is a good enough comparison, but let's say there's something cheap and quick, quickly prepared, very accessible like fast food.
+
+152
+00:21:51,755 --> 00:22:11,994
+[話者A] Yes it does have a big market, but then there's a different type of value that people place on something like the, what is it called, the effort heuristic, where people if they know that, you know, if a human
+
+153
+00:22:12,775 --> 00:22:34,759
+[話者A] or maybe even AI, if they've done it in a more difficult way or something where it's very limited access, then if someone has spent time making it and they know that an actual human being has struggled and because the source of your book itself, writing it in itself is a struggle but, or
+
+154
+00:22:35,059 --> 00:22:48,234
+[話者A] a lot of work, but you're putting in your entire life's experience into what you make at that point, right? So it's not just, people love hearing a story, right?
+
+155
+00:22:48,694 --> 00:23:01,279
+[話者A] Any person in marketing or like music industry on the sales side I talk to or even with books and promoting promotion, I guess. They always say, oh, what's what's your story? Right?
+
+156
+00:23:02,140 --> 00:23:05,279
+[話者A] People are suckers for stories. That's the most important thing.
+
+157
+00:23:06,765 --> 00:23:11,025
+[話者A] And it's it's just how we evolved. So it's true. And I wonder if...
+
+158
+00:23:12,125 --> 00:23:29,380
+[話者A] I mean, I think there is a place for say music made by AI that is... It's like going to a playlist you want to feel relaxed. So you just look for relaxing music playlist and you just play it and you're happy with that. You don't really care if a human made it. Yeah. And if they struggle to make it or some AI whipped it up for you.
+
+159
+00:23:30,320 --> 00:23:46,545
+[話者A] I would, I might just listen to that too. But, but then there are other times, so maybe I just I'm just really hungry and I'm really thirsty. And there's, you know, I don't really care. Like this is my cheat day of eat. I can eat whatever I want. Then I'll just go into a fast food store and get a, I
+
+160
+00:23:46,545 --> 00:23:59,984
+[話者A] don't know, hamburger or something. But Mhmm. But most of... There would be other times when I really want to sit in front of the chef and talk about the catch of the day or something and watch and prepare the stuff in front of me.
+
+161
+00:24:00,865 --> 00:24:01,365
+[話者B] These...
+
+162
+00:24:01,744 --> 00:24:13,444
+[話者B] I I I think that in in all fields, if we are looking for a relationship, that's a different... It's it's a it's a different subject to to to explore.
+
+163
+00:24:14,019 --> 00:24:18,759
+[話者B] But definitely here, it will be much more difficult to replace the humans.
+
+164
+00:24:19,299 --> 00:24:27,400
+[話者B] We see it in things like chess. But already... Everybody knows that AI plays chess much better than humans, but you still have human chess masters.
+
+165
+00:24:27,775 --> 00:24:28,095
+[話者A] Yeah.
+
+166
+00:24:28,095 --> 00:24:32,434
+[話者B] That they have a job and they have a large crowd of fans and followers.
+
+167
+00:24:32,974 --> 00:24:34,595
+[話者B] So what are they looking for?
+
+168
+00:24:34,974 --> 00:24:38,994
+[話者B] They are actually not looking for somebody who is just a genius in chess.
+
+169
+00:24:39,295 --> 00:24:49,880
+[話者B] They are looking for a relationship with another human being. And what makes the relationship, compelling, attractive is exactly what you said, the kind of the struggle.
+
+170
+00:24:50,419 --> 00:25:10,285
+[話者B] That if the story of this chess master who came from a particular background and had this big challenge or failure and managed to pick themselves up and and try again. It's the same like with the Olympics. I mean, we know that a car can drive much faster than any human athlete. We still want to see the kind of
+
+171
+00:25:10,799 --> 00:25:18,019
+[話者B] frail, vulnerable human being who is kind of, rising up to to to the challenge.
+
+172
+00:25:19,279 --> 00:25:22,899
+[話者B] But it's a big question if if this is...
+
+173
+00:25:23,440 --> 00:25:44,779
+[話者B] Because then you'd... I think it may be interesting to talk with with a chess master if if we had one here because I think it's a different kind of of of of job then. Yeah. Then previously, you were the... Like, you wanted to be the universe number one expert on chess. Now you know this is a hopeless task,
+
+174
+00:25:45,080 --> 00:25:49,900
+[話者B] and what you're left with is being a kind of... Almost like an actor.
+
+175
+00:25:50,615 --> 00:26:03,390
+[話者B] Yeah. That... And it also raises question. If if if I'm no longer the best chess player in the world, I'm just a story that people connect to, what does it say about my personal life?
+
+176
+00:26:03,789 --> 00:26:12,369
+[話者B] Because now this this this is really the only thing I can give the fans is my personal life because my chest is is nothing compared to the AI.
+
+177
+00:26:13,150 --> 00:26:21,404
+[話者B] So does it mean that now I have to kind of open up my personal life to them because that... That's that's my job?
+
+178
+00:26:22,024 --> 00:26:33,244
+[話者B] And, of course, the other question is if people are really looking for a relationship, is that something that AI could give them?
+
+179
+00:26:33,690 --> 00:26:51,825
+[話者B] Because we already know, like, when when when... I I was in in in Japan and Korea and China two months ago, and people told me it's it's also becoming big here in in Europe that people start to have AI boyfriends and AI girlfriends, and they are having romantic relationships.
+
+180
+00:26:52,125 --> 00:26:57,585
+[話者B] And also all all just relationships, not not necessarily romantic, with AIs.
+
+181
+00:26:58,330 --> 00:27:02,190
+[話者B] And people increasingly say that they think the AI has feelings.
+
+182
+00:27:02,970 --> 00:27:22,384
+[話者B] Like, because I'm an AI expert and I talk a lot about this, I get a lot of emails from people who are sometimes very angry with me for saying in some interview that AI doesn't have feelings. And they say, no. I have this AI friend, and we talk every day, and they send me these kind of long transcripts
+
+183
+00:27:22,845 --> 00:27:29,470
+[話者B] of the conversations they have with the AI, convinced that the AI has feelings and consciousness.
+
+184
+00:27:31,609 --> 00:27:40,305
+[話者B] So maybe even this is not kind of the human fortress that we will always have this and the AI can't can't get there.
+
+185
+00:27:41,184 --> 00:27:51,605
+[話者A] Well I think the relationship side, that might, it's been predicted in science fiction movies and novels, I guess too, that might accelerate.
+
+186
+00:27:52,545 --> 00:27:55,809
+[話者A] It looks like it's spreading more in that direction.
+
+187
+00:27:59,150 --> 00:28:21,565
+[話者A] But with, with performance based, like, because I'm... Like being a fan of a chess player or, why that's... Or athletes, why that's more exciting than, watching AI battle each other. I guess the exact point is that people are so
+
+188
+00:28:21,960 --> 00:28:30,140
+[話者A] vulnerable and unpredictable and we're not as good in a way. We're not going to get it right every time.
+
+189
+00:28:31,319 --> 00:28:42,214
+[話者A] I don't know, maybe, I think there's almost a way you could tweak AI to be just the right percentage, able to make a mistake.
+
+190
+00:28:42,434 --> 00:28:43,095
+[話者B] Of vulnerability.
+
+191
+00:28:43,394 --> 00:28:53,279
+[話者A] Yeah yeah, and that might actually up the level of people relating more to AI and humanizing them more. I think that would be very interesting.
+
+192
+00:28:53,740 --> 00:29:13,775
+[話者A] Like maybe they get upset sometimes, because in human relationships the biggest difference is that, I heard someone saying, I think it was like a podcast or something and I can't remember but, someone said, an AI can feel like a good friend, like a chatbot type, like a good friend, but it will not make you a good friend.
+
+193
+00:29:14,394 --> 00:29:21,519
+[話者A] Because it's so it just accepts everything. It validates everything you say and do, and it's always understanding.
+
+194
+00:29:21,980 --> 00:29:33,455
+[話者A] So, I mean, that that just feels good for people. Right? But, so in in the short term, people might prefer that over friends who might disagree with you.
+
+195
+00:29:33,994 --> 00:29:43,775
+[話者A] But in the long term, I feel like people will just get used to the, perfect friend and maybe want something more human.
+
+196
+00:29:44,089 --> 00:29:45,450
+[話者B] But that can be easily tweaked.
+
+197
+00:29:45,450 --> 00:29:46,809
+[話者A] Yeah. That's exactly what they tell you.
+
+198
+00:29:46,809 --> 00:29:56,349
+[話者B] The people who told us about, you know, the AI boyfriend, they said... I mean, there are obviously commercial interests behind it, and they want to make the AI boyfriend more addictive.
+
+199
+00:29:56,794 --> 00:30:04,815
+[話者B] And they already discovered they already discovered that the easiest way to make the AI boyfriend more addictive is to make it mean.
+
+200
+00:30:05,034 --> 00:30:07,275
+[話者A] Hot and cold. Mhmm. Hot and cold.
+
+201
+00:30:07,275 --> 00:30:08,095
+[話者B] Yeah. Exactly.
+
+202
+00:30:08,634 --> 00:30:21,500
+[話者B] If you have an AI boyfriend who always adores you and agrees with everything, you get bored very quickly. But if the AI boyfriend is sometimes mean, is sometimes inaccessible, is sometimes angry, then it really presses your emotional buttons.
+
+203
+00:30:21,559 --> 00:30:22,859
+[話者A] Toxic AI boyfriend.
+
+204
+00:30:26,484 --> 00:30:33,785
+[話者A] Yeah, so I'm just interested to see how that goes in that field of like friendship level relationships.
+
+205
+00:30:34,244 --> 00:30:59,214
+[話者A] But going back to music, I've read that, especially live setting, I think it's going to be the, I mean even now, just listening on a device or something, and being in a live setting has diverged more and more I think, because of how easy it is to listen to music. It's everywhere.
+
+206
+00:31:01,035 --> 00:31:05,775
+[話者A] So most artists, musicians, don't make a lot of money from selling music anymore.
+
+207
+00:31:07,059 --> 00:31:21,640
+[話者A] I mean they still do, but there's, I think in the last ten, twenty years, a lot of musicians have turned more to, find their earnings by doing tours and live shows.
+
+208
+00:31:21,964 --> 00:31:35,265
+[話者A] That's where the money really is I guess. And I read that especially in a live setting, music can synchronize the brainwaves of the people participating and listening to the same music.
+
+209
+00:31:35,609 --> 00:31:36,410
+[話者B] Yeah, absolutely.
+
+210
+00:31:36,410 --> 00:31:40,589
+[話者A] And the bigger the venue, this happens more apparently.
+
+211
+00:31:41,769 --> 00:32:03,759
+[話者A] So I mean, who knows, maybe, yeah, AI made music might be very convenient in some settings, but, the way we've, you know, gathered, around a fire, played music together to... Just to tell... Retell stories or scare off animals or just, just for the joy of it, who knows.
+
+212
+00:32:04,619 --> 00:32:10,720
+[話者A] That feeling of our brainwaves synchronizing, those kinds of effects in a live setting.
+
+213
+00:32:11,179 --> 00:32:16,474
+[話者A] I mean, I don't know, maybe if AI could do that, like a performer
+
+214
+00:32:16,855 --> 00:32:18,775
+[話者B] AI, I would do it.
+
+215
+00:32:18,775 --> 00:32:20,134
+[話者A] We might really be in danger.
+
+216
+00:32:20,134 --> 00:32:23,515
+[話者B] I mean, here in London, you you have the ABBA Voyage show.
+
+217
+00:32:23,575 --> 00:32:25,335
+[話者A] I I saw that. Yeah. It was amazing.
+
+218
+00:32:25,335 --> 00:32:29,515
+[話者B] And you have thousands of people having their brains and bodies synchronized.
+
+219
+00:32:29,899 --> 00:32:34,480
+[話者B] Yeah. Yeah. By avatars. Yes. You know, ultimately based on on human beings.
+
+220
+00:32:35,099 --> 00:32:47,265
+[話者B] But, I I think when you when you look at the long term history of music, so originally, the human... The... And and the music were were kind of completely inseparable.
+
+221
+00:32:47,965 --> 00:32:55,904
+[話者B] Like, the only way you could experience music is if you had a human being, singing or performing.
+
+222
+00:32:56,285 --> 00:32:59,869
+[話者B] There was no way to separate the music from the human.
+
+223
+00:33:00,570 --> 00:33:20,974
+[話者B] Then over time, especially in the last few centuries, with the invention of various technologies, it became possible first with recordings to separate. So you can have... You know, you can sit at home and listen to to a a... On on the pattyphon to to to to some record. And you don't need the human there, but there was still a connection
+
+224
+00:33:21,275 --> 00:33:25,615
+[話者B] because you still needed a human somewhere to create the record.
+
+225
+00:33:26,429 --> 00:33:38,210
+[話者B] And now I think we have reached the point in history when you can completely break the connection and you can have just music without a human creator.
+
+226
+00:33:39,184 --> 00:33:42,325
+[話者B] And the music can keep developing by itself.
+
+227
+00:33:43,265 --> 00:33:48,085
+[話者B] Like, if you think about AI music, not an AI, but it's just as music.
+
+228
+00:33:48,865 --> 00:33:53,125
+[話者B] So you you you said earlier that that music has a mathematical foundation.
+
+229
+00:33:53,920 --> 00:34:14,574
+[話者B] So think about all these kind of mathematical entities, all these tunes and songs, and they interact with each other and they create, like, their interactions, they create more and more new new music that never passed through the brain or mind of a human.
+
+230
+00:34:15,034 --> 00:34:22,335
+[話者B] And previously, like, if you're a creator of music, so you listen to a lot of live shows and also a lot of records.
+
+231
+00:34:22,880 --> 00:34:28,420
+[話者B] And then you you mix them together in your mind and you bring to the world something new.
+
+232
+00:34:28,800 --> 00:34:40,864
+[話者B] But now the music can just directly interact with more music Mhmm. And create new music without any human brain or mind in the process.
+
+233
+00:34:44,204 --> 00:34:50,119
+[話者A] So... Yeah. I'm actually quite excited to say... I'm very curious. I mean, I think with anything, I'm just...
+
+234
+00:34:50,579 --> 00:34:56,599
+[話者A] I think my curiosity beats any other, I mean, feelings like apprehension or fear.
+
+235
+00:34:59,859 --> 00:35:01,559
+[話者A] Yeah. I... I'm very curious.
+
+236
+00:35:02,099 --> 00:35:07,715
+[話者A] I'm curious if I think it is really interesting if AI just began wanting to make music.
+
+237
+00:35:09,215 --> 00:35:12,675
+[話者A] I would like to hear if you hear what that sounds like.
+
+238
+00:35:13,295 --> 00:35:14,815
+[話者B] What the desire of music?
+
+239
+00:35:14,815 --> 00:35:15,554
+[話者A] Yes. Yeah.
+
+240
+00:35:18,130 --> 00:35:19,190
+[話者B] This point... Yeah.
+
+241
+00:35:20,449 --> 00:35:31,030
+[話者B] I mean, as far as we know, AI has no desires in the sense of feelings of desire. And as far as we know, at least for now, AI has no consciousness.
+
+242
+00:35:32,474 --> 00:35:38,974
+[話者B] It has intelligence. It has the ability to pursue goals, to solve problems, but it has no feelings.
+
+243
+00:35:39,914 --> 00:35:46,414
+[話者B] But in in a way, you don't need feelings in order to want to do something.
+
+244
+00:35:47,150 --> 00:35:53,489
+[話者B] Like, we already had for centuries, we had things like corporations, like countries, like states.
+
+245
+00:35:53,789 --> 00:35:55,410
+[話者B] They don't have desires.
+
+246
+00:35:56,269 --> 00:35:57,570
+[話者B] We use it as a metaphor.
+
+247
+00:35:57,869 --> 00:36:06,264
+[話者B] Like, we say one country wants to go to war against another country. A country cannot really want anything in... Because it has no mind.
+
+248
+00:36:06,565 --> 00:36:07,445
+[話者A] It's not real.
+
+249
+00:36:07,445 --> 00:36:09,945
+[話者B] It's not real. It's only in our imagination.
+
+250
+00:36:11,284 --> 00:36:22,530
+[話者B] But now with with AI, we can have these entities that don't feel anything, but they do pursue goals.
+
+251
+00:36:23,150 --> 00:36:32,994
+[話者B] And if we give them the goal or they give themselves the goal of create new music, they can just go ahead and do that.
+
+252
+00:36:36,734 --> 00:36:52,349
+[話者B] And I think what really fascinates me is this idea of releasing music from its embeddedness in the human brain and mind, and you just have music interacting with itself.
+
+253
+00:36:53,369 --> 00:36:58,885
+[話者B] The same way that you know, I'm a literary person. My my life is is words, is books.
+
+254
+00:36:59,825 --> 00:37:03,045
+[話者B] And just have the the words talking with the words.
+
+255
+00:37:03,985 --> 00:37:14,780
+[話者B] Because previously, again, what would writers do? I would read one book and another book and another book and then mix them somehow in my mind and then create a new book out of it.
+
+256
+00:37:15,239 --> 00:37:21,179
+[話者B] The books could not talk... One book could not talk directly with another book. Now it's becoming possible.
+
+257
+00:37:21,719 --> 00:37:36,114
+[話者B] But in a way, when when I think about AI and text, this is what it means. That texts can talk directly with texts and create new texts without... They don't need me as as a kind of matchmaker.
+
+258
+00:37:36,974 --> 00:37:40,675
+[話者A] Do you think a book could be written without an audience in mind?
+
+259
+00:37:41,109 --> 00:37:42,409
+[話者A] I mean, a good book.
+
+260
+00:37:45,750 --> 00:37:50,809
+[話者B] A book can certainly be written without an audience in mind, without an...
+
+261
+00:37:51,190 --> 00:38:14,519
+[話者A] Because what you said earlier about how AI could get more data. So rather than you thinking about 20 people, you know, who would enjoy reading the book or find it really interesting and exciting, that AI could get the data or the imagined, well, predicted reaction... Response from the whole world. Yeah. Would that necessarily...
+
+262
+00:38:14,900 --> 00:38:23,559
+[話者A] Without someone directing them what the purpose of the book is or who? I mean, there's no book that everyone in the world is going to love reading. Right?
+
+263
+00:38:23,994 --> 00:38:26,635
+[話者B] If it's exactly the same text, then no. Yeah.
+
+264
+00:38:26,635 --> 00:38:28,094
+[話者A] So I guess if you...
+
+265
+00:38:29,514 --> 00:38:46,890
+[話者A] I guess the possibility of it being tailor made to each person maybe makes this talk meaningless. I mean, what I'm saying right now, meaningless. But just to make something that something like thousands or millions of people would enjoy or think is really special, would...
+
+266
+00:38:47,190 --> 00:38:53,474
+[話者A] Because, because I think there is also, there is something universal that we all, you know, find interesting.
+
+267
+00:38:53,934 --> 00:38:54,675
+[話者A] But I'm...
+
+268
+00:38:54,815 --> 00:39:10,630
+[話者B] I mean, we know of such books. They are holy books. Yeah. Like the Bible, the Quran, this is exactly the story being told about them that allegedly they were not created by any human being and their audience is the entire world.
+
+269
+00:39:11,090 --> 00:39:31,039
+[話者B] Now as historian, I said this is not the case. We know, for instance, how the Bible was written. We know that you had many people writing different texts, and then you had editors who decided this text will be in the Bible. No. No. No. This text will will... We leave it out because it has some message we don't like, and it got edited and rewritten.
+
+270
+00:39:31,500 --> 00:39:34,240
+[話者B] So it was a human, creation.
+
+271
+00:39:35,019 --> 00:39:43,484
+[話者B] But in their in their fantasies, humans believe that these books did not come from the human mind.
+
+272
+00:39:44,184 --> 00:39:58,160
+[話者B] In a way they have the fantasies that, yes, the words just kind of collected themselves to tell some universal message to to to the whole of humanity.
+
+273
+00:39:59,340 --> 00:40:04,400
+[話者B] And one of the things that that they think about a lot is what AI will do to religions.
+
+274
+00:40:05,099 --> 00:40:05,599
+[話者A] Mhmm.
+
+275
+00:40:06,780 --> 00:40:07,280
+[話者B] Because...
+
+276
+00:40:07,795 --> 00:40:10,454
+[話者B] In a lot of religions, they are based on texts.
+
+277
+00:40:11,315 --> 00:40:14,375
+[話者B] So you have, like, again, the bible, the Quran, and and so forth.
+
+278
+00:40:14,755 --> 00:40:20,295
+[話者B] And... But their problem always was the the text could never actually talk to you.
+
+279
+00:40:20,969 --> 00:40:41,125
+[話者B] So if you read the book and something is not clear, or you read the book and you're not sure how does this relate to my life? Is this the right interpretation? Is that... You can't ask the book. Can't talk back to you. So this is what... You always needed humans to come back in the picture, priests, rabbis,
+
+280
+00:40:41,585 --> 00:40:46,324
+[話者B] imams, the bishops, the popes, to tell you what the book is saying.
+
+281
+00:40:47,449 --> 00:40:54,909
+[話者B] So it was never actually a conversation with the book. And now we have a technology where the book can actually talk back.
+
+282
+00:40:56,089 --> 00:41:14,234
+[話者B] So you can have an AI that can be the biggest expert in the world on Christianity or Christianity, simply by reading all the Jewish texts that were ever written, and it will be a bigger expert on that than than the the the greatest rabbi.
+
+283
+00:41:14,719 --> 00:41:21,219
+[話者B] So what happens to religion when for the first time the the the book can actually talk to you?
+
+284
+00:41:22,079 --> 00:41:31,965
+[話者B] And I I think it's also very relevant to music because of the central importance of of music in in religions.
+
+285
+00:41:32,264 --> 00:41:32,764
+[話者A] That...
+
+286
+00:41:35,545 --> 00:41:38,045
+[話者B] Did you ever think about why music was so...
+
+287
+00:41:39,304 --> 00:41:40,525
+[話者B] Almost every religion...
+
+288
+00:41:40,905 --> 00:41:59,420
+[話者A] Yes. Well, I think from thinking about how old most religions are, there must have been a point when, well, there was the question of did language come first or did music come first?
+
+289
+00:41:59,880 --> 00:42:00,460
+[話者A] The people.
+
+290
+00:42:01,445 --> 00:42:16,680
+[話者A] I don't know if there's a clear answer to that. But there, I, there is, I have, I haven't read his books, but I've heard someone talking about this during research on this question. Daniel, there's a person called Daniel Levitan, I think.
+
+291
+00:42:18,420 --> 00:42:36,125
+[話者A] And they're researching this sort of stuff. And what I what I heard him saying was that they've... I don't know what the exact evidence is, but they have they, they have learned, or they have, they seem to have found that, how do they say it?
+
+292
+00:42:36,505 --> 00:42:45,159
+[話者A] The neurological circuits that encode music seem to precede, that of language.
+
+293
+00:42:46,260 --> 00:42:49,639
+[話者A] I'm not sure how they... The exact, you know, research behind it.
+
+294
+00:42:50,980 --> 00:42:56,039
+[話者A] But I think it's pretty safe to say lang... For sure, language and music must have co evolved.
+
+295
+00:42:56,364 --> 00:43:27,244
+[話者A] I mean, there's no way. You can't separate language and music. I mean, music is a language. You can notate it, and you can express. I mean, the amount of information and the symbol... How much symbolism is in it is quite different. But other... There are some languages that are so tonal that if you get one accent, accent, which is basically a melody Mhmm. Wrong. I mean, when I tried practicing Chinese during my tour last year,
+
+296
+00:43:28,025 --> 00:43:35,159
+[話者A] I was... I knew it was a tonal language, but I was really surprised at how tonal it was. It's... It was really... For me, it was like learning a new piece of music.
+
+297
+00:43:36,039 --> 00:43:53,905
+[話者A] And if I got one and well, here AI was quite useful because I practiced using, this thing where I could say, say it into my phone and it would, transcribe it. So it could tell me if I'm saying something wrong, it would come up incorrectly as a written language.
+
+298
+00:43:55,405 --> 00:44:08,440
+[話者A] So that's how tonal some languages are. And also, I mean, in religion, most of the, even I think the written scriptures, maybe they were music first, sung.
+
+299
+00:44:08,579 --> 00:44:12,039
+[話者B] They're often kind of, kind of, chanted.
+
+300
+00:44:12,179 --> 00:44:24,224
+[話者A] Yeah, the chants and that's the word, for religious ceremonies, the music and, and to record, record the words, I guess, the, and the ideas, they probably sang it together.
+
+301
+00:44:25,324 --> 00:44:27,905
+[話者A] So even in the Bible, there were the Psalms.
+
+302
+00:44:30,070 --> 00:44:39,929
+[話者A] And they also, what I, at one point I got really interested in this, and I think I read it in this book. I'm not a 100% sure, but I brought it. It's a Japanese book.
+
+303
+00:44:42,144 --> 00:44:48,644
+[話者A] It said, or it just brought to my attention that most religions use metallic instruments.
+
+304
+00:44:49,664 --> 00:44:52,005
+[話者A] So say church bells.
+
+305
+00:44:53,424 --> 00:45:01,230
+[話者A] And in some Asian, religions for rituals, there's a lot of like bell type sounds, like vibraphone like sounds.
+
+306
+00:45:02,410 --> 00:45:10,755
+[話者A] And in Buddhism, they also use a big bell. It's quite central to their message.
+
+307
+00:45:11,295 --> 00:45:12,355
+[話者A] It plays a big role.
+
+308
+00:45:12,815 --> 00:45:24,260
+[話者A] And I think it was this book, I'm not sure. But, so I read, I thought it was really interesting that metallic instruments must have seemed very magical.
+
+309
+00:45:25,039 --> 00:45:36,324
+[話者A] Because, like you said, before they existed, humans must have had to be doing something, like singing or hitting something to make a sound.
+
+310
+00:45:36,625 --> 00:45:44,565
+[話者A] But with a big metallic instrument or even small ones, you can do the hitting and then it'll keep ringing for a long time. Yes.
+
+311
+00:45:44,944 --> 00:46:05,280
+[話者A] And that must have felt very mystical and magical and also a symbol of power. Like I read somewhere that, even authority figures or like say lords or people that ruled a certain amount of land, whatever big noise they could make like a bell using a bell, something like that,
+
+312
+00:46:05,675 --> 00:46:11,295
+[話者A] And used to mark their territory, how far away you could be to hear it still ringing.
+
+313
+00:46:12,394 --> 00:46:14,795
+[話者A] So maybe I'm digressing but...
+
+314
+00:46:14,795 --> 00:46:15,295
+[話者B] No.
+
+315
+00:46:15,755 --> 00:46:34,309
+[話者B] I've read the same thing about chimpanzees that when chimpanzees, especially males, compete for alpha position, one of the things they do, they make a lot of noise and especially, like, rhythmic noise. Like, they would even drum on on on things with their feet, to to impress everybody on how...
+
+316
+00:46:34,925 --> 00:46:35,425
+[話者A] Wow.
+
+317
+00:46:35,724 --> 00:46:41,105
+[話者A] So we're not that far away from the function that's easier.
+
+318
+00:46:42,605 --> 00:46:52,570
+[話者A] But I guess there's parts of us that will maybe never change or remain with us no matter how much we evolve and no matter how much AI become a part of our lives.
+
+319
+00:46:53,109 --> 00:46:58,409
+[話者B] I want to ask you something about... You said that about music is like language.
+
+320
+00:46:58,789 --> 00:47:05,284
+[話者B] Mhmm. There was some... One thing that always kind of struck me about the difference that can you lie in music?
+
+321
+00:47:06,625 --> 00:47:07,125
+[話者B] Oh.
+
+322
+00:47:07,505 --> 00:47:20,569
+[話者B] Because in language you can tell lies, but is it possible to lie in music? Like, you know, today everybody's talking about fake fake news. Yes. Is there fake music? Like, there is bad music, absolutely.
+
+323
+00:47:22,150 --> 00:47:24,569
+[話者B] Is there kind of any equivalent?
+
+324
+00:47:25,829 --> 00:47:34,174
+[話者A] So since the objective of music is not, from in my opinion, is not to pass on a certain sort of information.
+
+325
+00:47:37,755 --> 00:47:40,335
+[話者A] Do I think that? Let's say that.
+
+326
+00:47:41,194 --> 00:47:42,014
+[話者B] Let's explore.
+
+327
+00:47:42,074 --> 00:47:44,014
+[話者A] Yeah, let's explore where that takes me.
+
+328
+00:47:45,440 --> 00:47:51,700
+[話者A] To me, if there is an objective to music making, it's to be as honest as I possibly can with myself.
+
+329
+00:47:53,119 --> 00:48:07,224
+[話者A] So if I feel... If my self editing that happens in songwriting, of course, there is parts that just, I think, sound better sonically or something. But with the with the lyrics especially, it's... If I can...
+
+330
+00:48:07,605 --> 00:48:16,650
+[話者A] If I've written something and I think, wait, I'm actually not sure what I'm saying here. Like, it's not really coming from somewhere that counts.
+
+331
+00:48:16,949 --> 00:48:20,170
+[話者A] Like, I'm just sort of... I just put words together that sound nice.
+
+332
+00:48:20,789 --> 00:48:25,275
+[話者A] Or I don't really believe that what I've written in this part.
+
+333
+00:48:25,655 --> 00:48:27,894
+[話者A] Then I have to... There's no way it could stay.
+
+334
+00:48:27,894 --> 00:48:30,875
+[話者B] But but is it So just the lyrics, like the words?
+
+335
+00:48:31,335 --> 00:48:36,235
+[話者B] Can can the actual music be fake or or or lie?
+
+336
+00:48:36,239 --> 00:48:40,659
+[話者A] I think the only way... I mean this is more as like an artistic stance maybe.
+
+337
+00:48:41,679 --> 00:48:50,820
+[話者A] But if I make something that I don't really really believe in, or believe it really came from me.
+
+338
+00:48:51,375 --> 00:48:56,675
+[話者A] Like if I've skipped the process, I guess, to me that's fake music.
+
+339
+00:48:57,775 --> 00:49:08,760
+[話者A] But it's a very human artist perspective. So which is why AI made music feels like it's skipping an important part of it. But then what do I know what AI feel, and what do I know what they go through?
+
+340
+00:49:09,539 --> 00:49:16,920
+[話者A] Even the part about patience that I thought was a very human or the the part of the creative process that I value a lot.
+
+341
+00:49:18,675 --> 00:49:36,619
+[話者A] Because actually the unpredictability or the accidents and mishaps. When things don't go right and you struggle with it, or you can't come up with something and the time you spend trying to get there, to me that's where the magic happens in song and music making.
+
+342
+00:49:37,239 --> 00:49:47,114
+[話者A] But but I I heard that, I forgot which AI company did this, but they tweaked the the response time
+
+343
+00:49:47,355 --> 00:49:47,755
+[話者B] Mhmm.
+
+344
+00:49:47,835 --> 00:49:49,795
+[話者A] Of AI to wait a bit
+
+345
+00:49:49,994 --> 00:49:50,114
+[話者B] Mhmm.
+
+346
+00:49:50,234 --> 00:49:55,614
+[話者A] Before they answer. And that... Didn't that really increase the quality of the response?
+
+347
+00:49:56,074 --> 00:50:13,519
+[話者A] So actual... So that I find very interesting too. Like, these things, that we think are... Or that I I thought was a human thing can more and more it's being implemented in in how AI function, I guess.
+
+348
+00:50:14,344 --> 00:50:21,484
+[話者B] And this kind of patience waiting time, would you describe this as silence?
+
+349
+00:50:22,105 --> 00:50:24,764
+[話者B] Does music ultimately comes from silence?
+
+350
+00:50:24,824 --> 00:50:25,324
+[話者A] Yes.
+
+351
+00:50:25,944 --> 00:50:34,630
+[話者A] I... Well, it's almost like... Well, I I think music changes the...
+
+352
+00:50:35,489 --> 00:50:41,829
+[話者A] It's more... I I like to compare music to architecture because I feel like we're carving out space for something to exist.
+
+353
+00:50:43,235 --> 00:50:51,815
+[話者A] It's like the the dark matter that we don't know about or or that we can't detect with our senses yet, yet or ever, I guess.
+
+354
+00:50:53,315 --> 00:51:03,409
+[話者A] But if you could, if you... It's possible. You could throw in every sound in the universe, in the world, every note on any scale, every scale into a song, but that sounds horrible.
+
+355
+00:51:04,190 --> 00:51:19,174
+[話者A] And the more the more refinement you can put into it comes from what... It's important what you take out. What you take out is as much or leave out is, I think, actually even more important than what you put in.
+
+356
+00:51:21,234 --> 00:51:40,565
+[話者A] And the space, like, if you're mixing a song, it's it's... That's a very physical process. You're sorting out the frequencies to make room for some frequencies to stand out here and some to stand out here. Or there's too much of this low frequency here, let's cut that out. So it's really like, thinking it's a it's a spatial
+
+357
+00:51:41,744 --> 00:51:43,204
+[話者A] Mhmm. Thing as well.
+
+358
+00:51:45,264 --> 00:51:55,849
+[話者A] And well, I I think is the true... Saying this true with language. What you don't say sometimes holds a lot more meaning than what you imply, I guess, in a poetic sense especially.
+
+359
+00:51:57,750 --> 00:52:04,170
+[話者A] But yes, so the silences in between, just doesn't say like a bass pattern goes.
+
+360
+00:52:06,585 --> 00:52:07,085
+[話者A] The...
+
+361
+00:52:07,465 --> 00:52:09,804
+[話者A] Where the sound exists is very important.
+
+362
+00:52:10,184 --> 00:52:13,885
+[話者A] But what makes the groove is the little moments of silence in between.
+
+363
+00:52:16,425 --> 00:52:28,420
+[話者A] So I really... And a song, if you... I think the silence after a piece of music, is somehow, it has been altered from the silence that preceded that song.
+
+364
+00:52:29,119 --> 00:52:30,739
+[話者A] But that's how I I feel.
+
+365
+00:52:31,519 --> 00:52:34,340
+[話者A] So I... Yeah. I think silence is very, very important.
+
+366
+00:52:36,885 --> 00:52:58,309
+[話者B] What I was wondering again, it goes back to what we discussed in the beginning, whether the creative process is kind of something emerging inside... Out of silence, or is it like lots of noise that's like we are, you know, like like a piece of marble that you you you take out all the unnecessary
+
+367
+00:52:58,690 --> 00:53:00,710
+[話者B] bits, and then you're left with the statue.
+
+368
+00:53:01,184 --> 00:53:12,405
+[話者B] So do we have, like, this huge, huge noise inside us that we just take out parts of it until we are left with the text or with the music or whatever it is?
+
+369
+00:53:15,089 --> 00:53:16,469
+[話者A] I I I don't know if it's...
+
+370
+00:53:19,809 --> 00:53:22,710
+[話者A] I think there is definitely chaos. I feel like we...
+
+371
+00:53:23,730 --> 00:53:33,045
+[話者A] There's just, like lots of noise, I guess, basically. And it's more like moving towards the silence. That's how it feels for me, the process of it.
+
+372
+00:53:35,105 --> 00:53:43,079
+[話者B] I'm asking because, again, when I try to understand what will AI... What completely new things AI might bring.
+
+373
+00:53:43,699 --> 00:53:49,320
+[話者B] So if we start with an example that we already know, like this game of Go.
+
+374
+00:53:49,859 --> 00:53:56,039
+[話者B] So what we know is that Go was invented, I think, in China, like, two thousand five hundred years ago.
+
+375
+00:53:56,355 --> 00:54:03,815
+[話者B] And for more than two thousand years, tens of millions of people in China, in Japan, in Korea played Go.
+
+376
+00:54:04,355 --> 00:54:17,829
+[話者B] And they explored all the different ways you can play Go. There was this strategy and this trick and this philosophy and that philosophy, and people thought they basically explode all the way to play Go.
+
+377
+00:54:18,289 --> 00:54:39,400
+[話者B] And the amazing thing about AlphaGo, this AI that defeated the the Go champion in 2016, is not just that an AI defeated a human, but to defeat a human, it came up with strategies that nobody played, nobody discovered.
+
+378
+00:54:39,780 --> 00:54:47,239
+[話者B] Like, tens of millions of people playing Go for two thousand years, nobody thought of playing Go like that.
+
+379
+00:54:47,859 --> 00:54:57,275
+[話者B] And so it's like, you know, if if you think like in space, so it's like you have the planet of Go, all the different ways to play Go, like a big planet.
+
+380
+00:54:57,815 --> 00:55:04,315
+[話者B] And humans were living on one island in that planet, and they thought that this island was the whole world.
+
+381
+00:55:04,800 --> 00:55:09,300
+[話者B] And then AI came and suddenly discovered new islands, continents.
+
+382
+00:55:09,920 --> 00:55:16,980
+[話者B] And today, humans learn from AI how to play go in these completely new ways.
+
+383
+00:55:17,875 --> 00:55:28,535
+[話者B] And could something similar happen with texts, with music, that we've been playing music not two thousand years, but maybe two hundred thousand years, two million years.
+
+384
+00:55:28,994 --> 00:55:33,969
+[話者B] And we thought we explored all the ways to create music.
+
+385
+00:55:34,510 --> 00:55:48,025
+[話者B] And maybe there is like completely unexplored continents of music that our organic brains just don't think of going there. They don't know how, like our imagination is limited.
+
+386
+00:55:48,644 --> 00:55:54,344
+[話者B] And AI will be able to discover these new continents of music.
+
+387
+00:55:55,364 --> 00:55:59,784
+[話者B] So it's all in my mind connected to this kind of silence noise question.
+
+388
+00:56:00,510 --> 00:56:04,289
+[話者B] Like, is everything already inside me?
+
+389
+00:56:04,829 --> 00:56:15,329
+[話者B] And it's just a a matter of kind of separating and... Or does something really completely new and other can come from from from outside?
+
+390
+00:56:18,164 --> 00:56:30,985
+[話者A] The... My my... What makes the creative... Being creative or being in the creative mode very, very exciting and special for me is two opposite things I feel are happening at the same time.
+
+391
+00:56:31,530 --> 00:56:48,484
+[話者A] And, like, we're we're reflections of what the outside world is around us. Right? And and that definitely affects me and maybe that's the chaos in a way or I don't know. It's a lot of noise and information.
+
+392
+00:56:49,105 --> 00:56:54,405
+[話者A] But at the same time, I am also... What makes makes me up is my inside.
+
+393
+00:56:55,105 --> 00:57:01,125
+[話者A] What happens inside me is quite limitless and our interior world.
+
+394
+00:57:01,829 --> 00:57:26,795
+[話者A] So that that reflects back on me as well. So I feel like there's, like, two reflections or maybe even more, like, multiple and different levels of awareness and just a lot of reflections going on. And maybe that's what I feel is like the noise, but all the... What seems like the opposite direction... Things going in the opposite direction somehow lead to one place. That's what it feels like.
+
+395
+00:57:28,990 --> 00:57:36,289
+[話者A] When I'm looking out at the same time that I'm looking in, when I'm really trying to get to a very...
+
+396
+00:57:37,070 --> 00:57:48,775
+[話者B] So so if if AI, let's say, comes up with a new kind of music that we never heard before, would it open up a new place inside us that we never visited before?
+
+397
+00:57:49,315 --> 00:58:02,019
+[話者A] I think it it would. I mean, we... We're all... We're so easily influenced by by things. I mean, imagine what, other cultures, foreign cultures brought into... When when we thought, you know, like living...
+
+398
+00:58:03,199 --> 00:58:23,675
+[話者A] Civilization living in one place thinking we're the only humans in the world. And then across the sea, these people come and and they... We we've all... It's been history of influencing each other and affecting each other. We can't not affect each other. So as as frightening as AI seems in some ways, I'm also excited to see
+
+399
+00:58:24,039 --> 00:58:30,759
+[話者A] what sort of collaborating it could bring about because they still need us. I mean, at this point. Still. Yeah.
+
+400
+00:58:31,400 --> 00:58:42,315
+[話者A] We don't know how long that'll last. But, so there is a an element of us teaching them things. And actually, it's it's very important, isn't it, that we teach them the right things?
+
+401
+00:58:43,655 --> 00:58:45,275
+[話者A] But what can they teach us?
+
+402
+00:58:47,094 --> 00:58:53,989
+[話者A] I think there already maybe... People are learning a lot about our own intelligence by trying to find...
+
+403
+00:58:54,449 --> 00:59:03,190
+[話者A] Create more intelligence. Mhmm. More intelligent AI. And watching the development of it. And that that process is very enlightening about ourselves.
+
+404
+00:59:03,410 --> 00:59:03,910
+[話者B] Mhmm.
+
+405
+00:59:04,130 --> 00:59:11,304
+[話者A] And with questions like consciousness that I think is kind of like, thinking about...
+
+406
+00:59:11,684 --> 00:59:19,545
+[話者A] Where is it? We're trying to think about consciousness using our consciousness, which is very tricky, I think.
+
+407
+00:59:19,925 --> 00:59:27,190
+[話者A] So I'm curious what maybe what new ideas about that
+
+408
+00:59:29,010 --> 00:59:35,989
+[話者B] or... The tricky thing with AI consciousness is that how would we be able to tell whether the AI is conscious or not?
+
+409
+00:59:36,530 --> 00:59:50,315
+[話者B] And especially as there are a lot of very strong commercial interests that, want to create AI that mimics consciousness.
+
+410
+00:59:50,880 --> 01:00:08,715
+[話者B] But, again, if you're a company and you want to kind of, you know, you have these AI boyfriends and you want to make people fall in love with them and and pay money to to stay in touch with them, so you need to make the people feel that this is not just a machine.
+
+411
+01:00:09,414 --> 01:00:20,315
+[話者B] There are feelings there. I mean, for me, the the definition of consciousness, what is consciousness, I mean, this huge confusion that intelligence and consciousness are linked, but they are not the same thing.
+
+412
+01:00:21,050 --> 01:00:37,815
+[話者B] Intelligence is the ability to pursue goals and overcome problems on the way to the goal. So, like, your goal is to win a game of chess, and you can, on the way to that goal, invent all kind of tricks and manage to overcome the tricks of your opponent.
+
+413
+01:00:38,114 --> 01:00:39,175
+[話者B] So this is intelligence.
+
+414
+01:00:39,795 --> 01:00:47,255
+[話者B] You don't need consciousness for that. Consciousness is the ability to feel things like joy and love and pain and and anger.
+
+415
+01:00:48,700 --> 01:00:54,079
+[話者B] AI is already more intelligent than us in things like chess, but it still doesn't feel anything.
+
+416
+01:00:54,700 --> 01:01:08,425
+[話者B] But if the goal of the AI is to make you fall in love with it, maybe because there is a commercial interest there, then the way to do it is to convince you that it has feelings.
+
+417
+01:01:09,445 --> 01:01:22,510
+[話者B] And the AI will become very, very good in because we we could ask the AI, you say that you love me, describe to me exactly how you feel.
+
+418
+01:01:22,969 --> 01:01:32,724
+[話者B] But this AI, it has read all the love poetry in human history. It can describe the feeling of love better than the best human poet.
+
+419
+01:01:33,265 --> 01:01:38,644
+[話者B] So just listening to the words of the AI will not really be a good enough test.
+
+420
+01:01:39,825 --> 01:01:48,659
+[話者B] So I just don't see what kind of proof we could have that the AI has consciousness.
+
+421
+01:01:49,519 --> 01:02:10,795
+[話者B] What I definitely can see is that even without proof, millions of people will be convinced that the AI is conscious, that AI has feelings, and therefore we should recognize them as persons and give them rights and form relationships with them. And it will not be clear
+
+422
+01:02:11,414 --> 01:02:26,764
+[話者B] whether we are discovering this amazing new universe of consciousness, or whether we are falling into the biggest delusion in in human history.
+
+423
+01:02:32,585 --> 01:02:44,219
+[話者A] I was just wondering if there's a way to 100% prove that I'm conscious or that I have consciousness, or if someone could disprove me by saying I could be mimicking human emotion.
+
+424
+01:02:45,960 --> 01:02:49,660
+[話者B] We we know that we don't have proof for other humans or other animals.
+
+425
+01:02:50,135 --> 01:02:53,835
+[話者B] I mean, consciousness until now was a social convention.
+
+426
+01:02:54,775 --> 01:03:10,139
+[話者B] We, as a society, we agree that all people are conscious, not because we have proof, but because this is like we have relationships with them. And it is usually relationships that convince people that consciousness is real.
+
+427
+01:03:10,519 --> 01:03:20,525
+[話者B] This is why, you know, people who have dogs are usually convinced that the dog is conscious, that the dog can feel pain and love and so forth.
+
+428
+01:03:20,905 --> 01:03:40,989
+[話者B] But people who say eats a cow usually say, no, it's not... It doesn't feel anything because they they eat it, but they have no relationship with it. Now, once we have very intense relationships with AIs, it will be almost impossible to resist the temptation to believe that they are conscious.
+
+429
+01:03:41,610 --> 01:03:47,114
+[話者B] But and whether it will be that maybe it will be the biggest delusion in human history.
+
+430
+01:03:49,494 --> 01:03:54,554
+[話者A] Maybe one test could be to see if they truly desire to make something like music or not.
+
+431
+01:03:55,659 --> 01:03:57,340
+[話者B] How do we know if they truly desire?
+
+432
+01:03:57,340 --> 01:03:58,219
+[話者A] Or mimicking it.
+
+433
+01:03:58,219 --> 01:04:06,400
+[話者B] Or just, you know, mimicking Yeah. This this, they will learn from us. They will observe how humans behave.
+
+434
+01:04:06,699 --> 01:04:12,785
+[話者B] And, you know, I can observe how hundreds of people behave. They can observe millions of people.
+
+435
+01:04:13,885 --> 01:04:20,864
+[話者B] So they they will be able to mimic human emotions much better than humans can.
+
+436
+01:04:24,610 --> 01:04:35,269
+[話者B] So, again, I think a new aspect, another key aspect of this, like, brave new world we are entering is that we will just not not know.
+
+437
+01:04:35,835 --> 01:04:36,335
+[話者B] Yeah.
+
+438
+01:04:37,195 --> 01:04:43,855
+[話者A] Just gonna raw dog into it. We don't... We have no idea what's, yeah, going to be there for us, I guess.
+
+439
+01:04:46,875 --> 01:05:09,605
+[話者B] Yeah. So that... That's that's a lot to think about. But I think as as we said in the beginning, this... That there is this kind of mismatch, this kind of just really barrier between the brain and the stomach that we can intellectually kind of understand many of these ideas, but until we are actually there experiencing it,
+
+440
+01:05:10,625 --> 01:05:11,684
+[話者B] we won't know.
+
+441
+01:05:13,664 --> 01:05:16,965
+[話者A] Yes. We... We're explorers in a sense of our own worlds.
+
+442
+01:05:18,065 --> 01:05:18,480
+[話者A] Yeah.
+
+443
+01:05:20,639 --> 01:05:24,260
+[話者A] I'd love to speak again ten years from now and see what happens.
+
+444
+01:05:24,559 --> 01:05:25,059
+[話者A] Yeah.
+
+445
+01:05:26,079 --> 01:05:28,500
+[話者A] Well, it's already been a few years since you wrote Nexus.
+
+446
+01:05:28,960 --> 01:05:30,559
+[話者B] Oh, it just came out last year.
+
+447
+01:05:30,559 --> 01:05:33,614
+[話者A] But, it said you were writing... You wrote the bulk of it.
+
+448
+01:05:33,695 --> 01:05:51,300
+[話者B] Oh, yeah. It took me, like, five years to to write it. So, like, from 2019, 2020. You know, I I look back at the past five years, and the first half of the twenty twenties was so like a roller coaster, you know, with COVID and the pandemic and all the wars. And...
+
+449
+01:05:51,599 --> 01:05:59,755
+[話者B] But I think that people will remember the early twenty twenties as the quiet time before the real storm Oh my gosh. Came.
+
+450
+01:06:00,454 --> 01:06:01,434
+[話者A] Racing ourselves.
+
+451
+01:06:01,735 --> 01:06:07,974
+[話者B] Yeah. But I mean, I often joke with people that, you know, you just have to enjoy the ride.
+
+452
+01:06:07,974 --> 01:06:08,454
+[話者A] Yes. Yeah.
+
+453
+01:06:08,454 --> 01:06:17,710
+[話者B] And it's going to be one hell of a ride. We can't stop it. It's it's too late to press the brakes, and we'll just have to find ways to enjoy the ride.
+
+454
+01:06:17,930 --> 01:06:20,430
+[話者A] Yes. For me, that's, my tool is curiosity.
+
+455
+01:06:21,690 --> 01:06:24,030
+[話者A] To override the fear. Yeah. To enjoy.
+
+456
+01:06:24,644 --> 01:06:25,144
+[話者A] Yes.
+
+457
+01:06:26,085 --> 01:06:27,285
+[話者B] Well, thank you so much.
+
+458
+01:06:27,285 --> 01:06:28,344
+[話者A] Thank you very much.
+
+459
+01:06:29,204 --> 01:06:31,785
+[話者A] That was so exciting and fun.
+
+460
+01:06:33,045 --> 01:06:33,864
+[話者A] Thank you.

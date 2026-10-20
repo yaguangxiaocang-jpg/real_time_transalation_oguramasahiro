@@ -1,0 +1,131 @@
+1
+00:00:01,120 --> 00:00:07,859
+[話者A] Feelings. But in in a way, you don't need feelings in order to want to do something.
+
+2
+00:00:08,639 --> 00:00:14,900
+[話者A] Like, we already had for centuries, we had things like corporations, like countries, like states.
+
+3
+00:00:15,205 --> 00:00:16,905
+[話者A] They don't have desires.
+
+4
+00:00:17,684 --> 00:00:27,704
+[話者A] We use it as a metaphor. Like, we say one country wants to go to war against another country. A country cannot really want anything in... Because it has no mind.
+
+5
+00:00:28,070 --> 00:00:31,369
+[話者A] It's not real. It's not real. It's only in our imagination.
+
+6
+00:00:32,710 --> 00:00:43,995
+[話者A] But now with with AI, we can have these, again, entities that don't feel anything, but they do pursue goals.
+
+7
+00:00:44,534 --> 00:00:54,475
+[話者A] And if we give them the goal or they give themselves the goal of create new music, they can just go ahead and do that.
+
+8
+00:00:57,640 --> 00:01:16,165
+[話者A] And I... And I I think what really fascinates me is this idea of releasing music from its embeddedness in the human brain and mind, and you just have music interacting with itself, the same way that...
+
+9
+00:01:16,545 --> 00:01:20,325
+[話者A] I'm a literary person. My life is is words, is books.
+
+10
+00:01:21,265 --> 00:01:24,484
+[話者A] And just have the the words talking with the words.
+
+11
+00:01:25,469 --> 00:01:36,209
+[話者A] Because previously, again, what would writers do? I would read one one book and another book and another book and then mix them somehow in my mind and then create a new book out of it.
+
+12
+00:01:36,670 --> 00:01:40,724
+[話者A] The books could not talk that... One book could not talk directly with another book.
+
+13
+00:01:41,284 --> 00:01:42,584
+[話者A] Now it's becoming possible.
+
+14
+00:01:43,284 --> 00:01:57,490
+[話者A] But in a way, when when I think about AI and text, this is what it means, that texts can talk directly with texts and create new texts without... They don't need me as as a kind of matchmaker.
+
+15
+00:01:58,350 --> 00:02:01,969
+[話者B] Do you think a book could be written without an audience in mind?
+
+16
+00:02:02,590 --> 00:02:03,730
+[話者B] I mean, a good book.
+
+17
+00:02:07,174 --> 00:02:10,314
+[話者A] A book can certainly be written without a book in mind.
+
+18
+00:02:10,694 --> 00:02:12,235
+[話者B] But... Without an...
+
+19
+00:02:12,614 --> 00:02:28,659
+[話者B] Because it... What you said earlier about how AI could get more data. So rather than you thinking about 20 people, you know, who would enjoy reading the book or find it really interesting and exciting, that AI could get the data or the imagined...
+
+20
+00:02:29,599 --> 00:02:33,694
+[話者B] Well, predicted reaction... Response from the whole world.
+
+21
+00:02:33,834 --> 00:02:34,334
+[話者A] Yeah.
+
+22
+00:02:34,555 --> 00:02:44,939
+[話者B] Would that necessarily... Without someone directing them what the purpose of the book is or who? I mean, there's no book that everyone in the world is going to love reading. Right?
+
+23
+00:02:45,340 --> 00:02:48,080
+[話者A] If it's exactly the same text, then no. Yeah.
+
+24
+00:02:48,139 --> 00:02:49,520
+[話者B] So I guess if you...
+
+25
+00:02:50,939 --> 00:03:08,294
+[話者B] I guess the possibility of it being tailor made to each person maybe makes this talk meaningless. I mean, what I'm saying right now, meaningless. But just to make something that something like thousands or millions of people would enjoy or think is really special, would...
+
+26
+00:03:08,675 --> 00:03:14,870
+[話者B] Because because I think there is also, there is something universal that we all, you know, find interesting.
+
+27
+00:03:15,409 --> 00:03:16,150
+[話者B] But I'm...
+
+28
+00:03:16,209 --> 00:03:32,034
+[話者A] I mean, we know of such books. They are holy books. Yeah. Like the Bible, the Quran, this is exactly the story being told about them that allegedly they were not created by any human being and their audience is the entire world.
+
+29
+00:03:32,575 --> 00:03:52,455
+[話者A] Now as historian, I said this is not the case. We know, for instance, how the Bible was written. We know that you had many people writing different texts, and then you had editors who decided this text will be in the Bible. No. No. No. This text will will relieve it out because it has some message we don't like, and it got edited and rewritten.
+
+30
+00:03:52,915 --> 00:03:55,655
+[話者A] So it was a human, creation.
+
+31
+00:03:56,435 --> 00:04:04,879
+[話者A] But in their in their fantasies, humans believe that these books did not come from the human mind.
+
+32
+00:04:05,659 --> 00:04:19,564
+[話者A] In a way, they have the fantasies that, yes, the words just kind of collected themselves to tell some universal message to to to the whole of humanity.
+
+33
+00:04:20,824 --> 00:04:25,805
+[話者A] And one of the things that that they think about a lot is what AI will do to religions.

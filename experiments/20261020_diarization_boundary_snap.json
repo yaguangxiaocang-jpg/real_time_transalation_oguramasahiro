@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-20",
+  "model": "deepgram-nova-2-general+diarize",
+  "domain": "general",
+  "llm_judge": null,
+  "chrf_score": null,
+  "comet_score": null,
+  "cometkiwi_score": null,
+  "video": "harari_utada (66.6分の対談、話者2人)",
+  "script": "evaluation/diarization_check.py --split word（--from-json で 20261019 の保存済みDeepgram出力を再利用、API呼び出しなし）",
+  "results": {
+    "label_consistency_parts_vs_full": "パート別に処理した14本（part01〜15、part04はJSONなし）を全編処理と6-gramで突き合わせ、話者の聞き分けは14本すべて100%一致。ただし A/B の割り当ては 5本（part03/07/09/10/15）で全編と逆",
+    "short_segments_before": "全編467セグメント中、2語以下が47（あいづち21・文の途中での切り替わり誤り約11・その他15）",
+    "snap_v1": "17箇所を移動。目視で13正・3誤（相手のあいづち Yes./Mhmm. を話し手の文に吸収）・1判断保留",
+    "snap_v2": "(b) 次区間の頭を前区間へ移す規則を小文字始まりに限定。14箇所を移動、目視で12正・0誤・2判断保留（\"AI, I would do it.\" / \"without an...\"）",
+    "segments": {"no_snap": 467, "snap_v2": 460},
+    "speaker_turns": {"no_snap": 136, "snap_v2": 126}
+  },
+  "notes": "単語レベル話者番号で区切ると、切り替わり付近で1〜2語が隣の話者に付き「Yes. To | talk about art」→訳「ええ。To」のように崩れていた。文の途中の切り替わりを文の切れ目へ最大2語・無音1秒以内だけ寄せる補正(snap_speaker_boundaries)を実験スクリプトに追加。正解の話者ラベルがないため評価は目視のみ（翻訳スコアは未計測）。A/Bの割り当ては処理ごとに任意なので、動画を分割して処理する場合はパート間で話者を対応付ける仕組みが必要。本番の動画字幕は動画全体を1回で文字起こしするため現状は影響なし。本番(add_subtitles.py / gradio_demo.py)には未導入"
+}

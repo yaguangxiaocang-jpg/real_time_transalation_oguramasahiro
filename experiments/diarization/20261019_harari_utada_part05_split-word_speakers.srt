@@ -1,0 +1,115 @@
+1
+00:00:01,439 --> 00:00:04,339
+[話者A] That I don't know what the result is until I get there.
+
+2
+00:00:06,000 --> 00:00:07,859
+[話者B] What is the result for for you?
+
+3
+00:00:08,480 --> 00:00:10,820
+[話者A] Just the piece of music, but it's almost like a byproduct.
+
+4
+00:00:11,919 --> 00:00:19,535
+[話者A] And everything important that happened to me, the value of the song is what happened while I was making it. Yeah.
+
+5
+00:00:19,535 --> 00:00:32,329
+[話者B] But this is for us as creators or as... I mean, this I completely understand. I agree that there is a deep need yearning in humans to create, and this will continue irrespective of AI.
+
+6
+00:00:32,630 --> 00:00:33,130
+[話者B] Yeah.
+
+7
+00:00:33,990 --> 00:00:36,710
+[話者A] So... But whether people will appreciate that or not.
+
+8
+00:00:36,710 --> 00:00:46,255
+[話者B] Right? Whether people will appreciate it, whether it will have a place in in the world and it won't just be my hobby to do it, That's the question.
+
+9
+00:00:46,875 --> 00:00:55,935
+[話者B] And when... A lot of time when you ask artists or or or, creators, what are you try... What is the result? What are we trying to achieve?
+
+10
+00:00:56,954 --> 00:01:11,640
+[話者B] So one very common answer is that they are trying to create a certain state of mind in somebody else, to bring up a certain emotion, joy or sadness or whatever.
+
+11
+00:01:12,340 --> 00:01:18,405
+[話者B] And this is the kind of thing that potentially AI would would be very good at.
+
+12
+00:01:18,405 --> 00:01:19,204
+[話者A] Yes. Yeah.
+
+13
+00:01:19,204 --> 00:01:25,784
+[話者B] Even if it has no emotions of its own, it will be able to recognize the emotion of other people.
+
+14
+00:01:26,325 --> 00:01:50,105
+[話者B] And then find by trial and error how if you imagine, like, if you compare a human being, like our emotional system is basically like a piano, that the AI will learn how to play the human emotional piano and how to produce sadness, how to produce joy, how to produce fear or awe,
+
+15
+00:01:51,364 --> 00:02:00,390
+[話者B] better than a human artist, simply through the sheer volume of information it can process.
+
+16
+00:02:01,489 --> 00:02:14,294
+[話者B] Like, it can gather data on millions and millions of actual human beings. Like when I write a book, so I would sometimes try to imagine my reader.
+
+17
+00:02:15,074 --> 00:02:28,580
+[話者B] And I usually base my imagined reader either on myself or on people I actually know or on encounters I had with students at university or public events or interviews.
+
+18
+00:02:28,879 --> 00:02:34,659
+[話者B] But this is a very limited, pool of examples of data.
+
+19
+00:02:36,064 --> 00:02:43,284
+[話者B] So when I'm doing it, maybe I have a kind of a pool of information on a couple of 100 people.
+
+20
+00:02:44,305 --> 00:02:52,650
+[話者B] The AI that would write the book or the piece of music, it would have data on millions and billions of human beings over time.
+
+21
+00:02:53,349 --> 00:03:16,995
+[話者B] So if the goal is to create a certain state of mind for other people, I just don't see how we can compete with the AI on that, especially as it will also have the advantage of being able to tailor the the book, the songs, specifically to different people.
+
+22
+00:03:17,810 --> 00:03:20,949
+[話者B] I can't write a slightly different book for different people.
+
+23
+00:03:21,490 --> 00:03:25,509
+[話者B] But for AI, maybe it would be quite easy.
+
+24
+00:03:25,969 --> 00:03:31,030
+[話者A] Yeah. I think the tailor making aspect is quite interesting. I'd love to know.
+
+25
+00:03:31,514 --> 00:03:46,254
+[話者A] I'd love to try it and see if it'll make music that will eventually, I guess, the kind of music that I really love. I mean, it's almost like music streaming platforms suggesting playlists and songs based on what you've listened to algorithmically.
+
+26
+00:03:48,280 --> 00:03:50,139
+[話者A] But the...
+
+27
+00:03:51,639 --> 00:04:02,539
+[話者A] I I just wonder... I I don't know if this is a good enough comparison, but let's say there's something cheap and quick, quickly prepared, very accessible like fast food.
+
+28
+00:04:04,574 --> 00:04:25,330
+[話者A] Yes it does have a big market, but then there's a different type of value that people place on something like the, what is it called, the effort heuristic, where people if they know that, you know, if peep... The human or
+
+29
+00:04:25,710 --> 00:04:29,792
+[話者A] maybe even AI, if they've done it in a more difficult way or something.

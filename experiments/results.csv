@@ -447,3 +447,4 @@
 2026-10-13,gemini-3.5-flash,,0.9511,0.5953,[benchmark=technology_moe_2d07bb74_clip5][rescore_neural][source=20261013_model_comparison_flash_realtime.json] 保存済み訳文(n=2)を現在の参照訳でchrF・COMET再採点。reference_status=human_reviewed,0.902,
 2026-10-13,gemini-3.7-flash,,0.9883,0.6379,[benchmark=technology_moe_2d07bb74_clip5][rescore_neural][source=20261013_model_comparison_flash_realtime.json] 保存済み訳文(n=2)を現在の参照訳でchrF・COMET再採点。reference_status=human_reviewed,0.9179,
 2026-10-13,gemini-3.8-flash,,0.9772,0.6411,[benchmark=technology_moe_2d07bb74_clip5][rescore_neural][source=20261013_model_comparison_flash_realtime.json] 保存済み訳文(n=2)を現在の参照訳でchrF・COMET再採点。reference_status=human_reviewed,0.9108,
+2026-10-20,deepgram-nova-2-general+diarize,general,,,[diarization][video=harari_utada] 単語レベル話者分離の切り替わり位置補正(snap_speaker_boundaries)。全編で14箇所移動・目視12正0誤2保留（初版は17箇所中3誤→あいづちを吸収しない規則に修正）。セグメント467→460・話者交代136→126。パート別処理は聞き分け100%一致だがA/B割り当てが14本中5本で逆。翻訳スコア未計測・本番未導入,,
