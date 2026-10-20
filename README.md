@@ -65,14 +65,66 @@ pinned: false
 - Windows 10 / 11
 - インターネット接続
 
+**Python を事前にインストールする必要はありません。** 初回起動時に、必要なものが自動でインストールされます。
+
+| 自動で入るもの | 用途 |
+|---|---|
+| [uv](https://docs.astral.sh/uv/) | Python 3.13 とライブラリを準備するツール（Python 本体もこれが自動で取得します） |
+| Python 3.13 + ライブラリ | アプリ本体の実行環境（このフォルダ内の `.venv` に入ります。PC 全体の Python には影響しません） |
+| ffmpeg | 動画からの音声抽出・字幕の焼き込み・音声ファイルの変換（マイク翻訳だけなら不要） |
+
 ### 手順
 
 1. このフォルダ内の **`launch.bat`** をダブルクリックして起動します
+   - 初回だけ、黒い画面でセットアップ（`setup.bat`）が自動で始まります。数分かかるので、完了するまで画面を閉じないでください
+   - ffmpeg のインストール時に「このアプリがデバイスに変更を加えることを許可しますか？」と表示されたら「はい」を選んでください
+   - 2回目以降はセットアップは行われず、すぐに起動します
 2. 初回起動時は自動でブラウザが開きます
    - 開かない場合は [http://localhost:7861](http://localhost:7861) をブラウザで開いてください
 3. 画面上部の「API Keys」欄に Deepgram と Google AI のキーを入力します
 
 > タスクトレイ（画面右下）にアイコンが表示されます。右クリックして「終了」を選ぶとアプリが終了します。
+
+### 自動セットアップがうまくいかない場合（手動セットアップ）
+
+会社の PC などで自動インストールが制限されている場合は、以下を順番に行ってください。
+
+#### 1. uv をインストールする
+
+スタートメニューで「PowerShell」と検索して開き、以下を貼り付けて Enter を押します。
+
+```
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+> 終わったら PowerShell を一度閉じて開き直し、`uv --version` と入力してバージョンが表示されれば成功です。
+
+#### 2. Python とライブラリを準備する
+
+PowerShell でこのフォルダに移動し、以下を実行します（Python 3.13 も自動でダウンロードされます）。
+
+```
+cd "C:\Users\（あなたのユーザー名）\（このフォルダ）"
+uv sync --extra microphone
+```
+
+#### 3. ffmpeg を手動でインストールする
+
+PowerShell で以下を実行します。
+
+```
+winget install --id Gyan.FFmpeg -e
+```
+
+`winget` が使えない場合は：
+
+1. [https://www.gyan.dev/ffmpeg/builds/](https://www.gyan.dev/ffmpeg/builds/) から `ffmpeg-release-essentials.zip` をダウンロード
+2. ZIP を解凍し、中の `bin` フォルダのパス（例：`C:\ffmpeg\bin`）をコピー
+3. スタートメニューで「環境変数」と検索 →「システム環境変数の編集」→「環境変数」→「Path」をダブルクリック →「新規」→ コピーしたパスを貼り付けて OK
+
+> PowerShell を開き直して `ffmpeg -version` と入力し、エラーが出なければ成功です。
+
+これで `launch.bat` から起動できます。
 
 ---
 
@@ -127,6 +179,22 @@ pinned: false
 ---
 
 ## 更新履歴
+
+### 2026/10/20
+
+#### 変更内容
+
+**Python 未インストールの PC でもダブルクリックで使えるように**
+
+以前の README には「前提条件：Windows とインターネット接続のみ」と書かれていたが、
+実際の `launch.bat` は `uv sync` で作った `.venv` が必要で、ない場合はエラーで止まっていた
+（uv・Python・ffmpeg のインストール手順も書かれていなかった）。
+
+- `setup.bat` を新規追加。uv（未インストールなら公式インストーラで導入）→
+  `uv sync --extra microphone`（Python 3.13 も uv が自動取得）→ ffmpeg（未インストールなら
+  `winget install Gyan.FFmpeg`）の順に準備する
+- `launch.bat` / `launch_debug.bat` は `.venv` がなければ `setup.bat` を自動で呼ぶように変更
+- README のセットアップ手順と USE.md に、自動セットアップと手動セットアップの手順を追記
 
 ### 2026/09/24
 
