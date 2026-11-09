@@ -114,7 +114,7 @@ cp .env.example .env
 | 変数名 | 説明 | 必須 |
 |---|---|---|
 | `DEEPGRAM_API_KEY` | Deepgram の API キー | ✓ |
-| `LLM_PROVIDER` | `gemini` または `openai` | ✓ |
+| `LLM_PROVIDER` | `gemini` または `openai`（既定: `gemini`） | |
 | `GOOGLE_API_KEY` | Google AI の API キー | Gemini 使用時 |
 | `OPENAI_API_KEY` | OpenAI の API キー | OpenAI 使用時 |
 | `ZOOM_CLIENT_ID` / `ZOOM_CLIENT_SECRET` | Zoom RTMS の認証情報 | Zoom RTMS 使用時 |
@@ -274,7 +274,7 @@ graph LR
 - **低遅延:** 音声認識と翻訳を非同期で分離します。キューがあふれたら古い文を捨て、最新の文を優先します。
 - **文脈つき翻訳:** 直近の文を文脈としてプロンプトに含めます。文脈と翻訳対象はタグで分離します。
 - **固有名詞の保持:** 人名や略語、意味があいまいな語は訳さずに残します。
-- **コンテキストキャッシュ:** Gemini ではシステムプロンプトと辞書をキャッシュします。辞書を更新したらキャッシュを再生成します。
+- **用語辞書:** 用語辞書をシステムプロンプトに含めて、訳語を揃えます。
 
 詳しくは `master` ブランチの `DESIGN_DOC.md` を参照してください。
 
