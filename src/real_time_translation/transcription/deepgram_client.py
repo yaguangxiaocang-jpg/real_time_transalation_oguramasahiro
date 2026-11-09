@@ -10,6 +10,8 @@ from typing import Any
 from deepgram import AsyncDeepgramClient
 from deepgram.extensions.types.sockets.listen_v1_control_message import ListenV1ControlMessage
 
+from real_time_translation.latency import AudioClock
+
 
 @dataclass
 class TranscriptionResult:
@@ -24,6 +26,10 @@ class TranscriptionResult:
     # `whisper_reverify`のconfidence-weighted ROVER方式の補正判定
     # （Whisper側とDeepgram側の信頼度を相対比較する）に使う。取得できない場合は空リスト。
     word_confidences: list[tuple[str, float]] = field(default_factory=list)
+    # 遅延計測用（`latency.py`）。いずれも time.monotonic() の秒。
+    # speech_end_at: 最後の単語を話し終えた推定時刻 / received_at: この結果を受け取った時刻
+    speech_end_at: float | None = None
+    received_at: float | None = None
 
     @property
     def is_low_confidence(self) -> bool:
@@ -97,6 +103,9 @@ class DeepgramTranscriber:
         self._running = False
         self._result_queue: asyncio.Queue[TranscriptionResult] = asyncio.Queue()
         self._on_transcript: Callable[[TranscriptionResult], None] | None = None
+        # 送った音声の累計秒数と送信時刻。Deepgram の単語タイムスタンプ（音声先頭からの
+        # 秒数）を「話し終わった時刻」に換算するのに使う
+        self._audio_clock = AudioClock()
 
     async def connect(self) -> None:
         """Establish WebSocket connection to Deepgram."""
@@ -177,6 +186,7 @@ class DeepgramTranscriber:
         if self._connection and self._running:
             self._last_audio_at = time.monotonic()
             await self._connection.send_media(audio_data)
+            self._audio_clock.record(len(audio_data), time.monotonic())
 
     def set_callback(self, callback: Callable[[TranscriptionResult], None]) -> None:
         """Set callback for transcription results.
@@ -256,13 +266,22 @@ class DeepgramTranscriber:
                 (w.punctuated_word or w.word, float(w.confidence)) for w in words
             ]
 
+            end_time = float(result.start + result.duration)
+            # 区間の終わり（end_time）は後ろの無音を含むので、最後の単語の終わりを使う
+            last_word_end = getattr(words[-1], "end", None) if words else None
+            speech_end = (
+                float(last_word_end)
+                if isinstance(last_word_end, (int, float))
+                else end_time
+            )
             transcript_result = TranscriptionResult(
                 text=transcript,
                 is_final=is_final,
                 confidence=float(alternative.confidence),
                 start_time=float(result.start),
-                end_time=float(result.start + result.duration),
+                end_time=end_time,
                 word_confidences=word_confidences,
+                speech_end_at=self._audio_clock.to_wall(speech_end),
             )
 
             if transcript_result.is_final:
@@ -299,11 +318,13 @@ class DeepgramTranscriber:
             start_time=pending.start_time,
             end_time=end_time,
             word_confidences=pending.word_confidences,
+            speech_end_at=self._audio_clock.to_wall(end_time),
         )
         self._pending_result = None
         self._emit_result(final_result)
 
     def _emit_result(self, transcript_result: TranscriptionResult) -> None:
+        transcript_result.received_at = time.monotonic()
         if transcript_result.is_final:
             self._last_final_text = transcript_result.text
             self._last_final_at = time.monotonic()

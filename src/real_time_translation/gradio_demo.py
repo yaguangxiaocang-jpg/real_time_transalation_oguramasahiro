@@ -11,6 +11,8 @@ import re
 import subprocess
 import sys
 import tempfile
+import time
+import wave
 from dataclasses import dataclass, field, replace
 from datetime import datetime
 from typing import Any
@@ -42,10 +44,13 @@ import numpy as np
 
 from real_time_translation.audio.capture import QueueAudioCapture
 from real_time_translation.config import Config
+from real_time_translation.dictionary_tab import build_dictionary_tab
+from real_time_translation.latency import LatencyTracker, StepTimer, percentile
 from real_time_translation.pipeline import TranslationPipeline, TranslationResult
 
 TARGET_SAMPLE_RATE = 16000
 MAX_DISPLAY_LINES = 50
+MAX_HISTORY_PAIRS = 5000
 
 # 動画字幕タブ（本番エントリーポイント）向けの設定。add_subtitles.py（実験用CLI）と
 # 同じ環境変数を読む。以前はここに utterance 結合・辞書配線が一切なく、
@@ -123,33 +128,58 @@ class DemoSession:
     translation_lines: list[str] = field(default_factory=list)
     interim_transcript: str = ""  # Current interim transcript
     cancel_requested: bool = False  # Flag to cancel file processing
-    recent_delays: list[float] = field(default_factory=list)  # Last N translation delays (seconds)
-    latest_delay: float = 0.0  # Most recent ASR→translation latency (seconds)
+    # 話し終わり → 訳文表示までの区間ごとの計測（`latency.py`）
+    latency: LatencyTracker = field(default_factory=LatencyTracker)
+    # 確定した (原文, 訳文) の履歴。辞書タブの「直近の翻訳結果を確認」で使う
+    history: list[tuple[str, str]] = field(default_factory=list)
+
+    def record(self, source: str, translation: str) -> None:
+        self.history.append((source, translation))
+        if len(self.history) > MAX_HISTORY_PAIRS:
+            del self.history[: len(self.history) - MAX_HISTORY_PAIRS]
 
 
 def _status(message: str) -> str:
     return f"Status: {message}"
 
 
-def _delay_display(latest_delay: float, avg_delay: float, pending: int) -> str:
-    if avg_delay <= 0:
-        return "⏱ 音声認識→和訳: 計測中..."
-    if avg_delay < 2.0:
-        icon = "🟢"
-        label = "良好"
-    elif avg_delay < 5.0:
-        icon = "🟡"
-        label = "やや遅延"
+_LATENCY_IDLE = "⏱ 話し終わり→訳文表示: -"
+
+
+def _latency_display(tracker: LatencyTracker | None, pending: int | None = None) -> str:
+    """話し終わり → 訳文表示の最新値・中央値・p95 と、区間ごとの内訳表。"""
+    totals = [t for r in tracker.records if (t := r.total) is not None] if tracker else []
+    pending_str = f"　翻訳待ち: **{pending}件**" if pending is not None else ""
+    if not totals:
+        return f"⏱ 話し終わり→訳文表示: 計測中...{pending_str}"
+    median = percentile(totals, 50)
+    if median < 3.0:
+        icon, label = "🟢", "良好"
+    elif median < 6.0:
+        icon, label = "🟡", "やや遅延"
     else:
-        icon = "🔴"
-        label = "遅延大"
-    bar_filled = min(10, int(avg_delay / 10 * 10))
-    bar = "█" * bar_filled + "░" * (10 - bar_filled)
-    latest_str = f"{latest_delay:.2f}秒" if latest_delay > 0 else "-"
+        icon, label = "🔴", "遅延大"
+    latest = tracker.latest_total()
+    latest_str = f"{latest:.2f}秒" if latest is not None else "-"
     return (
-        f"{icon} **音声認識→和訳: 最新 {latest_str} / 平均 {avg_delay:.1f}秒** ({label})　"
-        f"`{bar}`　翻訳待ち: **{pending}件**"
+        f"{icon} **話し終わり→訳文表示: 最新 {latest_str} / 中央値 {median:.2f}秒 / "
+        f"p95 {percentile(totals, 95):.2f}秒** ({label}){pending_str}\n\n"
+        + tracker.summary_markdown()
     )
+
+
+def latency_view(state: DemoSession | None) -> str:
+    if state is None:
+        return _LATENCY_IDLE
+    return _latency_display(state.latency, state.pipeline.pending_count)
+
+
+def _record_displayed(state: DemoSession, result: TranslationResult) -> None:
+    """訳文を画面へ渡す時点で「画面表示」の時刻を入れ、計測結果に加える。"""
+    if result.timing is None:
+        return
+    result.timing.displayed = time.monotonic()
+    state.latency.add(result.timing)
 
 
 def _timestamp() -> str:
@@ -342,9 +372,11 @@ async def start_session(
     )
 
 
-async def stop_session(state: DemoSession | None) -> tuple[DemoSession | None, str, str]:
+async def stop_session(
+    state: DemoSession | None, assist_store: dict | None = None
+) -> tuple[DemoSession | None, str, str]:
     if state is None:
-        return None, _status("stopped"), "⏱ 音声認識→和訳: -"
+        return None, _status("stopped"), _LATENCY_IDLE
 
     from real_time_translation.translation.terminology_check import (
         format_terminology_misses,
@@ -353,8 +385,15 @@ async def stop_session(state: DemoSession | None) -> tuple[DemoSession | None, s
     usage_line = _usage_line(state.pipeline)
     terminology_line = format_terminology_misses(state.pipeline.terminology_report().misses)
 
+    if assist_store is not None and state.history:
+        assist_store["pairs"] = list(state.history)
+        assist_store["label"] = "直前のマイク/音声ファイルのセッション"
+    if assist_store is not None and len(state.latency):
+        assist_store["latency"] = state.latency
+    latency_text = _latency_display(state.latency)
+
     await state.pipeline.stop()
-    summary = f"⏱ 音声認識→和訳: -\n\n{usage_line}\n\n{terminology_line}"
+    summary = f"{latency_text}\n\n{usage_line}\n\n{terminology_line}"
     return None, _status("stopped"), summary
 
 
@@ -364,6 +403,7 @@ async def clear_logs(state: DemoSession | None) -> tuple[str, str]:
 
     state.transcript_lines.clear()
     state.translation_lines.clear()
+    state.latency = LatencyTracker()
     state.pipeline.clear_context()
     return "", ""
 
@@ -401,6 +441,8 @@ async def process_audio_file(
     # Clear previous results
     state.transcript_lines.clear()
     state.translation_lines.clear()
+    state.history.clear()
+    state.latency = LatencyTracker()
     state.interim_transcript = ""
 
     try:
@@ -435,6 +477,8 @@ async def process_audio_file(
                 if result.is_final and result.translated_text:
                     state.transcript_lines.append(result.original_text)
                     state.translation_lines.append(result.translated_text)
+                    state.record(result.original_text, result.translated_text)
+                    _record_displayed(state, result)
             except asyncio.QueueEmpty:
                 break
 
@@ -462,6 +506,8 @@ async def process_audio_file(
                 if result.is_final and result.translated_text:
                     state.transcript_lines.append(result.original_text)
                     state.translation_lines.append(result.translated_text)
+                    state.record(result.original_text, result.translated_text)
+                    _record_displayed(state, result)
             except asyncio.QueueEmpty:
                 break
 
@@ -488,7 +534,7 @@ async def process_audio_file(
 
 async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str, str, str]:
     if state is None:
-        return "", "", _status("click Start to initialize"), "⏱ 音声認識→和訳: -"
+        return "", "", _status("click Start to initialize"), _LATENCY_IDLE
 
     audio_bytes = _normalize_audio_chunk(chunk)
     if audio_bytes:
@@ -512,14 +558,11 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
         )
         state.transcript_lines.append(result.original_text)
         state.translation_lines.append(translated_display)
+        state.record(result.original_text, result.translated_text)
         state.interim_transcript = ""
         if result.slide_window:
             latest_slide_window = result.slide_window
-        if result.translation_delay > 0:
-            state.latest_delay = result.translation_delay
-            state.recent_delays.append(result.translation_delay)
-            if len(state.recent_delays) > 10:
-                state.recent_delays.pop(0)
+        _record_displayed(state, result)
 
         if len(state.transcript_lines) > MAX_DISPLAY_LINES:
             state.transcript_lines = state.transcript_lines[-MAX_DISPLAY_LINES:]
@@ -539,9 +582,7 @@ async def handle_audio(chunk: Any, state: DemoSession | None) -> tuple[str, str,
     else:
         translation = "\n".join(state.translation_lines[-state.window_size :])
 
-    avg_delay = sum(state.recent_delays) / len(state.recent_delays) if state.recent_delays else 0.0
-    pending = state.pipeline.pending_count
-    delay_text = _delay_display(state.latest_delay, avg_delay, pending)
+    delay_text = latency_view(state)
     delay_text += "\n\n" + _usage_line(state.pipeline)
 
     return transcript, translation, _status("running"), delay_text
@@ -573,6 +614,28 @@ def export_as_txt(state: DemoSession | None) -> str | None:
     tmp.write(content)
     tmp.close()
     return tmp.name
+
+
+def export_latency_csv(
+    state: DemoSession | None, assist_store: dict | None = None
+) -> tuple[str | None, str]:
+    """話し終わり → 訳文表示の計測結果（1文1行）を CSV で書き出す。"""
+    tracker = state.latency if state is not None else None
+    if (tracker is None or not len(tracker)) and assist_store:
+        tracker = assist_store.get("latency")
+    if tracker is None or not len(tracker):
+        return None, "ℹ️ まだ計測結果がありません。マイクか音声ファイルで翻訳してから押してください。"
+    tmp = tempfile.NamedTemporaryFile(
+        mode="w",
+        suffix=".csv",
+        delete=False,
+        encoding="utf-8-sig",  # Excel で文字化けしないよう BOM 付き
+        newline="",
+        prefix=f"latency_{datetime.now():%Y%m%d_%H%M%S}_",
+    )
+    tmp.write(tracker.to_csv())
+    tmp.close()
+    return tmp.name, _latency_display(tracker)
 
 
 # ---------------------------------------------------------------------------
@@ -707,10 +770,13 @@ async def _video_translate_with_pipeline(
     translated: list[dict] = []
     total = len(utterances)
     flagged_count = 0
+    segment_seconds: list[float] = []  # 1文ごとの翻訳API所要時間
     for i, utt in enumerate(utterances):
         if on_progress:
             on_progress(i, total)
+        call_start = time.perf_counter()
         output = await translator.translate(utt["transcript"])
+        segment_seconds.append(time.perf_counter() - call_start)
 
         review_flag = None
         if VIDEO_COMPLETENESS_CHECK_ENABLED:
@@ -737,8 +803,26 @@ async def _video_translate_with_pipeline(
         "terminology_misses": [
             f"{m.source_term}→{m.target_term}" for m in terminology_result.misses
         ],
+        "segment_seconds": segment_seconds,
     }
     return translated, report
+
+
+def _wav_duration(path: str) -> float | None:
+    try:
+        with wave.open(path, "rb") as w:
+            return w.getnframes() / float(w.getframerate())
+    except Exception:
+        return None
+
+
+def _seconds_stats(values: list[float]) -> str:
+    if not values:
+        return "-"
+    return (
+        f"中央値 {percentile(values, 50):.2f}秒 / p95 {percentile(values, 95):.2f}秒 / "
+        f"最大 {max(values):.2f}秒（{len(values)}文）"
+    )
 
 
 def _seconds_to_srt(s: float) -> str:
@@ -865,6 +949,7 @@ async def process_video(
     evaluate_scores: bool = False,
     source_lang: str = "English",
     target_lang: str = "Japanese (日本語)",
+    assist_store: dict | None = None,
     gr_progress=gr.Progress(),
 ):
     """動画ファイルに字幕を生成して焼き込む（Gradio generator）。"""
@@ -897,31 +982,41 @@ async def process_video(
         pass  # コピー失敗時は元のパスで続行
 
     log = ""
+    # 工程ごとの所要時間（latency.StepTimer）。各「✅」行の末尾と最後のまとめに出す
+    timer = StepTimer()
 
     def step(msg: str) -> str:
         nonlocal log
         log += msg + "\n"
         return log
 
+    def done(msg: str) -> str:
+        return step(f"{msg}（{timer.stop():.1f}秒）")
+
     try:
         gr_progress(0.0, desc="開始...")
         yield step("🎵 音声を抽出中..."), None, None, ""
+        timer.start("音声抽出")
         await asyncio.to_thread(_video_extract_audio, video_path, audio_path)
+        media_seconds = _wav_duration(audio_path)
         gr_progress(0.10, desc="音声抽出完了")
-        yield step("✅ 音声抽出完了"), None, None, ""
+        media_desc = f": 動画の長さ {media_seconds:.1f}秒" if media_seconds else ""
+        yield done(f"✅ 音声抽出完了{media_desc}"), None, None, ""
 
         gr_progress(0.10, desc="文字起こし中（Deepgram）...")
         yield step("📝 文字起こし中（Deepgram）..."), None, None, ""
+        timer.start("文字起こし（Deepgram）")
         utterances = await asyncio.to_thread(
             _video_transcribe, audio_path, deepgram_key, source_code
         )
         gr_progress(0.25, desc=f"文字起こし完了: {len(utterances)} セグメント")
-        yield step(f"✅ 文字起こし完了: {len(utterances)} セグメント"), None, None, ""
+        yield done(f"✅ 文字起こし完了: {len(utterances)} セグメント"), None, None, ""
 
         # utterance分断対策（文末で終わっていない断片の結合）。
         # 以前はこのGradio動画タブには適用されておらず、add_subtitles.py（実験用CLI）
         # にしかない機能だったため追加。
         if VIDEO_MERGE_UTTERANCES:
+            timer.start("文の結合")
             before_count = len(utterances)
             if VIDEO_INCOMPLETE_END_DETECTION_ENABLED:
                 from real_time_translation.transcription.utterance_merge import (
@@ -951,7 +1046,7 @@ async def process_video(
                 utterances = merge_incomplete_utterances(utterances)
             merge_desc = f"utterance結合: {before_count} → {len(utterances)} セグメント"
             gr_progress(0.30, desc=merge_desc)
-            yield step(f"✅ {merge_desc}"), None, None, ""
+            yield done(f"✅ {merge_desc}"), None, None, ""
 
         yield step(f"🌐 {target_display}に翻訳中（Gemini / ドメイン: {domain}）..."), None, None, ""
 
@@ -959,6 +1054,7 @@ async def process_video(
             frac = 0.30 + 0.40 * (utt_idx / max(total, 1))
             gr_progress(frac, desc=f"翻訳中... ({utt_idx}/{total} セグメント)")
 
+        timer.start("翻訳（Gemini）")
         translated, translation_report = await _video_translate_with_pipeline(
             utterances,
             google_key,
@@ -969,7 +1065,13 @@ async def process_video(
             dictionary_path=VIDEO_DICTIONARY_PATH,
         )
         gr_progress(0.70, desc=f"翻訳完了: {len(translated)} セグメント")
-        yield step(f"✅ 翻訳完了: {len(translated)} セグメント"), None, None, ""
+        if assist_store is not None:
+            assist_store["pairs"] = [(seg["original"], seg["japanese"]) for seg in translated]
+            assist_store["label"] = "直前の動画字幕"
+        yield done(f"✅ 翻訳完了: {len(translated)} セグメント"), None, None, ""
+        yield step(
+            f"⏱ 1文あたりの翻訳: {_seconds_stats(translation_report['segment_seconds'])}"
+        ), None, None, ""
         yield step(f"📊 {translation_report['usage_summary']}"), None, None, ""
         if translation_report["flagged_count"]:
             flagged_desc = (
@@ -983,21 +1085,25 @@ async def process_video(
 
         gr_progress(0.72, desc="SRTファイル生成中...")
         yield step("📄 SRTファイル生成中..."), None, None, ""
+        timer.start("SRT生成")
         _video_create_srt(translated, srt_path)
         gr_progress(0.75, desc="SRTファイル生成完了")
-        yield step("✅ SRTファイル生成完了"), None, None, ""
+        yield done("✅ SRTファイル生成完了"), None, None, ""
 
         gr_progress(0.75, desc="字幕焼き込み中（時間がかかります）...")
         yield step("🎬 字幕を動画に焼き込み中（時間がかかります）..."), None, None, ""
+        timer.start("字幕焼き込み（ffmpeg）")
         await asyncio.to_thread(_video_burn_subtitles, video_path, srt_path, output_path)
         gr_progress(0.95, desc="字幕焼き込み完了")
-        yield step("✅ 字幕焼き込み完了"), None, None, ""
+        yield done("✅ 字幕焼き込み完了"), None, None, ""
 
         score_text = ""
         if evaluate_scores:
             gr_progress(0.95, desc="スコア評価中...")
             yield step("📊 翻訳スコアを評価中（LLM-as-judge + 逆翻訳 chrF）..."), srt_path, output_path, ""
+            timer.start("スコア評価")
             judge, chrf = await _compute_scores(translated, google_key)
+            timer.stop()
             judge_str = f"{judge:.4f}" if judge is not None else "計算失敗"
             chrf_str = f"{chrf:.4f}" if chrf is not None else "計算失敗"
             score_text = (
@@ -1010,10 +1116,13 @@ async def process_video(
             yield step("✅ スコア評価完了"), srt_path, output_path, score_text
 
         gr_progress(1.0, desc="完了！")
+        step("\n" + "\n".join(timer.summary_lines(media_seconds)))
         yield step("\n🎉 完了！下のボタンからダウンロードしてください。"), srt_path, output_path, score_text
 
     except Exception as exc:
-        yield step(f"❌ エラー: {exc}"), None, None, ""
+        timer.stop()
+        step(f"❌ エラー: {exc}")
+        yield step("\n".join(timer.summary_lines())), None, None, ""
 
 
 # ---------------------------------------------------------------------------
@@ -1065,8 +1174,10 @@ def build_demo() -> gr.Blocks:
         )
 
         state = gr.State(None)
+        # 停止したセッション・動画字幕の翻訳結果（辞書タブで用語チェックに使う）
+        assist_store = gr.State({})
         status = gr.Markdown(_status("stopped"))
-        delay_indicator = gr.Markdown("⏱ 音声認識→和訳: -")
+        delay_indicator = gr.Markdown(_LATENCY_IDLE)
 
         with gr.Row():
             start_button = gr.Button("Start", variant="primary")
@@ -1115,6 +1226,16 @@ def build_demo() -> gr.Blocks:
                     visible=True,
                 )
 
+            build_dictionary_tab(
+                demo,
+                state,
+                assist_store,
+                google_key_input,
+                source_lang_input,
+                target_lang_input,
+                domain_input,
+            )
+
         with gr.Row():
             transcript_box = gr.Textbox(
                 label="Transcription (source)",
@@ -1129,7 +1250,18 @@ def build_demo() -> gr.Blocks:
 
         with gr.Row():
             export_button = gr.Button("📥 Export as TXT")
+            latency_csv_button = gr.Button("⏱ 遅延の計測結果をCSVで保存")
             export_file = gr.File(label="Download", visible=False)
+
+        latency_csv_button.click(
+            export_latency_csv,
+            inputs=[state, assist_store],
+            outputs=[export_file, delay_indicator],
+        ).then(
+            lambda f: gr.File(visible=f is not None),
+            inputs=[export_file],
+            outputs=[export_file],
+        )
 
         export_button.click(
             export_as_txt,
@@ -1148,7 +1280,7 @@ def build_demo() -> gr.Blocks:
         )
         stop_button.click(
             stop_session,
-            inputs=[state],
+            inputs=[state, assist_store],
             outputs=[state, status, delay_indicator],
         )
         clear_button.click(
@@ -1167,7 +1299,7 @@ def build_demo() -> gr.Blocks:
             process_audio_file,
             inputs=[audio_file, state, deepgram_key_input, google_key_input, source_lang_input, target_lang_input, domain_input],
             outputs=[state, status, transcript_box, translation_box],
-        )
+        ).then(latency_view, inputs=[state], outputs=[delay_indicator])
 
         cancel_button.click(
             cancel_processing,
@@ -1182,6 +1314,7 @@ def build_demo() -> gr.Blocks:
                 deepgram_key_input, google_key_input,
                 evaluate_scores_checkbox,
                 source_lang_input, target_lang_input,
+                assist_store,
             ],
             outputs=[video_log, srt_output, video_output, score_output],
         )

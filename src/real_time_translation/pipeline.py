@@ -13,6 +13,7 @@ from typing import Any
 
 from real_time_translation.audio.capture import AudioCapture
 from real_time_translation.config import Config
+from real_time_translation.latency import SegmentTiming
 from real_time_translation.transcription.deepgram_client import (
     DeepgramTranscriber,
     TranscriptionResult,
@@ -120,6 +121,8 @@ class TranslationResult:
     start_time: float = 0.0
     end_time: float = 0.0
     translation_delay: float = 0.0
+    # 話し終わり → 翻訳完了までの区間ごとの時刻（`latency.py`）。画面表示時刻は UI 側で入れる
+    timing: SegmentTiming | None = None
     # 例: "possible_undertranslation" / "empty_translation"
     review_flag: str | None = None
 
@@ -175,6 +178,7 @@ class QueuedTranscription:
     text_for_translation: str
     seq: int = 0
     queued_at: float = field(default_factory=time.monotonic)
+    timing: SegmentTiming | None = None
 
 
 class TranslationPipeline:
@@ -278,6 +282,7 @@ class TranslationPipeline:
             max_duration=config.utterance_merge_max_duration,
             max_words=config.utterance_merge_max_words,
         )
+        self._reset_merge_timing()
 
         # 翻訳完全性チェック（訳し漏れの疑いを検出）と用語辞書カバレッジ検査
         self._completeness_tracker = CompletenessTracker(
@@ -369,8 +374,9 @@ class TranslationPipeline:
         # 結合バッファに残っている未確定の断片があれば、失わずに翻訳キューへ流す
         remaining = self._utterance_merger.flush()
         if remaining is not None:
+            timing = self._finish_merge_timing(remaining.text)
             remaining = await self._reverify_merged(remaining)
-            self._enqueue_merged(remaining)
+            self._enqueue_merged(remaining, timing)
 
         # Cancel all tasks
         for task in self._tasks:
@@ -485,6 +491,8 @@ class TranslationPipeline:
                 # `result`は後段（不自然度チェック有効時）で別型に上書きされうる
                 # ため、`feed()`に渡すDeepgram単語信頼度は先に確保しておく。
                 word_confidences = result.word_confidences
+                speech_end_at = result.speech_end_at
+                received_at = result.received_at
 
                 # Emit interim results to UI (without translation)
                 if not result.is_final:
@@ -499,9 +507,22 @@ class TranslationPipeline:
                     continue
 
                 if not self._merge_utterances:
+                    timing = SegmentTiming(
+                        text=text,
+                        speech_end=speech_end_at,
+                        first_asr_final=received_at,
+                        asr_final=received_at,
+                        endpoint_done=time.monotonic(),
+                    )
                     result = await self._reverify_result(result)
-                    self._enqueue_transcription(result)
+                    self._enqueue_transcription(result, timing)
                     continue
+
+                # 遅延計測: 文の先頭部分が確定した時刻と、最新部分の話し終わり・確定時刻
+                if self._merge_first_received_at is None:
+                    self._merge_first_received_at = received_at
+                self._merge_last_speech_end_at = speech_end_at
+                self._merge_last_received_at = received_at
 
                 # utterance分断検出のLLM分類器（設定で有効な場合のみ）。マイクは
                 # 1件ずつ同期的に流れる経路なので、タイムアウト付きで呼び、
@@ -578,19 +599,41 @@ class TranslationPipeline:
                 )
                 if merged is None:
                     continue
+                timing = self._finish_merge_timing(merged.text)
                 merged = await self._reverify_merged(merged)
-                self._enqueue_merged(merged)
+                self._enqueue_merged(merged, timing)
         except asyncio.CancelledError:
             pass
 
-    def _enqueue_transcription(self, result: TranscriptionResult) -> None:
+    def _finish_merge_timing(self, text: str) -> SegmentTiming:
+        """結合が完了した文の計測を締める（文末判定完了＝今）。"""
+        timing = SegmentTiming(
+            text=text,
+            speech_end=self._merge_last_speech_end_at,
+            first_asr_final=self._merge_first_received_at,
+            asr_final=self._merge_last_received_at,
+            endpoint_done=time.monotonic(),
+        )
+        self._reset_merge_timing()
+        return timing
+
+    def _reset_merge_timing(self) -> None:
+        self._merge_first_received_at: float | None = None
+        self._merge_last_speech_end_at: float | None = None
+        self._merge_last_received_at: float | None = None
+
+    def _enqueue_transcription(
+        self, result: TranscriptionResult, timing: SegmentTiming | None = None
+    ) -> None:
         """utterance結合を使わない場合の従来経路（1件ずつそのままキューへ）。"""
         masked_text = (
             f"[uncertain: {result.text}]" if result.is_low_confidence else result.text
         )
-        self._enqueue(result, masked_text)
+        self._enqueue(result, masked_text, timing)
 
-    def _enqueue_merged(self, merged: MergedUtterance) -> None:
+    def _enqueue_merged(
+        self, merged: MergedUtterance, timing: SegmentTiming | None = None
+    ) -> None:
         """結合済みutteranceを翻訳キューへ積む。"""
         masked_text = (
             f"[uncertain: {merged.text}]" if merged.is_low_confidence else merged.text
@@ -602,9 +645,14 @@ class TranslationPipeline:
             start_time=merged.start_time,
             end_time=merged.end_time,
         )
-        self._enqueue(result, masked_text)
+        self._enqueue(result, masked_text, timing)
 
-    def _enqueue(self, result: TranscriptionResult, masked_text: str) -> None:
+    def _enqueue(
+        self,
+        result: TranscriptionResult,
+        masked_text: str,
+        timing: SegmentTiming | None = None,
+    ) -> None:
         if self._transcription_queue.full():
             with contextlib.suppress(asyncio.QueueEmpty):
                 self._transcription_queue.get_nowait()
@@ -613,7 +661,10 @@ class TranslationPipeline:
             original=result,
             text_for_translation=masked_text,
             seq=self._seq_counter,
+            timing=timing,
         )
+        if timing is not None:
+            timing.queued = queued.queued_at
         self._seq_counter += 1
         with contextlib.suppress(asyncio.QueueFull):
             self._transcription_queue.put_nowait(queued)
@@ -630,6 +681,8 @@ class TranslationPipeline:
                 # （複数ワーカーが同じ文脈を読むため表記ゆれを防ぐ）
                 src_ctx, tgt_ctx = self._shared_context.snapshot()
 
+                if queued.timing is not None:
+                    queued.timing.translate_start = time.monotonic()
                 try:
                     output = await translator.translate(
                         queued.text_for_translation,
@@ -642,6 +695,8 @@ class TranslationPipeline:
                     # エラーでもシーケンスを進めてコンテキストが詰まらないようにする
                     self._shared_context.commit(queued.seq, queued.original.text, "")
                     continue
+                if queued.timing is not None:
+                    queued.timing.translate_end = time.monotonic()
 
                 # 順序を守ってコンテキストへコミット
                 self._shared_context.commit(
@@ -685,6 +740,7 @@ class TranslationPipeline:
                     end_time=queued.original.end_time,
                     translation_delay=time.monotonic() - queued.queued_at,
                     review_flag=review_flag,
+                    timing=queued.timing,
                 )
                 if self._on_result:
                     self._on_result(translation_result)
@@ -714,6 +770,7 @@ class TranslationPipeline:
         for translator in self._translators:
             translator.clear_context()
         self._utterance_merger.flush()
+        self._reset_merge_timing()
         self._terminology_pairs.clear()
 
     async def run(self) -> None:
