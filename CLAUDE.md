@@ -88,16 +88,11 @@ date,model,domain,llm_judge,chrf_score,notes,comet_score,cometkiwi_score
 
 ## アドホック実験 vs ベンチマーク実験（重要）
 
-`experiments/*.json` に残っている実験履歴を見るとわかるが、これまでの実験は
-**毎回違う動画・違うセグメント数**で行われてきた（index.mp4 → short_test.mp4 →
-short_test_llm.mp4 → short_test_llm8.mp4 …）。この方式には限界がある：
-スコアが変化しても、それがパイプラインの変更（thinking_budget・
-context_window_size・utterance結合パラメータ・プロンプトなど）による効果なのか、
+毎回違う動画で実験すると、スコアの変化がパイプラインの変更による効果なのか、
 単に今回の動画が訳しやすかっただけなのか区別できない。
-
 このため、比較実験には2種類ある。使い分けること。
 
-### ① アドホック実験（従来通り）
+### ① アドホック実験
 
 新しい動画・新しいドメインで**探索的に**問題を見つけるための実験。
 `add_subtitles.py <video>` を実行し、上記のルール通り `experiments/` に記録する。
@@ -129,15 +124,23 @@ context_window_size・utterance結合パラメータ・プロンプトなど）�
 
 ### ベンチマークの正解訳（reference_ja）について
 
-2026-09-29 時点で `evaluation/benchmarks/` の10件はすべて `reference_status:
-"human_reviewed"`（人手レビュー済み。確定時の方針は各ファイルの `reference_note`、
+`evaluation/benchmarks/` の14件はすべて `reference_status: "human_reviewed"`
+（人手レビュー済み。確定時の方針は各ファイルの `reference_note`、
 元の草案は `reference_ja_draft`）。参照訳を変更したら、保存済みの訳文を
 `python evaluation/rescore_neural.py experiments/<...>_model_comparison.json` で
 chrF・COMET ともに再採点すること（`chrf_score_mean` は実行時点の参照訳に対する値のため）。
 新しいベンチマークを追加するときの正解訳は、まず訳語を `dictionary.csv` に合わせ、
 同じ英文が既存ベンチマークにあれば訳を揃えること。
 
-`reference_status: "draft_needs_human_review"` のベンチマークは、まだ人手
+新しいベンチマークの `reference_status: "draft_needs_human_review"` は、まだ人手
 レビューが済んでいない草案。スコアの絶対値ではなく、同じベンチマークに対する
 実行間の相対的な変化（改善/悪化）の参考としてのみ使うこと。本格的に運用する
 前に、ドメイン知識のある人が正解訳を確認・修正すること。
+
+---
+
+## ドキュメントの置き場所
+
+- 利用者向けの説明は `README.md`（画面）と `USE.md`（CLI）に書く
+- 開発上の変更内容・検証結果は `CHANGELOG.md` の先頭に追記する
+- コード内の「README更新履歴参照」は `CHANGELOG.md` のことを指す
