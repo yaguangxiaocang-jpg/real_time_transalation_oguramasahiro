@@ -4,10 +4,10 @@
 （105セグメント、講演者 Yanqi Zhou / Google DeepMind、「LLM scaling: dense modelの
 power lawからMOE・continual learning・modularity(MOA)まで」の講演全編）。
 `evaluation/benchmarks/technology_moe_2d07bb74_clip1〜5` はこの講演の一部区間の
-抜粋であり、これまでの誤認識調査（report.txt）もclip2/3に限定されていたため、
+抜粋であり、これまでの誤認識調査もclip2/3に限定されていたため、
 今回は全編を通して専門用語を洗い出した。
 
-## 1. dictionary.csv に追加済み（このセッションで反映）
+## 1. dictionary.csv に追加済み
 
 ### ASR誤認識の補正（新規パターン、置換の確度が高いもの）
 
@@ -15,7 +15,7 @@ power lawからMOE・continual learning・modularity(MOA)まで」の講演全�
 |---|---|---|
 | `TIFI` | T5 | 「TIFI originally reaches 11 billion parameters」＝T5-XXL(11B)の話。既存の`TIFINE`とは別の綴り |
 | `GPG3` | GPT-3 | 「the GPG3 at 175 billion parameters」＝GPT-3(175B)の話。既存の`g p g three`とは別の綴り（スペース無し数字表記） |
-| `PARAM two` | PaLM 2 | 既存の`PARM two`とA1文字違いの別変種 |
+| `PARAM two` | PaLM 2 | 既存の`PARM two`と1文字違いの別変種 |
 
 ### 用語カバレッジ不足（ASRは概ね正しいが辞書未登録だった）
 
@@ -26,13 +26,13 @@ domain adaptation, LWF / learning without forgetting, memory replay,
 L2 regularization, mixture of adapters, MMLU, memory offloading,
 power law, Moore's law, dense model, sparsity, modularity
 
-特に **GLaM** は要注意: `keep_as_is_terms()`（Deepgramキーワードブースト対象）にも
+特に **GLaM** は要注意: `keep_as_is_terms()`（Deepgramキーワードブースト対象、ブーストは既定OFF）にも
 含まれるが、辞書登録前は翻訳時にただの英単語 "glam"（「華やかな」）と誤訳される
 リスクがあった（実際にこの講演では固有名詞のGoogleのMOEモデル名として使われている）。
 
 ## 2. 要確認（確度が低いため dictionary.csv には追加していない）
 
-past incidentのMOA/MOE取り違え（report.txt参照）の教訓通り、根拠の弱い置換を
+過去のMOA/MOE取り違えの教訓から、根拠の弱い置換を
 そのまま登録するのはリスクがあるため、以下は「音声を聞いて確認してから登録」を
 推奨する候補として記録するに留めた。
 

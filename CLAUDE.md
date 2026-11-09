@@ -4,19 +4,22 @@
 
 **翻訳精度の比較実験を行ったら必ず以下を実行すること：**
 
-1. `/experiments/YYYYMMDD_<実験名>.json` を作成
-2. `/experiments/results.csv` に1行追記（なければ新規作成）
+1. `experiments/YYYYMMDD_<実験名>.json` を作成
+2. `experiments/results.csv` に1行追記（なければ新規作成）
 3. `git add` してコミット
+
+`add_subtitles.py` は 1 と 2 を自動で行うので、実行後はコミットだけでよい。
 
 ---
 
 ## experiments フォルダ構成
 
-```
-/experiments
-  20260305_gemini_flash_25_particle.json
-  20260305_gemini_flash_30_particle.json
+```text
+experiments/
+  20260312_gemini_25_flash_general.json
+  20260312_gemini_flash_25_economics.json
   results.csv
+  segments/      # add_subtitles.py が保存する原文・訳文・タイムスタンプの生データ
 ```
 
 ---
@@ -26,7 +29,7 @@
 ```json
 {
   "date": "2026-03-05",
-  "model": "gemini-flash-2.5",
+  "model": "gemini-2.5-flash",
   "domain": "particle_physics",
   "llm_judge": 0.97,
   "chrf_score": 0.71,
@@ -49,6 +52,8 @@
 | `cometkiwi_score` | CometKiwi-22（wmt22-cometkiwi-da、参照訳なし QE、0〜1）※任意 |
 | `notes` | 観察メモ・問題点・改善案など |
 
+スコアを測らない場合は、スコアの項目を省略または `null` にして、代わりに `notes` に記述式の評価を詳しく書くこと。
+
 > **注意（2026-09-29 改名）:** `llm_judge` は以前 `xcomet_score` という名前だったが、
 > 中身は最初から本物の xCOMET ではなく Gemini の LLM 判定だった。過去の JSON・CSV も
 > 一括で `llm_judge` に改名済み（notes 本文中の「xCOMET」表記は当時の記録のまま）。
@@ -63,47 +68,23 @@
 
 ```csv
 date,model,domain,llm_judge,chrf_score,notes,comet_score,cometkiwi_score
-2026-03-05,gemini-flash-2.5,particle_physics,0.97,0.71,CKM matrixの訳が不安定,0.86,0.82
+2026-03-05,gemini-2.5-flash,particle_physics,0.97,0.71,CKM matrixの訳が不安定,0.86,0.82
 ```
 
----
-
-## 自動評価を使わない場合
-
-`llm_judge`・`chrf_score`・`comet_score`・`cometkiwi_score` は省略可（`comet_score` と `cometkiwi_score` は後方互換のため notes の後ろの列。6列だけの行も有効）。代わりに `notes` に記述式の評価を詳しく記録すること。
-
-例：
-```json
-{
-  "date": "2026-03-05",
-  "model": "gemini-flash-2.5",
-  "domain": "particle_physics",
-  "llm_judge": null,
-  "chrf_score": null,
-  "notes": "専門用語の一貫性が高い。ただし受動態の処理が不自然な箇所あり。前モデルより全体的に自然。"
-}
-```
+`comet_score` と `cometkiwi_score` は後方互換のため `notes` の後ろの列にある。6列だけの行も有効。
 
 ---
 
 ## アドホック実験 vs ベンチマーク実験（重要）
 
-`experiments/*.json` に残っている実験履歴を見るとわかるが、これまでの実験は
-**毎回違う動画・違うセグメント数**で行われてきた（index.mp4 → short_test.mp4 →
-short_test_llm.mp4 → short_test_llm8.mp4 …）。この方式には限界がある：
-スコアが変化しても、それがパイプラインの変更（thinking_budget・
-context_window_size・utterance結合パラメータ・プロンプトなど）による効果なのか、
-単に今回の動画が訳しやすかっただけなのか区別できない。
+動画やセグメント数が毎回違う実験では、スコアの変化がパイプラインの変更によるものか、
+動画が訳しやすかっただけなのかを区別できない。比較実験は次の2種類を使い分けること。
 
-このため、比較実験には2種類ある。使い分けること。
-
-### ① アドホック実験（従来通り）
+### ① アドホック実験
 
 新しい動画・新しいドメインで**探索的に**問題を見つけるための実験。
-`add_subtitles.py <video>` を実行し、上記のルール通り `experiments/` に記録する。
-`add_subtitles.py` は実行のたびに `experiments/segments/YYYYMMDD_<動画名>.json` に
-原文・訳文・タイムスタンプの生データも自動保存する（後述のベンチマーク作成の
-材料になる）。
+`add_subtitles.py <video>` を実行する。原文・訳文・タイムスタンプの生データは
+`experiments/segments/YYYYMMDD_<動画名>.json` に自動保存され、ベンチマーク作成の材料になる。
 
 ### ② ベンチマーク実験（before/after比較をしたいとき）
 
@@ -111,33 +92,26 @@ context_window_size・utterance結合パラメータ・プロンプトなど）�
 
 1. `evaluation/benchmarks/*.json` に、固定の入力（`raw_utterances`）と
    人手レビュー済みの正解訳（`reference_ja`）を用意する
-   （`add_subtitles.py` が生成する `experiments/segments/*.json` の中から、
-   代表的なセグメントを選んで作るとよい）
+   （`experiments/segments/*.json` から代表的なセグメントを選ぶとよい）
 2. `python evaluation/run_benchmark.py evaluation/benchmarks/<name>.json` を実行
    （`--thinking-budget` / `--context-window-size` で変更したいパラメータだけ渡す）
 3. 結果は `experiments/results.csv` に `[benchmark=<name>]` タグ付きで記録される
-   （reference-based chrF。逆翻訳ではなく正解訳と直接比較するため、
-   アドホック実験のchrFより信頼度が高い）
+   （逆翻訳ではなく正解訳と直接比較するため、アドホック実験の chrF より信頼度が高い）
 
-**マイクのリアルタイム翻訳とアドホック実験（動画/CLI）は同じアルゴリズム**
-（`merge_incomplete_utterances` / `StreamingUtteranceMerger`、
-`LLMTranslator`）を使っているため、ベンチマーク実験の結果は両方の経路に
-適用できると考えてよい。ただし `thinking_budget` はマイク側が既定0
-（低遅延優先）、動画/CLI側が既定1024（精度優先）で異なる点に注意
-（`evaluation/run_benchmark.py` の `--thinking-budget 0` でマイク側相当の
-設定も検証できる）。
+マイクのリアルタイム翻訳と動画/CLI は同じアルゴリズム
+（`merge_incomplete_utterances` / `StreamingUtteranceMerger`、`LLMTranslator`）を
+使うため、ベンチマークの結果は両方に適用できる。ただし `thinking_budget` の既定は
+マイクが 0（低遅延優先）、動画/CLI が 1024（精度優先）で異なる。マイク相当の設定は
+`--thinking-budget 0` で検証できる。
 
 ### ベンチマークの正解訳（reference_ja）について
 
-2026-09-29 時点で `evaluation/benchmarks/` の10件はすべて `reference_status:
-"human_reviewed"`（人手レビュー済み。確定時の方針は各ファイルの `reference_note`、
-元の草案は `reference_ja_draft`）。参照訳を変更したら、保存済みの訳文を
-`python evaluation/rescore_neural.py experiments/<...>_model_comparison.json` で
-chrF・COMET ともに再採点すること（`chrf_score_mean` は実行時点の参照訳に対する値のため）。
-新しいベンチマークを追加するときの正解訳は、まず訳語を `dictionary.csv` に合わせ、
-同じ英文が既存ベンチマークにあれば訳を揃えること。
+`evaluation/benchmarks/` の14件はすべて `reference_status: "human_reviewed"`
+（確定時の方針は各ファイルの `reference_note`、元の草案は `reference_ja_draft`）。
 
-`reference_status: "draft_needs_human_review"` のベンチマークは、まだ人手
-レビューが済んでいない草案。スコアの絶対値ではなく、同じベンチマークに対する
-実行間の相対的な変化（改善/悪化）の参考としてのみ使うこと。本格的に運用する
-前に、ドメイン知識のある人が正解訳を確認・修正すること。
+- 参照訳を変更したら、`python evaluation/rescore_neural.py experiments/<...>_model_comparison.json`
+  で chrF・COMET ともに再採点すること（`chrf_score_mean` は実行時点の参照訳に対する値のため）。
+- 新しいベンチマークの正解訳は、訳語を `dictionary.csv` に合わせ、同じ英文が既存の
+  ベンチマークにあれば訳を揃えること。
+- 人手レビュー前の草案は `reference_status: "draft_needs_human_review"` とし、スコアの
+  絶対値ではなく同じベンチマークでの実行間の相対的な変化の参考としてのみ使うこと。
