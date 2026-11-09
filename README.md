@@ -4,7 +4,7 @@
 音声認識に [Deepgram](https://deepgram.com/)、翻訳に Gemini または OpenAI を使います。
 
 > [!IMPORTANT]
-> **アプリ本体のコードは `master` ブランチにあります。** `main` ブランチにあるのはこの README と `Lancher.py` だけで、`main` 単体では起動できません。
+> **アプリ本体のコードは `master` ブランチにあります。** `main` ブランチにあるのはこの README だけで、`main` 単体では起動できません。
 
 ## 目次
 
